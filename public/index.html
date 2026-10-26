@@ -24,15 +24,20 @@ input{caret-color:var(--fg)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* glass: controls that float over photos and scrolling content */
-.chip,.fbtn,.pill,.close,.qa,.gbtn,.search,.seg,.strict,.tok,.rvbtn{background:var(--gl);border:1px solid var(--glb);box-shadow:var(--glh);-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%)}
-@media(hover:hover){.chip:not(:disabled):hover,.fbtn:hover,.pill:hover,.close:hover,.qa:hover,.gbtn:not(.solid):hover,.rvbtn:hover{background:rgba(237,231,220,.13);border-color:rgba(237,231,220,.24)}}
+/* frosted glass: no outlines; light from above, and a soft spot that follows the pointer */
+.chip,.fbtn,.pill,.close,.qa,.gbtn,.search,.seg,.strict,.tok{position:relative;isolation:isolate;border:0;background:linear-gradient(180deg,rgba(255,248,236,.14),rgba(255,248,236,.045));box-shadow:inset 0 1px 0 rgba(255,255,255,.17),inset 0 -12px 18px -14px rgba(255,255,255,.12),0 10px 24px -14px rgba(0,0,0,.85);-webkit-backdrop-filter:blur(20px) saturate(180%) brightness(1.08);backdrop-filter:blur(20px) saturate(180%) brightness(1.08)}
+.chip::after,.fbtn::after,.pill::after,.close::after,.gbtn::after,.search::after,.qa::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:.55;background:radial-gradient(70% 90% at var(--lx,50%) var(--ly,-10%),rgba(255,250,240,.22),transparent 70%);transition:opacity .4s}
+@media(hover:hover){.chip:not(:disabled):hover::after,.fbtn:hover::after,.pill:hover::after,.close:hover::after,.gbtn:hover::after,.qa:hover::after{opacity:1}}
+.chip[aria-pressed=true],.seg button[aria-pressed=true],.strict button[aria-pressed=true],.pill.solid,.qa.on,.tok .mode{background:linear-gradient(180deg,#fbf6ee,#e2dbcf);color:var(--bg);box-shadow:inset 0 1px 0 #fff,0 0 22px -6px rgba(255,244,226,.45),0 10px 24px -14px #000}
+/* lit by the drink: the one coloured control on screen */
+.pill.lit{color:var(--fg);background:linear-gradient(180deg,color-mix(in srgb,var(--c2) 42%,rgba(255,248,236,.12)),color-mix(in srgb,var(--c) 30%,rgba(255,248,236,.03)));box-shadow:inset 0 1px 0 color-mix(in srgb,var(--c2) 60%,#fff),0 12px 34px -12px color-mix(in srgb,var(--c) 85%,transparent)}
+.pill.lit::after{background:radial-gradient(70% 90% at var(--lx,50%) var(--ly,-10%),color-mix(in srgb,var(--c2) 50%,#fff 20%),transparent 70%)}
 
 /* navbar */
-.top{position:fixed;top:0;left:0;right:0;z-index:20;padding:env(safe-area-inset-top) var(--gut) 0;background:rgba(9,7,6,.6);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);border-bottom:1px solid rgba(237,231,220,.08)}
+.top{position:fixed;top:0;left:0;right:0;z-index:20;padding:env(safe-area-inset-top) var(--gut) 0;background:rgba(9,7,6,.6);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%)}
 .bar{display:flex;align-items:center;gap:10px;height:62px}
 .search{flex:1 1 auto;min-width:0;max-width:560px;display:flex;align-items:center;gap:8px;height:44px;padding:0 4px 0 14px;border-radius:22px;transition:border-color .3s var(--ease)}
-.search:focus-within{border-color:rgba(237,231,220,.42)}
+.search:focus-within{background:linear-gradient(180deg,rgba(255,248,236,.2),rgba(255,248,236,.08))}
 .search svg.i{color:var(--fg2)}
 .search input{flex:1;min-width:0;border:0;background:none;outline:0;font-size:16px;height:100%;-webkit-appearance:none;appearance:none}
 .search input::placeholder{color:#8a8278}
@@ -43,7 +48,6 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .fbtn .n{min-width:20px;height:20px;border-radius:10px;background:var(--fg);color:var(--bg);font-size:12px;display:grid;place-items:center;padding:0 5px;font-variant-numeric:tabular-nums}
 .seg{display:inline-flex;flex:none;border-radius:22px;padding:2px;font-size:12px;font-weight:600;letter-spacing:.06em}
 .seg button{border:0;background:none;min-width:40px;height:38px;border-radius:19px;padding:0 8px;color:var(--fg2)}
-.seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
 @media(max-width:599px){
   .fbtn{width:44px;padding:0;justify-content:center}.fbtn .lb{display:none}.fbtn .n{position:absolute;top:-5px;right:-5px}
   .top .seg{padding:0}.top .seg button{min-width:42px}
@@ -59,8 +63,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .chips{display:flex;gap:6px;overflow-x:auto;padding:0 var(--gut) 12px;margin:0 calc(-1*var(--gut));scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:none;height:40px;padding:0 15px;font-size:13px;font-weight:500;white-space:nowrap;border-radius:20px;transition:background .25s,border-color .25s}
-.chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.chip.ex[aria-pressed=true]{background:rgba(237,231,220,.2);color:var(--fg);border-color:var(--fg);font-weight:600}
+.chip.ex[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,248,236,.3),rgba(255,248,236,.14));color:var(--fg);font-weight:600;box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
 .chips .sep{flex:none;width:1px;margin:8px 4px;background:var(--line)}
 .chip.tag{background:rgba(237,231,220,.16);display:inline-flex;align-items:center;gap:6px;padding-right:9px}
 .chip.tag svg{width:14px;height:14px}
@@ -72,241 +75,74 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .mark{margin:0 -.34em 0 0;flex:none;font-family:"Bodoni Moda",Didot,serif;font-optical-sizing:auto;font-weight:500;font-size:17px;letter-spacing:.34em;line-height:1;color:var(--fg)}
 .flying .mark{opacity:0}
 
-/* ---------- shared item pieces ---------- */
-@property --gi{syntax:'<number>';inherits:true;initial-value:50}
-main{padding:calc(var(--navh) + 18px) var(--gut) 140px}
-.cards{list-style:none;margin:0;padding:0}
-.card{position:relative;min-width:0;container-type:inline-size;--gi:50;transition:--gi .7s var(--ease)}
-.card .open{display:block;width:100%;padding:0;border:0;background:none;text-align:left;color:inherit}
-.fr,.flip{display:block;position:relative}
-.ph{position:relative;display:block;overflow:hidden;isolation:isolate;aspect-ratio:var(--ar,4/5);background:var(--card)}
-.ph img{position:absolute;max-width:none;height:auto;width:calc(var(--w)*100%);left:calc(var(--l)*100%);top:calc(var(--t)*100%);mix-blend-mode:lighten;transition:transform .8s var(--ease);transform-origin:50% 60%}
-.ph img.fe{-webkit-mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(transparent,#000 10%,#000 90%,transparent);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent) intersect,linear-gradient(transparent,#000 10%,#000 90%,transparent)}
-.nm{display:block;font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;line-height:1;letter-spacing:-.015em;text-wrap:balance;transition:color .3s,transform .6s var(--ease)}
-.ln{display:block;font-size:12.5px;color:var(--fg2);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ln b{font-weight:500;color:var(--c2)}
-@container (max-width:230px){.yr{display:none}}
-.glow{background:radial-gradient(62% 48% at 50% 50%,color-mix(in srgb,var(--c) calc(var(--gi)*1%),transparent),transparent 74%),var(--card)}
-/* the spec, revealed on hover */
-.more{position:absolute;z-index:1;left:8px;right:8px;bottom:8px;padding:10px 12px;border-radius:8px;background:rgba(14,12,11,.5);border:1px solid var(--glb);box-shadow:var(--glh);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);display:grid;gap:3px;font-size:12px;line-height:1.3;opacity:0;transform:translateY(14px);transition:opacity .35s var(--ease),transform .55s var(--ease);pointer-events:none}
-.more b,.tsp b{font-weight:600;color:var(--c2);font-variant-numeric:tabular-nums}
-.gl{color:var(--fg2);margin-top:4px}
-.tsp{display:none}
-.tsp>span{display:block}
-@media(hover:hover){
-  .card:hover{--gi:88}
-  .card .open:hover .more,.card .open:focus-visible .more{opacity:1;transform:none}
-  .card .open:hover img{transform:scale(1.045)}
-  .card .open:hover .nm{color:var(--c2)}
-}
-@media(hover:none){.more{display:none}}
-.qa{position:absolute;z-index:2;top:8px;right:8px;width:36px;height:36px;border-radius:18px;display:grid;place-items:center;color:var(--fg);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;transition:background .25s,color .25s,transform .35s var(--ease)}
-.qa::before{content:"";position:absolute;inset:-5px}
+/* ---------- browse: the names on one side, the drinks on a carousel ---------- */
+main{padding:calc(var(--navh) + 8px) var(--gut) 140px}
+.nm{display:block;font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;line-height:1;letter-spacing:-.015em;text-wrap:balance}
+.fly{position:fixed;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;z-index:60;pointer-events:none}
+.qa{width:40px;height:40px;border-radius:20px;display:grid;place-items:center;color:var(--fg);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;transition:background .25s,color .25s,transform .35s var(--ease)}
 .qa svg{width:18px;height:18px}
-.qa.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .qa.pop{animation:pop .45s var(--ease)}
 .qa:active,.gbtn:active,.chip:active,.pill:active{transform:scale(.94)}
 @keyframes pop{40%{transform:scale(1.25)}}
 .gbtn{width:44px;height:44px;border-radius:22px;display:grid;place-items:center;color:var(--fg);transition:transform .3s var(--ease)}
-.gbtn.big{width:60px;height:60px;border-radius:30px}
-.gbtn.solid{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.fly{position:fixed;left:-8px;top:-8px;width:16px;height:16px;border-radius:50%;z-index:60;pointer-events:none}
-.ratio.mini{height:5px;gap:2px;margin:0 0 9px}
+.pill{height:46px;padding:0 20px;border-radius:23px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);transition:transform .3s var(--ease)}
 
-/* ---------- 10 card styles ---------- */
-/* 1 Backlit */
-[data-card="1"] .card{background:var(--card);border-radius:6px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(237,231,220,.06)}
-[data-card="1"] .tx{display:block;position:relative;margin-top:-30px;padding:16px 12px 14px;background:linear-gradient(rgba(11,9,8,0),var(--card) 30px)}
-[data-card="1"] .nm{font-size:clamp(20px,9cqw,28px)}
-[data-card="1"] .more{bottom:34px}
-/* 2 Plinth */
-[data-card="2"] .ph{background:radial-gradient(48% 9% at 50% 88%,color-mix(in srgb,var(--c) calc(var(--gi)*1.3%),transparent),transparent 100%),linear-gradient(to top,color-mix(in srgb,var(--c) calc(var(--gi)*.5%),transparent),transparent 46%),var(--bg);border-bottom:1px solid color-mix(in srgb,var(--c2) 45%,transparent)}
-[data-card="2"] .tx{display:block;padding-top:11px}
-[data-card="2"] .nm{font-size:clamp(21px,9.5cqw,28px)}
-/* 3 Sheet */
-[data-card="3"] .ph{border-radius:4px}
-[data-card="3"] .tx{display:block;padding-top:8px}
-[data-card="3"] .nm{font-size:clamp(17px,8.5cqw,24px);font-weight:600}
-/* 4 Poster */
-[data-card="4"] .card{border-radius:4px;overflow:hidden}
-[data-card="4"] .tx{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:48px 14px 14px;background:linear-gradient(rgba(3,2,2,0),rgba(3,2,2,.88) 60%);pointer-events:none}
-[data-card="4"] .nm{font-size:clamp(30px,14cqw,58px);font-style:italic;line-height:.9;letter-spacing:-.035em}
-[data-card="4"] .ln{max-height:0;opacity:0;transition:max-height .5s var(--ease),opacity .4s}
-[data-card="4"] .more{display:none}
-@media(hover:hover){[data-card="4"] .card:hover .ln{max-height:20px;opacity:1}[data-card="4"] .card:hover .nm{transform:translateY(-4px)}}
-@media(hover:none){[data-card="4"] .ln{max-height:none;opacity:1}}
-/* 5 Spec */
-[data-card="5"] .card{background:var(--card);border-radius:6px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(237,231,220,.06)}
-[data-card="5"] .fr{display:grid;grid-template-columns:42% 1fr}
-[data-card="5"] .tx{display:flex;flex-direction:column;padding:14px 14px 14px 6px;min-width:0}
-[data-card="5"] .nm{font-size:clamp(21px,7cqw,30px);padding-right:36px}
-[data-card="5"] .tsp{display:block;margin-top:auto;padding-top:12px;font-size:12.5px;line-height:1.35}
-[data-card="5"] .more{display:none}
-/* 6 Frosted */
-[data-card="6"] .card{border-radius:12px;overflow:hidden}
-[data-card="6"] .ph{border-radius:12px}
-[data-card="6"] .tx{position:absolute;z-index:1;left:8px;right:8px;bottom:8px;padding:11px 12px 12px;border-radius:8px;background:rgba(40,34,30,.3);border:1px solid var(--glb);box-shadow:var(--glh);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);pointer-events:none}
-[data-card="6"] .nm{font-size:clamp(19px,8.5cqw,26px)}
-[data-card="6"] .tsp{display:grid;max-height:0;opacity:0;overflow:hidden;font-size:12px;line-height:1.3;transition:max-height .6s var(--ease),opacity .4s,margin .6s var(--ease)}
-[data-card="6"] .more{display:none}
-@media(hover:hover){[data-card="6"] .card:hover .tsp{max-height:110px;opacity:1;margin-top:9px}}
-/* 7 Coaster */
-[data-card="7"] .ph{border-radius:50%;margin:13%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) calc(var(--gi)*1%),transparent),transparent),var(--card);box-shadow:0 0 0 1px color-mix(in srgb,var(--c2) 35%,transparent)}
-.ring{position:absolute;left:0;top:0;width:100%;height:auto;aspect-ratio:1;pointer-events:none;fill:var(--fg2);font:600 5.2px "Schibsted Grotesk",sans-serif;transition:transform 1.4s var(--ease),fill .4s}
-[data-card="7"] .tx{display:block;text-align:center;margin-top:8px}
-[data-card="7"] .nm{font-size:clamp(19px,9cqw,26px)}
-[data-card="7"] .ln{display:none}
-[data-card="7"] .more{display:none}
-[data-card="7"] .qa{top:6%;right:6%}
-@media(hover:hover){[data-card="7"] .card:hover .ring{transform:rotate(60deg);fill:var(--c2)}}
-/* 8 Label */
-[data-card="8"] .ph{background:radial-gradient(60% 50% at 50% 55%,color-mix(in srgb,var(--c) calc(var(--gi)*1%),transparent),transparent 75%),var(--bg)}
-[data-card="8"] .tx{display:block;position:relative;z-index:1;margin:-20px 9% 0;padding:13px 10px 12px;text-align:center;background:var(--paper);color:var(--ink);outline:1px solid var(--ink);outline-offset:-5px;box-shadow:0 16px 30px -18px #000;transition:transform .6s var(--ease)}
-[data-card="8"] .nm{font-size:clamp(17px,8cqw,23px);font-weight:600;color:var(--ink)}
-[data-card="8"] .ln{color:var(--ink2);font-size:9.5px;font-weight:600;letter-spacing:.2em;line-height:1.5;text-transform:uppercase;margin-top:7px;white-space:normal}
-[data-card="8"] .ln b{color:var(--ink)}
-[data-card="8"] .more{bottom:28px}
-@media(hover:hover){[data-card="8"] .card:hover .tx{transform:rotate(-1.6deg) translateY(-3px)}[data-card="8"] .card .open:hover .nm{color:var(--ink)}}
-/* 9 Flip */
-[data-card="9"] .flip{transform-style:preserve-3d;transition:transform .9s var(--ease)}
-[data-card="9"] .ph,[data-card="9"] .bk{-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:6px}
-[data-card="9"] .bk{position:absolute;inset:0;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:flex-end;gap:3px;padding:14px;font-size:12.5px;line-height:1.35;background:linear-gradient(165deg,color-mix(in srgb,var(--c) 60%,#0b0908),#0b0908 75%);box-shadow:inset 0 0 0 1px rgba(237,231,220,.1)}
-.bk{display:none}
-[data-card="9"] .bk b{color:var(--c2);font-weight:600}
-.bkn{font:500 26px/1 "Bodoni Moda",serif;letter-spacing:-.02em;margin-bottom:auto}
-[data-card="9"] .tx{display:block;padding-top:10px}
-[data-card="9"] .nm{font-size:clamp(20px,9cqw,27px)}
-[data-card="9"] .more{display:none}
-@media(hover:hover){[data-card="9"] .card:hover .flip,[data-card="9"] .open:focus-visible .flip{transform:rotateY(180deg)}}
-/* 10 Numeral */
-[data-card="10"] .ph{background:var(--bg)}
-.numeral{display:none}
-[data-card="10"] .numeral{position:absolute;inset:0;display:grid;place-items:center;font:700 clamp(60px,40cqw,170px)/1 "Bodoni Moda",serif;letter-spacing:-.05em;color:var(--c2);opacity:.5;transition:opacity .6s,transform 1s var(--ease)}
-[data-card="10"] .tx{display:block;padding-top:10px;border-top:1px solid var(--rule)}
-[data-card="10"] .nm{font-size:clamp(20px,9cqw,27px)}
-@media(hover:hover){[data-card="10"] .card:hover .numeral{opacity:.95;transform:scale(1.08)}}
+/* light: the photo itself, blurred, behind the page; then grain over everything */
+.amb{position:fixed;inset:-10%;z-index:-1;pointer-events:none}
+.amb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(90px) saturate(1.5);opacity:0;transform:scale(1.1);transition:opacity 1.2s var(--ease)}
+.amb img.on{opacity:.3}
+.grain{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* ---------- 10 layouts ---------- */
-/* 1 Grid: four across on a laptop, two on a phone */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--cw),1fr));gap:clamp(18px,2.6vw,44px) clamp(12px,1.8vw,30px);--cw:max(158px,20vw)}
-[data-card="5"] .grid{--cw:max(290px,28vw)}
-/* 2 Mosaic: every sixth drink takes the stage */
-.grid.mosaic{--cw:max(150px,16vw);grid-auto-flow:dense}
-.card.big{grid-column:span 2}
-.card.big .nm{font-size:clamp(30px,6.5cqw,64px)!important}
-[data-card="5"] .grid.mosaic{--cw:max(290px,26vw)}
-[data-card="5"] .card.big{grid-column:auto}
-/* 3 Shelves: the back bar, one shelf per base */
-.shelf{margin:0 0 clamp(26px,4vw,56px)}
-.shelf h2,.dec h2{font:500 clamp(28px,3.2vw,44px)/1 "Bodoni Moda",serif;letter-spacing:-.025em;margin:0 0 14px;display:flex;align-items:baseline;gap:10px}
-.shelf h2 small,.dec h2 small{font:500 13px "Schibsted Grotesk",sans-serif;color:var(--fg2);letter-spacing:0}
-.row{display:flex;gap:clamp(12px,1.5vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gut));padding:0 var(--gut) 20px;scroll-padding:0 var(--gut);scrollbar-width:none}
-.row::-webkit-scrollbar{display:none}
-.row .card{flex:0 0 clamp(150px,40vw,250px);scroll-snap-align:start}
-[data-card="5"] .row .card{flex-basis:clamp(290px,82vw,420px)}
-.rail{height:2px;margin:-6px 0 0;border-radius:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--c) 70%,#fff 10%) 15%,color-mix(in srgb,var(--c) 70%,#fff 10%) 85%,transparent);box-shadow:0 -10px 30px 2px color-mix(in srgb,var(--c) 40%,transparent)}
-/* 4 Feed: one drink per screen */
-html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
-.feed{list-style:none;margin:-18px calc(-1*var(--gut)) 0;padding:0}
-.fd{position:relative;min-height:calc(100svh - var(--navh));scroll-snap-align:start;display:grid;overflow:hidden;--gi:50}
-.fd .bg{position:absolute;inset:0;background:radial-gradient(60% 40% at 50% 70%,color-mix(in srgb,var(--c) 45%,transparent),transparent 70%),var(--bg)}
-.fd .bg img{width:100%;height:100%;object-fit:cover;mix-blend-mode:lighten}
-.fd .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(3,2,2,0) 45%,rgba(3,2,2,.92) 82%)}
-.fd .ft{position:relative;z-index:1;align-self:end;padding:0 var(--gut) clamp(30px,7vh,72px)}
-.fd .nm{font-size:clamp(58px,16vw,150px);line-height:.86;letter-spacing:-.035em;margin:0}
-.fd .ln{font-size:14px;margin:0 0 12px;white-space:normal}
-.fd .tsp{display:block;font-size:15px;line-height:1.5;margin:18px 0 20px}
-.acts{display:flex;align-items:center;gap:10px}
-.acts .qa{position:static;width:52px;height:52px;border-radius:26px}
-.acts .pill{height:52px;border-radius:26px;padding:0 26px}
-@media(min-width:900px){.fd{grid-template-columns:1fr 1fr}.fd .bg{position:relative;inset:auto}.fd .bg::after{background:linear-gradient(90deg,rgba(3,2,2,0) 70%,var(--bg))}.fd .ft{align-self:center;padding-right:clamp(32px,6vw,96px)}.fd .nm{font-size:clamp(64px,7.5vw,140px)}}
-/* 5 Index: the names are the menu */
-.index{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.ix{position:relative;border-bottom:1px solid var(--rule);--gi:50}
-.ix .open{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;width:100%;padding:12px 52px 12px 0;border:0;background:none;text-align:left;color:inherit}
-.ix .th{width:58px;border-radius:4px}
-.ix .nm{font-size:clamp(30px,7vw,92px);line-height:1.02;letter-spacing:-.03em}
-.ix .tx{min-width:0}
-.ix .qa{top:50%;right:0;margin-top:-18px}
-@media(hover:hover) and (min-width:700px){
-  .ix .th{display:none}.ix .open{grid-template-columns:1fr;padding:clamp(10px,1.2vw,16px) 64px clamp(10px,1.2vw,16px) 0}
-  .ix .tx{display:flex;align-items:baseline;justify-content:space-between;gap:24px}.ix .ln{margin:0;flex:none}
-  .ix .open:hover .nm{transform:translateX(18px);color:var(--c2)}
-}
-.float{position:fixed;z-index:15;left:0;top:0;width:clamp(200px,19vw,300px);pointer-events:none;opacity:0;transform:translate(28px,-50%) scale(.86) rotate(-3deg);transition:opacity .3s,transform .6s var(--ease)}
-.float.on{opacity:1;transform:translate(28px,-50%) scale(1) rotate(0)}
-.float .ph{border-radius:6px;box-shadow:0 30px 60px -30px #000}
-/* 6 Carousel */
-.carw{margin:0 calc(-1*var(--gut))}
-.car{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:10px calc(50% - var(--cw)/2) 24px;position:relative;--cw:min(70vw,360px);perspective:1200px}
-.car::-webkit-scrollbar{display:none}
-[data-card="5"] .car{--cw:min(88vw,480px)}
-.car .card{flex:0 0 var(--cw);scroll-snap-align:center;transform:rotateY(calc(var(--s,0)*-22deg)) scale(calc(1 - min(var(--d,0),1.5)*.16));opacity:calc(1 - min(var(--d,0),1.5)*.45);filter:saturate(calc(1 - min(var(--d,0),1)*.7))}
-.carbar{display:flex;justify-content:center;align-items:center;gap:18px;padding:0 var(--gut)}
-.carn{font:500 15px "Schibsted Grotesk",sans-serif;color:var(--fg2);min-width:5.5em;text-align:center}
-/* 7 Timeline */
-.tl{display:flex;gap:clamp(18px,2.4vw,40px);overflow-x:auto;margin:0 calc(-1*var(--gut));padding:0 var(--gut) 30px;scroll-padding:0 var(--gut);scroll-snap-type:x proximity;align-items:flex-start}
-.dec{flex:0 0 clamp(150px,42vw,240px);scroll-snap-align:start}
-[data-card="5"] .dec{flex-basis:clamp(290px,82vw,400px)}
-.tick{position:relative;height:1px;background:var(--line);margin:0 calc(-1*clamp(18px,2.4vw,40px)) 18px 0}
-.tick::before{content:"";position:absolute;left:0;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--fg)}
-.dec .cards{display:grid;gap:18px}
-/* 8 Deck: swipe right to add, left to pass */
-.deck{display:grid;justify-items:center;gap:26px;padding-top:6px}
-.stack{display:grid;padding-bottom:34px;width:min(76vw,380px);touch-action:pan-y;user-select:none;-webkit-user-select:none}
-[data-card="5"] .stack{width:min(90vw,470px)}
-.dk{grid-area:1/1;align-self:start;transform-origin:50% 100%;transform:translateY(calc(var(--i)*16px)) scale(calc(1 - var(--i)*.06));z-index:calc(10 - var(--i));transition:transform .5s var(--ease),opacity .5s;opacity:calc(1 - var(--i)*.25);box-shadow:0 30px 60px -30px #000}
-.dk.dtop{cursor:grab}
-.stack img{pointer-events:none;-webkit-user-drag:none}
-.dk .qa{display:none}
-.dk.hint{animation:nudge 1.6s .8s var(--ease) both}
-@keyframes nudge{20%{transform:translateX(26px) rotate(2deg)}45%{transform:translateX(-20px) rotate(-1.5deg)}70%{transform:none}}
-.stamp{position:absolute;z-index:3;top:16px;width:52px;height:52px;border-radius:26px;display:grid;place-items:center;pointer-events:none}
-.stamp.sy{left:16px;background:var(--fg);color:var(--bg);opacity:max(0,var(--sw,0))}
-.stamp.sn{right:16px;background:rgba(237,231,220,.18);border:1px solid var(--glb);opacity:max(0,calc(var(--sw,0)*-1))}
-.dkbar{display:flex;align-items:center;gap:22px}
-.dkn{font-size:14px;color:var(--fg2);min-width:4.5em;text-align:center}
-/* 9 Split: browse on one side, the drink on the other */
-.split{display:grid;gap:clamp(14px,3vw,48px)}
-.pv{position:sticky;top:var(--navh);z-index:5;margin:-18px calc(-1*var(--gut)) 0;padding:12px var(--gut) 14px;background:linear-gradient(var(--bg) 88%,rgba(3,2,2,0))}
-.pvin{display:grid;grid-template-columns:40% 1fr;gap:14px;animation:pvin .5s var(--ease)}
-@keyframes pvin{from{opacity:0;transform:translateY(8px)}}
-.pvph{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:6px;background:radial-gradient(60% 50% at 50% 55%,color-mix(in srgb,var(--c) 55%,transparent),transparent 75%),var(--card)}
-.pvph img{width:100%;height:100%;object-fit:cover;mix-blend-mode:lighten}
-.pvt{display:flex;flex-direction:column;min-width:0}
-.pvt .nm{font-size:clamp(26px,8vw,80px);line-height:.92;margin:0;letter-spacing:-.03em}
-.pvt .tsp{display:block;font-size:12.5px;line-height:1.4;margin:12px 0 0}
-.pvt .acts{margin-top:auto;padding-top:12px}
-.pvt .pill{height:44px;padding:0 18px}
-.srow{position:relative;border-bottom:1px solid var(--rule)}
-.srow .open{display:grid;grid-template-columns:60px 1fr;gap:14px;align-items:center;width:100%;padding:9px 52px 9px 0;border:0;background:none;text-align:left;color:inherit}
-.srow .ph{border-radius:4px;transition:box-shadow .3s}
-.srow .nm{font-size:clamp(21px,2vw,28px)}
-.srow.cur .nm{color:var(--c2)}
-.srow.cur .ph{box-shadow:0 0 0 1.5px var(--c2)}
-.srow .qa{top:50%;margin-top:-18px;right:0}
+.browse{display:grid;gap:8px}
+.stage{position:sticky;top:var(--navh);z-index:5;margin:0 calc(-1*var(--gut));padding:6px 0 22px;background:linear-gradient(rgba(3,2,2,.97) calc(100% - 22px),rgba(3,2,2,0))}
+.car{position:relative;height:var(--ch);overflow:hidden;--ch:clamp(230px,41svh,420px);perspective:1100px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab;outline:0}
+.car.drag{cursor:grabbing}
+.cc{position:absolute;left:50%;top:0;height:100%;aspect-ratio:3/4;margin-left:calc(var(--ch)*-.375);transform-style:preserve-3d;will-change:transform}
+.cc .ph{position:absolute;inset:0;border-radius:3px;overflow:hidden;background:#0b0908;box-shadow:0 30px 60px -28px #000}
+.cc .ph img{position:absolute;max-width:none;height:auto;width:calc(var(--z)*100%);left:calc(var(--x)*100%);top:calc(var(--y)*100%);-webkit-user-drag:none;pointer-events:none}
+.cc .ph::after{content:"";position:absolute;inset:0;background:#030202;opacity:var(--dim,0)}
+.cc .bl{position:absolute;inset:4% -6% -4%;z-index:-1;pointer-events:none;opacity:var(--blo,0);transform:translate(var(--mx,0px),var(--my,0px)) scale(1.06);transition:transform 1.1s var(--ease)}
+.cc .bl img{width:100%;height:100%;object-fit:cover;filter:blur(38px) saturate(1.7) brightness(1.15)}
+.cap{display:grid;grid-template-columns:1fr auto;align-items:end;gap:4px 14px;padding:12px var(--gut) 0}
+.cap .nm{font-size:clamp(30px,8vw,40px);line-height:.95;letter-spacing:-.025em;min-width:0}
+.cap .meta{grid-column:1;font-size:12.5px;color:var(--fg2);margin-top:4px}
+.cap .meta b{color:var(--c2);font-weight:500}
+.cap .acts{grid-column:2;grid-row:1/3;display:flex;gap:8px}
+.cap .spec{display:none}
+@media(max-width:899px){.cap .pill.lit{width:46px;padding:0;justify-content:center}.cap .pill.lit .lb:empty{display:none}}
+.cap.swap>*{animation:capin .5s var(--ease)}
+@keyframes capin{from{opacity:0;transform:translateY(6px)}}
+.names{list-style:none;margin:0;padding:0 0 30vh;counter-reset:n}
+.row{position:relative}
+.row .open{display:grid;grid-template-columns:2.4em 1fr auto;align-items:baseline;gap:10px;width:100%;padding:9px 0;border:0;background:none;text-align:left;color:var(--fg2);transition:color .35s}
+.row .ix{font-size:11.5px;font-variant-numeric:tabular-nums;letter-spacing:.06em;opacity:.6}
+.row .nm{font-size:clamp(22px,6vw,30px);transition:transform .5s var(--ease),color .35s}
+.row .ab{font-size:12px;font-variant-numeric:tabular-nums;opacity:.7}
+.row.cur .open{color:var(--fg)}
+.row.cur .nm{color:var(--c2);transform:translateX(8px)}
+.row.cur .ix::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--c2);box-shadow:0 0 10px var(--c);margin-right:6px;vertical-align:1px}
+@media(hover:hover){.row .open:hover{color:var(--fg)}}
 @media(min-width:900px){
-  .split{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
-  .pv{order:2;margin:0;padding:0;top:calc(var(--navh) + 18px);height:calc(100dvh - var(--navh) - 40px);background:none}
-  .pvin{height:100%;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto;gap:20px}
-  .pvph{aspect-ratio:auto}
-  .pvt .nm{font-size:clamp(48px,5vw,96px)}
-  .pvt .tsp{font-size:14px;column-count:2;column-gap:24px}
+  .browse{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,72px);align-items:start}
+  .stage{order:2;margin:0;padding:0;top:calc(var(--navh) + 8px);height:calc(100dvh - var(--navh) - 24px);display:grid;grid-template-rows:minmax(0,1fr) auto;background:none}
+  .car{height:auto;--ch:min(calc(100dvh - var(--navh) - 290px),70vw)}
+  .cap{grid-template-columns:1fr;padding:18px clamp(8px,4vw,64px) 6px;justify-items:center;text-align:center}
+  .cap .nm{font-size:clamp(44px,4.6vw,84px)}
+  .cap .acts{grid-column:1;grid-row:auto;margin-top:14px}
+  .cap .pill.lit{padding:0 22px}
+  .cap .spec{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 18px;margin-top:12px;font-size:13px}
+  .names{padding:clamp(16px,6vh,60px) 0 45vh}
+  .row .nm{font-size:clamp(26px,2.3vw,38px)}
+  .row .open{padding:7px 0}
 }
-/* 10 Colour wall: sorted by the colour of the drink */
-.wall{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(max(78px,9vw),1fr));gap:clamp(16px,2.2vw,32px) clamp(10px,1.4vw,22px)}
-.dot{position:relative;--gi:50}
-.dot .open{display:grid;justify-items:center;gap:9px;width:100%;padding:0;border:0;background:none;text-align:center;color:inherit}
-.dot .ph{width:100%;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--c) 50%,transparent),transparent),var(--card);box-shadow:0 0 0 1px color-mix(in srgb,var(--c2) 40%,transparent);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
-.dot .nm{font-size:clamp(13px,1.05vw,17px);font-weight:600;line-height:1.08}
-.dot .qa{top:-4px;right:-2px;width:30px;height:30px;border-radius:15px}
-@media(hover:hover){.dot .qa{opacity:0;transition:opacity .3s}.dot:hover .qa,.dot .qa.on,.dot .qa:focus-visible{opacity:1}.dot .open:hover .ph{transform:scale(1.08);box-shadow:0 0 0 1px var(--c2),0 14px 40px -8px color-mix(in srgb,var(--c) 80%,transparent)}.dot .open:hover .nm{color:var(--c2)}}
-
 .empty{padding:64px 0;text-align:center}
 .empty p{font-family:"Bodoni Moda",serif;font-size:34px;margin:0 0 16px;line-height:1.05}
-.pill{height:44px;padding:0 18px;border-radius:22px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg);transition:transform .3s var(--ease)}
-.pill.solid{background:var(--fg);color:var(--bg);border-color:var(--fg);box-shadow:0 10px 30px -14px rgba(0,0,0,.9)}
 
+/* E3: drawn marks beside each line */
+svg.m{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-6px}
+.spec span{display:inline-flex;align-items:center;gap:6px}
+.spec svg.m{width:18px;height:18px;color:var(--c2)}
+.chip svg.m{width:18px;height:18px;margin:0 6px 0 -4px;vertical-align:-4px}
 /* ---------- motion ---------- */
 .intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--bg);cursor:pointer;transition:background .8s var(--ease)}
 .intro .w{position:relative;display:flex;font:500 clamp(34px,8vw,72px)/1 "Bodoni Moda",serif;letter-spacing:.34em;margin-right:-.34em;color:var(--fg);transform-origin:50% 50%}
@@ -320,24 +156,14 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
 @keyframes rule{to{transform:scaleX(1)}}
 @keyframes blob{to{opacity:.8}}
 @keyframes spin{to{transform:rotate(360deg)}}
-.enter [data-k]{animation:itemin .9s var(--ease) both,ignite 1.6s var(--ease) both;animation-delay:calc(min(var(--i),16)*55ms)}
-@keyframes itemin{from{opacity:0;translate:0 30px;scale:.97}}
-@keyframes ignite{from{--gi:0}}
+.enter [data-k]{animation:itemin .9s var(--ease) both;animation-delay:calc(min(var(--i),16)*45ms)}
+.enter .stage{animation:itemin 1.1s var(--ease) both}
+@keyframes itemin{from{opacity:0;translate:0 24px}}
 ::view-transition-group(*){animation-duration:.6s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
 ::view-transition-old(hero),::view-transition-new(hero){height:100%;width:100%;object-fit:cover}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.3s}
 .sheet .dcol>*{animation:rise .7s var(--ease) both}
 .sheet .dcol>:nth-child(2){animation-delay:.08s}.sheet .dcol>:nth-child(3){animation-delay:.14s}.sheet .dcol>:nth-child(n+4){animation-delay:.2s}
-
-/* review switcher (temporary) */
-.rv{position:fixed;z-index:31;left:var(--gut);bottom:calc(14px + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.rvbtn{height:44px;padding:0 16px;border-radius:22px;font-size:13px;font-weight:600;background:rgba(20,17,15,.55)}
-.rvp{width:min(320px,calc(100vw - 2*var(--gut)));padding:8px 8px 8px 14px;border-radius:14px;background:rgba(20,17,15,.78);border:1px solid var(--glb);box-shadow:var(--glh),0 20px 40px -20px #000;-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);display:grid;gap:2px;animation:rise .4s var(--ease)}
-.rvrow{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:2px}
-.rvrow.dis{opacity:.4}
-.rvl{font-size:12px;color:var(--fg2);display:block}
-.rvn{font-size:14px;font-weight:600}
-.rvp .txtbtn{justify-self:start;padding:0;height:40px;color:var(--fg)}
 
 /* drink page */
 .sheet{position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;background:var(--bg)}
@@ -346,15 +172,19 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
 .dwrap{max-width:620px;margin:0 auto;position:relative}
 .dcol{--px:20px;position:relative;z-index:1}
 .plate{position:relative;overflow:hidden;aspect-ratio:4/5}
-.plate img{width:100%;height:100%;object-fit:cover;transform:scale(1.05)}
-.plate::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 45% at 50% 100%,color-mix(in srgb,var(--c) 45%,transparent),transparent 70%),linear-gradient(180deg,rgba(3,2,2,0) 60%,var(--bg) 100%)}
+.plate img{width:100%;height:100%;object-fit:cover}
+.plate::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,2,2,0) 62%,var(--bg) 100%)}
 .head{padding:0 var(--px);margin-top:-23vw}
 @media(min-width:620px){.head{margin-top:-140px}}
 .head h2{font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;font-size:clamp(54px,17vw,104px);line-height:.88;letter-spacing:-.03em;margin:0;text-wrap:balance}
 .head .orig{font-size:13px;margin-top:12px;color:var(--c2);font-weight:500}
 .pour{padding:28px var(--px) 6px}
-.pour .ln{display:grid;grid-template-columns:4.6em 1fr;align-items:baseline;gap:12px;padding:9px 0;margin:0;font-size:inherit;color:inherit;white-space:normal;overflow:visible}
+.pour .ln{display:grid;grid-template-columns:22px 4.4em 1fr;align-items:baseline;gap:12px;padding:9px 0;margin:0;font-size:inherit;color:inherit;white-space:normal;overflow:visible}
 .pour .q{font-size:15px;font-weight:600}
+.pour svg.m,.facts svg.m,.gar svg.m{color:var(--c2)}
+.pour .ln>svg.m{align-self:center}
+.facts dd{display:flex;align-items:center;gap:8px}
+.gar{display:flex;gap:6px;margin:0 0 6px}
 .pour .i{font-size:16px}
 .pour small{display:block;color:var(--fg2);font-size:12.5px}
 .pour .opt{color:var(--fg2)}
@@ -371,7 +201,7 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
 @media(min-width:960px){
   .dwrap{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
   .plate{position:sticky;top:0;height:100dvh;aspect-ratio:auto}
-  .plate::after{background:radial-gradient(80% 40% at 50% 100%,color-mix(in srgb,var(--c) 40%,transparent),transparent 70%),linear-gradient(90deg,rgba(3,2,2,0) 72%,var(--bg))}
+  .plate::after{background:linear-gradient(90deg,rgba(3,2,2,0) 70%,var(--bg))}
   .dcol{--px:clamp(28px,4vw,72px);max-width:680px}
   .head{margin-top:0;padding-top:max(88px,16vh)}
   .head h2{font-size:clamp(64px,6.4vw,104px)}
@@ -413,10 +243,10 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
 
 /* filters: bottom sheet on phones, side panel on wide screens */
 .fs{position:fixed;inset:0;z-index:45;background:rgba(3,2,2,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:flex;align-items:flex-end;justify-content:center}
-.fpanel{width:100%;max-width:600px;max-height:calc(100dvh - 40px - env(safe-area-inset-top));display:flex;flex-direction:column;background:rgba(18,15,13,.82);-webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%);border-radius:18px 18px 0 0;border:1px solid var(--glb);border-bottom:0;box-shadow:var(--glh);animation:rise .5s var(--ease)}
+.fpanel{width:100%;max-width:600px;max-height:calc(100dvh - 40px - env(safe-area-inset-top));display:flex;flex-direction:column;background:rgba(18,15,13,.82);-webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%);border-radius:18px 18px 0 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 -20px 60px -20px #000;animation:rise .5s var(--ease)}
 @keyframes rise{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes slide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
-@media(min-width:900px){.fs{justify-content:flex-end;align-items:stretch}.fpanel{max-width:460px;max-height:none;border-radius:0;border:0;border-left:1px solid var(--glb);animation-name:slide}}
+@media(min-width:900px){.fs{justify-content:flex-end;align-items:stretch}.fpanel{max-width:460px;max-height:none;border-radius:0;box-shadow:-30px 0 80px -30px #000;animation-name:slide}}
 .fhead{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 10px 20px;border-bottom:1px solid var(--rule)}
 .fhead h2{font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;font-size:34px;line-height:1;margin:0;letter-spacing:-.02em}
 .fhead .acts{display:flex;align-items:center;gap:4px}
@@ -429,7 +259,6 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
 .fsec .chip{-webkit-backdrop-filter:none;backdrop-filter:none}
 .strict{display:flex;margin-top:12px;border-radius:20px;padding:2px}
 .strict button{flex:1;height:36px;border:0;border-radius:18px;background:none;font-size:13px;font-weight:500;color:var(--fg2)}
-.strict button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
 .shelp{font-size:13px;color:var(--fg2);margin:8px 2px 0;min-height:1.45em}
 .tokin{width:100%;height:44px;border:0;border-bottom:1px solid var(--line);background:none;outline:0;font-size:16px;padding:0 2px}
 .tokin:focus{border-bottom-color:var(--fg)}
@@ -439,8 +268,8 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
 .toks{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .tok{display:inline-flex;align-items:center;height:40px;border-radius:20px;overflow:hidden}
 .tok button{border:0;background:none;height:100%;padding:0 10px;font-size:13px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
-.tok .mode{background:var(--fg);color:var(--bg);font-weight:600}
-.tok.exc .mode{background:rgba(237,231,220,.2);color:var(--fg)}
+.tok .mode{font-weight:600}
+.tok.exc .mode{background:rgba(237,231,220,.2);color:var(--fg);box-shadow:none}
 .tok svg{width:14px;height:14px}
 .sw{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;margin-top:8px;font-size:14px;cursor:pointer}
 .sw input{appearance:none;-webkit-appearance:none;flex:none;width:44px;height:26px;border-radius:13px;background:var(--line);position:relative;margin:0;cursor:pointer;transition:background .3s var(--ease)}
@@ -477,7 +306,8 @@ html.snap{scroll-snap-type:y mandatory;scroll-padding-top:var(--navh)}
   <div class="chips" id="chips"></div>
 </header>
 <main id="main"></main>
-<div class="rv" id="rv"></div>
+<div class="amb" id="amb" aria-hidden="true"><img alt=""><img alt=""></div>
+<div class="grain" aria-hidden="true"></div>
 <button class="tab" id="tab" type="button" hidden></button>
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true"></div>
 <div class="cmd" id="cmd" hidden role="dialog" aria-modal="true"></div>
@@ -748,39 +578,80 @@ const glassName = d => GLASS[d.glass]?L(GLASS[d.glass]):d.glass;
 const metaLine = d => [t().bases[d.base], techStr(d), Math.round(d.abv)+'%'].join(' · ');
 const photo = d => `photos/${d.id}.webp`;
 
-/* ---- review variants (temporary, until Fede picks) ---- */
-const qp = new URLSearchParams(location.search);
-const CARDS = {
-  '1':{ar:4/5,f:.6,cy:.47,name:'Backlit'}, '2':{ar:3/4,f:.72,cy:.52,name:'Plinth'}, '3':{ar:1,f:.74,cy:.5,name:'Sheet'},
-  '4':{ar:3/4,f:.6,cy:.4,name:'Poster'}, '5':{ar:4/5,f:.76,cy:.5,name:'Spec'}, '6':{ar:3/4,f:.58,cy:.38,name:'Frosted'},
-  '7':{ar:1,f:.7,cy:.5,name:'Coaster'}, '8':{ar:4/5,f:.66,cy:.5,name:'Label'}, '9':{ar:3/4,f:.66,cy:.48,name:'Flip'},
-  '10':{ar:4/5,f:.64,cy:.5,name:'Numeral'}};
-const LAYOUTS = {
-  '1':{name:'Grid'}, '2':{name:'Mosaic'}, '3':{name:'Shelves'}, '4':{name:'Feed',own:1}, '5':{name:'Index',own:1},
-  '6':{name:'Carousel'}, '7':{name:'Timeline'}, '8':{name:'Deck'}, '9':{name:'Split',own:1}, '10':{name:'Colour wall',own:1}};
-let CARD = qp.get('card') || store.get('rev2.card','1'); if(!CARDS[CARD]) CARD='1';
-let LAYOUT = qp.get('layout') || store.get('rev2.layout','1'); if(!LAYOUTS[LAYOUT]) LAYOUT='1';
-let rvOpen = false;
-// place the photo so the glass fills f of the box height, centred at (.5, cy); never shows past the photo's edges
-function crop(d, v=CARDS[CARD]){
-  const A=v.ar, [x0,y0,x1,y1]=FRAMES[d.id]||[.3,.3,.7,.85];
-  let W = v.f/(A*1.5*Math.max(.2,y1-y0));
-  W = Math.min(W, .82/Math.max(.1,x1-x0));
-  // a tall glass may need the photo smaller than the box: then its edges are feathered into the card
-  const cover = Math.max(1, 1/(1.5*A)), fe = W < cover; W = Math.max(W, cover*.78);
-  const H = 1.5*W, bh = 1/A, cl = (x,a,b) => Math.min(Math.max(x,Math.min(a,b)),Math.max(a,b));
-  const l = cl(.5-(x0+x1)/2*W, 0, 1-W);
-  const tp = cl(v.cy*bh-(y0+y1)/2*H, 0, bh-H);
-  return `${fe?'fe':''}" style="--w:${W.toFixed(3)};--l:${l.toFixed(3)};--t:${(tp/bh).toFixed(3)}`;
+/* ---- E3: drawn marks for what goes in, the ice, the method and the glass ---- */
+const MK = {
+  jigger:'<path d="M7.5 3.5h9l-3 8h-3z"/><path d="M10.5 12.5h3l3 8h-9z"/>',
+  citrus:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="5.6"/><path d="M12 6.4v11.2M7.2 9.2l9.6 5.6M7.2 14.8l9.6-5.6"/>',
+  wedge:'<path d="M3.5 9.5a8.5 8.5 0 0 0 17 0z"/><path d="M6 9.5a6 6 0 0 0 12 0M12 9.5v5.8M8.6 9.5l-2 4M15.4 9.5l2 4"/>',
+  peel:'<path d="M3.5 16c3.5-6.5 7.5 1.5 11.5-5 1.2-1.8 2.6-2.8 5.5-2.5"/><path d="M5.5 18.5c3.5-6.5 7.5 1.5 11.5-5 .8-1.2 1.8-2 3.5-2.3"/><path d="M3.5 16l2 2.5M20.5 8.5v2.7"/>',
+  egg:'<path d="M12 3.2c-3.8 0-6.4 6.8-6.4 10.8a6.4 6.4 0 0 0 12.8 0c0-4-2.6-10.8-6.4-10.8z"/>',
+  dash:'<path d="M10 3h4v3.2l2.2 3V20a1 1 0 0 1-1 1H8.8a1 1 0 0 1-1-1V9.2l2.2-3z"/><path d="M7.8 12.5h8.4M7.8 16.5h8.4"/>',
+  drop:'<path d="M12 3.5c-2.6 4.2-5.2 6.8-5.2 10a5.2 5.2 0 0 0 10.4 0c0-3.2-2.6-5.8-5.2-10z"/>',
+  bubbles:'<circle cx="8.5" cy="16" r="3.2"/><circle cx="15.5" cy="9.5" r="2.3"/><circle cx="16.5" cy="17.5" r="1.6"/><circle cx="9.5" cy="7" r="1.3"/>',
+  cube:'<path d="M12 3.5l7.5 4.2v8.6L12 20.5l-7.5-4.2V7.7z"/><path d="M4.5 7.7L12 12l7.5-4.3M12 12v8.5"/>',
+  syrup:'<path d="M9 9h6v11a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z"/><path d="M10.2 9V6h3.6v3M11 3.5h2"/><path d="M9 15c1.5-1 4.5 1 6 0"/>',
+  leaf:'<path d="M5 19C5 10.5 10.5 5 19 5c0 8.5-5.5 14-14 14z"/><path d="M5 19l8.5-8.5"/>',
+  spoon:'<path d="M12 21V9.5"/><path d="M12 9.5c-1.8 0-3-1.6-3-3.3S10.2 3 12 3s3 1.5 3 3.2-1.2 3.3-3 3.3z"/><path d="M10.6 13l2.8 1M10.6 16.5l2.8 1"/>',
+  bean:'<ellipse cx="12" cy="12" rx="6" ry="8.2" transform="rotate(32 12 12)"/><path d="M9.6 5.6c3.2 3.2-.8 8 4.8 12.8"/>',
+  salt:'<path d="M8 10h8l-1 10.5H9z"/><path d="M8 10c0-3.2 1.8-5.5 4-5.5s4 2.3 4 5.5"/><path d="M11 7.2h.01M13 7.2h.01M12 5.9h.01"/>',
+  cherry:'<circle cx="8.5" cy="16.5" r="3.5"/><circle cx="16" cy="15" r="3"/><path d="M8.5 13c.5-4.5 3.5-7.5 8-9.5M16 12c-.5-3.5-.5-5.5.5-8.5"/>',
+  olive:'<path d="M4 20L20 4"/><ellipse cx="13.5" cy="10.5" rx="3.6" ry="2.8" transform="rotate(-45 13.5 10.5)"/><circle cx="14.6" cy="9.4" r=".7"/>',
+  rim:'<path d="M5 7h14c0 5.2-3 8.4-7 8.4S5 12.2 5 7z"/><path d="M12 15.4V20M8.5 20h7"/><path d="M6 4.5h.01M9 4h.01M12 4.5h.01M15 4h.01M18 4.5h.01"/>',
+  dust:'<path d="M6 6h.01M10 4.5h.01M14 6h.01M18 5h.01M8 9.5h.01M12 8.5h.01M16 9.5h.01M10 13h.01M14 12.5h.01M12 16.5h.01"/><path d="M6 20h12"/>',
+  berry:'<circle cx="12" cy="13.5" r="6"/><path d="M9 10.5h.01M12 9.5h.01M15 10.5h.01M9.5 14h.01M12.5 13h.01M15 14.5h.01M11 17h.01M14 17h.01"/><path d="M12 7.5c0-2 1-3.5 3-4"/>',
+  // ice
+  cubes:'<path d="M3.5 9.5h9v9h-9z"/><path d="M10.5 5.5l8.5 2.2-2.2 8.5"/>',
+  crushed:'<path d="M5 15l3-2 2 3-3 2zM12 9l3-1 1 3-3 1zM14 15.5l3 1-1 3-3-1zM6.5 6.5l2.5.5-.5 2.5-2.5-.5zM17 5l1.5 1.5-1.5 1.5-1.5-1.5zM10.5 19.5h.01"/>',
+  cracked:'<path d="M5 8.5l7-4.5 7 5-2 9.5-9 2-3-6.5z"/><path d="M12 4l-1 7 6.5 1M11 11l-3.5 6"/>',
+  up:'<path d="M5 5.5h14c0 5-3 8.2-7 8.2S5 10.5 5 5.5z"/><path d="M12 13.7v6.3M8.5 20h7"/>',
+  none:'<path d="M6 6.5h12l-1.2 13H7.2z"/>',
+  blended:'<path d="M4 8c2-3 5-3 8 0s6 3 8 0M4 13c2-3 5-3 8 0s6 3 8 0M4 18c2-3 5-3 8 0s6 3 8 0"/>',
+  hot:'<path d="M5 10h11v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M16 12h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3.5c-1 1.2 1 2.3 0 3.5M11.5 3.5c-1 1.2 1 2.3 0 3.5"/>',
+  // method
+  shake:'<path d="M8 10h8l-1.2 11H9.2z"/><path d="M8.6 10V7.6h6.8V10M10.4 7.6V4.6h3.2v3"/>',
+  stir:'<path d="M5.5 9h10l-1 12h-8z"/><path d="M17.5 3l-6.2 14"/>',
+  build:'<path d="M7.5 7h9l-1 14h-7z"/><path d="M12 2v6M9.8 6l2.2 2.2L14.2 6"/>',
+  blend:'<path d="M7 3.5h10l-2 11H9z"/><path d="M8.2 14.5h7.6v6H8.2zM10 8l4 2"/>',
+  muddle:'<path d="M10.2 3h3.6v10.5l1.2 7H9l1.2-7z"/><path d="M10.2 13.5h3.6"/>',
+  swizzle:'<path d="M12 3v14M12 17l-3.5 4M12 17l3.5 4M12 17v4"/>',
+  // glass
+  stem:'<path d="M5 5.5h14c0 5-3 8.2-7 8.2S5 10.5 5 5.5z"/><path d="M12 13.7v6.3M8.5 20h7"/>',
+  low:'<path d="M5.5 7h13l-1.2 12.5H6.7z"/>',
+  tall:'<path d="M8 3h8l-.8 18H8.8z"/>',
+  flute:'<path d="M9.5 3h5l-.4 9.2a2.1 2.1 0 0 1-4.2 0z"/><path d="M12 14.3V20M9.5 20h5"/>',
+  wine:'<path d="M7 3h10c0 6.2-2 10.2-5 10.2S7 9.2 7 3z"/><path d="M12 13.2V20M8.5 20h7"/>',
+  mug:'<path d="M5 6.5h11V20H5z"/><path d="M16 9.5h1.8a2.6 2.6 0 0 1 0 5.2H16"/>'
+};
+const mk = (k, label) => k && MK[k] ? `<svg class="m" viewBox="0 0 24 24"${label?` role="img" aria-label="${esc(label)}"`:' aria-hidden="true"'}>${MK[k]}</svg>` : '';
+const CITRUS = new Set(['lemon','lime','grapefruit','orange-juice','orange-wheel','lemon-wheel']);
+function lineMark(l){
+  const id=l.ids[0], g=ING[id]||{}, k=g.kind;
+  if (l.u==='dash' || k==='bitters') return 'dash';
+  if (l.u==='drops') return 'drop';
+  if (['top up','fill up'].includes(l.u) || k==='mixer' || /champagne|prosecco|sparkling|soda/.test(id)) return 'bubbles';
+  if (k==='egg' || /^egg/.test(id)) return 'egg';
+  if (/coffee|espresso/.test(id) && k!=='liqueur') return 'bean';
+  if (id==='lime-fruit') return 'wedge';
+  if (CITRUS.has(id)) return 'citrus';
+  if (/sugar/.test(id)) return 'cube';
+  if (k==='fresh') return /pineapple/.test(id) ? 'wedge' : 'leaf';
+  if (k==='seasoning') return 'salt';
+  if (k==='dairy' || /cream/.test(id) && k!=='liqueur') return 'drop';
+  if (['bar spoon','teaspoon','tablespoon'].includes(l.u)) return 'spoon';
+  if (k==='sweet') return 'syrup';
+  if (k==='juice') return 'drop';
+  return 'jigger';
 }
-function renderRev(){
-  const tt=t();
-  const step=(k,map,cur,dis)=>{ const ks=Object.keys(map), i=ks.indexOf(cur);
-    return `<div class="rvrow${dis?' dis':''}"><span><span class="rvl">${k==='layout'?tt.layoutL:tt.cards}</span><span class="rvn"><span class="num">${i+1}/${ks.length}</span> ${map[cur].name}</span></span>
-      <button type="button" class="iconbtn" data-rvstep="${k}:-1" aria-label="${tt.prev}" ${dis?'disabled':''}>${ICON.back}</button><button type="button" class="iconbtn" data-rvstep="${k}:1" aria-label="${tt.next}" ${dis?'disabled':''}>${ICON.fwd}</button></div>`; };
-  $('#rv').innerHTML = (rvOpen?`<div class="rvp">${step('layout',LAYOUTS,LAYOUT)}${step('card',CARDS,CARD,LAYOUTS[LAYOUT].own)}<button type="button" class="txtbtn" data-rvreplay>${tt.replay}</button></div>`:'')
-    + `<button type="button" class="rvbtn" data-rvtoggle aria-expanded="${rvOpen}">${tt.review}</button>`;
+function garnishMarks(d){
+  const g=(d.garnish&&d.garnish.en||'').toLowerCase(), out=[];
+  [[/zest|peel|twist|rind|spiral/,'peel'],[/wedge/,'wedge'],[/slice|wheel/,'citrus'],[/cherr/,'cherry'],[/olive/,'olive'],[/mint|basil|celery|sprig|leaf|leaves/,'leaf'],[/berr|raspberr/,'berry'],[/nutmeg|cinnamon|grated|powder|dust/,'dust'],[/rim/,'rim'],[/bean/,'bean']]
+    .forEach(([re,k])=>{ if(re.test(g)) out.push(k); });
+  return out;
 }
+
+/* ---- photos: the IBA originals at three sizes, never enlarged ---- */
+const SRC = d => ({src:`img/${d.id}-720.webp`, set:`img/${d.id}-360.webp 360w, img/${d.id}-720.webp 720w, img/${d.id}-1077.webp 1077w`});
+const imgTag = (d, sizes, extra='') => { const s=SRC(d); return `<img src="${s.src}" srcset="${s.set}" sizes="${sizes}" alt="" width="1077" height="1616" decoding="async" ${extra}>`; };
 const fmtN = n => +n.toFixed(n<10?1:0);
 
 /* ---- list ---- */
@@ -793,7 +664,6 @@ function renderChrome(){
   const n = activeCount();
   $('#fopen').innerHTML = `<svg class="i" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="lb">${tt.filters}</span>${n?`<span class="n">${n}</span>`:''}`;
   $('#fopen').setAttribute('aria-label', n ? `${tt.filters}: ${n}` : tt.filters);
-  renderRev();
   const tags = [];
   S.leave.forEach(c=>tags.push([`leave:${c}`, `${tt.sin} ${L(COMP[c]).replace(/ \(.*\)/,'').toLowerCase()}`]));
   if (S.vegan) tags.push(['vegan:1', tt.vegan]);
@@ -807,90 +677,85 @@ const facetLabel = (k,v) => ({flav:t().flav,str:t().strs,tech:t().techs,ggroup:t
 const tokLabel = tk => tk.type==='ing' ? (SPIRIT[tk.id] ? t().bases[tk.id] : ingName(tk.id)) : L(COMP[tk.id]);
 const qaHTML = d => { const n=ticket[d.id]||0;
   return `<button type="button" class="qa${n?' on':''}" data-add="${d.id}" data-quick="1" aria-label="${esc(t().add)}: ${esc(d.name)}${n?` (${n})`:''}">${n?`<span class="num">${n}</span>`:ICON.plus}</button>`; };
-const metaHTML = d => `${esc(t().bases[d.base])} · ${esc(techStr(d))} · <b>${Math.round(d.abv)}%</b>${d.year?`<span class="yr"> · ${d.year}</span>`:''}`;
-const specHTML = d => d.lines.filter(l=>!l.opt).slice(0,5).map(l=>`<span><b>${esc(fmtQty(l))}</b> ${esc(lineLabel(l))}</span>`).join('');
-const glHTML = d => `<span class="gl">${esc(glassName(d))} · ${esc(t().ices[d.ice]||'')}</span>`;
-const ratioHTML = d => { const pv=d.lines.filter(l=>l.vol>=1); return `<span class="ratio mini" aria-hidden="true">${pv.map((l,i)=>`<i style="flex:${l.vol};opacity:${1-i*(.7/Math.max(1,pv.length-1))}"></i>`).join('')}</span>`; };
-const imgHTML = (d, v) => `<img src="${photo(d)}" alt="" width="720" height="1080" loading="lazy" decoding="async" class="${crop(d,v)}">`;
+const metaHTML = d => `${esc(t().bases[d.base])} · ${esc(techStr(d))} · <b>${Math.round(d.abv)}%</b>${d.year?` · ${d.year}`:''}`;
+const specHTML = d => d.lines.filter(l=>!l.opt).slice(0,5).map(l=>`<span>${mk(lineMark(l))}${esc(fmtQty(l))} ${esc(lineLabel(l))}</span>`).join('');
 const ivars = (d,i) => `--c:${d.col};--c2:${d.c2};--i:${i}`;
-function ringSVG(d){
-  const s=`${d.name} · ${d.year||Math.round(d.abv)+'%'} · `.toUpperCase(); let tx=s; while(tx.length<46) tx+=s;
-  return `<svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><path id="rp-${d.id}" d="M50,50 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" fill="none"/><text><textPath href="#rp-${d.id}" textLength="281" lengthAdjust="spacing">${esc(tx)}</textPath></text></svg>`;
-}
-function cardHTML(d, i=0, cls='', v=CARDS[CARD]){
-  const dk = cls.includes('dk');
-  return `<li class="card ${cls}" data-k="${d.id}" style="${ivars(d,i)};--ar:${v.ar}">
-    <button class="open" type="button" data-id="${d.id}"><span class="fr">${CARD==='7'?ringSVG(d):''}<span class="flip">
-      <span class="ph glow">${CARD==='10'?`<span class="numeral" aria-hidden="true">${d.year||Math.round(d.abv)+'%'}</span>`:''}${imgHTML(d,v)}<span class="more">${specHTML(d)}${glHTML(d)}</span></span>
-      ${CARD==='9'?`<span class="bk"><span class="bkn">${esc(d.name)}</span>${ratioHTML(d)}${specHTML(d)}${glHTML(d)}</span>`:''}</span>
-      <span class="tx"><span class="nm">${esc(d.name)}</span><span class="ln">${CARD==='3'?`<b>${Math.round(d.abv)}%</b>`:metaHTML(d)}</span>${CARD==='5'||CARD==='6'?`<span class="tsp">${CARD==='5'?ratioHTML(d):''}${specHTML(d)}</span>`:''}</span></span></button>
-    ${dk?`<span class="stamp sy" aria-hidden="true">${ICON.plus}</span><span class="stamp sn" aria-hidden="true">${ICON.close}</span>`:''}${qaHTML(d)}</li>`;
-}
-const BIG = {ar:4/3,f:.8,cy:.52};
-const RENDER = {
-  '1': list => `<ul class="cards grid">${list.map((d,i)=>cardHTML(d,i)).join('')}</ul>`,
-  '2': list => `<ul class="cards grid mosaic">${list.map((d,i)=>{ const big = i%6===0 && !['5','7'].includes(CARD); return cardHTML(d,i,big?'big':'',big?BIG:CARDS[CARD]); }).join('')}</ul>`,
-  '3': list => { let i=0; return BASES.map(b=>{ const ds=list.filter(d=>d.base===b); if(!ds.length) return '';
-      return `<section class="shelf"><h2>${t().bases[b]}<small class="num">${ds.length}</small></h2><ul class="cards row">${ds.map(d=>cardHTML(d,i++)).join('')}</ul><div class="rail" aria-hidden="true" style="--c:${ds[0].col}"></div></section>`; }).join(''); },
-  '4': list => `<ul class="feed">${list.map((d,i)=>`<li class="fd" data-k="${d.id}" style="${ivars(d,i)}"><div class="bg"><img src="${photo(d)}" alt="" loading="lazy" decoding="async" style="object-position:${platePos(d)}"></div>
-      <div class="ft"><span class="ln">${metaHTML(d)}</span><h2 class="nm">${esc(d.name)}</h2><span class="tsp">${specHTML(d)}</span><div class="acts"><button type="button" class="pill solid" data-id="${d.id}">${t().view}</button>${qaHTML(d)}</div></div></li>`).join('')}</ul>`,
-  '5': list => `<ul class="index">${list.map((d,i)=>`<li class="ix" data-k="${d.id}" style="${ivars(d,i)}"><button class="open" type="button" data-id="${d.id}"><span class="th ph glow" style="--ar:1">${imgHTML(d,{ar:1,f:.8,cy:.5})}</span><span class="tx"><span class="nm">${esc(d.name)}</span><span class="ln">${metaHTML(d)}</span></span></button>${qaHTML(d)}</li>`).join('')}</ul><div class="float" id="float" aria-hidden="true"></div>`,
-  '6': list => `<div class="carw"><ul class="cards car" id="car">${list.map((d,i)=>cardHTML(d,i)).join('')}</ul>
-      <div class="carbar"><button type="button" class="gbtn" data-car="-1" aria-label="${t().prev}">${ICON.back}</button><span class="carn num" id="carn">1 / ${list.length}</span><button type="button" class="gbtn" data-car="1" aria-label="${t().next}">${ICON.fwd}</button></div></div>`,
-  '7': list => { const g={}; list.forEach(d=>{ const k=d.year?Math.floor(d.year/10)*10:9999; (g[k]=g[k]||[]).push(d); }); let i=0;
-      return `<div class="tl">${Object.keys(g).sort((a,b)=>a-b).map(k=>`<section class="dec"><h2>${k==9999?'?':k}<small class="num">${k==9999?'':'–'+String(+k+9).slice(-2)}</small></h2><div class="tick" aria-hidden="true"></div>
-        <ul class="cards">${g[k].sort((a,b)=>(a.year||0)-(b.year||0)).map(d=>cardHTML(d,i++)).join('')}</ul></section>`).join('')}</div>`; },
-  '8': list => { const key=list.map(d=>d.id).join(); if(key!==deckKey){ deckKey=key; deckQ=list.map(d=>d.id); deckPos=0; } return `<div class="deck">${deckInner()}</div>`; },
-  '9': list => `<div class="split"><div class="pv" id="pv" data-pid="${list[0].id}">${pvHTML(list[0])}</div><ul class="slist cards">${list.map((d,i)=>`<li class="srow${i?'':' cur'}" data-k="${d.id}" style="${ivars(d,i)}"><button class="open" type="button" data-id="${d.id}"><span class="ph glow" style="--ar:1">${imgHTML(d,{ar:1,f:.8,cy:.5})}</span><span class="tx"><span class="nm">${esc(d.name)}</span><span class="ln">${metaHTML(d)}</span></span></button>${qaHTML(d)}</li>`).join('')}</ul></div>`,
-  '10': list => `<ul class="wall">${[...list].sort((a,b)=>hueKey(a)-hueKey(b)).map((d,i)=>`<li class="dot" data-k="${d.id}" style="${ivars(d,i)}"><button class="open" type="button" data-id="${d.id}"><span class="ph" style="--ar:1">${imgHTML(d,{ar:1,f:.72,cy:.5})}</span><span class="nm">${esc(d.name)}</span></button>${qaHTML(d)}</li>`).join('')}</ul>`,
-};
-function hueKey(d){
-  const [r,g,b]=[1,3,5].map(i=>parseInt(d.col.slice(i,i+2),16)/255), mx=Math.max(r,g,b), mn=Math.min(r,g,b), l=(mx+mn)/2, c=mx-mn;
-  const s = c ? c/(1-Math.abs(2*l-1)) : 0; if (s<.2) return 400+(1-l)*100;
-  let h = mx===r ? ((g-b)/c)%6 : mx===g ? (b-r)/c+2 : (r-g)/c+4; h*=60; return (h+380)%360;
-}
-function pvHTML(d){
-  return `<div class="pvin" style="--c:${d.col};--c2:${d.c2}"><div class="pvph"><img src="${photo(d)}" alt="" style="object-position:${platePos(d)}"></div>
-    <div class="pvt"><h2 class="nm">${esc(d.name)}</h2><span class="ln">${metaHTML(d)}</span><span class="tsp">${ratioHTML(d)}${specHTML(d)}</span><div class="acts"><button type="button" class="pill solid" data-id="${d.id}">${t().view}</button></div></div></div>`;
-}
-function pvSet(id){ const pv=$('#pv'); if(!pv||pv.dataset.pid===id) return; pv.dataset.pid=id; pv.innerHTML=pvHTML(byId[id]);
-  document.querySelectorAll('.srow.cur').forEach(x=>x.classList.remove('cur')); const r=document.querySelector(`.srow[data-k="${id}"]`); if(r) r.classList.add('cur'); }
-function splitScroll(){ const pv=$('#pv'); if(!pv) return; const lim=pv.getBoundingClientRect().bottom+8;
-  const r=[...document.querySelectorAll('.srow')].find(x=>x.getBoundingClientRect().top>=lim); if(r) pvSet(r.dataset.k); }
-function floatSet(id){ const f=$('#float'); if(!f) return; if(!id){ f.classList.remove('on'); return; }
-  if(f.dataset.id!==id){ const d=byId[id]; f.dataset.id=id; f.style.setProperty('--c',d.col); f.innerHTML=`<span class="ph glow" style="--ar:.8;--c:${d.col};--gi:70">${imgHTML(d,{ar:.8,f:.7,cy:.5})}</span>`; }
-  f.classList.add('on'); }
-/* deck */
-let deckQ=[], deckKey='', deckPos=0, deckHinted=false, drag=null, dragMoved=false;
-function deckInner(){ const tt=t(), n=deckQ.length;
-  return `<ul class="cards stack">${deckQ.slice(0,3).map((id,i)=>cardHTML(byId[id],i,'dk'+(i?'':' dtop')+(!i&&!deckHinted?' hint':''))).reverse().join('')}</ul>
-    <div class="dkbar"><button type="button" class="gbtn big" data-deck="skip" aria-label="${tt.skip}">${ICON.close}</button><span class="num dkn">${deckPos%n+1} / ${n}</span><button type="button" class="gbtn big solid" data-deck="add" aria-label="${tt.add}">${ICON.plus}</button></div>`; }
-function deckAct(dir){
-  const id=deckQ[0]; if(!id) return; const el=$('.stack .dtop');
-  if (dir==='add'){ setCovers(id,(ticket[id]||0)+1); fly(el, byId[id]); }
-  const done=()=>{ deckQ.push(deckQ.shift()); deckPos++; deckHinted=true; const dk=$('#main .deck'); if(dk) dk.innerHTML=deckInner(); };
-  const out = dir==='add'?1:-1;
-  if (el && el.animate && !reduced()) el.animate([{transform:el.style.transform||'none'},{transform:`translateX(${out*110}vw) rotate(${out*22}deg)`,opacity:.2}],{duration:420,easing:'cubic-bezier(.5,0,.75,0)',fill:'forwards'}).finished.then(done);
-  else done();
-}
-/* carousel */
-function carFx(){ const c=$('#car'); if(!c) return; const mid=c.scrollLeft+c.clientWidth/2; let best=0,bd=9;
-  c.querySelectorAll('.card').forEach((el,i)=>{ const s=(el.offsetLeft+el.offsetWidth/2-mid)/el.offsetWidth; el.style.setProperty('--s',Math.max(-2,Math.min(2,s)).toFixed(3)); el.style.setProperty('--d',Math.min(2,Math.abs(s)).toFixed(3)); if(Math.abs(s)<bd){bd=Math.abs(s);best=i;} });
-  const n=$('#carn'); if(n) n.textContent=`${best+1} / ${c.children.length}`; }
+
+/* the carousel keeps a float position; the list and the cards follow the same number */
+let LIST=[], cur=0, pos=0, vel=0, target=0, raf=0, dragC=null, lastT=0, quietUntil=0, capId=null;
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
   $('#count').textContent = filtered ? tt.of(list.length, DR.length) : '';
-  document.body.dataset.card = LAYOUTS[LAYOUT].own ? '0' : CARD; document.body.dataset.layout = LAYOUT;
-  document.documentElement.classList.toggle('snap', LAYOUT==='4');
-  if (!list.length){ $('#main').innerHTML = `<div class="empty"><p>${tt.none}</p><button class="pill" type="button" id="clr">${tt.clear}</button></div>`; return; }
-  $('#main').innerHTML = RENDER[LAYOUT](list);
-  if (LAYOUT==='6'){ const c=$('#car'); c.addEventListener('scroll',()=>requestAnimationFrame(carFx),{passive:true}); carFx(); }
-  if (LAYOUT==='8') deckHinted=true;
+  if (!list.length){ LIST=[]; $('#main').innerHTML = `<div class="empty"><p>${tt.none}</p><button class="pill" type="button" id="clr">${tt.clear}</button></div>`; return; }
+  const keep = LIST[cur] && list.findIndex(d=>d.id===LIST[cur].id);
+  LIST = list; cur = keep>=0 ? keep : 0; pos = target = cur; vel = 0; capId=null;
+  $('#main').innerHTML = `<div class="browse">
+    <section class="stage" aria-roledescription="carousel"><div class="car" id="car" tabindex="0" aria-label="${esc(tt.drinks(list.length))}"></div><div class="cap" id="cap" aria-live="polite"></div></section>
+    <ol class="names" id="names">${list.map((d,i)=>`<li class="row" data-k="${d.id}" data-n="${i}" style="${ivars(d,i)}"><button class="open" type="button" data-id="${d.id}"><span class="ix">${String(i+1).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="ab">${Math.round(d.abv)}%</span></button></li>`).join('')}</ol></div>`;
+  drawCar(); setCur(cur, true);
 }
+// spacing in card widths, for one step off centre and every step after
+function place(o, w){ const a=Math.abs(o), s=Math.sign(o);
+  const x = s*(a<1 ? a*w*.74 : w*.74 + (a-1)*w*.42);
+  return `translate3d(${x.toFixed(1)}px,0,${(-Math.min(a,3)*140).toFixed(0)}px) rotateY(${(-Math.max(-1,Math.min(1,o))*24).toFixed(2)}deg) scale(${(1-Math.min(a,3)*.07).toFixed(3)})`; }
+const cardEls = new Map();
+function frame(d, cw){
+  const [x0,y0,x1,y1]=FRAMES[d.id]||[.3,.3,.7,.85], ar=4/3, ih=1.5;
+  const zmax=Math.max(1, 1077/(cw*(devicePixelRatio||1)));
+  const z=Math.min(zmax, Math.max(ar/ih, .6*ar/(ih*Math.max(.15,y1-y0))));
+  const W=z, H=z*ih, cl=(v,a,b)=>Math.min(b,Math.max(a,v));
+  const x=cl(.5-(x0+x1)/2*W, 1-W, 0), y=cl(.56*ar-(y0+y1)/2*H, ar-H, 0)/ar;
+  return `--z:${W.toFixed(3)};--x:${x.toFixed(3)};--y:${y.toFixed(3)}`;
+}
+function drawCar(){
+  const car=$('#car'); if(!car || !LIST.length) return;
+  const w = car.clientHeight*.75, near = new Set();
+  for (let i=Math.max(0,Math.floor(pos)-4); i<=Math.min(LIST.length-1,Math.ceil(pos)+4); i++) near.add(i);
+  [...cardEls.keys()].forEach(i=>{ if(!near.has(i) || !car.contains(cardEls.get(i))){ cardEls.get(i).remove(); cardEls.delete(i); } });
+  near.forEach(i=>{
+    let el=cardEls.get(i); const d=LIST[i];
+    if(!el){ el=document.createElement('div'); el.className='cc'; el.dataset.c=d.id; el.dataset.n=i; el.style.cssText=ivars(d,i)+';'+frame(d, car.clientHeight*.75);
+      el.innerHTML=`<div class="bl">${imgTag(d,'200px')}</div><div class="ph">${imgTag(d,'(min-width:900px) 34vw, 46vw', 'draggable="false"')}</div>`;
+      car.appendChild(el); cardEls.set(i,el); }
+    const o=i-pos, a=Math.abs(o);
+    el.style.transform=place(o,w); el.style.zIndex=100-Math.round(a*10);
+    el.style.setProperty('--dim',Math.min(.72,a*.36).toFixed(2)); el.style.setProperty('--blo',Math.max(0,1-a*1.2).toFixed(2));
+    el.style.opacity = a>3.2 ? Math.max(0,1-(a-3.2)*1.5).toFixed(2) : 1;
+  });
+}
+function tick(now){
+  const dt=Math.min(.05,(now-(lastT||now))/1000)||.016; lastT=now;
+  if(!dragC){ const k=190, c=26; vel += ((target-pos)*k - vel*c)*dt; pos += vel*dt; }
+  drawCar();
+  const n=Math.round(Math.max(0,Math.min(LIST.length-1,pos))); if(n!==cur) setCur(n);
+  if(dragC || Math.abs(target-pos)>.0005 || Math.abs(vel)>.0005) raf=requestAnimationFrame(tick); else { pos=target; drawCar(); raf=0; lastT=0; }
+}
+const run = () => { if(!raf){ lastT=0; raf=requestAnimationFrame(tick); } };
+function goTo(i, follow=true){ if(!LIST.length) return; target=Math.max(0,Math.min(LIST.length-1,i)); if(reduced()){ pos=target; vel=0; drawCar(); setCur(target); } else run(); if(follow) followList(target); }
+// the list keeps up with the carousel, unless the list is what moved
+function followList(i){ const r=document.querySelector(`.row[data-n="${i}"]`); if(!r) return; const a=anchorY(), b=r.getBoundingClientRect();
+  if (Math.abs(b.top+b.height/2-a) < b.height*.6) return;
+  quietUntil=performance.now()+700; scrollBy({top:b.top+b.height/2-a, behavior:reduced()?'auto':'smooth'}); }
+function anchorY(){ const st=document.querySelector('.stage'); return innerWidth>=900 ? innerHeight*.46 : (st?st.getBoundingClientRect().bottom:0)+28; }
+function setCur(i, force){
+  if(i===cur && !force && capId===LIST[i].id) return; cur=i; const d=LIST[i];
+  document.querySelectorAll('.row.cur').forEach(x=>x.classList.remove('cur')); const r=document.querySelector(`.row[data-n="${i}"]`); if(r) r.classList.add('cur');
+  clearTimeout(setCur.t); setCur.t=setTimeout(()=>{ capSet(LIST[cur]); ambSet(LIST[cur]); }, force?0:90);
+}
+function capSet(d){ const cap=$('#cap'); if(!cap || capId===d.id) return; capId=d.id; const tt=t(), on=ticket[d.id]||0;
+  cap.style.cssText=ivars(d,0); cap.classList.remove('swap'); void cap.offsetWidth; cap.classList.add('swap');
+  cap.innerHTML=`<h2 class="nm">${esc(d.name)}</h2><div class="meta">${metaHTML(d)}</div><div class="spec">${specHTML(d)}</div>
+    <div class="acts"><button type="button" class="pill" data-id="${d.id}">${tt.view}</button><button type="button" class="pill lit" data-add="${d.id}" data-quick="1" aria-label="${esc(tt.add)}: ${esc(d.name)}">${on?ICON.check+'<span class="num">'+on+'</span>':ICON.plus}<span class="lb">${innerWidth>=900?(on?tt.added:tt.add):''}</span></button></div>`; }
+function ambSet(d){ const a=$('#amb'); if(!a) return; const [x,y]=[...a.children]; const nx = x.classList.contains('on') ? y : x, ox = nx===x ? y : x;
+  if(nx.dataset.id===d.id && nx.classList.contains('on')) return; nx.dataset.id=d.id; nx.src=`img/${d.id}-360.webp`; nx.onload=()=>{ nx.classList.add('on'); ox.classList.remove('on'); }; }
+let overNames=false;
+function listScroll(){ if(!LIST.length || performance.now()<quietUntil || dragC || overNames) return; const a=anchorY();
+  let best=null, bd=1e9; document.querySelectorAll('.row').forEach(r=>{ const b=r.getBoundingClientRect(); const dd=Math.abs(b.top+b.height/2-a); if(dd<bd){bd=dd;best=r;} });
+  if(best && +best.dataset.n!==Math.round(target)) goTo(+best.dataset.n, false); }
 function markCard(id, pop){
-  document.querySelectorAll(`.qa[data-add="${id}"]`).forEach(b=>{ const f=document.activeElement===b; b.outerHTML=qaHTML(byId[id]); });
-  const nb=document.querySelector(`.qa[data-add="${id}"]`); if(nb && pop) nb.classList.add('pop');
+  document.querySelectorAll(`.qa[data-add="${id}"]`).forEach(b=>{ b.outerHTML=qaHTML(byId[id]); });
+  if (LIST[cur] && LIST[cur].id===id){ capId=null; capSet(LIST[cur]); const b=document.querySelector(`#cap [data-add]`); if(b && pop) b.classList.add('pop'); }
 }
 /* ---- motion ---- */
 const reduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -905,8 +770,8 @@ function vt(update){
 }
 function heroOpen(id, src){
   if (!canVT()){ open(id); return; }
-  const it = src.closest('[data-k]') || src.closest('.pvin');
-  const ph = it && it.querySelector('.ph,.pvph,.bg'), nm = it && it.querySelector('.nm');
+  const cc = document.querySelector(`.cc[data-c="${id}"]`), row = src.closest('[data-k]');
+  const ph = cc && inView(cc,0) ? cc.querySelector('.ph') : null, nm = (row && row.querySelector('.nm')) || (capId===id ? $('#cap .nm') : null);
   clearNames(); if(ph) ph.style.viewTransitionName='hero'; if(nm) nm.style.viewTransitionName='hnm';
   const tr=document.startViewTransition(()=>{ if(ph) ph.style.viewTransitionName=''; if(nm) nm.style.viewTransitionName=''; open(id);
     const pl=$('#sheet .plate'), h=$('#sheet .head h2'); if(pl) pl.style.viewTransitionName='hero'; if(h) h.style.viewTransitionName='hnm'; });
@@ -917,8 +782,8 @@ function heroClose(pop=false){
   const id=openId, top=$('#sheet').scrollTop<240, pl=$('#sheet .plate'), h=$('#sheet .head h2');
   if (top){ pl.style.viewTransitionName='hero'; h.style.viewTransitionName='hnm'; }
   const tr=document.startViewTransition(()=>{ pl.style.viewTransitionName=''; h.style.viewTransitionName=''; close(pop);
-    const it=document.querySelector(`#main [data-k="${id}"]`);
-    if (top && it && inView(it,0)){ const ph=it.querySelector('.ph,.bg'), nm=it.querySelector('.nm'); if(ph) ph.style.viewTransitionName='hero'; if(nm) nm.style.viewTransitionName='hnm'; } });
+    const cc=document.querySelector(`.cc[data-c="${id}"]`);
+    if (top && cc && inView(cc,0)){ cc.querySelector('.ph').style.viewTransitionName='hero'; const nm=capId===id?$('#cap .nm'):null; if(nm) nm.style.viewTransitionName='hnm'; } });
   tr.finished.finally(clearNames);
 }
 // quick add: a drop of the drink's colour arcs into the ticket
@@ -959,7 +824,7 @@ function renderTab(bump){
 function chipsFor(k){
   const F = FACETS.find(f=>f[0]===k);
   return F[1].map(v=>{ const on=S[k].includes(v), n=facetCount(k,v,F[2]);
-    return `<button type="button" class="chip" data-f="${k}" data-v="${v}" aria-pressed="${on}" ${!n&&!on?'disabled':''}>${esc(facetLabel(k,v))}<span class="n">${n}</span></button>`; }).join('');
+    return `<button type="button" class="chip" data-f="${k}" data-v="${v}" aria-pressed="${on}" ${!n&&!on?'disabled':''}>${['tech','ggroup','ice'].includes(k)?mk(v):''}${esc(facetLabel(k,v))}<span class="n">${n}</span></button>`; }).join('');
 }
 function filterBody(){
   const tt=t();
@@ -1008,23 +873,23 @@ function changed(){ saveS(); renderChrome(); vt(renderList); renderFilters(); }
 function detail(d){
   const tt=t(); const on = !!ticket[d.id];
   const sub = l => { const n = lang==='es'?l.n_es:l.n_en; return [n, l.opt?tt.opt:''].filter(Boolean).join(' · '); };
-  const lines = d.lines.map(l=>`<div class="ln ${l.opt?'opt':''}"><span class="q">${esc(fmtQty(l))}</span><span class="i">${esc(lineLabel(l))}${sub(l)?`<small>${esc(sub(l))}</small>`:''}</span></div>`).join('');
+  const lines = d.lines.map(l=>`<div class="ln ${l.opt?'opt':''}">${mk(lineMark(l))}<span class="q">${esc(fmtQty(l))}</span><span class="i">${esc(lineLabel(l))}${sub(l)?`<small>${esc(sub(l))}</small>`:''}</span></div>`).join('');
   const pv = d.lines.filter(l=>l.vol>=1);
   const ratio = `<div class="ratio" aria-hidden="true">${pv.map((l,i)=>`<i style="flex:${l.vol};opacity:${1-i*(.7/Math.max(1,pv.length-1))}"></i>`).join('')}</div>`;
   return `<div class="dwrap" style="--c:${d.col};--c2:${d.c2}">
-    <div class="plate"><img src="${photo(d)}" alt="${esc(d.name)}" style="object-position:${platePos(d)}"></div>
+    <div class="plate">${imgTag(d,'(min-width:960px) 50vw, 100vw',`style="object-position:${platePos(d)}"`).replace('alt=""',`alt="${esc(d.name)}"`)}</div>
     <div class="dcol"><div class="head"><h2>${esc(d.name)}</h2><div class="orig">${esc([d.year,d.place].filter(Boolean).join(' · '))}</div></div>
     <div class="pour"><div class="units"><div class="seg" role="group" aria-label="${esc(tt.unitsL)}"><button type="button" data-u="ml" aria-pressed="${units==='ml'}">ML</button><button type="button" data-u="oz" aria-pressed="${units==='oz'}">OZ</button></div></div>${ratio}${lines}</div>
-    <button class="pill add${on?'':' solid'}" type="button" data-add="${d.id}" aria-pressed="${on}">${on?ICON.check+tt.added+` ×${ticket[d.id]}`:ICON.plus+tt.add}</button>
+    <button class="pill add${on?'':' lit'}" type="button" data-add="${d.id}" aria-pressed="${on}">${on?ICON.check+tt.added+` ×${ticket[d.id]}`:ICON.plus+tt.add}</button>
     <dl class="facts">
-      <div><dt>${tt.glass}</dt><dd>${esc(glassName(d))}</dd></div>
-      <div><dt>${tt.ice}</dt><dd>${esc(tt.ices[d.ice]||'')}</dd></div>
-      <div><dt>${tt.tech}</dt><dd>${esc(techStr(d))}</dd></div>
+      <div><dt>${tt.glass}</dt><dd>${mk(d.ggroup)}${esc(glassName(d))}</dd></div>
+      <div><dt>${tt.ice}</dt><dd>${mk(d.ice)}${esc(tt.ices[d.ice]||'')}</dd></div>
+      <div><dt>${tt.tech}</dt><dd>${mk(d.tech[0])}${esc(techStr(d))}</dd></div>
       <div><dt>${tt.abv}</dt><dd>≈ ${Math.round(d.abv)}%</dd></div></dl>
     ${containsHTML(d)}
     <div class="prose">
       <h3>${tt.method}</h3><p>${esc(L(d.method))}</p>
-      ${L(d.garnish)?`<h3>${tt.garnish}</h3><p>${esc(L(d.garnish))}</p>`:''}
+      ${L(d.garnish)?`<h3>${tt.garnish}</h3><div class="gar">${garnishMarks(d).map(k=>mk(k)).join('')}</div><p>${esc(L(d.garnish))}</p>`:''}
       ${L(d.history)?`<h3>${tt.story}</h3><p>${esc(L(d.history))}</p>`:''}
       ${d.video?`<div class="video" id="vid"><button type="button" class="pill" data-play="${esc(d.video)}">${ICON.play}${tt.play}</button>
         <a class="ext" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch}</a></div>`:''}</div></div></div>`;
@@ -1120,18 +985,12 @@ document.addEventListener('click', e=>{
     pl.replaceWith(f); return; }
   const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); open(openId,false); return; }
   const a=e.target.closest('[data-add]'); if(a){ const id=a.dataset.add; setCovers(id, (ticket[id]||0)+1); if(a.dataset.quick){ markCard(id,true); fly(a, byId[id]); } else { open(id,false); renderTab(true); } return; }
-  const rs=e.target.closest('[data-rvstep]'); if(rs){ const [k,dv]=rs.dataset.rvstep.split(':'); const map=k==='card'?CARDS:LAYOUTS, ks=Object.keys(map), cur=k==='card'?CARD:LAYOUT;
-    const nv=ks[(ks.indexOf(cur)+(+dv)+ks.length)%ks.length]; if(k==='card'){ CARD=nv; store.set('rev2.card',nv); } else { LAYOUT=nv; store.set('rev2.layout',nv); }
-    renderRev(); scrollTo(0,0); vt(renderList); return; }
-  if(e.target.closest('[data-rvtoggle]')){ rvOpen=!rvOpen; renderRev(); return; }
-  if(e.target.closest('[data-rvreplay]')){ rvOpen=false; renderRev(); scrollTo(0,0); intro(true); return; }
-  const cb=e.target.closest('[data-car]'); if(cb){ const c=$('#car'); if(c) c.scrollBy({left:(+cb.dataset.car)*c.firstElementChild.offsetWidth,behavior:reduced()?'auto':'smooth'}); return; }
-  const db=e.target.closest('[data-deck]'); if(db){ deckAct(db.dataset.deck); return; }
+  const cc=e.target.closest('.cc'); if(cc){ if(carMoved) return; const n=+cc.dataset.n; if(n===cur && Math.abs(pos-n)<.25) heroOpen(cc.dataset.c, cc); else goTo(n); return; }
   const st=e.target.closest('[data-step]'); if(st){ setCovers(st.dataset.step, (ticket[st.dataset.step]||0)+(+st.dataset.dv)); renderTicket(false); return; }
   if(e.target.closest('#tab')){ openTicket(); return; }
   if(e.target.closest('#ccls')){ closeTicket(); return; }
   if(e.target.closest('#cclr')){ ticket={}; store.set('ticket',ticket); renderList(); closeTicket(); return; }
-  const o=e.target.closest('[data-id]'); if(o){ if(dragMoved && o.closest('.dk')) return; heroOpen(o.dataset.id, o); return; }
+  const o=e.target.closest('[data-id]'); if(o){ heroOpen(o.dataset.id, o); return; }
   if(e.target.closest('#cls')){ heroClose(); return; }
   if(e.target.closest('#clr')){ S=blank(); Q=''; saveS(); $('#q').value=''; $('#qx').hidden=true; all(); return; }
   const l=e.target.closest('[data-l]'); if(l){ lang=l.dataset.l; store.set('lang',lang); all(); return; }
@@ -1147,20 +1006,30 @@ document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#f
 let lastY=0; $('#sheet').addEventListener('scroll', e=>{ const y=e.target.scrollTop, c=$('#cls'); if(c) c.classList.toggle('away', y>lastY && y>120); lastY=y; }, {passive:true});
 addEventListener('popstate', ()=>{ if(!$('#fs').hidden) closeFilters(true); else if(!$('#cmd').hidden) closeTicket(true); else if(openId) heroClose(true); });
 document.addEventListener('keydown', e=>{ if(openId || !$('#fs').hidden || !$('#cmd').hidden || /INPUT/.test(e.target.tagName)) return;
-  if(LAYOUT==='6' && /Arrow(Left|Right)/.test(e.key)){ const b=document.querySelector(`[data-car="${e.key==='ArrowLeft'?-1:1}"]`); if(b) b.click(); }
-  if(LAYOUT==='8' && /Arrow(Left|Right)/.test(e.key)) deckAct(e.key==='ArrowLeft'?'skip':'add'); });
+  if(/Arrow(Left|Right)/.test(e.key) && LIST.length){ e.preventDefault(); goTo(Math.round(target)+(e.key==='ArrowLeft'?-1:1)); } });
 const hoverable = matchMedia('(hover:hover)');
-document.addEventListener('mouseover', e=>{ if(!hoverable.matches) return;
-  if(LAYOUT==='9'){ const r=e.target.closest('.srow'); if(r) pvSet(r.dataset.k); }
-  if(LAYOUT==='5') { const r=e.target.closest('.ix'); floatSet(r?r.dataset.k:null); } });
-document.addEventListener('pointermove', e=>{ if(LAYOUT==='5'){ const f=$('#float'); if(f){ f.style.left=e.clientX+'px'; f.style.top=e.clientY+'px'; } }
-  if(drag){ drag.dx=e.clientX-drag.x; if(Math.abs(drag.dx)>6) dragMoved=true; drag.el.style.transform=`translateX(${drag.dx}px) rotate(${drag.dx/18}deg)`; drag.el.style.setProperty('--sw',Math.max(-1,Math.min(1,drag.dx/110)).toFixed(2)); } }, {passive:true});
-document.addEventListener('pointerdown', e=>{ const top=e.target.closest('.stack .dtop'); if(!top) return; dragMoved=false; drag={el:top,x:e.clientX,dx:0}; top.style.transition='none'; top.classList.remove('hint'); });
-const endDrag=()=>{ if(!drag) return; const {el,dx}=drag; drag=null; el.style.transition='';
-  if(Math.abs(dx)>100) deckAct(dx>0?'add':'skip'); else { el.style.transform=''; el.style.setProperty('--sw',0); } setTimeout(()=>{ dragMoved=false; },0); };
-document.addEventListener('dragstart', e=>{ if(e.target.closest && e.target.closest('.stack')) e.preventDefault(); });
-document.addEventListener('pointerup', endDrag); document.addEventListener('pointercancel', endDrag);
-addEventListener('scroll', ()=>{ if(LAYOUT==='9' && innerWidth<900) requestAnimationFrame(splitScroll); }, {passive:true});
+// on a laptop, pointing at a name is enough to bring it round
+document.addEventListener('mouseover', e=>{ if(!hoverable.matches) return; overNames=!!e.target.closest('#names'); if(dragC) return; const r=e.target.closest('.row'); if(r) goTo(+r.dataset.n, false); });
+document.addEventListener('pointermove', e=>{
+  const b=e.target.closest && e.target.closest('.chip,.pill,.gbtn,.qa,.fbtn,.close'); if(b){ const r=b.getBoundingClientRect(); b.style.setProperty('--lx',((e.clientX-r.left)/r.width*100).toFixed(0)+'%'); b.style.setProperty('--ly',((e.clientY-r.top)/r.height*100).toFixed(0)+'%'); }
+  const car=$('#car'); if(car && hoverable.matches){ const r=car.getBoundingClientRect(); if(e.clientY>r.top-60 && e.clientY<r.bottom+60){ car.style.setProperty('--mx',(((e.clientX-r.left)/r.width-.5)*14).toFixed(1)+'px'); car.style.setProperty('--my',(((e.clientY-r.top)/r.height-.5)*10).toFixed(1)+'px'); } }
+  if(dragC){ const dx=e.clientX-dragC.x, now=performance.now(), w=$('#car').clientHeight*.75*.74;
+    if(Math.abs(dx)>6) carMoved=true; const np=Math.max(-.4,Math.min(LIST.length-.6,dragC.p0-dx/w));
+    const dt=Math.max(1,now-dragC.t); dragC.v=.7*dragC.v+.3*((np-pos)/dt*1000); dragC.t=now; pos=np; target=np; drawCar();
+    const n=Math.round(Math.max(0,Math.min(LIST.length-1,pos))); if(n!==cur) setCur(n); } }, {passive:true});
+let carMoved=false;
+document.addEventListener('pointerdown', e=>{ const car=e.target.closest('#car'); if(!car || e.button>0) return; carMoved=false; cancelAnimationFrame(raf); raf=0; vel=0; dragC={x:e.clientX,p0:pos,t:performance.now(),v:0}; car.classList.add('drag'); });
+const endC=()=>{ if(!dragC) return; const v=dragC.v; dragC=null; const c=$('#car'); if(c) c.classList.remove('drag');
+  vel=v; goTo(Math.round(pos+v*.22)); setTimeout(()=>{ carMoved=false; },0); };
+document.addEventListener('pointerup', endC); document.addEventListener('pointercancel', endC);
+document.addEventListener('dragstart', e=>{ if(e.target.closest && e.target.closest('#car')) e.preventDefault(); });
+// a sideways swipe on a trackpad turns the carousel; a vertical one scrolls the list, which turns it too
+document.addEventListener('wheel', e=>{ const car=e.target.closest && e.target.closest('#car'); if(!car || Math.abs(e.deltaX)<=Math.abs(e.deltaY)) return; e.preventDefault();
+  const w=car.clientHeight*.75*.74; pos=Math.max(-.3,Math.min(LIST.length-.7,pos+e.deltaX/w)); target=pos; vel=0; drawCar();
+  const n=Math.round(Math.max(0,Math.min(LIST.length-1,pos))); if(n!==cur) setCur(n);
+  clearTimeout(endC.w); endC.w=setTimeout(()=>goTo(Math.round(pos)),110); }, {passive:false});
+addEventListener('scroll', ()=>requestAnimationFrame(listScroll), {passive:true});
+let rzT; addEventListener('resize', ()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ cardEls.forEach(e=>e.remove()); cardEls.clear(); drawCar(); },150); });
 if ('ResizeObserver' in window) new ResizeObserver(()=>document.documentElement.style.setProperty('--navh', $('#top').offsetHeight+'px')).observe($('#top'));
 let wasNarrow = innerWidth<600; addEventListener('resize', ()=>{ if((innerWidth<600)!==wasNarrow){ wasNarrow=!wasNarrow; renderChrome(); } });
 all();
