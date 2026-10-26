@@ -1,0 +1,376 @@
+<title>Mise</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#030202">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--amb:#7a4a22;
+  --paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;
+  --ease:cubic-bezier(.16,1,.3,1);color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scrollbar-color:var(--line) var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 15px/1.45 "Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100dvh}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+img{display:block}
+[hidden]{display:none!important}
+::selection{background:var(--fg);color:var(--bg)}
+input{caret-color:var(--fg)}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.num,.count,.q{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.bodoni{font-family:"Bodoni Moda",Didot,serif;font-optical-sizing:auto}
+
+/* ambient light: takes the colour of the drink in view */
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 60% at 50% 105%,color-mix(in srgb,var(--amb) 55%,transparent),transparent 72%);transition:background .9s var(--ease)}
+@supports not (background:color-mix(in srgb,red,blue)){.amb{display:none}}
+
+/* shell */
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px;position:relative}
+.top{position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top);background:linear-gradient(var(--bg) 80%,rgba(3,2,2,0))}
+.bar{display:flex;align-items:center;gap:12px;height:56px}
+.mark{font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:400;font-style:italic;font-size:32px;letter-spacing:-.02em;line-height:1;margin:0 auto 0 0}
+.count{font-size:13px;color:var(--fg2)}
+.seg{display:inline-flex;font-size:12px;font-weight:600;letter-spacing:.06em}
+.seg button{border:0;background:none;min-width:44px;height:44px;padding:0 6px;color:var(--fg2)}
+.seg button[aria-pressed=true]{color:var(--fg)}
+.search{display:flex;align-items:center;gap:10px;height:46px;padding:0 2px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.search:focus-within{border-bottom-color:var(--fg)}
+.search input{flex:1;min-width:0;border:0;background:none;outline:0;font-size:16px;height:100%;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#7f776d}
+.search input::-webkit-search-cancel-button,.search input::-webkit-search-decoration{-webkit-appearance:none;display:none}
+.search .x{border:0;background:none;width:40px;height:40px;display:grid;place-items:center}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:0 16px 12px;margin:0 -16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;height:40px;padding:0 15px;font-size:13px;font-weight:500;white-space:nowrap;border:1px solid var(--line);background:transparent;border-radius:20px}
+.chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip.ex[aria-pressed=true]{background:var(--line);color:var(--fg);border-color:var(--fg);font-weight:600}
+.chips .sep{flex:none;width:1px;margin:6px 4px;background:var(--line)}
+
+/* list */
+.list{list-style:none;margin:0 0 120px;padding:0}
+@media(min-width:900px){.list{display:grid;grid-template-columns:1fr 1fr;column-gap:32px}}
+.row{display:grid;grid-template-columns:44% 1fr;align-items:end;gap:14px;width:100%;padding:0;border:0;background:none;text-align:left}
+.row .ph{aspect-ratio:3/3.7;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent) intersect,linear-gradient(transparent,#000 16%,#000 88%,transparent)}
+.row .ph img{mix-blend-mode:lighten;width:100%;height:100%;object-fit:cover;object-position:50% 70%;transform:scale(1.25);transform-origin:50% 70%}
+.row .tx{padding:0 0 22px;border-bottom:1px solid var(--rule)}
+.row .nm{display:block;font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;font-size:clamp(30px,8.6vw,44px);line-height:.96;letter-spacing:-.02em;margin:4px 0 8px;text-wrap:balance}
+.row .ln{display:block;font-size:13px;color:var(--fg2)}
+.row .ln b{font-weight:500;color:var(--c2)}
+.row .on{display:inline-block;margin-left:8px;padding:1px 6px;background:var(--paper);color:var(--ink);font-size:11px;font-weight:600;border-radius:1px;vertical-align:1px}
+@media(hover:hover){.row:hover .nm{color:var(--c2)}}
+.empty{padding:64px 0;text-align:center}
+.empty p{font-family:"Bodoni Moda",serif;font-size:34px;margin:0 0 16px;line-height:1.05}
+.pill{border:1px solid var(--fg);background:none;height:44px;padding:0 18px;border-radius:22px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
+
+/* drink page */
+.sheet{position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;background:var(--bg)}
+.close{position:fixed;z-index:3;top:calc(10px + env(safe-area-inset-top));left:10px;width:44px;height:44px;border:0;border-radius:22px;display:grid;place-items:center;background:rgba(3,2,2,.6);color:var(--fg);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:transform .35s var(--ease),opacity .35s}
+.close.away{transform:translateY(-70px);opacity:0}
+.dwrap{max-width:620px;margin:0 auto;position:relative}
+.plate{position:relative;overflow:hidden;aspect-ratio:4/5}
+.plate img{width:100%;height:100%;object-fit:cover;object-position:50% 70%;transform:scale(1.05)}
+.plate::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 45% at 50% 100%,color-mix(in srgb,var(--c) 45%,transparent),transparent 70%),linear-gradient(180deg,rgba(3,2,2,0) 60%,var(--bg) 100%)}
+.head{padding:0 20px;margin-top:-23vw;position:relative;z-index:1}
+@media(min-width:620px){.head{margin-top:-140px}}
+.head h2{font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;font-size:clamp(54px,17vw,104px);line-height:.88;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.head .orig{font-size:13px;margin-top:12px;color:var(--c2);font-weight:500}
+.pour{padding:28px 20px 6px}
+.pour .ln{display:grid;grid-template-columns:4.6em 1fr;align-items:baseline;gap:12px;padding:9px 0}
+.pour .q{font-size:15px;font-weight:600}
+.pour .i{font-size:16px}
+.pour small{display:block;color:var(--fg2);font-size:12.5px}
+.pour .opt{color:var(--fg2)}
+.ratio{display:flex;gap:3px;height:10px;margin:0 0 14px}
+.ratio i{background:var(--c2);border-radius:1px}
+.add{margin:18px 20px 0;width:calc(100% - 40px);justify-content:center;height:52px;border-radius:26px}
+.add[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);margin:22px 0 0;padding:6px 20px 0;border-top:1px solid var(--rule)}
+.facts div{padding:12px 0}
+.facts dt{color:var(--fg2);font-size:13px;margin-bottom:2px}
+.facts dd{margin:0;font-size:15px;font-weight:500}
+.prose{padding:22px 20px 120px}
+.prose h3{color:var(--fg2);font-size:13px;font-weight:500;margin:0 0 6px}
+.prose p{margin:0 0 22px;max-width:62ch}
+
+/* the ticket: the one light object in a dark room */
+.tab{position:fixed;z-index:30;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 16px;border:0;background:var(--paper);color:var(--ink);font-weight:600;font-size:14px;box-shadow:0 10px 30px -8px rgba(0,0,0,.8);
+  -webkit-mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y;
+  mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y}
+.tab .n{font-family:"Bodoni Moda",serif;font-size:22px;font-weight:600;line-height:1}
+.tab.bump{animation:bump .5s var(--ease)}
+@keyframes bump{0%{transform:translate(-50%,0)}30%{transform:translate(-50%,-6px)}100%{transform:translate(-50%,0)}}
+.cmd{position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;background:rgba(3,2,2,.82);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:calc(64px + env(safe-area-inset-top)) 14px 40px}
+.cmd .close{background:rgba(238,240,236,.12)}
+.slip{max-width:440px;margin:0 auto;background:var(--paper);color:var(--ink);padding:26px 20px 34px;position:relative;
+  -webkit-mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 20px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,transparent 0) 0 0/14px 10px repeat-x,conic-gradient(from 135deg at 50% 0,#000 90deg,transparent 0) 0 100%/14px 10px repeat-x;
+  mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 20px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,transparent 0) 0 0/14px 10px repeat-x,conic-gradient(from 135deg at 50% 0,#000 90deg,transparent 0) 0 100%/14px 10px repeat-x}
+.slip.print{animation:print .9s var(--ease) both}
+@keyframes print{from{clip-path:inset(0 0 100% 0);transform:translateY(-24px)}to{clip-path:inset(0 0 0 0);transform:none}}
+.slip ::selection{background:var(--ink);color:var(--paper)}
+.slip :focus-visible{outline-color:var(--ink)}
+.s-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
+.s-head h2{font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:600;font-size:40px;line-height:1;letter-spacing:-.02em;margin:0}
+.s-head span{font-size:13px;color:var(--ink2)}
+.s-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px dotted var(--prule)}
+.s-row .nm{font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:600;font-size:22px;line-height:1.05;border:0;background:none;padding:0;text-align:left}
+.s-row small{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px}
+.step{display:flex;align-items:center;border:1px solid var(--ink);border-radius:22px;height:40px}
+.step button{width:40px;height:38px;border:0;background:none;display:grid;place-items:center}
+.step output{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.s-sec{margin-top:24px}
+.s-sec h3{font-size:13px;font-weight:600;margin:0 0 4px;padding-bottom:6px;border-bottom:1.5px solid var(--ink)}
+.s-sec table{width:100%;border-collapse:collapse}
+.s-sec td{padding:7px 0;border-bottom:1px dotted var(--prule);vertical-align:baseline;font-size:15px}
+.s-sec td.q{width:7.2em;padding-right:10px;font-weight:600}
+.s-sec td.r{text-align:right;color:var(--ink2);font-size:13px;width:3em}
+.s-foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.s-foot .tot{font-size:13px;color:var(--ink2)}
+.s-foot button{border:1px solid var(--ink);background:none;height:40px;padding:0 16px;border-radius:20px;font-weight:600;font-size:13px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="amb" aria-hidden="true"></div>
+<header class="top"><div class="wrap">
+  <div class="bar">
+    <h1 class="mark">Mise</h1>
+    <span class="count" id="count"></span>
+    <div class="seg" role="group" aria-label="Language"><button type="button" data-l="en">EN</button><button type="button" data-l="es">ES</button></div>
+  </div>
+  <label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
+    <span class="sr" id="qlbl"></span><input id="q" type="search" autocomplete="off" aria-labelledby="qlbl">
+    <button class="x" id="qx" type="button" hidden><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="sr">Clear</span></button></label>
+  <div class="chips" id="chips"></div>
+</div></header>
+<main class="wrap" id="main"></main>
+<button class="tab" id="tab" type="button" hidden></button>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true"></div>
+<div class="cmd" id="cmd" hidden role="dialog" aria-modal="true"></div>
+
+<script>
+const DATA = __DATA__;
+const COLORS = __COLORS__;
+const {ing:ING, comp:COMP, glass:GLASS, unit:UNIT} = DATA;
+const store = { get(k,d){ try{ const v=localStorage.getItem('mise.'+k); return v===null?d:JSON.parse(v);}catch(e){return d;} }, set(k,v){ try{localStorage.setItem('mise.'+k,JSON.stringify(v));}catch(e){} } };
+let lang = store.get('lang','en');
+let F = {q:'', base:[], sin:[]};
+let ticket = store.get('ticket',{}); // id -> covers
+
+const T = {
+ en:{find:'Gin, lime, Negroni…', drinks:n=>`${n} drinks`, of:(n,m)=>`${n} of ${m}`, sin:'No', none:'Nothing pours.', clear:'Clear filters',
+   bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
+   techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
+   ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
+   glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', garnish:'Garnish', story:'Story', watch:'Watch on YouTube',
+   add:'Add to ticket', added:'On the ticket', ticket:'Ticket', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
+   drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
+ es:{find:'Gin, lima, Negroni…', drinks:n=>`${n} tragos`, of:(n,m)=>`${n} de ${m}`, sin:'Sin', none:'No sale nada.', clear:'Limpiar filtros',
+   bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
+   techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
+   ices:{up:'Sin hielo',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
+   glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', garnish:'Garnish', story:'Historia', watch:'Ver en YouTube',
+   add:'Sumar a la comanda', added:'En la comanda', ticket:'Comanda', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
+   drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
+};
+const t = () => T[lang];
+const L = o => o ? (o[lang] || o.en) : '';
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $ = s => document.querySelector(s);
+const ICON = {
+  back:'<svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>',
+  close:'<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  play:'<svg class="i" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>',
+  plus:'<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+  minus:'<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>',
+  check:'<svg class="i" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  slip:'<svg class="i" viewBox="0 0 24 24"><path d="M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 21z"/><path d="M9 8h6M9 12h6"/></svg>'
+};
+
+/* ---- model (same rules as the live finder) ---- */
+const SPIRIT = {gin:['gin','old-tom-gin'],vodka:['vodka','vodka-citron','vodka-vanilla'],
+  rum:['white-rum','gold-rum','aged-rum','dark-rum','black-rum','demerara-rum','martinique-rum','overproof-rum','aguardiente','cachaca'],
+  agave:['tequila','tequila-reposado','mezcal'],whisky:['bourbon','rye','scotch','islay','irish'],brandy:['cognac','brandy','calvados','pisco','grappa']};
+const ID2SP = {}; Object.entries(SPIRIT).forEach(([g,ids])=>ids.forEach(i=>ID2SP[i]=g));
+const BASES = ['gin','vodka','rum','agave','whisky','brandy','wine','liqueur'];
+const SIN = ['citrus','nuts','milk','egg','gluten','coconut','caffeine'];
+function lineVol(l){
+  const n = parseFloat(String(l.q).split(/[-/]/)[0]) || (l.q===''?1:0);
+  const m = {ml:1,dash:.8,'bar spoon':5,teaspoon:5,tablespoon:15,drops:.05};
+  if (l.u==='ml'){ const q=String(l.q); if(q.includes('-')){const [a,b]=q.split('-').map(parseFloat);return (a+b)/2;} return parseFloat(q)||0; }
+  if (l.u==='top up') return 60; if (l.u==='fill up') return 100; if (l.u==='splash') return 20; if (l.u==='shot') return 30;
+  if (l.u==='piece') return {'lime-fruit':25,'egg-white':30}[l.ids[0]]||0;
+  if (l.u in m) return n*m[l.u]; return 0;
+}
+function compsOf(ids){ const out={}; ids.forEach(id=>{ const g=ING[id]; if(!g) return;
+  Object.entries(g.c).forEach(([c,lv])=>{ let k=c; while(k){ out[k]=Math.max(out[k]||0,lv); k=COMP[k]&&COMP[k].parent; } }); }); return out; }
+function lift(hex, k){ const c=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)); return '#'+c.map(v=>Math.round(v+(255-v)*k).toString(16).padStart(2,'0')).join(''); }
+const DR = DATA.drinks.map(dr=>{
+  dr.lines.forEach(l=>{ l.vol=l.opt?0:lineVol(l); l.c=compsOf(l.ids); });
+  dr.lev={}; dr.lines.forEach(l=>{ if(l.opt) return; Object.entries(l.c).forEach(([c,lv])=>dr.lev[c]=Math.max(dr.lev[c]||0,lv)); });
+  let best=null,bestSp=null;
+  dr.lines.forEach(l=>{ if(l.opt) return; const g=ING[l.ids[0]]; if(!g||!g.abv) return; const a=l.vol*g.abv;
+    const grp=ID2SP[l.ids[0]]||(g.kind==='wine'?'wine':'liqueur'); if(!best||a>best.a) best={a,g:grp}; if(ID2SP[l.ids[0]]&&(!bestSp||a>bestSp.a)) bestSp={a,g:grp}; });
+  dr.base = bestSp&&best&&bestSp.a>=.4*best.a ? bestSp.g : (best?best.g:'liqueur');
+  dr.col = COLORS[dr.id] || '#8a6a4a'; dr.c2 = lift(dr.col,.28);
+  dr.search = (dr.name+' '+dr.lines.flatMap(l=>l.ids.map(i=>ING[i]?ING[i].en+' '+ING[i].es:i)).join(' ')).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  return dr;
+});
+const byId = Object.fromEntries(DR.map(d=>[d.id,d]));
+Object.keys(ticket).forEach(k=>{ if(!byId[k]) delete ticket[k]; });
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
+function pass(d){
+  if (F.base.length && !F.base.includes(d.base)) return false;
+  if (F.sin.some(c=>(d.lev[c]||0)>=2)) return false;
+  if (F.q){ const ws=norm(F.q).split(/\s+/); if(!ws.every(w=>d.search.includes(w))) return false; }
+  return true;
+}
+const uName = u => UNIT[u] ? UNIT[u][lang==='es'?1:0] : u;
+function fmtQty(l){ if (l.u==='ml') return String(l.q).replace('-','–')+' ml'; if (!l.q) return uName(l.u); return `${l.q} ${uName(l.u)}`.trim(); }
+const ingName = id => ING[id]?L(ING[id]):id;
+const lineLabel = l => l.ids.map(ingName).join(` ${t().or} `);
+const techStr = d => d.tech.map(x=>t().techs[x]).join(' + ');
+const glassName = d => GLASS[d.glass]?L(GLASS[d.glass]):d.glass;
+const metaLine = d => [t().bases[d.base], techStr(d), Math.round(d.abv)+'%'].join(' · ');
+const photo = d => `photos/${d.id}.webp`;
+const fmtN = n => +n.toFixed(n<10?1:0);
+
+/* ---- list ---- */
+function renderChrome(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.l===lang));
+  $('#q').placeholder = t().find; $('#qlbl').textContent = t().find;
+  const tt=t();
+  $('#chips').innerHTML = BASES.map(b=>`<button class="chip" type="button" data-k="base" data-v="${b}" aria-pressed="${F.base.includes(b)}">${tt.bases[b]}</button>`).join('')
+    + '<span class="sep" aria-hidden="true"></span>'
+    + SIN.map(c=>`<button class="chip ex" type="button" data-k="sin" data-v="${c}" aria-pressed="${F.sin.includes(c)}">${tt.sin} ${esc(L(COMP[c]).replace(/ \(.*\)/,'').toLowerCase())}</button>`).join('');
+}
+let io;
+function renderList(){
+  const tt=t(); const list = DR.filter(pass).sort((a,b)=>a.name.localeCompare(b.name));
+  const filtered = F.q||F.base.length||F.sin.length;
+  $('#count').textContent = filtered ? tt.of(list.length, DR.length) : tt.drinks(DR.length);
+  if (!list.length){ $('#main').innerHTML = `<div class="empty"><p>${tt.none}</p><button class="pill" type="button" id="clr">${tt.clear}</button></div>`; return; }
+  $('#main').innerHTML = `<ul class="list">${list.map(d=>`<li><button class="row" type="button" data-id="${d.id}" style="--c2:${d.c2}">
+    <span class="ph"><img src="${photo(d)}" alt="" loading="lazy" decoding="async"></span>
+    <span class="tx"><span class="nm">${esc(d.name)}</span><span class="ln">${esc(metaLine(d))}${d.year?` · <b>${d.year}</b>`:''}${ticket[d.id]?`<span class="on">×${ticket[d.id]}</span>`:''}</span></span></button></li>`).join('')}</ul>`;
+  document.body.style.setProperty('--amb', list[0].col);
+  if (io) io.disconnect();
+  if ('IntersectionObserver' in window){
+    io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) document.body.style.setProperty('--amb', byId[e.target.dataset.id].col); }), {rootMargin:'-45% 0px -45% 0px'});
+    document.querySelectorAll('.row').forEach(r=>io.observe(r));
+  }
+}
+function renderTab(bump){
+  const n = Object.values(ticket).reduce((a,b)=>a+b,0); const tab=$('#tab');
+  tab.hidden = !n || !$('#cmd').hidden;
+  tab.innerHTML = `${ICON.slip}<span>${t().ticket}</span><span class="n num">${n}</span>`;
+  tab.setAttribute('aria-label', `${t().open}: ${t().drinksN(n)}`);
+  if (bump){ tab.classList.remove('bump'); void tab.offsetWidth; tab.classList.add('bump'); }
+}
+
+/* ---- drink page ---- */
+function detail(d){
+  const tt=t(); const on = !!ticket[d.id];
+  const sub = l => { const n = lang==='es'?l.n_es:l.n_en; return [n, l.opt?tt.opt:''].filter(Boolean).join(' · '); };
+  const lines = d.lines.map(l=>`<div class="ln ${l.opt?'opt':''}"><span class="q">${esc(fmtQty(l))}</span><span class="i">${esc(lineLabel(l))}${sub(l)?`<small>${esc(sub(l))}</small>`:''}</span></div>`).join('');
+  const pv = d.lines.filter(l=>l.vol>=1);
+  const ratio = `<div class="ratio" aria-hidden="true">${pv.map((l,i)=>`<i style="flex:${l.vol};opacity:${1-i*(.7/Math.max(1,pv.length-1))}"></i>`).join('')}</div>`;
+  return `<div class="dwrap" style="--c:${d.col};--c2:${d.c2}">
+    <div class="plate"><img src="${photo(d)}" alt="${esc(d.name)}"></div>
+    <div class="head"><h2>${esc(d.name)}</h2><div class="orig">${esc([d.year,d.place].filter(Boolean).join(' · '))}</div></div>
+    <div class="pour">${ratio}${lines}</div>
+    <button class="pill add" type="button" data-add="${d.id}" aria-pressed="${on}">${on?ICON.check+tt.added+` ×${ticket[d.id]}`:ICON.plus+tt.add}</button>
+    <dl class="facts">
+      <div><dt>${tt.glass}</dt><dd>${esc(glassName(d))}</dd></div>
+      <div><dt>${tt.ice}</dt><dd>${esc(tt.ices[d.ice]||'')}</dd></div>
+      <div><dt>${tt.tech}</dt><dd>${esc(techStr(d))}</dd></div>
+      <div><dt>${tt.abv}</dt><dd>≈ ${Math.round(d.abv)}%</dd></div></dl>
+    <div class="prose">
+      <h3>${tt.method}</h3><p>${esc(L(d.method))}</p>
+      ${L(d.garnish)?`<h3>${tt.garnish}</h3><p>${esc(L(d.garnish))}</p>`:''}
+      ${L(d.history)?`<h3>${tt.story}</h3><p>${esc(L(d.history))}</p>`:''}
+      ${d.video?`<a class="pill" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${ICON.play}${tt.watch}</a>`:''}</div></div>`;
+}
+
+/* ---- the ticket (comanda): drinks × covers -> mise en place ---- */
+function miseEnPlace(){
+  const ml={}, units={}, glass={}, garn=[]; let drinks=0;
+  Object.entries(ticket).forEach(([id,n])=>{ const d=byId[id]; drinks+=n;
+    glass[glassName(d)]=(glass[glassName(d)]||0)+n;
+    if (L(d.garnish)) garn.push([L(d.garnish), n]);
+    d.lines.forEach(l=>{ if(l.opt) return; const k=l.ids[0];
+      if (l.u==='ml'){ ml[k]=(ml[k]||0)+l.vol*n; return; }
+      // spoons share one measure so the same ingredient adds up on one line
+      const sp = {teaspoon:1,'bar spoon':1,tablespoon:3}[l.u]; const u = sp ? 'bar spoon' : l.u;
+      const key=k+'|'+u; const q=parseFloat(String(l.q).split(/[-/]/)[0]);
+      units[key]=(units[key]||0)+(isNaN(q)?1:q)*(sp||1)*n; });
+  });
+  return {ml, units, glass, garn, drinks};
+}
+let printed = 0;
+function renderTicket(print){
+  const tt=t(); const m=miseEnPlace(); const ids=Object.keys(ticket);
+  if (!ids.length){ closeTicket(); return; }
+  const now = new Date(); const hhmm = String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+  const rows = ids.map(id=>{ const d=byId[id]; return `<div class="s-row"><div><button class="nm" type="button" data-id="${id}">${esc(d.name)}</button><small>${esc(glassName(d))} · ${esc(tt.ices[d.ice]||'')}</small></div>
+    <div class="step"><button type="button" data-step="${id}" data-dv="-1" aria-label="${tt.less}: ${esc(d.name)}">${ICON.minus}</button><output class="num">${ticket[id]}</output><button type="button" data-step="${id}" data-dv="1" aria-label="${tt.more}: ${esc(d.name)}">${ICON.plus}</button></div></div>`; }).join('');
+  const mlRows = Object.entries(m.ml).sort((a,b)=>b[1]-a[1]).map(([id,v])=>`<tr><td class="q num">${fmtN(v)} ml</td><td>${esc(ingName(id))}</td></tr>`).join('');
+  const uRows = Object.entries(m.units).map(([k,v])=>{ const [id,u]=k.split('|'); const ux=uName(u)+(lang==='en'&&v>1&&['bar spoon','dash'].includes(u)?'s':'');
+    return `<tr><td class="q num">${['top up','fill up'].includes(u)?ux:fmtN(v)+(ux?' '+ux:'')}</td><td>${esc(ingName(id))}</td></tr>`; }).join('');
+  const gRows = Object.entries(m.glass).sort((a,b)=>b[1]-a[1]).map(([g,n])=>`<tr><td>${esc(g)}</td><td class="r num">×${n}</td></tr>`).join('');
+  const garRows = m.garn.map(([g,n])=>`<tr><td>${esc(g)}</td><td class="r num">×${n}</td></tr>`).join('');
+  $('#cmd').innerHTML = `<button class="close" type="button" id="ccls" aria-label="${tt.back}">${ICON.close}</button>
+    <div class="slip${print?' print':''}">
+      <div class="s-head"><h2>${tt.ticket}</h2><span class="num">${hhmm}</span></div>
+      ${rows}
+      <section class="s-sec"><h3>${tt.mise}</h3><table>${mlRows}${uRows}</table></section>
+      <section class="s-sec"><h3>${tt.glassware}</h3><table>${gRows}</table></section>
+      ${garRows?`<section class="s-sec"><h3>${tt.garnishes}</h3><table>${garRows}</table></section>`:''}
+      <div class="s-foot"><span class="tot num">${tt.drinksN(m.drinks)}</span><button type="button" id="cclr">${tt.clearT}</button></div>
+    </div>`;
+}
+function openTicket(push=true){ $('#cmd').hidden=false; document.body.style.overflow='hidden'; renderTicket(true); renderTab();
+  $('#cmd').setAttribute('aria-label', t().ticket); if(push) history.pushState({c:1},'','#'+(lang==='es'?'comanda':'ticket')); $('#ccls').focus({preventScroll:true}); }
+function closeTicket(pop=false){ if($('#cmd').hidden) return; $('#cmd').hidden=true; if($('#sheet').hidden) document.body.style.overflow='';
+  if(!pop && history.state && history.state.c) history.back(); renderTab(); }
+function setCovers(id, n){ if(n<=0) delete ticket[id]; else ticket[id]=Math.min(n,99); store.set('ticket',ticket); renderTab(); renderList(); }
+
+/* ---- navigation ---- */
+let openId = null;
+function open(id, push=true){
+  const d = byId[id]; if(!d) return;
+  if (!$('#cmd').hidden) closeTicket(true);
+  openId=id; const s=$('#sheet');
+  s.innerHTML = `<button class="close" type="button" id="cls" aria-label="${t().back}">${ICON.back}</button>` + detail(d);
+  s.hidden=false; s.scrollTop=0; document.body.style.overflow='hidden'; s.setAttribute('aria-label', d.name);
+  if (push) history.pushState({d:id}, '', '#'+id);
+  $('#cls').focus({preventScroll:true});
+}
+function close(pop=false){ if(openId===null) return; const id=openId; openId=null; $('#sheet').hidden=true; document.body.style.overflow='';
+  if(!pop && history.state && history.state.d) history.back();
+  const b=document.querySelector(`.row[data-id="${id}"]`); if(b) b.focus({preventScroll:true}); }
+function all(){ renderChrome(); renderList(); renderTab(); if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
+
+document.addEventListener('click', e=>{
+  const c=e.target.closest('.chip'); if(c){ const k=c.dataset.k,v=c.dataset.v; F[k]=F[k].includes(v)?F[k].filter(x=>x!==v):[...F[k],v]; c.setAttribute('aria-pressed',F[k].includes(v)); renderList(); return; }
+  const a=e.target.closest('[data-add]'); if(a){ const id=a.dataset.add; setCovers(id, (ticket[id]||0)+1); open(id,false); renderTab(true); return; }
+  const st=e.target.closest('[data-step]'); if(st){ setCovers(st.dataset.step, (ticket[st.dataset.step]||0)+(+st.dataset.dv)); renderTicket(false); return; }
+  if(e.target.closest('#tab')){ openTicket(); return; }
+  if(e.target.closest('#ccls')){ closeTicket(); return; }
+  if(e.target.closest('#cclr')){ ticket={}; store.set('ticket',ticket); renderList(); closeTicket(); return; }
+  const o=e.target.closest('[data-id]'); if(o){ open(o.dataset.id); return; }
+  if(e.target.closest('#cls')){ close(); return; }
+  if(e.target.closest('#clr')){ F={q:'',base:[],sin:[]}; $('#q').value=''; $('#qx').hidden=true; all(); return; }
+  const l=e.target.closest('[data-l]'); if(l){ lang=l.dataset.l; store.set('lang',lang); all(); return; }
+  if(e.target===$('#cmd')) closeTicket();
+});
+$('#q').addEventListener('input', e=>{ F.q=e.target.value; $('#qx').hidden=!F.q; renderList(); });
+$('#qx').addEventListener('click', e=>{ e.preventDefault(); F.q=''; $('#q').value=''; $('#qx').hidden=true; renderList(); $('#q').focus(); });
+document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#cmd').hidden) closeTicket(); else if(openId) close(); });
+let lastY=0; $('#sheet').addEventListener('scroll', e=>{ const y=e.target.scrollTop, c=$('#cls'); if(c) c.classList.toggle('away', y>lastY && y>120); lastY=y; }, {passive:true});
+addEventListener('popstate', ()=>{ if(!$('#cmd').hidden) closeTicket(true); else if(openId) close(true); });
+all();
+const h=location.hash.slice(1); if (h in byId) open(h,false); else if ((h==='ticket'||h==='comanda') && Object.keys(ticket).length) openTicket(false);
+</script>

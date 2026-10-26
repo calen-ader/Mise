@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T00:00:00Z",
+  "title": "Design System: Mise",
+  "extensions": {
+    "colorMeta": {
+      "photo-black": {
+        "role": "neutral",
+        "displayName": "Photo Black",
+        "canonical": "oklch(8.8% 0.005 18)",
+        "tonalRamp": [
+          "#0c0b0b",
+          "#282626",
+          "#474444",
+          "#686565",
+          "#8b8888",
+          "#b0adad",
+          "#d2d0d0",
+          "#f0eeee"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(93.0% 0.016 83)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#292621",
+          "#48453e",
+          "#6a655c",
+          "#8d8980",
+          "#b1ada6",
+          "#d4d0cb",
+          "#f1eee9"
+        ]
+      },
+      "ash": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "oklch(67.0% 0.017 77)",
+        "tonalRamp": [
+          "#0d0b08",
+          "#292621",
+          "#49443e",
+          "#6b655c",
+          "#8e887f",
+          "#b2ada6",
+          "#d4d0ca",
+          "#f1eee9"
+        ]
+      },
+      "soot-rule": {
+        "role": "neutral",
+        "displayName": "Soot Rule",
+        "canonical": "oklch(26.9% 0.009 53)",
+        "tonalRamp": [
+          "#0d0b0a",
+          "#292624",
+          "#484441",
+          "#6a6561",
+          "#8d8885",
+          "#b1adaa",
+          "#d4d0ce",
+          "#f1eeec"
+        ]
+      },
+      "smoke-line": {
+        "role": "neutral",
+        "displayName": "Smoke Line",
+        "canonical": "oklch(33.1% 0.012 52)",
+        "tonalRamp": [
+          "#0d0b09",
+          "#292523",
+          "#494440",
+          "#6c6460",
+          "#8f8783",
+          "#b3aca9",
+          "#d5d0cd",
+          "#f1eeeb"
+        ]
+      },
+      "ambient-default": {
+        "role": "primary",
+        "displayName": "Ambient Default",
+        "canonical": "oklch(45.7% 0.085 58)",
+        "tonalRamp": [
+          "#160700",
+          "#39200b",
+          "#5f3c1f",
+          "#885a35",
+          "#ac7e5b",
+          "#cca589",
+          "#e9cab4",
+          "#ffe9d8"
+        ]
+      },
+      "thermal-paper": {
+        "role": "tertiary",
+        "displayName": "Thermal Paper",
+        "canonical": "oklch(95.2% 0.006 129)",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#262725",
+          "#444543",
+          "#656763",
+          "#888a86",
+          "#adaeac",
+          "#d0d1cf",
+          "#eeefed"
+        ]
+      },
+      "carbon-ink": {
+        "role": "tertiary",
+        "displayName": "Carbon Ink",
+        "canonical": "oklch(20.4% 0.009 264)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#252629",
+          "#434549",
+          "#64666b",
+          "#87898e",
+          "#acaeb2",
+          "#cfd1d4",
+          "#edeef1"
+        ]
+      },
+      "carbon-ink-faded": {
+        "role": "tertiary",
+        "displayName": "Faded Carbon",
+        "canonical": "oklch(46.9% 0.013 257)",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#24272a",
+          "#42454a",
+          "#62666d",
+          "#858a90",
+          "#aaaeb4",
+          "#ced1d6",
+          "#eceff2"
+        ]
+      },
+      "paper-rule": {
+        "role": "tertiary",
+        "displayName": "Paper Rule",
+        "canonical": "oklch(84.3% 0.009 135)",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#252724",
+          "#434642",
+          "#646762",
+          "#878a85",
+          "#acafab",
+          "#cfd2ce",
+          "#edefec"
+        ]
+      }
+    },
+    "colorNotes": {
+      "drink-light": "Per-drink colour sampled from each IBA photo (mise/colors.json), set as --c on the drink page and --amb on the body; --c2 = lift(--c, 0.28) toward white for type and marks. Fallback #8a6a4a."
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Drink name on its page, overlapping the photo."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Drink names in the list."
+      },
+      "ticket-title": {
+        "displayName": "Ticket Title",
+        "purpose": "Ticket / Comanda head on the slip."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "Italic 'Mise' in the header; the only italic."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Drink names on ticket rows; tab count numeral."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose (max 62ch), table cells, fact values."
+      },
+      "body-strong": {
+        "displayName": "Body Strong",
+        "purpose": "Quantities in the pour list and mise en place, tabular."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Meta line, counts, fact labels, section heads, chips; sentence case."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Pill buttons and the ticket tab."
+      }
+    },
+    "shadows": [
+      {
+        "name": "tab-float",
+        "value": "0 10px 30px -8px rgba(0,0,0,.8)",
+        "purpose": "The floating ticket tab only."
+      }
+    ],
+    "effects": [
+      {
+        "name": "ambient-light",
+        "value": "radial-gradient(120% 60% at 50% 105%, color-mix(in srgb, var(--amb) 55%, transparent), transparent 72%)",
+        "purpose": "Fixed page-foot glow in the colour of the drink centred in view."
+      },
+      {
+        "name": "plate-glow",
+        "value": "radial-gradient(90% 45% at 50% 100%, color-mix(in srgb, var(--c) 45%, transparent), transparent 70%), linear-gradient(180deg, rgba(3,2,2,0) 60%, #030202 100%)",
+        "purpose": "Drink colour rising from the bottom of the plate photo, fading into the page."
+      },
+      {
+        "name": "photo-blend",
+        "value": "mix-blend-mode: lighten",
+        "purpose": "List photos merge their bar black into the page."
+      },
+      {
+        "name": "close-glass",
+        "value": "background: rgba(3,2,2,.6); backdrop-filter: blur(8px)",
+        "purpose": "Floating close/back button."
+      },
+      {
+        "name": "overlay",
+        "value": "background: rgba(3,2,2,.82); backdrop-filter: blur(6px)",
+        "purpose": "Ticket overlay behind the slip."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "The single easing for all motion."
+      },
+      {
+        "name": "ambient-fade",
+        "value": ".9s",
+        "purpose": "Ambient colour cross-fade."
+      },
+      {
+        "name": "ticket-print",
+        "value": ".9s clip-path inset(0 0 100% 0) to inset(0), translateY(-24px) to 0",
+        "purpose": "Ticket prints when opened."
+      },
+      {
+        "name": "tab-bump",
+        "value": ".5s, -6px",
+        "purpose": "Tab bumps when a drink is added."
+      },
+      {
+        "name": "close-slide",
+        "value": ".35s translateY(-70px) + fade",
+        "purpose": "Close button hides on scroll down."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "All transitions and animations removed under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "drink-head",
+        "value": "620px"
+      },
+      {
+        "name": "two-column-list",
+        "value": "900px"
+      }
+    ],
+    "containers": [
+      {
+        "name": "shell",
+        "value": "1180px"
+      },
+      {
+        "name": "drink-page",
+        "value": "620px"
+      },
+      {
+        "name": "ticket-slip",
+        "value": "440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Pill Button",
+      "kind": "button",
+      "refersTo": "pill",
+      "description": "Outlined pill on dark for secondary actions (clear filters, watch on YouTube).",
+      "html": "<div class=\"ds-dark\"><button class=\"ds-pill\">Clear filters</button></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;}.ds-pill{font-family:'Schibsted Grotesk',system-ui,sans-serif;border:1px solid var(--fg);background:none;color:var(--fg);height:44px;padding:0 18px;border-radius:22px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:8px;cursor:pointer}.ds-pill:focus-visible{outline:2px solid var(--fg);outline-offset:2px}"
+    },
+    {
+      "name": "Add to Ticket",
+      "kind": "button",
+      "refersTo": "button-add",
+      "description": "Full-width pill on the drink page; turns to thermal paper once the drink is on the ticket.",
+      "html": "<div class=\"ds-dark\"><button class=\"ds-add\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>Add to ticket</button><button class=\"ds-add\" aria-pressed=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12.5l4.5 4.5L19 7.5\"/></svg>On the ticket ×1</button></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;display:grid;gap:12px}.ds-add{font-family:'Schibsted Grotesk',system-ui,sans-serif;width:100%;height:52px;border-radius:26px;border:1px solid var(--fg);background:none;color:var(--fg);font-weight:600;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}.ds-add[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}.ds-add:focus-visible{outline:2px solid var(--fg);outline-offset:2px}"
+    },
+    {
+      "name": "Filter Chips",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Spirit chips invert to bone when selected; 'No' allergen chips fill smoke-line and go bold.",
+      "html": "<div class=\"ds-dark ds-rail\"><button class=\"ds-chip\" aria-pressed=\"true\">Gin</button><button class=\"ds-chip\" aria-pressed=\"false\">Rum</button><span class=\"ds-sep\"></span><button class=\"ds-chip ds-ex\" aria-pressed=\"true\">No citrus</button><button class=\"ds-chip ds-ex\" aria-pressed=\"false\">No egg</button></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;}.ds-rail{display:flex;gap:6px}.ds-chip{font-family:'Schibsted Grotesk',system-ui,sans-serif;height:34px;padding:0 13px;font-size:13px;font-weight:500;white-space:nowrap;border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:17px;cursor:pointer}.ds-chip[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}.ds-chip.ds-ex[aria-pressed=true]{background:var(--line);color:var(--fg);border-color:var(--fg);font-weight:600}.ds-chip:focus-visible{outline:2px solid var(--fg);outline-offset:2px}.ds-sep{width:1px;margin:6px 4px;background:var(--line)}"
+    },
+    {
+      "name": "Underline Search",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Boxless search: icon, borderless input, underline that turns bone on focus.",
+      "html": "<div class=\"ds-dark\"><label class=\"ds-search\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"6.5\"/><path d=\"M20 20l-4.2-4.2\"/></svg><input placeholder=\"Gin, lime, Negroni…\"></label></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;}.ds-search{font-family:'Schibsted Grotesk',system-ui,sans-serif;display:flex;align-items:center;gap:10px;height:46px;padding:0 2px;border-bottom:1px solid var(--line);color:var(--fg)}.ds-search:focus-within{border-bottom-color:var(--fg)}.ds-search input{flex:1;min-width:0;border:0;background:none;outline:0;font:inherit;font-size:16px;color:var(--fg);caret-color:var(--fg)}.ds-search input::placeholder{color:#7f776d}"
+    },
+    {
+      "name": "Header Bar",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Italic Bodoni wordmark, count in ash, EN/ES text toggle.",
+      "html": "<div class=\"ds-dark\"><div class=\"ds-bar\"><span class=\"ds-mark\">Mise</span><span class=\"ds-count\">102 drinks</span><span class=\"ds-seg\"><button aria-pressed=\"true\">EN</button><button aria-pressed=\"false\">ES</button></span></div></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;}.ds-bar{font-family:'Schibsted Grotesk',system-ui,sans-serif;display:flex;align-items:center;gap:12px;height:56px;color:var(--fg)}.ds-mark{font-family:'Bodoni Moda',Didot,serif;font-optical-sizing:auto;font-style:italic;font-weight:400;font-size:32px;letter-spacing:-.02em;line-height:1;margin-right:auto}.ds-count{font-size:13px;color:var(--fg2);font-variant-numeric:tabular-nums}.ds-seg{display:inline-flex;font-size:12px;font-weight:600;letter-spacing:.06em}.ds-seg button{font:inherit;border:0;background:none;min-width:36px;height:36px;padding:0 6px;color:var(--fg2);cursor:pointer}.ds-seg button[aria-pressed=true]{color:var(--fg)}.ds-seg button:focus-visible{outline:2px solid var(--fg);outline-offset:2px}"
+    },
+    {
+      "name": "List Row",
+      "kind": "card",
+      "refersTo": "",
+      "description": "Photo blended into the black on the left, Bodoni name and spec line on the right, year in the lifted drink tint.",
+      "html": "<div class=\"ds-dark\"><button class=\"ds-row\" style=\"--c2:#c08a5d\"><span class=\"ds-ph\"></span><span class=\"ds-tx\"><span class=\"ds-nm\">Americano</span><span class=\"ds-ln\">Liqueur · Built · 14% · <b>1860</b><span class=\"ds-on\">×2</span></span></span></button></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;}.ds-row{font-family:'Schibsted Grotesk',system-ui,sans-serif;display:grid;grid-template-columns:44% 1fr;align-items:end;gap:14px;width:100%;padding:0;border:0;background:none;text-align:left;color:var(--fg);cursor:pointer}.ds-ph{aspect-ratio:3/3.7;background:radial-gradient(40% 50% at 50% 60%,#5a2a12,transparent)}.ds-tx{padding:0 0 22px;border-bottom:1px solid var(--rule)}.ds-nm{display:block;font-family:'Bodoni Moda',Didot,serif;font-optical-sizing:auto;font-weight:500;font-size:40px;line-height:.96;letter-spacing:-.02em;margin:4px 0 8px}.ds-ln{display:block;font-size:13px;color:var(--fg2)}.ds-ln b{font-weight:500;color:var(--c2)}.ds-on{display:inline-block;margin-left:8px;padding:1px 6px;background:var(--paper);color:var(--ink);font-size:11px;font-weight:600;border-radius:1px}.ds-row:hover .ds-nm{color:var(--c2)}.ds-row:focus-visible{outline:2px solid var(--fg);outline-offset:2px}"
+    },
+    {
+      "name": "Ticket Tab",
+      "kind": "button",
+      "refersTo": "ticket-tab",
+      "description": "Floating paper tab with perforated sides; the count in Bodoni.",
+      "html": "<div class=\"ds-dark\"><button class=\"ds-tab\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 3h12v18l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5L6 21z\"/><path d=\"M9 8h6M9 12h6\"/></svg><span>Ticket</span><span class=\"ds-n\">3</span></button></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;padding:24px}.ds-tab{font-family:'Schibsted Grotesk',system-ui,sans-serif;display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 16px;border:0;background:var(--paper);color:var(--ink);font-weight:600;font-size:14px;box-shadow:0 10px 30px -8px rgba(0,0,0,.8);cursor:pointer;transition:transform .5s var(--ease);-webkit-mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y;mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y}.ds-tab:hover{transform:translateY(-6px)}.ds-tab:focus-visible{outline:2px solid var(--fg);outline-offset:2px}.ds-n{font-family:'Bodoni Moda',Didot,serif;font-optical-sizing:auto;font-size:22px;font-weight:600;line-height:1}"
+    },
+    {
+      "name": "Ticket Slip",
+      "kind": "custom",
+      "refersTo": "ticket-slip",
+      "description": "Thermal paper with zigzag torn ends, Bodoni head, pill stepper rows and dotted mise en place table.",
+      "html": "<div class=\"ds-dark\"><div class=\"ds-slip\"><div class=\"ds-head\"><h2>Ticket</h2><span>01:16</span></div><div class=\"ds-srow\"><div><span class=\"ds-snm\">Daiquiri</span><small>Cocktail glass · Up</small></div><div class=\"ds-step\"><button aria-label=\"One less\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/></svg></button><output>3</output><button aria-label=\"One more\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg></button></div></div><h3 class=\"ds-sh\">Mise en place</h3><table><tr><td class=\"ds-q\">225 ml</td><td>White rum</td></tr><tr><td class=\"ds-q\">80 ml</td><td>Fresh lime juice</td></tr></table></div></div>",
+      "css": ":host{--bg:#030202;--fg:#ede7dc;--fg2:#9b948a;--rule:#2a2522;--line:#3b3430;--paper:#eef0ec;--ink:#15171b;--ink2:#565b62;--prule:#c9cdc7;--ease:cubic-bezier(.16,1,.3,1)}.ds-dark{background:#030202;padding:16px;}.ds-slip{font-family:'Schibsted Grotesk',system-ui,sans-serif;max-width:440px;background:var(--paper);color:var(--ink);padding:26px 20px 34px;-webkit-mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 20px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,transparent 0) 0 0/14px 10px repeat-x,conic-gradient(from 135deg at 50% 0,#000 90deg,transparent 0) 0 100%/14px 10px repeat-x;mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 20px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,transparent 0) 0 0/14px 10px repeat-x,conic-gradient(from 135deg at 50% 0,#000 90deg,transparent 0) 0 100%/14px 10px repeat-x;animation:ds-print .9s var(--ease) both}@keyframes ds-print{from{clip-path:inset(0 0 100% 0);transform:translateY(-24px)}to{clip-path:inset(0 0 0 0);transform:none}}.ds-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}.ds-head h2{font-family:'Bodoni Moda',Didot,serif;font-optical-sizing:auto;font-weight:600;font-size:40px;line-height:1;letter-spacing:-.02em;margin:0}.ds-head span{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}.ds-srow{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:12px 0;border-bottom:1px dotted var(--prule)}.ds-snm{display:block;font-family:'Bodoni Moda',Didot,serif;font-optical-sizing:auto;font-weight:600;font-size:22px;line-height:1.05}.ds-srow small{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px}.ds-step{display:flex;align-items:center;border:1px solid var(--ink);border-radius:22px;height:40px}.ds-step button{width:40px;height:38px;border:0;background:none;color:var(--ink);display:grid;place-items:center;cursor:pointer}.ds-step button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}.ds-step output{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}.ds-sh{font-size:13px;font-weight:600;margin:24px 0 4px;padding-bottom:6px;border-bottom:1.5px solid var(--ink)}.ds-slip table{width:100%;border-collapse:collapse}.ds-slip td{padding:7px 0;border-bottom:1px dotted var(--prule);font-size:15px}.ds-q{width:7.2em;padding-right:10px;font-weight:600;font-variant-numeric:tabular-nums}@media (prefers-reduced-motion:reduce){.ds-slip{animation:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Contraluz",
+    "overview": "The page is the black of the IBA photographs, and the drinks are the only light in the room. Every surface is that photo black (photo-black) so a dark bar shot sits on it without a frame: the glass floats, the page and the photo are the same darkness. Colour does not belong to the brand. It belongs to each drink: the liquid colour sampled from its photo tints its year, its ratio bar, the glow under its plate, and the ambient light rising from the bottom of the screen as it scrolls into the centre of view.\n\nAgainst that dark room there is exactly one light object: the ticket (comanda). It is thermal paper with carbon ink, torn zigzag edges, a perforated tab, and it prints downward when opened. Anything that belongs to the ticket (the floating tab, the \"×n\" badge on a row, the \"On the ticket\" button state) takes the paper and ink; nothing else does.\n\nType is two voices. Bodoni Moda at poster scale carries names: the italic wordmark, every drink name, the ticket title. Schibsted Grotesk carries everything a bartender reads at a glance: quantities in tabular numerals, sentence-case labels, controls. Density is generous on the list (one drink per row, photo left, name right) and tight on the spec and the ticket, where the bar actually uses it.",
+    "keyCharacteristics": [
+      "One ground (photo black), one text tone, one muted tone; no fixed accent.",
+      "Per-drink chroma, sampled from the photo, lifted 28% toward white for type.",
+      "Photos blend with `lighten` into the page; no frames, no cards.",
+      "The ticket is the only light surface, with paper edges cut by CSS masks.",
+      "Bodoni for names, Schibsted for everything else; sentence case throughout.",
+      "Depth by light (radial glows, blur), not by lift."
+    ],
+    "rules": [
+      {
+        "name": "The Photo-Black Rule",
+        "body": "The page is exactly the black of the photographs (photo-black). Never lift it to a grey or put a panel on it; a photo should dissolve into the page, not sit on it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Borrowed Colour Rule",
+        "body": "The only chroma on the dark side is the current drink's sampled colour: raw for light, lifted 28% for type and marks. Introducing a fixed accent hue breaks the world.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Light Object Rule",
+        "body": "Thermal paper and carbon ink are reserved for the ticket and the things that point to it. A paper-coloured surface means \"this is on the ticket\".",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Bodoni sets names (drinks, the wordmark, the ticket title, the tab count) and nothing else. Every label, number, and control is Schibsted.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "Every quantity, count, time, and multiplier uses tabular numerals so specs align in a column.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Labels and section heads are sentence case at 13px, set in ash on dark or ink on paper. No uppercase, no tracked eyebrows above headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Light-Not-Lift Rule",
+        "body": "To give something presence on the dark side, light it with the drink colour; do not raise it with a shadow. Shadows are for paper hovering over the room.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** set every dark surface on photo-black (#030202) and blend drink photos with `mix-blend-mode: lighten` so they have no edge.",
+      "**Do** take colour from the drink: raw for glows, lifted 28% toward white for type and marks.",
+      "**Do** keep thermal paper and carbon ink for the ticket and its tokens (tab, \"×n\" badge, added state).",
+      "**Do** set names in Bodoni Moda and everything else in Schibsted Grotesk with tabular numerals.",
+      "**Do** make controls full pills and surfaces square; cut paper edges with masks, never round them.",
+      "**Do** use the single ease `cubic-bezier(.16,1,.3,1)` and honour reduced motion."
+    ],
+    "donts": [
+      "**Don't** add a fixed accent colour, neon or otherwise; the drink is the accent.",
+      "**Don't** put photos in tiles: no borders, rounded corners, backgrounds or shadows around them.",
+      "**Don't** use paper or a light fill for anything unrelated to the ticket.",
+      "**Don't** raise dark-side elements with shadows; give them light instead.",
+      "**Don't** use uppercase or tracked eyebrow labels above headings; labels are sentence case.",
+      "**Don't** set UI labels, numbers or body copy in Bodoni."
+    ]
+  }
+}
