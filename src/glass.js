@@ -52,7 +52,7 @@ function ginger(x,y){return `<rect x="${x-7}" y="${y-7}" width="14" height="14" 
 function grapes(x,y){return [[0,0],[12,4],[5,12]].map(([a,b])=>`<circle cx="${x+a}" cy="${y+b}" r="7" fill="#c9df8a"/>`).join('')}
 
 function pickBG(d){const S=P[SHAPE[d.glass]||'coupe'],liq=LIQ[d.id]||d.color||'#e9a54a',h=hash(d.id);for(let j=0;j<TILES.length;j++){const c=INK[TILES[(h+j)%TILES.length]];if(dist(c,liq)>200&&(!S.op||dist(c,S.op)>150))return c}return INK.ink}
-window.glassBG=pickBG;window.glassLiq=d=>LIQ[d.id]||d.color||'#e9a54a';
+window.glassRim=d=>(P[SHAPE[d.glass]||"coupe"]).r;window.glassBG=pickBG;window.glassLiq=d=>LIQ[d.id]||d.color||'#e9a54a';
 window.glassSVG=function(d,opt){opt=opt||{};
  const k=SHAPE[d.glass]||'coupe',S=P[k],id='g'+(++uid);
  let liq=LIQ[d.id]||d.color||'#e9a54a';const L=opt.bands?{}:(LAYER[d.id]||{});

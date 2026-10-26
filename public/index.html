@@ -75,12 +75,12 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .idx{list-style:none;margin:0;padding:0}
 .idx .hd{display:none}
 .tl{position:relative;background:var(--ink);color:var(--pa);border-bottom:1px solid rgba(243,238,228,.12);transition:background .35s var(--ease),color .35s var(--ease)}
-.tl .open{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;column-gap:6px;width:100%;min-height:92px;padding:12px 104px 12px var(--gut);text-align:left;position:relative}
+.tl .open{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;column-gap:6px;width:100%;min-height:92px;padding:12px 112px 12px var(--gut);text-align:left;position:relative;overflow:hidden}
 .tl .no{font:400 12px/1 "Archivo Black",sans-serif;opacity:.55;font-variant-numeric:tabular-nums;align-self:start;margin-top:.7em}
 .tl .nm{font:400 clamp(26px,7.4vw,56px)/.98 "Archivo Black",sans-serif;letter-spacing:-.05em;padding-bottom:.06em}
 .tl .c,.tl .xp{display:none}
 .tl .ab{font:400 13px/1 "Archivo Black",sans-serif;opacity:.7;align-self:start;margin-top:6px}
-.tl .art{position:absolute;right:10px;top:8px;bottom:8px;aspect-ratio:200/240;transition:transform .5s var(--ease)}
+.tl .art{position:absolute;top:var(--t1);width:110px;height:132px;right:-4px;transition:transform .5s var(--ease)}
 .tl .art svg{width:100%;height:100%}
 .tl:active{background:var(--bg);color:var(--fg)}
 .qa{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;color:inherit;font:800 22px/1 "Big Shoulders Display";z-index:3}
@@ -92,7 +92,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
   .tl .nm{font-size:calc(clamp(40px,3.9vw,58px)*var(--s,1));white-space:nowrap}
   .tl .c{display:block;font:800 15px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase;margin-top:1.3em}
   .tl .ab{font-size:24px;letter-spacing:-.03em;opacity:1;margin-top:.7em}
-  .tl .art{right:48px;top:10px;bottom:10px}
+  .tl .art{top:var(--t2);width:170px;height:204px;right:30px}
   /* hover: the row floods with the drink's ink, opens to its recipe and stands the glass up */
   .tl .xp{display:grid;grid-column:2/-1;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease) .1s}
   .tl .xp>div{overflow:hidden;min-height:0}
@@ -107,7 +107,6 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
   .tl:hover .xp,.tl:has(:focus-visible) .xp{grid-template-rows:1fr}
   .tl:hover .xq,.tl:has(:focus-visible) .xq{opacity:1;transform:none;transition-delay:.15s}
   .tl:hover,.tl:has(:focus-visible){background:var(--bg);color:var(--fg)}
-  .tl:hover .art{transform:scale(1.04)}
   .qa{right:290px;top:auto;bottom:20px;width:auto;height:40px;padding:0 14px;font-size:15px;letter-spacing:.07em;background:var(--ink);color:var(--pa);opacity:0;pointer-events:none;transition:opacity .25s}
   .qa::before{content:attr(data-l)}
   .qa:not(.on) .pl{display:none}
@@ -349,7 +348,7 @@ function ginger(x,y){return `<rect x="${x-7}" y="${y-7}" width="14" height="14" 
 function grapes(x,y){return [[0,0],[12,4],[5,12]].map(([a,b])=>`<circle cx="${x+a}" cy="${y+b}" r="7" fill="#c9df8a"/>`).join('')}
 
 function pickBG(d){const S=P[SHAPE[d.glass]||'coupe'],liq=LIQ[d.id]||d.color||'#e9a54a',h=hash(d.id);for(let j=0;j<TILES.length;j++){const c=INK[TILES[(h+j)%TILES.length]];if(dist(c,liq)>200&&(!S.op||dist(c,S.op)>150))return c}return INK.ink}
-window.glassBG=pickBG;window.glassLiq=d=>LIQ[d.id]||d.color||'#e9a54a';
+window.glassRim=d=>(P[SHAPE[d.glass]||"coupe"]).r;window.glassBG=pickBG;window.glassLiq=d=>LIQ[d.id]||d.color||'#e9a54a';
 window.glassSVG=function(d,opt){opt=opt||{};
  const k=SHAPE[d.glass]||'coupe',S=P[k],id='g'+(++uid);
  let liq=LIQ[d.id]||d.color||'#e9a54a';const L=opt.bands?{}:(LAYER[d.id]||{});
@@ -750,7 +749,17 @@ const capW = s => { const w=String(s).split(' ')[0]; return w.charAt(0).toUpperC
 const LART={}; const listArt = d => LART[d.id] || (LART[d.id]=glassSVG(d,{bg:bgOf(d),noTile:true}));
 const ingLine = d => d.lines.filter(l=>!l.opt).map(l=>{ const [a,b]=qtyParts(l); return `${a||capW(b)} ${ingName(l.ids[0])}`; }).join(' · ');
 const qBig = l => { const [a,b]=qtyParts(l); return a ? `<b>${esc(a)}</b><small>${esc(b)} ${esc(ingName(l.ids[0]))}</small>` : `<b class="wd">${esc(capW(b))}</b><small>${esc(ingName(l.ids[0]))}</small>`; };
-const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xq">${d.lines.filter(l=>!l.opt).map(l=>`<span>${qBig(l)}</span>`).join('')}</span><span class="xo"><i>${esc(t().recipe)} →</i><em>${esc(techStr(d))} · ${esc(glassName(d))}</em></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}</li>`; };
+// how far the drawing reaches above the rim (garnish), measured once per drink
+let MEAS=null; const TOPY={};
+function topY(d){ if (d.id in TOPY) return TOPY[d.id];
+  if (!MEAS){ MEAS=document.createElement('div'); MEAS.style.cssText='position:absolute;left:-9999px;top:0;width:200px;height:240px;visibility:hidden'; document.body.appendChild(MEAS); }
+  MEAS.innerHTML=glassSVG(d,{bg:bgOf(d),noTile:true}); let y=0; try{ y=MEAS.querySelector('svg').getBBox().y; }catch(e){}
+  return TOPY[d.id]=y; }
+// one scale for every glass, cropped by the row; low glasses are lifted so their rim sits where a coupe's does, never so far the garnish is cut
+function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
+  return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
+    return `--t${n}:${t.toFixed(1)}px`; }).join(';'); }
+const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xq">${d.lines.filter(l=>!l.opt).map(l=>`<span>${qBig(l)}</span>`).join('')}</span><span class="xo"><i>${esc(t().recipe)} →</i><em>${esc(techStr(d))} · ${esc(glassName(d))}</em></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}</li>`; };
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
