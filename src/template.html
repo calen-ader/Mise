@@ -174,6 +174,9 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6;stro
 .ffoot .pill{width:100%;justify-content:center;height:52px;border-radius:26px;background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .units{display:flex;justify-content:flex-end;margin:-6px 0 6px}
 .units .seg button{height:36px}
+.video{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.video iframe{width:100%;aspect-ratio:16/9;border:0;background:#000;display:block}
+.video .ext{color:var(--fg2);font-size:13px;text-underline-offset:3px}
 .contains{padding:0 20px;margin-top:6px}
 .contains h3{color:var(--fg2);font-size:13px;font-weight:500;margin:16px 0 6px}
 .contains ul{list-style:none;margin:0;padding:0}
@@ -230,7 +233,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', garnish:'Garnish', story:'Story', watch:'Watch on YouTube',
+   glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On the ticket', ticket:'Ticket', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
  es:{
@@ -249,7 +252,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', garnish:'Garnish', story:'Historia', watch:'Ver en YouTube',
+   glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', ticket:'Comanda', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
 };
@@ -474,7 +477,8 @@ function detail(d){
       <h3>${tt.method}</h3><p>${esc(L(d.method))}</p>
       ${L(d.garnish)?`<h3>${tt.garnish}</h3><p>${esc(L(d.garnish))}</p>`:''}
       ${L(d.history)?`<h3>${tt.story}</h3><p>${esc(L(d.history))}</p>`:''}
-      ${d.video?`<a class="pill" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${ICON.play}${tt.watch}</a>`:''}</div></div>`;
+      ${d.video?`<div class="video" id="vid"><button type="button" class="pill" data-play="${esc(d.video)}">${ICON.play}${tt.play}</button>
+        <a class="ext" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch}</a></div>`:''}</div></div>`;
 }
 
 function containsHTML(d){
@@ -560,6 +564,10 @@ document.addEventListener('click', e=>{
   if(e.target.closest('#fopen')){ openFilters(); return; }
   if(e.target.closest('#fclose') || e.target.closest('#fshow') || e.target===$('#fs')){ closeFilters(); return; }
   if(e.target.closest('#fclear')){ S=blank(); changed(); return; }
+  const pl=e.target.closest('[data-play]'); if(pl){ const f=document.createElement('iframe');
+    f.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(pl.dataset.play)}?autoplay=1&playsinline=1&rel=0`;
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; f.title=byId[openId]?byId[openId].name:'Video';
+    pl.replaceWith(f); return; }
   const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); open(openId,false); return; }
   const a=e.target.closest('[data-add]'); if(a){ const id=a.dataset.add; setCovers(id, (ticket[id]||0)+1); open(id,false); renderTab(true); return; }
   const st=e.target.closest('[data-step]'); if(st){ setCovers(st.dataset.step, (ticket[st.dataset.step]||0)+(+st.dataset.dv)); renderTicket(false); return; }
@@ -575,6 +583,7 @@ document.addEventListener('click', e=>{
 $('#q').addEventListener('input', e=>{ Q=e.target.value; $('#qx').hidden=!Q; renderList(); });
 $('#qx').addEventListener('click', e=>{ e.preventDefault(); Q=''; $('#q').value=''; $('#qx').hidden=true; renderList(); $('#q').focus(); });
 document.addEventListener('input', e=>{ if(e.target.id==='tokin') suggest(); });
+document.addEventListener('securitypolicyviolation', e=>{ if(!/frame/.test(e.violatedDirective)) return; const f=document.querySelector('.video iframe'); if(f) f.remove(); });
 document.addEventListener('change', e=>{ if(e.target.id==='mybar'){ S.mybar=e.target.checked; changed(); } });
 document.addEventListener('keydown', e=>{ if(e.target.id==='tokin' && e.key==='Enter'){ const f=$('#sugg button'); if(f){ e.preventDefault(); f.click(); } } });
 document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#fs').hidden) closeFilters(); else if(!$('#cmd').hidden) closeTicket(); else if(openId) close(); });
