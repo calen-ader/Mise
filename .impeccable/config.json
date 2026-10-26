@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "src/template.html"
+        ],
+        "createdAt": "2026-10-26T01:35:01.795Z",
+        "reason": "Claude triage: header text inherits #ede7dc (~15:1 on #030202); detector assumes default black"
+      }
+    ]
+  }
+}
