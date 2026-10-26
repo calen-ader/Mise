@@ -55,11 +55,13 @@ function pickBG(d){const S=P[SHAPE[d.glass]||'coupe'],liq=LIQ[d.id]||d.color||'#
 window.glassBG=pickBG;window.glassLiq=d=>LIQ[d.id]||d.color||'#e9a54a';
 window.glassSVG=function(d,opt){opt=opt||{};
  const k=SHAPE[d.glass]||'coupe',S=P[k],id='g'+(++uid);
- const liq=LIQ[d.id]||d.color||'#e9a54a',L=LAYER[d.id]||{};
+ let liq=LIQ[d.id]||d.color||'#e9a54a';const L=opt.bands?{}:(LAYER[d.id]||{});
+ if((opt.mode)==='riso')liq=riso(liq);
  const ings=(d.lines||[]).flatMap(l=>l.ids||[]);
  const has=x=>ings.includes(x);
- const bg=opt.bg||pickBG(d);
- const G=mix(INK.pa,bg,.2),[xl,xr,ry]=S.r,cx=(xl+xr)/2,w=xr-xl;
+ const mode=opt.mode||'flat';
+ const bg=mode==='flat'?(opt.bg||pickBG(d)):(opt.bg||INK.pa);
+ const G=mode==='flat'?mix(INK.pa,bg,.2):'__G__',[xl,xr,ry]=S.r,cx=(xl+xr)/2,w=xr-xl;
  const g=((d.garnish&&d.garnish.en)||'').toLowerCase(),ice=d.ice;
  const foam=has('egg-white')||has('egg-yolk')?'#f1e6cf':has('espresso')?'#c9a77a':null;
  const fizz=FIZZ.some(has);
@@ -80,6 +82,8 @@ window.glassSVG=function(d,opt){opt=opt||{};
   const top0=ice==='crushed'||ice==='blended'?S.r[2]+6:S.f;
   body+=`<path d="${S.o}" fill="${G}"/><clipPath id="${id}"><path d="${S.i}"/></clipPath>`;
   let inner=`<rect x="0" y="${top0}" width="200" height="240" fill="${liq}"/>`;
+  if(mode==='engrave'){const pid='el'+liq.slice(1);inner=`<defs><pattern id="${pid}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)"><rect width="5" height="5" fill="#f6f2ea"/><path d="M0 0V5" stroke="${liq}" stroke-width="3.6"/></pattern></defs><rect x="0" y="${top0}" width="200" height="240" fill="url(#${pid})"/><rect x="0" y="${top0}" width="200" height="3" fill="#141414"/>`}
+  if(opt.bands){const bot=S.st?S.st[0]-4:210,tot=opt.bands.reduce((a,b)=>a+b.v,0);let y=top0;inner='';opt.bands.forEach((b,i)=>{const h=(bot-top0)*b.v/tot;inner+=`<rect x="0" y="${y}" width="200" height="${i===opt.bands.length-1?240:h+.5}" fill="${b.c}"/>`;y+=h});opt.bandY=[top0,bot]}
   if(L.bottom)inner+=`<rect x="0" y="${top0+(232-top0)*.6}" width="200" height="240" fill="${L.bottom}"/>`;
   if(L.top)inner+=`<rect x="0" y="${top0}" width="200" height="${L.th||12}" fill="${L.top}"/>`;
   if(foam)inner+=`<rect x="0" y="${top0}" width="200" height="13" fill="${foam}"/>`;
@@ -116,8 +120,19 @@ window.glassSVG=function(d,opt){opt=opt||{};
  if(ice==='hot')front+=`<path d="M${cx-14} ${ry-10}q-8-12 0-24q8-12 0-24M${cx+12} ${ry-14}q-8-12 0-24q8-12 0-24" fill="none" stroke="${G}" stroke-width="4" stroke-linecap="round" opacity=".7"/>`;
  if((k==='highball'||k==='collins'||k==='hurricane'||S.op)&&(ice==='crushed'||ice==='blended'||/straw/.test(g)))back+=straw(cx+10,ry+10,bg===INK.ink?INK.co:INK.ink);
  const tile=opt.noTile?'':`<rect width="200" height="240" fill="${bg}"/>`;
- return `<svg viewBox="0 0 200 240" class="gl" aria-hidden="true">${tile}<g transform="translate(${opt.full?0:16} ${opt.full?0:38}) scale(${opt.full?1:.84})">${back}${body}${top}${front}</g></svg>`;
+ let defs='';
+ if(mode!=='flat'){
+  const swap={line:['fill="#fbf8f2" stroke="#141414" stroke-width="2.4" stroke-linejoin="round"','stroke="#141414"'],riso:['fill="url(#rso)"','stroke="#1d2bd6"'],engrave:['fill="url(#eng)" stroke="#141414" stroke-width="1.6"','stroke="#141414"']}[mode];
+  const fix=x=>x.split('fill="__G__"').join(swap[0]).split('stroke="__G__"').join(swap[1]);
+  back=fix(back);body=fix(body);top=fix(top);front=fix(front);
+  if(mode==='riso')defs='<defs><pattern id="rso" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><rect width="5" height="5" fill="#f3eee4"/><circle cx="2.5" cy="2.5" r="1.45" fill="#1d2bd6" opacity=".85"/></pattern></defs>';
+  if(mode==='engrave')defs='<defs><pattern id="eng" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#f6f2ea"/><path d="M0 0V4" stroke="#141414" stroke-width=".9"/></pattern></defs>';
+ }
+ if(mode==='riso'){body=body.replace(/<g clip-path/,'<g style="mix-blend-mode:multiply" clip-path');front=`<g style="mix-blend-mode:multiply" transform="translate(2.5 -1.5)">${front}</g>`}
+ return `<svg viewBox="0 0 200 240" class="gl" aria-hidden="true">${defs}${tile}<g transform="translate(${opt.full?0:16} ${opt.full?0:38}) scale(${opt.full?1:.84})">${back}${body}${top}${front}</g></svg>`;
 };
+const RISO=['#ff48b0','#ff6c2f','#ffe800','#00a95c','#1d2bd6','#765ba7','#c8ac38','#f15060'];
+function riso(c){let best=RISO[0],bd=1e9;RISO.forEach(r=>{const x=dist(r,c);if(x<bd){bd=x;best=r}});return best}
 function mix(a,b,t){a=hx(a);b=hx(b);return '#'+a.map((v,i)=>Math.round(v*(1-t)+b[i]*t).toString(16).padStart(2,'0')).join('')}
 function shade(c){return '#'+hx(c).map(v=>Math.round(v*.72).toString(16).padStart(2,'0')).join('')}
 window.GLASS_INK=INK;
