@@ -74,30 +74,45 @@ body{background:var(--ink)}
 main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-height:100dvh}
 .idx{list-style:none;margin:0;padding:0}
 .idx .hd{display:none}
-.tl{position:relative;background:var(--ink);color:var(--pa);border-bottom:1px solid rgba(243,238,228,.12);transition:background .3s var(--ease),color .3s var(--ease)}
-.tl .open{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;column-gap:6px;width:100%;height:92px;padding:0 112px 0 var(--gut);text-align:left;position:relative;overflow:hidden}
-.tl .no{font:400 12px/1 "Archivo Black",sans-serif;opacity:.55;font-variant-numeric:tabular-nums}
-.tl .nm{font:400 clamp(26px,7.4vw,56px)/.98 "Archivo Black",sans-serif;letter-spacing:-.05em;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;position:relative;z-index:2;padding-bottom:.08em}
-.tl .ing{display:none}
-.tl .c{display:none}
-.tl .ab{font:400 13px/1 "Archivo Black",sans-serif;opacity:.7;align-self:start;margin-top:18px;position:relative;z-index:2}
-.tl .art{position:absolute;right:-4px;top:-16px;width:110px;height:132px;transition:transform .5s var(--ease)}
+.tl{position:relative;background:var(--ink);color:var(--pa);border-bottom:1px solid rgba(243,238,228,.12);transition:background .35s var(--ease),color .35s var(--ease)}
+.tl .open{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;column-gap:6px;width:100%;min-height:92px;padding:12px 104px 12px var(--gut);text-align:left;position:relative}
+.tl .no{font:400 12px/1 "Archivo Black",sans-serif;opacity:.55;font-variant-numeric:tabular-nums;align-self:start;margin-top:.7em}
+.tl .nm{font:400 clamp(26px,7.4vw,56px)/.98 "Archivo Black",sans-serif;letter-spacing:-.05em;padding-bottom:.06em}
+.tl .c,.tl .xp{display:none}
+.tl .ab{font:400 13px/1 "Archivo Black",sans-serif;opacity:.7;align-self:start;margin-top:6px}
+.tl .art{position:absolute;right:10px;top:8px;bottom:8px;aspect-ratio:200/240;transition:transform .5s var(--ease)}
 .tl .art svg{width:100%;height:100%}
 .tl:active{background:var(--bg);color:var(--fg)}
-@media(hover:hover){.tl:hover,.tl:focus-within{background:var(--bg);color:var(--fg)}.tl:hover .art{transform:translateY(-10px)}}
 .qa{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;color:inherit;font:800 22px/1 "Big Shoulders Display";z-index:3}
 .qa.on{background:var(--pa);color:var(--ink);font-size:16px;width:34px;height:34px;margin:5px}
 @media(min-width:960px){
-  .idx .hd{display:grid;grid-template-columns:64px minmax(0,1fr) 100px 150px 150px 64px 70px;align-items:center;height:36px;column-gap:6px;padding:0 240px 0 var(--gut);border-bottom:1px solid rgba(243,238,228,.3);color:#8d8a84;font:800 12px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase}
-  .tl .open{grid-template-columns:64px minmax(0,1fr) 100px 150px 150px 64px 70px;height:106px;padding:0 240px 0 var(--gut)}
-  .tl .no{font-size:14px}
-  .tl .nm{font-size:calc(clamp(40px,3.9vw,56px)*var(--s,1));display:block;white-space:nowrap}
-  .tl .c{display:block;font:800 14px/1.1 "Big Shoulders Display";letter-spacing:.06em;text-transform:uppercase;padding-right:10px}
-  .tl .ab{font-size:20px;letter-spacing:-.03em;margin:0;opacity:1;align-self:center}
-  .tl .ing{display:block;font:600 13px/1 "Inter Tight",sans-serif;letter-spacing:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-height:0;opacity:0;transition:max-height .3s var(--ease),opacity .3s,margin .3s;margin-top:0}
-  .tl:hover .ing,.tl:focus-within .ing{max-height:20px;opacity:.85;margin-top:8px}
-  .tl .art{right:30px;top:-26px;width:170px;height:204px}
-  .qa{right:6px;top:6px}
+  .idx .hd{display:grid;grid-template-columns:64px minmax(0,1fr) 150px 110px;align-items:center;height:38px;column-gap:6px;padding:0 280px 0 var(--gut);border-bottom:1px solid rgba(243,238,228,.3);color:#8d8a84;font:800 12px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase}
+  .tl .open{grid-template-columns:64px minmax(0,1fr) 150px 110px;align-items:start;min-height:112px;padding:24px 280px 22px var(--gut)}
+  .tl .no{font-size:14px;margin-top:.9em}
+  .tl .nm{font-size:calc(clamp(40px,3.9vw,58px)*var(--s,1));white-space:nowrap}
+  .tl .c{display:block;font:800 15px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase;margin-top:1.3em}
+  .tl .ab{font-size:24px;letter-spacing:-.03em;opacity:1;margin-top:.7em}
+  .tl .art{right:48px;top:10px;bottom:10px}
+  /* hover: the row floods with the drink's ink, opens to its recipe and stands the glass up */
+  .tl .xp{display:grid;grid-column:2/-1;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease) .1s}
+  .tl .xp>div{overflow:hidden;min-height:0}
+  .tl .xq{display:flex;flex-wrap:wrap;gap:0 34px;padding-top:22px;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .45s var(--ease)}
+  .tl .xq span{display:block;padding-bottom:4px}
+  .tl .xq b{display:block;font:400 46px/.9 "Archivo Black",sans-serif;letter-spacing:-.05em}
+  .tl .xq b.wd{font-size:26px;line-height:1.66}
+  .tl .xq small{display:block;font:600 13px/1.25 "Inter Tight";margin-top:6px;max-width:13em;opacity:.85}
+  .tl .xo{display:flex;align-items:center;gap:22px;margin-top:20px;font:800 15px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase}
+  .tl .xo i{font-style:normal;border-bottom:2px solid currentColor;padding-bottom:3px}
+  .tl .xo em{font:italic 400 17px/1.2 "Bodoni Moda",serif;text-transform:none;letter-spacing:0;opacity:.85}
+  .tl:hover .xp,.tl:has(:focus-visible) .xp{grid-template-rows:1fr}
+  .tl:hover .xq,.tl:has(:focus-visible) .xq{opacity:1;transform:none;transition-delay:.15s}
+  .tl:hover,.tl:has(:focus-visible){background:var(--bg);color:var(--fg)}
+  .tl:hover .art{transform:scale(1.04)}
+  .qa{right:290px;top:auto;bottom:20px;width:auto;height:40px;padding:0 14px;font-size:15px;letter-spacing:.07em;background:var(--ink);color:var(--pa);opacity:0;pointer-events:none;transition:opacity .25s}
+  .qa::before{content:attr(data-l)}
+  .qa:not(.on) .pl{display:none}
+  .tl:hover .qa,.tl:has(:focus-visible) .qa,.qa.on{opacity:1;pointer-events:auto}
+  .qa.on{margin:0;width:auto;height:40px;background:var(--pa);color:var(--ink);gap:4px;display:flex;align-items:center}
 }
 .grain{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:.2;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .empty{padding:60px var(--gut)}.empty .blk{background:var(--pa);color:var(--ink)}
@@ -122,16 +137,14 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 @keyframes itemin{from{opacity:0;translate:0 22px}}
 ::view-transition-group(*){animation-duration:.55s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.25s}
-.sheet .dcol>*{animation:rise .7s var(--ease) both}
-.sheet .dcol>:nth-child(2){animation-delay:.06s}.sheet .dcol>:nth-child(3){animation-delay:.12s}.sheet .dcol>:nth-child(n+4){animation-delay:.18s}
 
 /* drink page: one poster per drink, the recipe on a visible four-column grid */
 .sheet{position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;background:var(--pa)}
 .dwrap{position:relative;--fg:var(--pa)}
 .dwrap.lt{--fg:var(--ink)}
 .plate{position:relative;overflow:hidden;background:var(--bg);height:min(60svh,520px);color:var(--fg)}
-.plate .art{position:absolute;top:calc(48px + env(safe-area-inset-top));bottom:16%;left:30%;right:var(--gut);display:flex;justify-content:flex-end}
-.plate .art svg{height:100%;width:auto}
+.plate .art{position:absolute;top:calc(50px + env(safe-area-inset-top));bottom:max(35%,178px);left:var(--gut);right:var(--gut);display:flex;justify-content:flex-end}
+.plate .art svg{height:100%;width:auto;max-width:100%}
 .plate .ph{position:absolute;inset:0}
 .plate .ph img{width:100%;height:100%;object-fit:cover}
 .plate.photo .art{display:none}
@@ -145,18 +158,18 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .view button{min-height:44px;opacity:.55;font-family:"Big Shoulders Display";font-weight:800;font-size:14px;letter-spacing:.07em;text-transform:uppercase}
 .view button[aria-pressed=true]{opacity:1}
 .head{position:absolute;z-index:2;left:var(--gut);right:var(--gut);bottom:18px}
-.head h2{font:400 clamp(54px,16vw,150px)/.84 "Archivo Black",sans-serif;letter-spacing:-.06em;margin:0 0 0 -.03em;text-wrap:balance}
+.head h2{font:400 min(clamp(54px,16vw,150px),calc((100vw - 2*var(--gut))/(var(--n)*.68)),calc(2*(100vw - 2*var(--gut))/(var(--m)*.68)))/.84 "Archivo Black",sans-serif;letter-spacing:-.06em;margin:0 0 0 -.03em;text-wrap:balance}
 .head .orig{display:block;font:600 13px/1.2 "Inter Tight";margin-top:12px}
-.sg{background-image:linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:25% 100%}
 .sg .tb{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 var(--gut);border-bottom:2px solid var(--ink);background:var(--pa)}
 .sg .tb .nav{display:flex;gap:16px}
 .sg .tb .nav button{min-height:44px;font-family:"Big Shoulders Display";font-weight:800;font-size:14px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
 .sg .tb .nav button:first-child{color:var(--ink3)}
 .units{display:flex;gap:14px}
 .g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.g .c{padding:12px 8px 14px 10px;border-bottom:1px solid var(--ink);min-width:0}
+.g .c{padding:12px 8px 14px 10px;border-bottom:1px solid var(--ink);min-width:0;overflow:hidden}
 .g .w2{grid-column:span 2}.g .w3{grid-column:span 3}.g .w4{grid-column:span 4}
-.g .q{display:block;font:400 clamp(28px,7.4vw,58px)/.9 "Archivo Black",sans-serif;letter-spacing:-.05em}
+.g .q{display:block;font:400 clamp(28px,7.4vw,58px)/.9 "Archivo Black",sans-serif;letter-spacing:-.05em;white-space:nowrap}
+.g .q.wd{font-size:clamp(20px,4.6vw,30px);line-height:1.6}
 .g .u{display:block;font:600 11.5px/1.2 "Inter Tight";color:var(--ink2);margin-top:6px;min-height:14px}
 .g .i{display:block;font:600 13.5px/1.2 "Inter Tight";margin-top:2px;overflow-wrap:break-word}
 .g .i em{display:block;font-style:normal;font-weight:500;font-size:12px;color:var(--ink2);margin-top:3px}
@@ -180,9 +193,9 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 @media(min-width:960px){
   .dwrap{display:grid;grid-template-columns:47% 53%;align-items:start}
   .plate{position:sticky;top:0;height:100dvh}
-  .plate .art{left:0;right:0;top:70px;bottom:auto;height:62%;justify-content:center}
+  .plate .art{left:0;right:0;top:70px;bottom:auto;height:56%;justify-content:center}
   .head{bottom:28px}
-  .head h2{font-size:clamp(86px,9.6vw,150px)}
+  .head h2{font-size:min(clamp(86px,9.6vw,150px),calc((47vw - 2*var(--gut))/(var(--n)*.68)),calc(2*(47vw - 2*var(--gut))/(var(--m)*.68)))}
   .sg{min-height:100dvh;display:flex;flex-direction:column}
   .sg .tb{padding:6px 24px}
   .g{flex:1;align-content:start}
@@ -480,22 +493,29 @@ const ivars = (d,i) => `--c:${d.col};--c2:${d.c2};--i:${i}`;
 /* browse: every drink drawn from its recipe */
 let LIST=[];
 const ART={};
-const bgOf = d => glassBG(d);
+const ALT = ['#1d2bd6','#ee4a36','#f7c21b','#12513a','#f2b7ae'];
+const rgbDist = (a,b) => Math.hypot(...[1,3,5].map(i=>parseInt(a.slice(i,i+2),16)-parseInt(b.slice(i,i+2),16)));
+// drinks that drew on black still need an ink of their own: the first one clear of the liquid colour
+const bgOf = d => { if (d._bg) return d._bg; let c=glassBG(d);
+  if (c==='#141414'){ const liq=glassLiq(d), h=[...d.id].reduce((a,ch)=>a+ch.charCodeAt(0),0); const order=ALT.map((_,j)=>ALT[(h+j)%ALT.length]);
+    c = order.find(x=>rgbDist(x,liq)>200) || order.sort((x,y)=>rgbDist(y,liq)-rgbDist(x,liq))[0]; }
+  return d._bg=c; };
 const lightBg = c => ['#f7c21b','#f2b7ae'].includes(c);
-const artSVG = d => ART[d.id] || (ART[d.id]=glassSVG(d));
+const artSVG = d => ART[d.id] || (ART[d.id]=glassSVG(d,{bg:bgOf(d)}));
 const qaHTML = d => { const n=ticket[d.id]||0;
-  return `<button type="button" class="qa${n?' on':''}" data-add="${d.id}" data-quick="1" aria-label="${esc(t().add)}: ${esc(d.name)}${n?` (${n})`:''}">${n?`<span class="num">${n}</span>`:'+'}</button>`; };
+  return `<button type="button" class="qa${n?' on':''}" data-l="${esc(n?t().ticket+' ×':'+ '+t().ticket)}" data-add="${d.id}" data-quick="1" aria-label="${esc(t().add)}: ${esc(d.name)}${n?` (${n})`:''}">${n?`<span class="num">${n}</span>`:'<span class="pl">+</span>'}</button>`; };
 const capW = s => { const w=String(s).split(' ')[0]; return w.charAt(0).toUpperCase()+w.slice(1); };
-const listArt = d => ART[d.id] || (ART[d.id]=glassSVG(d,{bg:'#141414',noTile:true}));
+const LART={}; const listArt = d => LART[d.id] || (LART[d.id]=glassSVG(d,{bg:bgOf(d),noTile:true}));
 const ingLine = d => d.lines.filter(l=>!l.opt).map(l=>{ const [a,b]=qtyParts(l); return `${a||capW(b)} ${ingName(l.ids[0])}`; }).join(' · ');
-const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}<span class="ing">${esc(ingLine(d))}</span></span><span class="c">${esc(t().bases[d.base])}</span><span class="c">${esc(techStr(d))}</span><span class="c">${esc(glassName(d).replace(/ (glass|copa)$/i,''))}</span><span class="c">${d.year||''}</span><span class="ab">${Math.round(d.abv)}%</span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}</li>`; };
+const qBig = l => { const [a,b]=qtyParts(l); return a ? `<b>${esc(a)}</b><small>${esc(b)} ${esc(ingName(l.ids[0]))}</small>` : `<b class="wd">${esc(capW(b))}</b><small>${esc(ingName(l.ids[0]))}</small>`; };
+const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xq">${d.lines.filter(l=>!l.opt).map(l=>`<span>${qBig(l)}</span>`).join('')}</span><span class="xo"><i>${esc(t().recipe)} →</i><em>${esc(techStr(d))} · ${esc(glassName(d))}</em></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}</li>`; };
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
   $('#count').textContent = filtered ? tt.of(list.length, DR.length) : tt.drinks(DR.length);
   if (!list.length){ LIST=[]; $('#main').innerHTML = `<div class="empty"><p>${tt.none}</p><button class="blk" type="button" id="clr">${tt.clear} →</button></div>`; return; }
   LIST = list;
-  const tt2=t(); $('#main').innerHTML = `<div class="idx"><div class="hd" aria-hidden="true"><span>${tt2.colNo}</span><span>${tt2.colDrink}</span><span>${tt2.base}</span><span>${tt2.tech}</span><span>${tt2.glass}</span><span>${tt2.year}</span><span>${tt2.abv}</span></div><ol class="idx" id="grid">${list.map(tileHTML).join('')}</ol></div>`;
+  const tt2=t(); $('#main').innerHTML = `<div class="idx"><div class="hd" aria-hidden="true"><span>${tt2.colNo}</span><span>${tt2.colDrink}</span><span>${tt2.base}</span><span>${tt2.abv}</span></div><ol class="idx" id="grid">${list.map(tileHTML).join('')}</ol></div>`;
 }
 function markCard(id, pop){
   document.querySelectorAll(`.qa[data-add="${id}"]`).forEach(b=>{ b.outerHTML=qaHTML(byId[id]); });
@@ -512,22 +532,27 @@ function vt(update){
   if (!canVT() || !$('#sheet').hidden || !$('#fs').hidden){ update(); return; }
   nameItems(); const tr=document.startViewTransition(()=>{ update(); nameItems(); }); tr.finished.finally(clearNames);
 }
-function heroOpen(id, src){
-  if (!canVT()){ open(id); return; }
-  const tile = src.closest('.tl'), art = tile && inView(tile,0) ? tile.querySelector('.art') : null, nm = tile ? tile.querySelector('.nm') : null;
-  clearNames(); if(art) art.style.viewTransitionName='hero'; if(nm) nm.style.viewTransitionName='hnm';
-  const tr=document.startViewTransition(()=>{ if(art) art.style.viewTransitionName=''; if(nm) nm.style.viewTransitionName=''; open(id);
-    const pl=$('#sheet .plate'), h=$('#sheet .head h2'); if(pl && art) pl.style.viewTransitionName='hero'; if(h && nm) h.style.viewTransitionName='hnm'; });
-  tr.finished.finally(clearNames);
+// open: the drink's page grows out of its own row, already in the row's colour; close folds it back
+const EASE='cubic-bezier(.7,0,.2,1)';
+function rowRect(id){ const r=document.querySelector(`.tl[data-k="${id}"]`); if(!r) return null; const b=r.getBoundingClientRect(); return (b.bottom>0 && b.top<innerHeight) ? b : null; }
+const clipOf = b => `inset(${Math.max(0,b.top)}px 0 ${Math.max(0,innerHeight-b.bottom)}px 0)`;
+function heroOpen(id){
+  const b = reduced() ? null : rowRect(id);
+  open(id);
+  const sh=$('#sheet'); if(!b || !sh.animate) return;
+  sh.animate([{clipPath:clipOf(b)},{clipPath:'inset(0px 0 0px 0)'}],{duration:620,easing:EASE});
+  const parts=sh.querySelectorAll('.head, .plate .art, .sg');
+  parts.forEach((el,k)=>el.animate([{opacity:0,transform:'translateY(28px)'},{opacity:1,transform:'none'}],{duration:620,delay:220+k*70,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
 }
 function heroClose(pop=false){
-  if (!canVT() || openId===null){ close(pop); return; }
-  const id=openId, top=$('#sheet').scrollTop<200, pl=$('#sheet .plate'), h=$('#sheet .head h2');
-  const tile=document.querySelector(`.tl[data-k="${id}"]`), ok = top && tile && inView(tile,0);
-  if (ok){ pl.style.viewTransitionName='hero'; h.style.viewTransitionName='hnm'; }
-  const tr=document.startViewTransition(()=>{ pl.style.viewTransitionName=''; h.style.viewTransitionName=''; close(pop);
-    if (ok){ tile.querySelector('.art').style.viewTransitionName='hero'; tile.querySelector('.nm').style.viewTransitionName='hnm'; } });
-  tr.finished.finally(clearNames);
+  if (openId===null) return;
+  const sh=$('#sheet'), id=openId;
+  if (reduced() || !sh.animate || heroClose.busy){ close(pop); return; }
+  heroClose.busy=true;
+  const b=rowRect(id);
+  const anim = b ? sh.animate([{clipPath:'inset(0px 0 0px 0)'},{clipPath:clipOf(b)}],{duration:480,easing:EASE})
+                 : sh.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(24px)'}],{duration:260,easing:'ease-in'});
+  anim.finished.then(()=>{ heroClose.busy=false; close(pop); });
 }
 // quick add: a drop of the drink's colour arcs into the ticket
 function fly(from, d){
@@ -622,11 +647,12 @@ function qtyParts(l){
 function detail(d){
   const tt=t(); const n = ticket[d.id]||0, bg=bgOf(d);
   const note = l => { const x = lang==='es'?l.n_es:l.n_en; return [x, l.opt?tt.opt:''].filter(Boolean).join(' · '); };
-  const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div class="c ln${l.opt?' opt':''}"><span class="q">${esc(a||capW(b))}</span><span class="u">${a?esc(b):''}</span><span class="i">${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span></div>`; }).join('');
+  const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div class="c ln${l.opt?' opt':''}"><span class="q${a?'':' wd'}">${esc(a||capW(b))}</span><span class="u">${a?esc(b):''}</span><span class="i">${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span></div>`; }).join('');
   const nf = d.lines.length+3, rem = 4-(nf%4||4) || 4;
   const seq = LIST.includes(d) ? LIST : DR.slice().sort(SORTS.az), k = seq.indexOf(d), prv = seq[(k-1+seq.length)%seq.length], nxt = seq[(k+1)%seq.length];
   const cls = lightBg(bg) ? 'lt' : '';
-  return `<div class="dwrap ${cls}" style="--bg:${bg}">
+  const nW = Math.max(...d.name.split(/\s+/).map(w=>w.length));
+  return `<div class="dwrap ${cls}" style="--bg:${bg};--n:${Math.max(5,nW)};--m:${Math.max(12,d.name.length)}">
     <div class="plate${view==='photo'?' photo':''}">
       <div class="bar3"><button class="close" type="button" id="cls">${ICON.back}<span>${t().back}</span></button>
         <div class="view" role="group"><button type="button" data-view="art" aria-pressed="${view!=='photo'}">${tt.drawing}</button><button type="button" data-view="photo" aria-pressed="${view==='photo'}">${tt.photo}</button></div></div>
@@ -746,7 +772,7 @@ document.addEventListener('click', e=>{
   if(e.target.closest('#tab')){ openTicket(); return; }
   if(e.target.closest('#ccls')){ closeTicket(); return; }
   if(e.target.closest('#cclr')){ ticket={}; store.set('ticket',ticket); renderList(); closeTicket(); return; }
-  const o=e.target.closest('[data-id]'); if(o){ heroOpen(o.dataset.id, o); return; }
+  const o=e.target.closest('[data-id]'); if(o){ if(openId!==null && o.closest('#sheet')){ open(o.dataset.id); return; } heroOpen(o.dataset.id); return; }
   if(e.target.closest('#cls')){ heroClose(); return; }
   if(e.target.closest('#clr')){ S=blank(); Q=''; saveS(); $('#q').value=''; $('#qx').hidden=true; all(); return; }
   const l=e.target.closest('[data-l]'); if(l){ lang=l.dataset.l; store.set('lang',lang); all(); return; }
