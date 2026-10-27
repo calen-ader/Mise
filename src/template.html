@@ -133,15 +133,14 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 @keyframes pop{40%{transform:scale(1.2)}}
 
 /* ---------- motion ---------- */
-.intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--pa);cursor:pointer;transition:background .8s var(--ease)}
-.intro .w{position:relative;display:flex;font:500 clamp(40px,9vw,84px)/1 "Bodoni Moda",serif;letter-spacing:.3em;margin-right:-.3em;color:var(--ink)}
-.intro .w span{display:inline-block;opacity:0;transform:translateY(.4em);animation:letter .9s var(--ease) forwards;animation-delay:calc(var(--k)*80ms + 100ms)}
-.intro .rule{position:absolute;left:0;right:.3em;bottom:-.4em;height:3px;background:var(--co);transform:scaleX(0);transform-origin:0 50%;animation:rule .8s .5s var(--ease) forwards}
-.intro .inks{position:absolute;inset:auto 0 0 0;display:flex;height:0;transition:height .7s var(--ease)}
-.intro .inks i{flex:1}
-.intro.go .inks{height:18vh}
-.intro.out{background:rgba(243,238,228,0);pointer-events:none}
-.intro.out .rule,.intro.out .inks{opacity:0;transition:opacity .4s}
+.intro{position:fixed;left:0;right:0;bottom:0;z-index:15;overflow:hidden;cursor:pointer}
+.intro .lay{position:absolute;inset:0;background:var(--ink);color:var(--pa)}
+.intro .wet{background:none;color:var(--ink);clip-path:url(#introlq)}
+.intro .bg{position:absolute;left:0;top:0}
+.intro .n{position:absolute;left:calc(var(--gut) - .04em);bottom:max(3vh,18px);font:800 min(50vw,58vh)/.78 var(--fd);letter-spacing:-.05em}
+.intro .k{position:absolute;left:var(--gut);top:max(4vh,24px);font:700 12px/1.6 var(--ft);letter-spacing:.1em;text-transform:uppercase}
+.intro .k b{display:block;font:800 clamp(22px,3vw,34px)/1 var(--fd);letter-spacing:-.02em;text-transform:none;margin-top:6px}
+.intro.up{transform:translateY(-101%);transition:transform .75s cubic-bezier(.7,0,.2,1)}
 @keyframes letter{to{opacity:1;transform:none}}
 @keyframes rule{to{transform:scaleX(1)}}
 .enter [data-k]{animation:itemin .8s var(--ease) both;animation-delay:calc(min(var(--i),16)*40ms)}
@@ -389,7 +388,7 @@ const T = {
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
    glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
-   add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
+   add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
  es:{
@@ -409,7 +408,7 @@ const T = {
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
    glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
-   add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
+   add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
 };
@@ -641,20 +640,38 @@ function fly(from, d){
   dot.animate([{transform:`translate(${x0}px,${y0}px) scale(.6)`},{transform:`translate(${(x0+x1)/2}px,${Math.min(y0,y1)-140}px) scale(1.5)`,offset:.45},{transform:`translate(${x1}px,${y1}px) scale(.3)`,opacity:.7}],
     {duration:700,easing:'cubic-bezier(.45,0,.25,1)'}).finished.then(()=>{ dot.remove(); renderTab(true); });
 }
+/* intro: under the masthead the count pours to 102. A stream drops in, the level rises with ripples and bubbles, then the glass lifts off the list */
 function intro(force){
   if (reduced()) return false;
   if (!force){ try{ if(sessionStorage.getItem('mise.intro')) return false; sessionStorage.setItem('mise.intro','1'); }catch(e){} }
-  const el=document.createElement('div'); el.className='intro';
-  el.innerHTML=`<div class="w" aria-hidden="true">${'MISE'.split('').map((c,k)=>`<span style="--k:${k}">${c}</span>`).join('')}<b class="rule"></b></div><div class="inks" aria-hidden="true">${['ul','co','su','ink'].map(k=>`<i style="background:var(--${k})"></i>`).join('')}</div>`;
-  setTimeout(()=>el.classList.add('go'),350);
-  document.body.appendChild(el); document.body.classList.add('flying'); $('#main').style.opacity='0';
-  let done=false;
-  const finish=()=>{ if(done) return; done=true;
-    const w=el.querySelector('.w'), a=w.getBoundingClientRect(), b=$('#mark').getBoundingClientRect(), s=b.height/a.height;
-    el.classList.add('out'); $('#main').style.opacity=''; enter();
-    w.animate([{transform:'none'},{transform:`translate(${(b.left+b.width/2)-(a.left+a.width/2)}px,${(b.top+b.height/2)-(a.top+a.height/2)}px) scale(${s})`}],{duration:800,easing:'cubic-bezier(.7,0,.2,1)',fill:'forwards'})
-      .finished.then(()=>{ document.body.classList.remove('flying'); el.remove(); }); };
-  el.addEventListener('click', finish); setTimeout(finish, 1700);
+  const top=$('#top').getBoundingClientRect().height, W=innerWidth, H=innerHeight-top, tt=t(), CO='#ee4a36';
+  const el=document.createElement('div'); el.className='intro'; el.style.top=top+'px'; el.setAttribute('aria-hidden','true');
+  const lbl=`<span class="k">${tt.introK}<b>${tt.introB}</b></span><span class="n num">000</span>`;
+  el.innerHTML=`<svg width="0" height="0" style="position:absolute"><defs><clipPath id="introlq" clipPathUnits="userSpaceOnUse"><path d="M0 0Z"/></clipPath></defs></svg><div class="lay">${lbl}</div><div class="lay wet"><svg class="bg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><rect width="${W}" height="${H}" fill="${CO}"/><g fill="#f3eee4"></g></svg>${lbl}</div>`;
+  document.body.appendChild(el); $('#main').style.opacity='0';
+  const path=el.querySelector('clipPath path'), bub=el.querySelector('.bg g'), ns=el.querySelectorAll('.n');
+  const SX=W*(W<700?.8:.74), SW=W<700?9:15, DUR=2200, SEG=Math.max(30,Math.round(W/18)), B=[], t0=performance.now()+200;
+  const ease=x=>{ if(x<.1) return 0; const y=(x-.1)/.9; return y<.5?2*y*y:1-Math.pow(-2*y+2,2)/2; };
+  let last=-1, prev=0, done=false;
+  const finish=()=>{ if(done) return; done=true; el.classList.add('up'); $('#main').style.opacity=''; enter(); setTimeout(()=>el.remove(),800); };
+  (function tick(now){ if(done) return;
+    const t=now-t0, f=ease(Math.min(1,Math.max(0,t/DUR))), base=H-f*(H+70);
+    const amp=f<1?(1-f*.5)*13:Math.max(0,6.5*(1-(t-DUR)/300));
+    let d=`M0 ${H+2}`;
+    for(let i=0;i<=SEG;i++){ const X=i/SEG*W, dx=Math.abs(X-SX); d+=` L${X.toFixed(1)} ${(base-amp*1.5*Math.exp(-((dx/38)**2))+amp*Math.sin(dx/30-t/80)*Math.exp(-dx/360)+3*Math.sin(X/W*12+t/120)).toFixed(1)}`; }
+    d+=` L${W} ${H+2}Z`;
+    const sw=f<.96?SW:SW*Math.max(0,1-(f-.96)/.04);
+    if(sw>.2){ const bot=Math.min(base+24,(t+200)*2.4), cx=SX+1.5*Math.sin(t/45); d+=` M${(cx-sw/2).toFixed(1)} -2 L${(cx+sw/2).toFixed(1)} -2 L${(cx+sw/2).toFixed(1)} ${bot.toFixed(1)} L${(cx-sw/2).toFixed(1)} ${bot.toFixed(1)}Z`; }
+    path.setAttribute('d',d);
+    // bubbles: a plume where the stream lands, then a steady fizz across the glass
+    const dt=Math.min(40,t-prev); prev=t;
+    if(f>0){ const n=dt/16*(f<1?2.4:.9); for(let k=0;k<n;k++){ const near=Math.random()<(f<.96?.45:.1); B.push({x:near?SX+(Math.random()-.5)*90:Math.random()*W, y:near?Math.max(base+30,H*.2+Math.random()*H*.8):H+8, r:1.5+Math.random()*Math.random()*7, v:.12+Math.random()*.24, ph:Math.random()*6}); } }
+    for(const b of B){ b.y-=b.v*dt*(1+b.r*.06); b.x+=Math.sin(t/180+b.ph)*.25; }
+    for(let i=B.length-1;i>=0;i--) if(B[i].y<base+4) B.splice(i,1);
+    bub.innerHTML=B.map(b=>`<circle cx="${b.x.toFixed(1)}" cy="${b.y.toFixed(1)}" r="${b.r.toFixed(1)}" opacity=".6"/>`).join('');
+    const v=Math.round(f*102); if(v!==last){ last=v; ns.forEach(e=>e.textContent=String(v).padStart(3,'0')); }
+    if(t<DUR+380) requestAnimationFrame(tick); else finish(); })(performance.now());
+  el.addEventListener('click', finish);
   return true;
 }
 function enter(){ const m=$('#main'); m.classList.remove('enter'); void m.offsetWidth; m.classList.add('enter'); clearTimeout(enter.t); enter.t=setTimeout(()=>m.classList.remove('enter'),2600); }
