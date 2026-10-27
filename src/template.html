@@ -22,6 +22,15 @@ img,svg{display:block}
 .num,.count,.q{font-variant-numeric:tabular-nums}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;flex:none}
+/* arrows drawn at the weight of the caps they sit beside: thick shaft, square ends, mitred head */
+svg.ar{width:1.75em;height:1.3em;flex:none;fill:none;stroke:currentColor;stroke-width:4.2;stroke-linejoin:miter;stroke-linecap:butt;overflow:visible;transition:transform .3s var(--ease)}
+svg.ar.l{transform:scaleX(-1)}
+@media(hover:hover){button:hover>svg.ar:not(.l){transform:translateX(4px)}button:hover>svg.ar.l{transform:scaleX(-1) translateX(4px)}}
+.blk svg.ar{width:2.1em;height:1.55em}
+.ffoot .blk svg.ar{width:34px;height:25px}
+.fr svg.ar{margin-left:10px}
+svg.ar.o{width:1.1em;height:1.1em}
+@media(hover:hover){a:hover>svg.ar.o{transform:translate(2px,-2px)}}
 /* tall condensed caps: every label and action */
 .cc,.chip,.fbtn,.seg button,.txt,.strict button,.tok button,.close,.fsec h3,.facts dt,.prose h3,.contains h3,.units button,.tl .mt,.cap-l,.txtbtn,.tab,.s-sec h3,.nb-g>h3,.pb h4,.qz-ms h3{font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1}
 .nm{display:block;font-family:var(--fd);font-weight:800;line-height:1;letter-spacing:-.02em;text-wrap:balance}
@@ -164,7 +173,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .plate.photo .bar3,.plate.photo .head{color:var(--pa)}
 .plate.photo .head{text-shadow:0 1px 18px rgba(0,0,0,.35)}
 .close{min-height:44px;display:inline-flex;align-items:center;gap:6px;color:inherit}
-.close svg.i{width:13px;height:13px}
+.close svg.ar{width:22px;height:16px}
 .view{display:flex;gap:14px}
 .view button{min-height:44px;opacity:.55;font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .view button[aria-pressed=true]{opacity:1}
@@ -173,7 +182,9 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .head .orig{display:block;font:600 13px/1.2 var(--ft);margin-top:12px}
 .sg .tb{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 var(--gut);background:var(--pa)}
 .sg .tb .nav{display:flex;gap:16px;min-width:0}
-.sg .tb .nav button{min-height:44px;font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw}
+.sg .tb .nav button{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;max-width:40vw}
+.sg .tb .nav button{min-width:0}
+.sg .tb .nav button span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .sg .tb .nav button:first-child{color:var(--ink3)}
 .units{display:flex;gap:14px}
 /* the recipe side: blocks of colour, no rules. Recipe on paper, specs on the liquid's colour, method, history on black, allergens */
@@ -389,31 +400,16 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .snt .fhead .txtbtn{color:var(--pa)}
 .snt .fbody{flex:1;padding:3vh var(--gut) 30px}
 .sent{margin:0;max-width:1240px;font:800 clamp(32px,5.6vw,84px)/1.08 var(--fd);letter-spacing:-.035em;text-wrap:pretty}
-.sent.s2{margin-top:.7em;font-size:clamp(24px,3.6vw,54px);line-height:1.1}
 .sl{display:inline;padding:0;font:inherit;letter-spacing:inherit;color:#5f5c57;text-align:left;text-decoration:underline;text-decoration-thickness:.075em;text-underline-offset:.12em;text-decoration-color:#3b3936;transition:color .2s}
 @media(hover:hover){.sl:hover{color:#8d8a84}}
 .sl.on{color:var(--pa);text-decoration-color:var(--co)}
 .sl.cur{color:var(--co);text-decoration-color:var(--co)}
-.fvs{display:flex;gap:4px;margin-left:16px}
-.fvs button{padding:6px 8px;font:700 12px/1 var(--ft);letter-spacing:.08em;color:#8d8a84;text-transform:uppercase}
-.fvs button[aria-pressed=true]{background:var(--pa);color:var(--ink)}
-/* A: same sentence, lighter and smaller; unset slots are short blanks, set ones carry the colour */
-.fv-a .sent,.fv-d .sent{font-weight:700;font-size:clamp(26px,4.2vw,60px);line-height:1.18;letter-spacing:-.025em;color:#a9a59d}
-.fv-a .sent.s2{font-size:clamp(20px,2.8vw,40px)}
-.fv-a .sl:not(.on),.fv-d .sl:not(.on),.fv-c .sl:not(.on){color:#6b6862;text-decoration-style:dotted;text-decoration-thickness:.06em;text-decoration-color:#6b6862}
-.fv-a .sl.on,.fv-d .sl.on{color:var(--pa)}
-.fv-a .sl.cur,.fv-d .sl.cur,.fv-c .sl.cur{color:var(--co);text-decoration-color:var(--co)}
-/* B, D: four questions big, the rest in text size */
-.tier2{margin:1.6em 0 0;max-width:46ch;font:400 18px/1.65 var(--ft);color:#a9a59d}
-.tier2 .fk2,.adds .fk2{display:block;margin-bottom:8px;font:700 12px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:#8d8a84}
-.tier2 .sl{text-decoration-thickness:1px;text-underline-offset:4px}
-.fv-b .tier2 .sl:not(.on){color:#d2cec6;text-decoration-color:#5f5c57}
-.fv-b .tier2 .sl.on,.fv-d .tier2 .sl.on{color:var(--pa);font-weight:600;text-decoration-color:var(--co)}
-.fv-d .tier2 .sl:not(.on){color:#8d8a84}
-@media(min-width:900px){.tier2{font-size:20px}}
-/* C: the sentence only says what is set; the rest waits below as words */
-.fv-c .sent{font-size:clamp(32px,5vw,76px)}
-.fv-c .sl.on{color:var(--pa)}
+.snt .sl:not(.on){color:#6b6862;text-decoration-style:dotted;text-decoration-thickness:.06em;text-decoration-color:#6b6862}
+.snt .sl.cur{color:var(--co);text-decoration-color:var(--co)}
+.adds .fk2{display:block;margin-bottom:8px;font:700 12px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:#8d8a84}
+/* the sentence only says what is set; the rest waits below as words */
+.snt .sent{font-size:clamp(32px,5vw,76px)}
+.snt .sl.on{color:var(--pa)}
 .adds{margin-top:2.2em;display:flex;flex-wrap:wrap;column-gap:20px;row-gap:6px;max-width:640px}
 .adds .fk2{flex-basis:100%}
 .adds .ad{padding:6px 0;font:500 18px/1.3 var(--ft);color:#b9b5ad}
@@ -528,8 +524,9 @@ const L = o => o ? (o[lang] || o.en) : '';
 const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const $ = s => document.querySelector(s);
 const ICON = {
-  back:'<svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>',
-  fwd:'<svg class="i" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>',
+  back:'<svg class="ar l" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 11h26.5M18 2.5l8.5 8.5-8.5 8.5"/></svg>',
+  out:'<svg class="ar o" viewBox="0 0 22 22" aria-hidden="true"><path d="M2.5 19.5L18 4M6.5 3.5h12v12"/></svg>',
+  next:'<svg class="ar" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 11h26.5M18 2.5l8.5 8.5-8.5 8.5"/></svg>',
   close:'<svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>',
   play:'<svg class="i" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg>',
   plus:'<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
@@ -710,12 +707,12 @@ function topY(d){ if (d.id in TOPY) return TOPY[d.id];
 function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
   return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
     return `--t${n}:${t.toFixed(1)}px`; }).join(';')+`;--vc:${((top+233)/480).toFixed(3)}`; }
-const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)} →</button></div></li>`; };
+const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)}${ICON.next}</button></div></li>`; };
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
   $('#count').textContent = filtered ? tt.of(list.length, DR.length) : tt.drinks(DR.length);
-  if (!list.length){ LIST=[]; $('#main').innerHTML = `<div class="empty"><p>${tt.none}</p><button class="blk" type="button" id="clr">${tt.clear} →</button></div>`; return; }
+  if (!list.length){ LIST=[]; $('#main').innerHTML = `<div class="empty"><p>${tt.none}</p><button class="blk" type="button" id="clr">${tt.clear}${ICON.next}</button></div>`; return; }
   LIST = list;
   const tt2=t(); $('#main').innerHTML = `<div class="idx"><div class="hd" aria-hidden="true"><span>${tt2.colNo}</span><span>${tt2.colDrink}</span><span>${tt2.base}</span><span>${tt2.abv}</span></div><ol class="idx" id="grid">${list.map(tileHTML).join('')}</ol></div>`;
 }
@@ -860,9 +857,6 @@ function chipsFor(k){
 }
 /* filters, written as one sentence: each underlined part opens its options from the bottom */
 let FSLOT=null, FSLOTnew=false;
-// filter layout under review (preview build only shows the switch)
-const FV_SWITCH = false;
-let FV = FV_SWITCH ? store.get('fv','0') : '0';
 const SENT = {
   en:{ ph:{flav:'any taste',base:'any spirit',ing:'any ingredient',tech:'any method',str:'any strength',ice:'any ice',ggroup:'any glass',leave:'nothing',era:'any time',cat:'any IBA list',purpose:'any moment',sort:'A to Z'},
     or:'or', and:'and', no:'no', only:'and nothing else', animal:'anything animal',
@@ -872,13 +866,9 @@ const SENT = {
        purpose:{aperitivo:'an aperitif',refrescante:'something long',digestivo:'after dinner'},
        cat:{unforgettables:'the Unforgettables',contemporary:'the Contemporary Classics',newera:'the New Era'},
        sort:{az:'A to Z',light:'lightest first',strong:'strongest first',old:'oldest first',new:'newest first',few:'by fewest ingredients'}},
-    s1:x=>`Show me ${x.flav} drinks made with ${x.base} and ${x.ing}, ${x.tech}, ${x.str}, served ${x.ice} in ${x.ggroup}, leaving out ${x.leave}.`,
-    s2:x=>`Created ${x.era}, from ${x.cat}, for ${x.purpose}. Sorted ${x.sort}.`,
     lead:'Filters', done:'Done', close:'Close', ingL:'Ingredients', sortT:'Order',
     bl:{flav:'taste',base:'spirit',ing:'ingredient',tech:'method',str:'strength',ice:'ice',ggroup:'glass',leave:'nothing',era:'era',cat:'IBA list',purpose:'moment',sort:'A to Z'},
-    t1:x=>`Show me ${x.flav} drinks made with ${x.base}, ${x.str}, leaving out ${x.leave}.`,
-    t2:x=>`With ${x.ing}, ${x.tech}, served ${x.ice} in ${x.ggroup}. Created ${x.era}, from ${x.cat}, for ${x.purpose}. Sorted ${x.sort}.`,
-    more:'Fine-tune', add:'Add', all:'Show me every drink.',
+    add:'Add', all:'Show me every drink.',
     g:{start:'Show me', drinks:'drinks', base:' made with ', ingA:' and ', ing:' made with ', tech:', ', str:', ', ice:', served ', ggA:' in ', ggroup:', served in ', leave:', leaving out ', era:', created ', cat:', from ', purpose:', for ', sort:' Sorted '} },
   es:{ ph:{flav:'de cualquier sabor',base:'cualquier base',ing:'cualquier ingrediente',tech:'de cualquier técnica',str:'de cualquier graduación',ice:'con cualquier hielo',ggroup:'cualquier copa',leave:'nada',era:'en cualquier época',cat:'cualquier lista IBA',purpose:'cualquier momento',sort:'de la A a la Z'},
     or:'o', and:'y', no:'sin', only:'y nada más', animal:'nada animal',
@@ -890,25 +880,21 @@ const SENT = {
        era:{pre:'antes de 1900',early:'entre 1900 y 1945',mid:'entre 1946 y 1999',now:'desde 2000'},
        purpose:{aperitivo:'el aperitivo',refrescante:'refrescar',digestivo:'después de comer'},
        sort:{az:'de la A a la Z',light:'del más suave',strong:'del más fuerte',old:'del más antiguo',new:'del más nuevo',few:'por menos ingredientes'}},
-    s1:x=>`Muéstrame tragos ${x.flav} con ${x.base} y ${x.ing}, ${x.tech}, ${x.str}, servidos ${x.ice} en ${x.ggroup}, sin ${x.leave}.`,
-    s2:x=>`Creados ${x.era}, de ${x.cat}, para ${x.purpose}. Ordenados ${x.sort}.`,
     lead:'Filtros', done:'Listo', close:'Cerrar', ingL:'Ingredientes', sortT:'Orden',
     bl:{flav:'sabor',base:'base',ing:'ingrediente',tech:'técnica',str:'graduación',ice:'hielo',ggroup:'copa',leave:'nada',era:'época',cat:'lista IBA',purpose:'momento',sort:'A a Z'},
-    t1:x=>`Muéstrame tragos ${x.flav} con ${x.base}, ${x.str}, sin ${x.leave}.`,
-    t2:x=>`Con ${x.ing}, ${x.tech}, servidos ${x.ice} en ${x.ggroup}. Creados ${x.era}, de ${x.cat}, para ${x.purpose}. Ordenados ${x.sort}.`,
-    more:'Afinar', add:'Sumar', all:'Muéstrame todos los tragos.',
+    add:'Sumar', all:'Muéstrame todos los tragos.',
     g:{start:'Muéstrame', drinks:'tragos', base:' con ', ingA:' y ', ing:' con ', tech:', ', str:', ', ice:', servidos ', ggA:' en ', ggroup:', servidos en ', leave:', sin ', era:', creados ', cat:', de ', purpose:', para ', sort:' Ordenados '} }
 };
 const SLOTT = k => ({flav:t().taste,base:t().base,ing:SENT[lang].ingL,tech:t().tech,str:t().abv,ice:t().ice,ggroup:t().glass,leave:t().without,era:t().era,cat:t().list,purpose:t().purpose,sort:SENT[lang].sortT}[k]);
 function slotText(k){
   const W=SENT[lang], lc=s=>String(s).toLowerCase(), join=(a,w)=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' '+w+' '+a[a.length-1];
   const phr=(f,v)=>(W.v[f]&&W.v[f][v]) || (f==='cat'?facetLabel(f,v):lc(facetLabel(f,v)));
-  if (k==='sort') return {on:sort!=='az', s:sort!=='az'?W.v.sort[sort]:(FV==='a'||FV==='d'||FV==='c'?W.bl.sort:W.ph.sort)};
+  if (k==='sort') return {on:sort!=='az', s:sort!=='az'?W.v.sort[sort]:W.bl.sort};
   if (k==='leave'){ const a=S.leave.map(c=>lc(L(COMP[c]).replace(/ \(.*\)/,''))); if(S.vegan) a.push(W.animal); return {on:a.length>0, s:a.length?join(a,W.and)+(S.swapok?' '+t().swapSent:''):W.ph.leave}; }
   if (k==='ing'){ const a=S.toks.map(tk=>(tk.mode==='exc'?W.no+' ':'')+lc(tokLabel(tk))); let s=a.length?join(a,W.and):W.ph.ing; if(a.length&&S.mybar) s+=' '+W.only; return {on:a.length>0, s}; }
   const a=S[k].map(v=>phr(k,v)); return {on:a.length>0, s:a.length?join(a,W.or):W.ph[k]};
 }
-const slotBtn = k => { const x=slotText(k); if(!x.on && k!=='sort' && (FV==='a'||FV==='d'||FV==='c')) x.s=SENT[lang].bl[k]; return `<button type="button" class="sl${x.on?' on':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(x.s)}</button>`; };
+const slotBtn = k => { const x=slotText(k); if(!x.on && k!=='sort') x.s=SENT[lang].bl[k]; return `<button type="button" class="sl${x.on?' on':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(x.s)}</button>`; };
 function trayBody(k){
   const tt=t();
   if (k==='leave') return `<div class="vs">${ALLERGY.map(c=>`<button type="button" class="v" data-leave="${c}" aria-pressed="${S.leave.includes(c)}">${esc(L(COMP[c]).replace(/ \(.*\)/,''))}</button>`).join('')}<button type="button" class="v" data-vegan="1" aria-pressed="${S.vegan}">${tt.vegan}</button></div><div class="vs" style="margin-top:14px"><button type="button" class="v" data-swapok="1" aria-pressed="${S.swapok}">${tt.swapOk}</button></div>
@@ -919,11 +905,9 @@ function trayBody(k){
   const F=FACETS.find(f=>f[0]===k);
   return `<div class="vs">${F[1].map(v=>{ const on=S[k].includes(v), n=facetCount(k,v,F[2]); return `<button type="button" class="v" data-f="${k}" data-v="${v}" aria-pressed="${on}" ${!n&&!on?'disabled':''}>${esc(facetLabel(k,v))}<sup>${n}</sup></button>`; }).join('')}</div>`;
 }
-// the sentence: whole (now, A), two tiers (B, D) or only what is set (C)
+// the sentence says only what is set; everything else waits below as words to add
 const GROW = ['flav','base','ing','tech','str','ice','ggroup','leave','era','cat','purpose'];
 function sentHTML(W,x){
-  if (FV==='b'||FV==='d') return `<p class="sent">${W.t1(x)}</p><p class="tier2"><span class="fk2">${W.more}</span>${W.t2(x)}</p>`;
-  if (FV!=='c') return `<p class="sent">${W.s1(x)}</p><p class="sent s2">${W.s2(x)}</p>`;
   const on=k=>slotText(k).on||FSLOT===k, g=W.g; let s='';
   if (!GROW.some(on) && !(sort!=='az'||FSLOT==='sort')) s=W.all;
   else { s=g.start+(on('flav')?' '+x.flav:'')+' '+g.drinks;
@@ -938,10 +922,10 @@ function renderFilters(){
   ['flav','base','ing','tech','str','ice','ggroup','leave','era','cat','purpose','sort'].forEach(k=>x[k]=slotBtn(k));
   const body=fs.querySelector('.fbody'), st=body?body.scrollTop:0, tr=fs.querySelector('.tray'), tst=tr?tr.scrollTop:0;
   const tin=fs.querySelector('#tokin'), val=tin?tin.value:'', foc=tin && document.activeElement===tin;
-  fs.innerHTML = `<div class="fpanel snt fv-${FV}" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
-    <div class="fhead"><span class="fk">${W.lead}</span>${FV_SWITCH?`<span class="fvs">${['0','a','b','c','d'].map(v=>`<button type="button" data-fv="${v}" aria-pressed="${FV===v}">${v==='0'?'Now':v.toUpperCase()}</button>`).join('')}</span>`:''}<div class="acts">${activeCount()||sort!=='az'?`<button type="button" class="txtbtn" id="fclear">${tt.clearAll}</button>`:''}<button type="button" class="txtbtn" id="fclose">${W.close}</button></div></div>
+  fs.innerHTML = `<div class="fpanel snt" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
+    <div class="fhead"><span class="fk">${W.lead}</span><div class="acts">${activeCount()||sort!=='az'?`<button type="button" class="txtbtn" id="fclear">${tt.clearAll}</button>`:''}<button type="button" class="txtbtn" id="fclose">${W.close}</button></div></div>
     <div class="fbody">${sentHTML(W,x)}</div>
-    <div class="ffoot"><button type="button" class="blk" id="fshow"><span>${tt.show(n)}</span>→</button></div>
+    <div class="ffoot"><button type="button" class="blk" id="fshow"><span>${tt.show(n)}</span>${ICON.next}</button></div>
     ${FSLOT?`<div class="tray${FSLOTnew?' in':''}" role="group" aria-label="${esc(SLOTT(FSLOT))}"><div class="th"><h3>${esc(SLOTT(FSLOT))}</h3><button type="button" class="txtbtn" data-tdone>${W.done}</button></div>${trayBody(FSLOT)}</div>`:''}</div>`;
   FSLOTnew=false;
   const fb=fs.querySelector('.fbody'), ntr=fs.querySelector('.tray'); fb.scrollTop=st;
@@ -995,9 +979,9 @@ function detail(d){
     </div>
     <div class="sg" style="--liq:${liq};--lf:${lum(liq)>150?'var(--ink)':'var(--pa)'}">
       <div class="tb"><div class="units" role="group" aria-label="${esc(tt.unitsL)}"><button type="button" data-u="ml" aria-pressed="${units==='ml'}">ml</button><button type="button" data-u="oz" aria-pressed="${units==='oz'}">oz</button></div>
-        <div class="nav"><button type="button" data-id="${prv.id}" aria-label="${esc(tt.prev)}: ${esc(prv.name)}">← ${esc(prv.name)}</button><button type="button" data-id="${nxt.id}" aria-label="${esc(tt.next)}: ${esc(nxt.name)}">${esc(nxt.name)} →</button></div></div>
+        <div class="nav"><button type="button" data-id="${prv.id}" aria-label="${esc(tt.prev)}: ${esc(prv.name)}">${ICON.back}<span>${esc(prv.name)}</span></button><button type="button" data-id="${nxt.id}" aria-label="${esc(tt.next)}: ${esc(nxt.name)}"><span>${esc(nxt.name)}</span>${ICON.next}</button></div></div>
       <section class="bk bA"><span class="k">${esc(tagLine(d))}</span><div class="rec">${lines}</div>
-        <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<span class="lk"><button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch} ↗</a></span>`:''}</div></section>
+        <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<span class="lk"><button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch}${ICON.out}</a></span>`:''}</div></section>
       <section class="bk bB"><div class="spx"><div class="gw"><span class="k">${tt.glass}</span>${glassBlock(d)}</div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
         ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
       <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${mnote?`<p class="mnote"><b>${tt.note}</b>${esc(mnote)}</p>`:''}</section>
@@ -1123,7 +1107,7 @@ function quizHTML(){
   return `<div class="qz"><div class="qz-top"><span class="src">${tt.qFrom((LIST.length?LIST:DR).length)}</span><span class="sc num" aria-live="polite">${QZ.ok} / ${QZ.n}</span></div>
     <div class="qc" style="--bg:${bg};--fg:${lt?'var(--ink)':'var(--pa)'}">${showArt?`<div class="art">${glassSVG(d,{bg,noTile:true})}</div>`:''}${showName?`<span class="nm">${esc(d.name)}</span>`:spec}<span class="qq">${esc(q.ask)}</span></div>
     <div class="qo-l" role="group" aria-label="${esc(q.ask)}">${opts}</div>
-    ${done?`<div class="qz-ac"><button type="button" class="blk" id="qnext">${tt.qNext} →</button><button type="button" class="txt" data-nbid="${d.id}"><span>${tt.qOpen}</span></button></div>`:''}${miss}</div>`;
+    ${done?`<div class="qz-ac"><button type="button" class="blk" id="qnext">${tt.qNext}${ICON.next}</button><button type="button" class="txt" data-nbid="${d.id}"><span>${tt.qOpen}</span></button></div>`:''}${miss}</div>`;
 }
 function renderNotes(){
   const tt=t(); let body='', i=0;
@@ -1134,7 +1118,7 @@ function renderNotes(){
   } else {
     COURSE.terms.forEach(G=>{ body+=`<section class="nb-g"><h3>${esc(CL(G.g))}</h3><dl class="tm-l">${G.items.map(x=>{
       const n = x.f ? DR.filter(d=>FACETS.find(f=>f[0]===x.f[0])[2](d).includes(x.f[1])).length : 0;
-      return `<div class="tm-i"><dt>${esc(CL(x.t))}</dt><dd>${esc(x[lang]||x.en)}${n?`<br><button type="button" class="txt" data-nbf="${x.f.join(':')}"><span>${tt.seeN(n)}</span> →</button>`:''}</dd></div>`; }).join('')}</dl></section>`; });
+      return `<div class="tm-i"><dt>${esc(CL(x.t))}</dt><dd>${esc(x[lang]||x.en)}${n?`<br><button type="button" class="txt" data-nbf="${x.f.join(':')}"><span>${tt.seeN(n)}</span>${ICON.next}</button>`:''}</dd></div>`; }).join('')}</dl></section>`; });
   }
   $('#nb').innerHTML = `<div class="nb-in"><div class="nb-bar"><button class="close" type="button" id="nbcls">${ICON.back}<span>${tt.back}</span></button>
     <div class="units" role="group" aria-label="${esc(tt.notes)}"><button type="button" data-nbtab="prep" aria-pressed="${NB==='prep'}">${tt.prep}</button><button type="button" data-nbtab="terms" aria-pressed="${NB==='terms'}">${tt.terms}</button></div></div>
@@ -1172,7 +1156,6 @@ function close(pop=false){ if(openId===null) return; const id=openId; openId=nul
 function all(){ renderChrome(); renderList(); renderTab(); if(!$('#nb').hidden){ if(NB==='quiz') QZ.cur=null; renderNotes(); } if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
 
 document.addEventListener('click', e=>{
-  const fvb=e.target.closest('[data-fv]'); if(fvb){ FV=fvb.dataset.fv; store.set('fv',FV); renderFilters(); return; }
   const sl=e.target.closest('[data-slot]'); if(sl){ const k=sl.dataset.slot; FSLOT=FSLOT===k?null:k; FSLOTnew=!!FSLOT; renderFilters(); if(FSLOT==='ing'){ const ti=$('#tokin'); if(ti) ti.focus({preventScroll:true}); } return; }
   if(e.target.closest('[data-tdone]')){ const k=FSLOT; FSLOT=null; renderFilters(); const b=document.querySelector(`[data-slot="${k}"]`); if(b) b.focus({preventScroll:true}); return; }
   const fc=e.target.closest('[data-f]'); if(fc){ const k=fc.dataset.f,v=fc.dataset.v; S[k]=S[k].includes(v)?S[k].filter(x=>x!==v):[...S[k],v]; changed(); return; }
