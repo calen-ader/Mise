@@ -78,7 +78,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .tl{position:relative;background:var(--ink);color:var(--pa);border-bottom:1px solid rgba(243,238,228,.12);transition:background .35s var(--ease),color .35s var(--ease)}
 .tl .open{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;column-gap:6px;width:100%;min-height:92px;padding:12px 112px 12px var(--gut);text-align:left;position:relative;overflow:hidden}
 .tl .no{font:800 12px/1 var(--fd);opacity:.55;font-variant-numeric:tabular-nums;align-self:start;margin-top:.7em}
-.tl .nm{font:800 clamp(26px,7.4vw,56px)/.98 var(--fd);letter-spacing:-.03em;padding-bottom:.06em}
+.tl .nm{font:800 min(clamp(26px,7.4vw,56px),calc((100vw - 190px)/(var(--w,8)*.6)))/.98 var(--fd);letter-spacing:-.03em;padding-bottom:.06em}
 .tl .c,.tl .xp{display:none}
 .tl .ab{font:800 13px/1 var(--fd);opacity:.7;align-self:start;margin-top:6px}
 .tl .art{position:absolute;top:var(--t1);width:110px;height:132px;right:-4px;transition:transform .5s var(--ease)}
@@ -104,8 +104,8 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
   .tl:hover .xp,.tl:has(:focus-visible) .xp{grid-template-rows:1fr}
   .tl:hover .xc,.tl:has(:focus-visible) .xc{opacity:1;transform:none;transition-delay:.15s}
   .tl:hover,.tl:has(:focus-visible){background:var(--bg);color:var(--fg)}
-  .tl .art{transition:top .5s var(--ease),width .5s var(--ease),height .5s var(--ease),right .5s var(--ease)}
-  .tl:hover .art,.tl:has(:focus-visible) .art{top:var(--t3);width:333px;height:400px;right:40px}
+  .tl .art{transform-origin:50% 22%}
+  .tl:hover .art,.tl:has(:focus-visible) .art{transform:scale(1.36)}
   .qa{display:none}
   .tl .ac{position:absolute;left:calc(var(--gut) + 70px);bottom:22px;z-index:3;display:flex;align-items:center;gap:26px;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
   .tl:hover .ac,.tl:has(:focus-visible) .ac{opacity:1;visibility:visible;transition-delay:.2s,0s}
@@ -150,7 +150,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.25s}
 
 /* drink page: one poster per drink, the recipe beside it in blocks of colour */
-.sheet{position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;background:var(--pa)}
+.sheet{position:fixed;inset:0;z-index:40;outline:0;overflow-y:auto;overscroll-behavior:contain;background:var(--pa)}
 .dwrap{position:relative;--fg:var(--pa)}
 .dwrap.lt{--fg:var(--ink)}
 .plate{position:relative;overflow:hidden;background:var(--bg);height:min(60svh,520px);color:var(--fg)}
@@ -191,15 +191,18 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .bA .ac{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:30px}
 .bA .ac iframe{flex:1 0 100%;aspect-ratio:16/9;border:0;background:#000;display:block}
 .bA .ac a.fr{color:var(--ink2)}
+.bA .lk{display:flex;gap:24px;align-items:center;white-space:nowrap}
 .bB{background:var(--liq);color:var(--lf);padding-top:30px;padding-bottom:32px}
 .bB .k{color:inherit;opacity:.7}
-.spx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.spx b{display:block;font:800 22px/1.05 var(--fd);letter-spacing:-.025em}
+.spx{display:flex;flex-wrap:wrap;gap:20px 34px}
+.spx>div{min-width:5.5em}
+.spx b{display:block;white-space:nowrap;font:800 22px/1.05 var(--fd);letter-spacing:-.025em}
 .bB p{margin:24px 0 0;font:500 17px/1.35 var(--ft)}
 .bC{padding-top:34px;padding-bottom:36px}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s}
 .steps li{display:grid;grid-template-columns:28px minmax(0,1fr);font:400 16.5px/1.4 var(--ft);counter-increment:s}
 .steps li::before{content:counter(s);font:800 19px/1.2 var(--fd)}
+.mnote{margin:26px 0 0;padding-left:28px;font:400 15px/1.45 var(--ft);max-width:60ch}.mnote b{display:block;font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
 .bD{background:var(--ink);color:var(--pa);padding-top:34px;padding-bottom:40px}
 .bD .k{color:inherit;opacity:.6}
 .bD p{margin:0;font:italic 400 20px/1.4 var(--fs);max-width:30ch}
@@ -216,11 +219,12 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
   .plate .art{left:0;right:0;top:70px;bottom:auto;height:56%;justify-content:center}
   .head{bottom:28px}
   .head h2{font-size:min(clamp(86px,9.6vw,150px),calc((47vw - 2*var(--gut))/(var(--n)*.56)),calc(2*(47vw - 2*var(--gut))/(var(--m)*.56)))}
-  .sg{min-height:100dvh}
+  .sg{min-height:100dvh;display:flex;flex-direction:column}
+  .bE{flex:1}
   .sg .tb{height:58px;padding:0 44px 0 40px}
   .bk{padding-left:40px;padding-right:44px}
   .rec{gap:22px 28px}.rec b{font-size:46px}.rec b.wd{font-size:30px;line-height:1.45}.rec span{font-size:16px}
-  .spx{gap:22px}.spx b{font-size:30px}.bB p{font-size:18px}
+  .spx{gap:22px 44px}.spx b{font-size:30px}.bB p{font-size:18px}
   .steps li{grid-template-columns:34px minmax(0,1fr);font-size:18px}.steps li::before{font-size:20px}
   .bD p{font-size:24px;max-width:28ch}
   .ctn div{grid-template-columns:110px minmax(0,1fr)}.ctn b{font-size:17px}
@@ -228,14 +232,16 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 }
 
 /* the ticket */
-.tab{position:fixed;z-index:30;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:10px;height:50px;padding:0 20px;background:var(--ink);color:var(--pa);font-size:16px;
+/* the ticket tab: a paper stub with a dark halo, so it reads on black rows, colour rows, paper and photos alike */
+.tab{position:fixed;z-index:30;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);filter:drop-shadow(0 0 1px rgba(0,0,0,.55)) drop-shadow(0 10px 22px rgba(0,0,0,.45))}
+.tab .tw{display:flex;align-items:center;gap:10px;height:50px;padding:0 20px;background:var(--pa);color:var(--ink);font-size:13.5px;
   -webkit-mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y;
   mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y}
 .tab svg{display:none}
-.tab .n{font:800 22px/1 var(--fd);color:var(--su);letter-spacing:0}
+.tab .n{font:800 22px/1 var(--fd);color:var(--co);letter-spacing:0}
 .tab.bump{animation:bump .5s var(--ease)}
 @keyframes bump{0%{transform:translate(-50%,0)}30%{transform:translate(-50%,-6px)}100%{transform:translate(-50%,0)}}
-.cmd{position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;background:var(--ul);padding:calc(64px + env(safe-area-inset-top)) 14px 40px}
+.cmd{position:fixed;inset:0;z-index:50;outline:0;overflow-y:auto;overscroll-behavior:contain;background:rgba(12,12,11,.72);-webkit-backdrop-filter:blur(16px) saturate(.8);backdrop-filter:blur(16px) saturate(.8);padding:calc(64px + env(safe-area-inset-top)) 14px 40px}
 .cmd>.close{position:fixed;top:calc(8px + env(safe-area-inset-top));left:var(--gut);color:var(--pa)}
 .slip{max-width:440px;margin:0 auto;background:var(--pa);color:var(--ink);padding:26px 20px 34px;position:relative;
   -webkit-mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 20px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,transparent 0) 0 0/14px 10px repeat-x,conic-gradient(from 135deg at 50% 0,#000 90deg,transparent 0) 0 100%/14px 10px repeat-x;
@@ -314,8 +320,8 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 <main id="main"></main>
 <div class="grain" aria-hidden="true"></div>
 <button class="tab" id="tab" type="button" hidden></button>
-<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true"></div>
-<div class="cmd" id="cmd" hidden role="dialog" aria-modal="true"></div>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" tabindex="-1"></div>
+<div class="cmd" id="cmd" hidden role="dialog" aria-modal="true" tabindex="-1"></div>
 <div class="fs" id="fs" hidden></div>
 
 <script>
@@ -593,7 +599,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
+   glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
@@ -613,7 +619,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
+   glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
@@ -788,9 +794,9 @@ function topY(d){ if (d.id in TOPY) return TOPY[d.id];
   return TOPY[d.id]=y; }
 // one scale for every glass, cropped by the row; low glasses are lifted so their rim sits where a coupe's does, never so far the garnish is cut
 function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
-  return [[92,.55,-16,1],[112,.85,-26,2],[300,1.665,34,3]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
+  return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
     return `--t${n}:${t.toFixed(1)}px`; }).join(';'); }
-const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)} →</button></div></li>`; };
+const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)} →</button></div></li>`; };
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
@@ -866,7 +872,7 @@ function enter(){ const m=$('#main'); m.classList.remove('enter'); void m.offset
 function renderTab(bump){
   const n = Object.values(ticket).reduce((a,b)=>a+b,0); const tab=$('#tab');
   tab.hidden = !n || !$('#cmd').hidden;
-  tab.innerHTML = `${ICON.slip}<span>${t().ticket}</span><span class="n num">${n}</span>`;
+  tab.innerHTML = `<span class="tw">${ICON.slip}<span>${t().ticket}</span><span class="n num">${n}</span></span>`;
   tab.setAttribute('aria-label', `${t().open}: ${t().drinksN(n)}`);
   if (bump){ tab.classList.remove('bump'); void tab.offsetWidth; tab.classList.add('bump'); }
 }
@@ -933,7 +939,8 @@ function detail(d){
   const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div${l.opt?' class="opt"':''}><b${a?'':' class="wd"'}>${esc(a||capW(b))}${a?`<small>${esc(b)}</small>`:''}</b><span>${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span></div>`; }).join('');
   const liq = glassLiq(d);
   // the IBA method, one step per clause
-  const steps = L(d.method).split(/(?<=\.)\s+|,\s+/).map(x=>x.trim().replace(/\.$/,'')).filter(Boolean).map(x=>x.charAt(0).toUpperCase()+x.slice(1));
+  const [meth, ...nts] = L(d.method).split(/\s*\b(?:NOTE|NOTA)\s*:\s*\*?/i), mnote = nts.join(' ').trim();
+  const steps = meth.split(/(?<=\.)\s+|,\s+/).map(x=>x.trim().replace(/\.$/,'')).filter(Boolean).map(x=>x.charAt(0).toUpperCase()+x.slice(1));
   const seq = LIST.includes(d) ? LIST : DR.slice().sort(SORTS.az), k = seq.indexOf(d), prv = seq[(k-1+seq.length)%seq.length], nxt = seq[(k+1)%seq.length];
   const cls = lightBg(bg) ? 'lt' : '';
   const nW = Math.max(...d.name.split(/\s+/).map(w=>w.length));
@@ -949,15 +956,19 @@ function detail(d){
       <div class="tb"><div class="units" role="group" aria-label="${esc(tt.unitsL)}"><button type="button" data-u="ml" aria-pressed="${units==='ml'}">ml</button><button type="button" data-u="oz" aria-pressed="${units==='oz'}">oz</button></div>
         <div class="nav"><button type="button" data-id="${prv.id}" aria-label="${esc(tt.prev)}: ${esc(prv.name)}">← ${esc(prv.name)}</button><button type="button" data-id="${nxt.id}" aria-label="${esc(tt.next)}: ${esc(nxt.name)}">${esc(nxt.name)} →</button></div></div>
       <section class="bk bA"><span class="k">${esc(tagLine(d))}</span><div class="rec">${lines}</div>
-        <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch} ↗</a>`:''}</div></section>
+        <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<span class="lk"><button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch} ↗</a></span>`:''}</div></section>
       <section class="bk bB"><div class="spx"><div><span class="k">${tt.glass}</span><b>${esc(glassName(d))}</b></div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
         ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
-      <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></section>
+      <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${mnote?`<p class="mnote"><b>${tt.note}</b>${esc(mnote)}</p>`:''}</section>
       <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
       <section class="bk bE">${containsHTML(d)}</section>
     </div></div>`;
 }
 
+function fitHead(){ const h=document.querySelector('#sheet .head h2'); if(!h) return; h.style.fontSize='';
+  for (let k=0;k<16;k++){ const fs=parseFloat(getComputedStyle(h).fontSize), lines=Math.round(h.getBoundingClientRect().height/(fs*.86));
+    if (lines<=2 && h.scrollWidth<=h.clientWidth+1) break; h.style.fontSize=(fs*.95)+'px'; } }
+addEventListener('resize', ()=>{ if(openId) fitHead(); });
 function platePos(d){ const [x0,y0,x1,y1]=FRAMES[d.id]||[.3,.3,.7,.85]; return `${Math.round((x0+x1)*50)}% ${Math.round(Math.min(.62,(y0+y1)/2)*100)}%`; }
 function containsHTML(d){
   const tt=t();
@@ -1007,7 +1018,7 @@ function renderTicket(print){
     </div>`;
 }
 function openTicket(push=true){ $('#cmd').hidden=false; document.body.style.overflow='hidden'; renderTicket(true); renderTab();
-  $('#cmd').setAttribute('aria-label', t().ticket); if(push) history.pushState({c:1},'','#'+(lang==='es'?'comanda':'ticket')); $('#ccls').focus({preventScroll:true}); }
+  $('#cmd').setAttribute('aria-label', t().ticket); if(push) history.pushState({c:1},'','#'+(lang==='es'?'comanda':'ticket')); $('#cmd').focus({preventScroll:true}); }
 function closeTicket(pop=false){ if($('#cmd').hidden) return; $('#cmd').hidden=true; if($('#sheet').hidden) document.body.style.overflow='';
   if(!pop && history.state && history.state.c) history.back(); renderTab(); }
 function setCovers(id, n){ if(n<=0) delete ticket[id]; else ticket[id]=Math.min(n,99); store.set('ticket',ticket); renderTab(); markCard(id); }
@@ -1019,9 +1030,9 @@ function open(id, push=true){
   if (!$('#cmd').hidden) closeTicket(true);
   openId=id; const s=$('#sheet');
   s.innerHTML = detail(d);
-  s.hidden=false; s.scrollTop=0; document.body.style.overflow='hidden'; s.setAttribute('aria-label', d.name);
+  s.hidden=false; s.scrollTop=0; document.body.style.overflow='hidden'; s.setAttribute('aria-label', d.name); fitHead();
   if (push) history.pushState({d:id}, '', '#'+id);
-  $('#cls').focus({preventScroll:true});
+  s.focus({preventScroll:true});
 }
 function close(pop=false){ if(openId===null) return; const id=openId; openId=null; $('#sheet').hidden=true; document.body.style.overflow='';
   if(!pop && history.state && history.state.d) history.back();
@@ -1046,7 +1057,7 @@ document.addEventListener('click', e=>{
   const pl=e.target.closest('[data-play]'); if(pl){ const f=document.createElement('iframe');
     f.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(pl.dataset.play)}?autoplay=1&playsinline=1&rel=0`;
     f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; f.title=byId[openId]?byId[openId].name:'Video';
-    pl.replaceWith(f); return; }
+    const ac=pl.closest('.ac'); pl.remove(); ac.appendChild(f); return; }
   const vw=e.target.closest('[data-view]'); if(vw){ view=vw.dataset.view; store.set('view',view); const pl=$('#sheet .plate'); pl.classList.toggle('photo',view==='photo'); document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view)); return; }
   const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; return; }
   const tkd=e.target.closest('[data-tkd]'); if(tkd){ const box=tkd.closest('.tk'), id=box.dataset.tk, dv=+tkd.dataset.tkd, home=box.closest('#sheet')?'#sheet':'#main';
