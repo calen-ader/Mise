@@ -723,7 +723,7 @@ function glassMotion(){
   if(fz&&cp){ const src=[...fz.querySelectorAll('circle')];
     for(let i=0;i<16;i++){ const c=src[i%src.length].cloneNode(); fz.appendChild(c); G.bub.push({c,x:G.cx+(((i*37)%100)/100-.5)*(G.x1-G.x0)*.55,r:1.6+(i%3)*.9,sp:.5+((i*13)%10)/14,ph:(i*.137)%1}); }
     src.forEach(c=>c.remove()); }
-  G.steam=[...svg.querySelectorAll('g.gn path[fill="none"][stroke-linecap="round"]')];
+  G.steam=[...svg.querySelectorAll('g.gn .stm')];
   if(G.pour<1){ if(gn) gn.style.opacity=0; if(tp) tp.style.opacity=0; G.slosh=5; G.sv=-4; }
   GM.G=G; GM.raf=requestAnimationFrame(glassFrame);
 }

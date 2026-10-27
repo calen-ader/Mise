@@ -144,7 +144,7 @@ window.glassSVG=function(d,opt){opt=opt||{};
  if(/ginger/.test(g))front+=pick(xr+4,ry-36,cx+10,S.f+20)+ginger(cx+30,ry-8);
  if(/grape/.test(g))front+=grapes(gx-10,ry-12);
  if(/three cherries/.test(g))front+=pick(xl,ry-30,xr,ry-30)+cherry(cx-20,ry-30)+cherry(cx,ry-30)+cherry(cx+20,ry-30);
- if(ice==='hot')front+=`<path d="M${cx-14} ${ry-10}q-8-12 0-24q8-12 0-24M${cx+12} ${ry-14}q-8-12 0-24q8-12 0-24" fill="none" stroke="${G}" stroke-width="4" stroke-linecap="round" opacity=".7"/>`;
+ if(ice==='hot')front+=`<path d="M${cx-14} ${ry-10}q-8-12 0-24q8-12 0-24M${cx+12} ${ry-14}q-8-12 0-24q8-12 0-24" fill="none" class="stm" stroke="${G}" stroke-width="4" stroke-linecap="round" opacity=".7"/>`;
  if((k==='highball'||k==='collins'||k==='hurricane'||S.op)&&(ice==='crushed'||ice==='blended'||/straw/.test(g)))back+=straw(cx+10,ry+10,bg===INK.ink?INK.co:INK.ink);
  const tile=opt.noTile?'':`<rect width="200" height="240" fill="${bg}"/>`;
  let defs='';
