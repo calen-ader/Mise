@@ -1,0 +1,526 @@
+{
+"shapes": {
+"tcoupe": {
+"en": "Tall-stem coupe",
+"es": "Copa coupé de tallo alto",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "champagne saucer",
+"es": "copa pompadour"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"scoupe": {
+"en": "Coupette",
+"es": "Copa coupette",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+},
+{
+"en": "coupe",
+"es": "copa coupé"
+}
+]
+},
+"trumpet": {
+"en": "Flared cut-crystal cocktail glass",
+"es": "Copa de cóctel acampanada tallada",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+},
+{
+"en": "martini glass",
+"es": "copa martini"
+}
+]
+},
+"taper": {
+"en": "Tapered cut-base highball",
+"es": "Vaso highball cónico de base tallada",
+"iba": [
+"highball",
+"tall-tumbler"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+},
+{
+"en": "Collins",
+"es": "vaso Collins"
+}
+]
+},
+"swirl": {
+"en": "Embossed old fashioned",
+"es": "Vaso old fashioned labrado",
+"iba": [
+"rocks",
+"dof"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+},
+{
+"en": "double old fashioned",
+"es": "old fashioned doble"
+}
+]
+},
+"ctulip": {
+"en": "Cut-crystal tulip",
+"es": "Copa tulipa tallada",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+},
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"crusta": {
+"en": "Small cut-crystal wine glass (crusta glass)",
+"es": "Copita de vino tallada (copa crusta)",
+"iba": [],
+"alt": [
+{
+"en": "small wine glass",
+"es": "copa de vino chica"
+},
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+}
+]
+},
+"dcoupe": {
+"en": "Cut-crystal coupe",
+"es": "Copa coupé tallada",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"saucer": {
+"en": "Champagne saucer",
+"es": "Copa pompadour",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"nick": {
+"en": "Nick & Nora",
+"es": "Copa Nick & Nora",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"fgoblet": {
+"en": "Footed goblet",
+"es": "Copa goblet de pie corto",
+"iba": [
+"goblet"
+],
+"alt": [
+{
+"en": "hurricane",
+"es": "copa hurricane"
+},
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"balloon": {
+"en": "Balloon wine glass",
+"es": "Copa balón",
+"iba": [
+"wine"
+],
+"alt": [
+{
+"en": "large wine glass",
+"es": "copa de vino grande"
+}
+]
+},
+"tikiglass": {
+"en": "Embossed tiki glass",
+"es": "Vaso tiki de vidrio",
+"iba": [
+"tiki"
+],
+"alt": [
+{
+"en": "tiki mug",
+"es": "taza tiki"
+},
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"crocks": {
+"en": "Cut-crystal double old fashioned",
+"es": "Old fashioned doble tallado",
+"iba": [
+"dof",
+"rocks"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"wtumbler": {
+"en": "Wide tumbler",
+"es": "Vaso ancho",
+"iba": [
+"tall-tumbler"
+],
+"alt": [
+{
+"en": "double old fashioned",
+"es": "old fashioned doble"
+},
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"cflute": {
+"en": "Cut-crystal flute",
+"es": "Copa flauta tallada",
+"iba": [
+"flute"
+],
+"alt": [
+{
+"en": "flute",
+"es": "copa flauta"
+},
+{
+"en": "tulip champagne glass",
+"es": "copa tulipa de champaña"
+}
+]
+},
+"coupe": {
+"en": "Coupe",
+"es": "Copa coupé",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+},
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+}
+]
+},
+"slim": {
+"en": "Slim cocktail glass",
+"es": "Copa de cóctel delgada",
+"iba": [
+"slim"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+}
+]
+},
+"goblet": {
+"en": "Goblet",
+"es": "Copa goblet",
+"iba": [
+"goblet",
+"cobbler"
+],
+"alt": [
+{
+"en": "large wine glass",
+"es": "copa de vino grande"
+}
+]
+},
+"martini": {
+"en": "Martini glass (V-shaped)",
+"es": "Copa martini",
+"iba": [
+"martini",
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+}
+]
+},
+"flute": {
+"en": "Flute",
+"es": "Copa flauta",
+"iba": [
+"flute"
+],
+"alt": [
+{
+"en": "tulip champagne glass",
+"es": "copa tulipa de champaña"
+}
+]
+},
+"wine": {
+"en": "Wine glass",
+"es": "Copa de vino",
+"iba": [
+"wine"
+],
+"alt": [
+{
+"en": "goblet",
+"es": "copa goblet"
+}
+]
+},
+"rocks": {
+"en": "Old fashioned (rocks)",
+"es": "Vaso old fashioned",
+"iba": [
+"rocks"
+],
+"alt": [
+{
+"en": "double old fashioned",
+"es": "old fashioned doble"
+}
+]
+},
+"dof": {
+"en": "Double old fashioned",
+"es": "Old fashioned doble",
+"iba": [
+"dof"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"low": {
+"en": "Small tumbler",
+"es": "Vaso bajo",
+"iba": [
+"small-tumbler"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"highball": {
+"en": "Highball",
+"es": "Vaso highball",
+"iba": [
+"highball",
+"tall-tumbler"
+],
+"alt": [
+{
+"en": "Collins",
+"es": "vaso Collins"
+}
+]
+},
+"collins": {
+"en": "Collins",
+"es": "Vaso Collins",
+"iba": [
+"collins"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"hurricane": {
+"en": "Hurricane",
+"es": "Copa hurricane",
+"iba": [
+"hurricane"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"irish": {
+"en": "Irish coffee glass",
+"es": "Copa Irish coffee",
+"iba": [
+"irish"
+],
+"alt": [
+{
+"en": "heatproof mug",
+"es": "taza resistente al calor"
+}
+]
+},
+"copper": {
+"en": "Copper mug",
+"es": "Jarro de cobre",
+"iba": [
+"copper"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"tiki": {
+"en": "Tiki mug",
+"es": "Taza tiki",
+"iba": [
+"tiki"
+],
+"alt": [
+{
+"en": "embossed tiki glass",
+"es": "vaso tiki de vidrio"
+}
+]
+},
+"julep": {
+"en": "Julep cup",
+"es": "Copa julep",
+"iba": [
+"julep"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"gmug": {
+"en": "Glass mug (tankard)",
+"es": "Jarra de vidrio",
+"iba": [],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"clay": {
+"en": "Clay cup",
+"es": "Vasija de barro",
+"iba": [
+"clay"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+}
+},
+"notes": {
+"aviation": {
+"en": "Standard serve: coupe or cocktail glass. The crystal tulip is from the IBA photo.",
+"es": "Servicio estándar: copa coupé o de cóctel. La tulipa de cristal es la de la foto IBA."
+}
+}
+}

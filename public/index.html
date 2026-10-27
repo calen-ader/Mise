@@ -197,6 +197,8 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .spx{display:flex;flex-wrap:wrap;gap:20px 34px}
 .spx>div{min-width:5.5em}
 .spx b{display:block;white-space:nowrap;font:800 22px/1.05 var(--fd);letter-spacing:-.025em}
+.spx .gw{flex-basis:100%}.spx .gw b{white-space:normal;text-wrap:balance}
+.spx .ga{display:block;margin-top:8px;max-width:46ch;font:400 15px/1.4 var(--ft);opacity:.72}
 .bB p{margin:24px 0 0;font:500 17px/1.35 var(--ft)}
 .bC{padding-top:34px;padding-bottom:36px}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s}
@@ -2071,6 +2073,532 @@ const COURSE = {
   }
  ]
 };
+const GLASSWARE = {
+"shapes": {
+"tcoupe": {
+"en": "Tall-stem coupe",
+"es": "Copa coupé de tallo alto",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "champagne saucer",
+"es": "copa pompadour"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"scoupe": {
+"en": "Coupette",
+"es": "Copa coupette",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+},
+{
+"en": "coupe",
+"es": "copa coupé"
+}
+]
+},
+"trumpet": {
+"en": "Flared cut-crystal cocktail glass",
+"es": "Copa de cóctel acampanada tallada",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+},
+{
+"en": "martini glass",
+"es": "copa martini"
+}
+]
+},
+"taper": {
+"en": "Tapered cut-base highball",
+"es": "Vaso highball cónico de base tallada",
+"iba": [
+"highball",
+"tall-tumbler"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+},
+{
+"en": "Collins",
+"es": "vaso Collins"
+}
+]
+},
+"swirl": {
+"en": "Embossed old fashioned",
+"es": "Vaso old fashioned labrado",
+"iba": [
+"rocks",
+"dof"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+},
+{
+"en": "double old fashioned",
+"es": "old fashioned doble"
+}
+]
+},
+"ctulip": {
+"en": "Cut-crystal tulip",
+"es": "Copa tulipa tallada",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+},
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"crusta": {
+"en": "Small cut-crystal wine glass (crusta glass)",
+"es": "Copita de vino tallada (copa crusta)",
+"iba": [],
+"alt": [
+{
+"en": "small wine glass",
+"es": "copa de vino chica"
+},
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+}
+]
+},
+"dcoupe": {
+"en": "Cut-crystal coupe",
+"es": "Copa coupé tallada",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"saucer": {
+"en": "Champagne saucer",
+"es": "Copa pompadour",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"nick": {
+"en": "Nick & Nora",
+"es": "Copa Nick & Nora",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+},
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+}
+]
+},
+"fgoblet": {
+"en": "Footed goblet",
+"es": "Copa goblet de pie corto",
+"iba": [
+"goblet"
+],
+"alt": [
+{
+"en": "hurricane",
+"es": "copa hurricane"
+},
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"balloon": {
+"en": "Balloon wine glass",
+"es": "Copa balón",
+"iba": [
+"wine"
+],
+"alt": [
+{
+"en": "large wine glass",
+"es": "copa de vino grande"
+}
+]
+},
+"tikiglass": {
+"en": "Embossed tiki glass",
+"es": "Vaso tiki de vidrio",
+"iba": [
+"tiki"
+],
+"alt": [
+{
+"en": "tiki mug",
+"es": "taza tiki"
+},
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"crocks": {
+"en": "Cut-crystal double old fashioned",
+"es": "Old fashioned doble tallado",
+"iba": [
+"dof",
+"rocks"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"wtumbler": {
+"en": "Wide tumbler",
+"es": "Vaso ancho",
+"iba": [
+"tall-tumbler"
+],
+"alt": [
+{
+"en": "double old fashioned",
+"es": "old fashioned doble"
+},
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"cflute": {
+"en": "Cut-crystal flute",
+"es": "Copa flauta tallada",
+"iba": [
+"flute"
+],
+"alt": [
+{
+"en": "flute",
+"es": "copa flauta"
+},
+{
+"en": "tulip champagne glass",
+"es": "copa tulipa de champaña"
+}
+]
+},
+"coupe": {
+"en": "Coupe",
+"es": "Copa coupé",
+"iba": [
+"cocktail"
+],
+"alt": [
+{
+"en": "cocktail glass",
+"es": "copa de cóctel"
+},
+{
+"en": "Nick & Nora",
+"es": "Nick & Nora"
+}
+]
+},
+"slim": {
+"en": "Slim cocktail glass",
+"es": "Copa de cóctel delgada",
+"iba": [
+"slim"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+}
+]
+},
+"goblet": {
+"en": "Goblet",
+"es": "Copa goblet",
+"iba": [
+"goblet",
+"cobbler"
+],
+"alt": [
+{
+"en": "large wine glass",
+"es": "copa de vino grande"
+}
+]
+},
+"martini": {
+"en": "Martini glass (V-shaped)",
+"es": "Copa martini",
+"iba": [
+"martini",
+"cocktail"
+],
+"alt": [
+{
+"en": "coupe",
+"es": "copa coupé"
+}
+]
+},
+"flute": {
+"en": "Flute",
+"es": "Copa flauta",
+"iba": [
+"flute"
+],
+"alt": [
+{
+"en": "tulip champagne glass",
+"es": "copa tulipa de champaña"
+}
+]
+},
+"wine": {
+"en": "Wine glass",
+"es": "Copa de vino",
+"iba": [
+"wine"
+],
+"alt": [
+{
+"en": "goblet",
+"es": "copa goblet"
+}
+]
+},
+"rocks": {
+"en": "Old fashioned (rocks)",
+"es": "Vaso old fashioned",
+"iba": [
+"rocks"
+],
+"alt": [
+{
+"en": "double old fashioned",
+"es": "old fashioned doble"
+}
+]
+},
+"dof": {
+"en": "Double old fashioned",
+"es": "Old fashioned doble",
+"iba": [
+"dof"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"low": {
+"en": "Small tumbler",
+"es": "Vaso bajo",
+"iba": [
+"small-tumbler"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"highball": {
+"en": "Highball",
+"es": "Vaso highball",
+"iba": [
+"highball",
+"tall-tumbler"
+],
+"alt": [
+{
+"en": "Collins",
+"es": "vaso Collins"
+}
+]
+},
+"collins": {
+"en": "Collins",
+"es": "Vaso Collins",
+"iba": [
+"collins"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"hurricane": {
+"en": "Hurricane",
+"es": "Copa hurricane",
+"iba": [
+"hurricane"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"irish": {
+"en": "Irish coffee glass",
+"es": "Copa Irish coffee",
+"iba": [
+"irish"
+],
+"alt": [
+{
+"en": "heatproof mug",
+"es": "taza resistente al calor"
+}
+]
+},
+"copper": {
+"en": "Copper mug",
+"es": "Jarro de cobre",
+"iba": [
+"copper"
+],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"tiki": {
+"en": "Tiki mug",
+"es": "Taza tiki",
+"iba": [
+"tiki"
+],
+"alt": [
+{
+"en": "embossed tiki glass",
+"es": "vaso tiki de vidrio"
+}
+]
+},
+"julep": {
+"en": "Julep cup",
+"es": "Copa julep",
+"iba": [
+"julep"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+},
+"gmug": {
+"en": "Glass mug (tankard)",
+"es": "Jarra de vidrio",
+"iba": [],
+"alt": [
+{
+"en": "highball",
+"es": "vaso highball"
+}
+]
+},
+"clay": {
+"en": "Clay cup",
+"es": "Vasija de barro",
+"iba": [
+"clay"
+],
+"alt": [
+{
+"en": "rocks",
+"es": "vaso old fashioned"
+}
+]
+}
+},
+"notes": {
+"aviation": {
+"en": "Standard serve: coupe or cocktail glass. The crystal tulip is from the IBA photo.",
+"es": "Servicio estándar: copa coupé o de cóctel. La tulipa de cristal es la de la foto IBA."
+}
+}
+};
 const {ing:ING, comp:COMP, glass:GLASS, unit:UNIT} = DATA;
 const store = { get(k,d){ try{ const v=localStorage.getItem('mise.'+k); return v===null?d:JSON.parse(v);}catch(e){return d;} }, set(k,v){ try{localStorage.setItem('mise.'+k,JSON.stringify(v));}catch(e){} } };
 let lang = store.get('lang','en');
@@ -2097,7 +2625,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
+   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', notes:'Notes', prep:'Prep', terms:'Terms', quiz:'Quiz', qFrom:n=>`From your list · ${n} drinks`, qAmt:x=>`How much ${x}?`, qIng:'Which one goes in?', qGlass:'Which glass?', qMeth:'Which method?', qName:'Which drink is this?', qNext:'Next', qRight:'Right', qWrong:'Not quite', qMissed:'To review', qOpen:'Full recipe', inIBA:'In IBA drinks', balance:'Balance', tips:'Tips', seeN:n=>`See ${n} drinks`, prepL:'Prep', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
@@ -2117,7 +2645,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
+   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', notes:'Apuntes', prep:'Insumos', terms:'Términos', quiz:'Práctica', qFrom:n=>`De tu lista · ${n} tragos`, qAmt:x=>`¿Qué medida de ${x}?`, qIng:'¿Cuál lleva?', qGlass:'¿Qué cristalería?', qMeth:'¿Qué método?', qName:'¿Qué trago es?', qNext:'Siguiente', qRight:'Bien', qWrong:'Casi', qMissed:'Para repasar', qOpen:'Receta completa', inIBA:'En tragos IBA', balance:'Balance', tips:'Claves', seeN:n=>`Ver ${n} tragos`, prepL:'Preparación', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
@@ -2227,6 +2755,12 @@ const ingName = id => ING[id]?L(ING[id]):id;
 const lineLabel = l => l.ids.map(ingName).join(` ${t().or} `);
 const techStr = d => d.tech.map(x=>t().techs[x]).join(' + ');
 const glassName = d => GLASS[d.glass]?L(GLASS[d.glass]):d.glass;
+// the exact glass in the IBA photo, then what the recipe says when it differs, then general alternatives
+function glassBlock(d){ const tt=t(), g=GLASSWARE.shapes[glassShape(d)];
+  if (!g) return `<b>${esc(glassName(d))}</b>`;
+  const rec=glassName(d), same=g.iba.includes(d.glass), alts=g.alt.map(L).filter(a=>a.toLowerCase()!==rec.toLowerCase()&&a.toLowerCase()!==L(g).toLowerCase());
+  const note=GLASSWARE.notes[d.id]?L(GLASSWARE.notes[d.id]):'';
+  return `<b>${esc(L(g))}</b><small class="ga">${same?'':`${esc(tt.glassIba)}: ${esc(rec)}. `}${alts.length?`${esc(tt.glassAlt)}: ${esc(alts.join(', '))}.`:''}${note?` ${esc(note)}`:''}</small>`; }
 const metaLine = d => [t().bases[d.base], techStr(d), Math.round(d.abv)+'%'].join(' · ');
 const photo = d => `photos/${d.id}.webp`;
 
@@ -2552,7 +3086,7 @@ function detail(d){
         <div class="nav"><button type="button" data-id="${prv.id}" aria-label="${esc(tt.prev)}: ${esc(prv.name)}">← ${esc(prv.name)}</button><button type="button" data-id="${nxt.id}" aria-label="${esc(tt.next)}: ${esc(nxt.name)}">${esc(nxt.name)} →</button></div></div>
       <section class="bk bA"><span class="k">${esc(tagLine(d))}</span><div class="rec">${lines}</div>
         <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<span class="lk"><button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch} ↗</a></span>`:''}</div></section>
-      <section class="bk bB"><div class="spx"><div><span class="k">${tt.glass}</span><b>${esc(glassName(d))}</b></div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
+      <section class="bk bB"><div class="spx"><div class="gw"><span class="k">${tt.glass}</span>${glassBlock(d)}</div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
         ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
       <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${mnote?`<p class="mnote"><b>${tt.note}</b>${esc(mnote)}</p>`:''}</section>
       <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
@@ -2639,7 +3173,7 @@ function prepHTML(p, i){
   return `<details class="pr" id="pr-${p.id}"><summary><span class="no">${String(i+1).padStart(2,'0')}</span><span class="nm">${esc(CL(p))}</span><span class="ra">${esc(p.ratio)}</span><span class="tm">${esc(CL(p.time))}</span></summary><div class="pb">${b}</div></details>`;
 }
 
-/* ---- quiz: built from the drinks in the current list ---- */
+/* ---- quiz: built from the drinks in the current list (tab hidden for now, at Fede's request) ---- */
 const QZ={n:0,ok:0,cur:null,pick:null,miss:[]};
 const rnd = a => a[Math.floor(Math.random()*a.length)];
 const shuf = a => a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
@@ -2689,7 +3223,7 @@ function renderNotes(){
       return `<div class="tm-i"><dt>${esc(CL(x.t))}</dt><dd>${esc(x[lang]||x.en)}${n?`<br><button type="button" class="txt" data-nbf="${x.f.join(':')}"><span>${tt.seeN(n)}</span> →</button>`:''}</dd></div>`; }).join('')}</dl></section>`; });
   }
   $('#nb').innerHTML = `<div class="nb-in"><div class="nb-bar"><button class="close" type="button" id="nbcls">${ICON.back}<span>${tt.back}</span></button>
-    <div class="units" role="group" aria-label="${esc(tt.notes)}"><button type="button" data-nbtab="prep" aria-pressed="${NB==='prep'}">${tt.prep}</button><button type="button" data-nbtab="terms" aria-pressed="${NB==='terms'}">${tt.terms}</button><button type="button" data-nbtab="quiz" aria-pressed="${NB==='quiz'}">${tt.quiz}</button></div></div>
+    <div class="units" role="group" aria-label="${esc(tt.notes)}"><button type="button" data-nbtab="prep" aria-pressed="${NB==='prep'}">${tt.prep}</button><button type="button" data-nbtab="terms" aria-pressed="${NB==='terms'}">${tt.terms}</button></div></div>
     <header class="nb-hd"><h2>${tt[NB]}</h2>${NB==='quiz'?'':`<span class="src">${esc(CL(COURSE.src))}</span>`}</header>${body}</div>`;
   $('#nb').setAttribute('aria-label', tt.notes);
 }
