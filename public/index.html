@@ -394,6 +394,32 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 @media(hover:hover){.sl:hover{color:#8d8a84}}
 .sl.on{color:var(--pa);text-decoration-color:var(--co)}
 .sl.cur{color:var(--co);text-decoration-color:var(--co)}
+.fvs{display:flex;gap:4px;margin-left:16px}
+.fvs button{padding:6px 8px;font:700 12px/1 var(--ft);letter-spacing:.08em;color:#8d8a84;text-transform:uppercase}
+.fvs button[aria-pressed=true]{background:var(--pa);color:var(--ink)}
+/* A: same sentence, lighter and smaller; unset slots are short blanks, set ones carry the colour */
+.fv-a .sent,.fv-d .sent{font-weight:700;font-size:clamp(26px,4.2vw,60px);line-height:1.18;letter-spacing:-.025em;color:#a9a59d}
+.fv-a .sent.s2{font-size:clamp(20px,2.8vw,40px)}
+.fv-a .sl:not(.on),.fv-d .sl:not(.on),.fv-c .sl:not(.on){color:#6b6862;text-decoration-style:dotted;text-decoration-thickness:.06em;text-decoration-color:#6b6862}
+.fv-a .sl.on,.fv-d .sl.on{color:var(--pa)}
+.fv-a .sl.cur,.fv-d .sl.cur,.fv-c .sl.cur{color:var(--co);text-decoration-color:var(--co)}
+/* B, D: four questions big, the rest in text size */
+.tier2{margin:1.6em 0 0;max-width:46ch;font:400 18px/1.65 var(--ft);color:#a9a59d}
+.tier2 .fk2,.adds .fk2{display:block;margin-bottom:8px;font:700 12px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:#8d8a84}
+.tier2 .sl{text-decoration-thickness:1px;text-underline-offset:4px}
+.fv-b .tier2 .sl:not(.on){color:#d2cec6;text-decoration-color:#5f5c57}
+.fv-b .tier2 .sl.on,.fv-d .tier2 .sl.on{color:var(--pa);font-weight:600;text-decoration-color:var(--co)}
+.fv-d .tier2 .sl:not(.on){color:#8d8a84}
+@media(min-width:900px){.tier2{font-size:20px}}
+/* C: the sentence only says what is set; the rest waits below as words */
+.fv-c .sent{font-size:clamp(32px,5vw,76px)}
+.fv-c .sl.on{color:var(--pa)}
+.adds{margin-top:2.2em;display:flex;flex-wrap:wrap;column-gap:20px;row-gap:6px;max-width:640px}
+.adds .fk2{flex-basis:100%}
+.adds .ad{padding:6px 0;font:500 18px/1.3 var(--ft);color:#b9b5ad}
+.adds .ad::before{content:'+ ';color:#6b6862}
+.adds .ad.cur{color:var(--co)}
+@media(hover:hover){.adds .ad:hover{color:var(--pa)}}
 .snt .ffoot{border:0}
 .snt .ffoot .blk{min-height:58px}
 .tray{position:absolute;left:0;right:0;bottom:0;z-index:2;background:var(--pa);color:var(--ink);padding:12px var(--gut) calc(20px + env(safe-area-inset-bottom));max-height:68%;overflow-y:auto;overscroll-behavior:contain}
@@ -3083,6 +3109,9 @@ function chipsFor(k){
 }
 /* filters, written as one sentence: each underlined part opens its options from the bottom */
 let FSLOT=null, FSLOTnew=false;
+// filter layout under review (preview build only shows the switch)
+const FV_SWITCH = false;
+let FV = FV_SWITCH ? store.get('fv','0') : '0';
 const SENT = {
   en:{ ph:{flav:'any taste',base:'any spirit',ing:'any ingredient',tech:'any method',str:'any strength',ice:'any ice',ggroup:'any glass',leave:'nothing',era:'any time',cat:'any IBA list',purpose:'any moment',sort:'A to Z'},
     or:'or', and:'and', no:'no', only:'and nothing else', animal:'anything animal',
@@ -3094,7 +3123,12 @@ const SENT = {
        sort:{az:'A to Z',light:'lightest first',strong:'strongest first',old:'oldest first',new:'newest first',few:'by fewest ingredients'}},
     s1:x=>`Show me ${x.flav} drinks made with ${x.base} and ${x.ing}, ${x.tech}, ${x.str}, served ${x.ice} in ${x.ggroup}, leaving out ${x.leave}.`,
     s2:x=>`Created ${x.era}, from ${x.cat}, for ${x.purpose}. Sorted ${x.sort}.`,
-    lead:'Filters', done:'Done', close:'Close', ingL:'Ingredients', sortT:'Order' },
+    lead:'Filters', done:'Done', close:'Close', ingL:'Ingredients', sortT:'Order',
+    bl:{flav:'taste',base:'spirit',ing:'ingredient',tech:'method',str:'strength',ice:'ice',ggroup:'glass',leave:'nothing',era:'era',cat:'IBA list',purpose:'moment',sort:'A to Z'},
+    t1:x=>`Show me ${x.flav} drinks made with ${x.base}, ${x.str}, leaving out ${x.leave}.`,
+    t2:x=>`With ${x.ing}, ${x.tech}, served ${x.ice} in ${x.ggroup}. Created ${x.era}, from ${x.cat}, for ${x.purpose}. Sorted ${x.sort}.`,
+    more:'Fine-tune', add:'Add', all:'Show me every drink.',
+    g:{start:'Show me', drinks:'drinks', base:' made with ', ingA:' and ', ing:' made with ', tech:', ', str:', ', ice:', served ', ggA:' in ', ggroup:', served in ', leave:', leaving out ', era:', created ', cat:', from ', purpose:', for ', sort:' Sorted '} },
   es:{ ph:{flav:'de cualquier sabor',base:'cualquier base',ing:'cualquier ingrediente',tech:'de cualquier técnica',str:'de cualquier graduación',ice:'con cualquier hielo',ggroup:'cualquier copa',leave:'nada',era:'en cualquier época',cat:'cualquier lista IBA',purpose:'cualquier momento',sort:'de la A a la Z'},
     or:'o', and:'y', no:'sin', only:'y nada más', animal:'nada animal',
     v:{flav:{sour:'ácidos',sweet:'dulces',bitter:'amargos',spirit:'intensos',fruity:'frutales',creamy:'cremosos',sparkling:'espumantes',herbal:'herbales',smoky:'ahumados',spicy:'picantes',fresh:'frescos',tropical:'tropicales',minty:'mentolados',coffee:'con café',savoury:'salados',silky:'sedosos',nutty:'con frutos secos',floral:'florales',dry:'secos'},
@@ -3107,18 +3141,23 @@ const SENT = {
        sort:{az:'de la A a la Z',light:'del más suave',strong:'del más fuerte',old:'del más antiguo',new:'del más nuevo',few:'por menos ingredientes'}},
     s1:x=>`Muéstrame tragos ${x.flav} con ${x.base} y ${x.ing}, ${x.tech}, ${x.str}, servidos ${x.ice} en ${x.ggroup}, sin ${x.leave}.`,
     s2:x=>`Creados ${x.era}, de ${x.cat}, para ${x.purpose}. Ordenados ${x.sort}.`,
-    lead:'Filtros', done:'Listo', close:'Cerrar', ingL:'Ingredientes', sortT:'Orden' }
+    lead:'Filtros', done:'Listo', close:'Cerrar', ingL:'Ingredientes', sortT:'Orden',
+    bl:{flav:'sabor',base:'base',ing:'ingrediente',tech:'técnica',str:'graduación',ice:'hielo',ggroup:'copa',leave:'nada',era:'época',cat:'lista IBA',purpose:'momento',sort:'A a Z'},
+    t1:x=>`Muéstrame tragos ${x.flav} con ${x.base}, ${x.str}, sin ${x.leave}.`,
+    t2:x=>`Con ${x.ing}, ${x.tech}, servidos ${x.ice} en ${x.ggroup}. Creados ${x.era}, de ${x.cat}, para ${x.purpose}. Ordenados ${x.sort}.`,
+    more:'Afinar', add:'Sumar', all:'Muéstrame todos los tragos.',
+    g:{start:'Muéstrame', drinks:'tragos', base:' con ', ingA:' y ', ing:' con ', tech:', ', str:', ', ice:', servidos ', ggA:' en ', ggroup:', servidos en ', leave:', sin ', era:', creados ', cat:', de ', purpose:', para ', sort:' Ordenados '} }
 };
 const SLOTT = k => ({flav:t().taste,base:t().base,ing:SENT[lang].ingL,tech:t().tech,str:t().abv,ice:t().ice,ggroup:t().glass,leave:t().without,era:t().era,cat:t().list,purpose:t().purpose,sort:SENT[lang].sortT}[k]);
 function slotText(k){
   const W=SENT[lang], lc=s=>String(s).toLowerCase(), join=(a,w)=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' '+w+' '+a[a.length-1];
   const phr=(f,v)=>(W.v[f]&&W.v[f][v]) || (f==='cat'?facetLabel(f,v):lc(facetLabel(f,v)));
-  if (k==='sort') return {on:sort!=='az', s:W.v.sort[sort]||W.ph.sort};
+  if (k==='sort') return {on:sort!=='az', s:sort!=='az'?W.v.sort[sort]:(FV==='a'||FV==='d'||FV==='c'?W.bl.sort:W.ph.sort)};
   if (k==='leave'){ const a=S.leave.map(c=>lc(L(COMP[c]).replace(/ \(.*\)/,''))); if(S.vegan) a.push(W.animal); return {on:a.length>0, s:a.length?join(a,W.and)+(S.swapok?' '+t().swapSent:''):W.ph.leave}; }
   if (k==='ing'){ const a=S.toks.map(tk=>(tk.mode==='exc'?W.no+' ':'')+lc(tokLabel(tk))); let s=a.length?join(a,W.and):W.ph.ing; if(a.length&&S.mybar) s+=' '+W.only; return {on:a.length>0, s}; }
   const a=S[k].map(v=>phr(k,v)); return {on:a.length>0, s:a.length?join(a,W.or):W.ph[k]};
 }
-const slotBtn = k => { const x=slotText(k); return `<button type="button" class="sl${x.on?' on':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(x.s)}</button>`; };
+const slotBtn = k => { const x=slotText(k); if(!x.on && k!=='sort' && (FV==='a'||FV==='d'||FV==='c')) x.s=SENT[lang].bl[k]; return `<button type="button" class="sl${x.on?' on':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(x.s)}</button>`; };
 function trayBody(k){
   const tt=t();
   if (k==='leave') return `<div class="vs">${ALLERGY.map(c=>`<button type="button" class="v" data-leave="${c}" aria-pressed="${S.leave.includes(c)}">${esc(L(COMP[c]).replace(/ \(.*\)/,''))}</button>`).join('')}<button type="button" class="v" data-vegan="1" aria-pressed="${S.vegan}">${tt.vegan}</button></div><div class="vs" style="margin-top:14px"><button type="button" class="v" data-swapok="1" aria-pressed="${S.swapok}">${tt.swapOk}</button></div>
@@ -3129,15 +3168,28 @@ function trayBody(k){
   const F=FACETS.find(f=>f[0]===k);
   return `<div class="vs">${F[1].map(v=>{ const on=S[k].includes(v), n=facetCount(k,v,F[2]); return `<button type="button" class="v" data-f="${k}" data-v="${v}" aria-pressed="${on}" ${!n&&!on?'disabled':''}>${esc(facetLabel(k,v))}<sup>${n}</sup></button>`; }).join('')}</div>`;
 }
+// the sentence: whole (now, A), two tiers (B, D) or only what is set (C)
+const GROW = ['flav','base','ing','tech','str','ice','ggroup','leave','era','cat','purpose'];
+function sentHTML(W,x){
+  if (FV==='b'||FV==='d') return `<p class="sent">${W.t1(x)}</p><p class="tier2"><span class="fk2">${W.more}</span>${W.t2(x)}</p>`;
+  if (FV!=='c') return `<p class="sent">${W.s1(x)}</p><p class="sent s2">${W.s2(x)}</p>`;
+  const on=k=>slotText(k).on||FSLOT===k, g=W.g; let s='';
+  if (!GROW.some(on) && !(sort!=='az'||FSLOT==='sort')) s=W.all;
+  else { s=g.start+(on('flav')?' '+x.flav:'')+' '+g.drinks;
+    GROW.slice(1).forEach(k=>{ if(!on(k)) return; const pre=k==='ing'&&on('base')?g.ingA:k==='ggroup'&&on('ice')?g.ggA:g[k]; s+=pre+x[k]; });
+    s+='.'; if(sort!=='az'||FSLOT==='sort') s+=g.sort+x.sort+'.'; }
+  const left=GROW.concat('sort').filter(k=>!(k==='sort'?sort!=='az':slotText(k).on));
+  return `<p class="sent">${s}</p><div class="adds"><span class="fk2">${W.add}</span>${left.map(k=>`<button type="button" class="ad${FSLOT===k?' cur':''}" data-slot="${k}">${esc(SLOTT(k))}</button>`).join('')}</div>`;
+}
 function renderFilters(){
   const fs=$('#fs'); if (fs.hidden) return;
   const tt=t(), W=SENT[lang], n=results().length, x={};
   ['flav','base','ing','tech','str','ice','ggroup','leave','era','cat','purpose','sort'].forEach(k=>x[k]=slotBtn(k));
   const body=fs.querySelector('.fbody'), st=body?body.scrollTop:0, tr=fs.querySelector('.tray'), tst=tr?tr.scrollTop:0;
   const tin=fs.querySelector('#tokin'), val=tin?tin.value:'', foc=tin && document.activeElement===tin;
-  fs.innerHTML = `<div class="fpanel snt" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
-    <div class="fhead"><span class="fk">${W.lead}</span><div class="acts">${activeCount()||sort!=='az'?`<button type="button" class="txtbtn" id="fclear">${tt.clearAll}</button>`:''}<button type="button" class="txtbtn" id="fclose">${W.close}</button></div></div>
-    <div class="fbody"><p class="sent">${W.s1(x)}</p><p class="sent s2">${W.s2(x)}</p></div>
+  fs.innerHTML = `<div class="fpanel snt fv-${FV}" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
+    <div class="fhead"><span class="fk">${W.lead}</span>${FV_SWITCH?`<span class="fvs">${['0','a','b','c','d'].map(v=>`<button type="button" data-fv="${v}" aria-pressed="${FV===v}">${v==='0'?'Now':v.toUpperCase()}</button>`).join('')}</span>`:''}<div class="acts">${activeCount()||sort!=='az'?`<button type="button" class="txtbtn" id="fclear">${tt.clearAll}</button>`:''}<button type="button" class="txtbtn" id="fclose">${W.close}</button></div></div>
+    <div class="fbody">${sentHTML(W,x)}</div>
     <div class="ffoot"><button type="button" class="blk" id="fshow"><span>${tt.show(n)}</span>→</button></div>
     ${FSLOT?`<div class="tray${FSLOTnew?' in':''}" role="group" aria-label="${esc(SLOTT(FSLOT))}"><div class="th"><h3>${esc(SLOTT(FSLOT))}</h3><button type="button" class="txtbtn" data-tdone>${W.done}</button></div>${trayBody(FSLOT)}</div>`:''}</div>`;
   FSLOTnew=false;
@@ -3369,6 +3421,7 @@ function close(pop=false){ if(openId===null) return; const id=openId; openId=nul
 function all(){ renderChrome(); renderList(); renderTab(); if(!$('#nb').hidden){ if(NB==='quiz') QZ.cur=null; renderNotes(); } if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
 
 document.addEventListener('click', e=>{
+  const fvb=e.target.closest('[data-fv]'); if(fvb){ FV=fvb.dataset.fv; store.set('fv',FV); renderFilters(); return; }
   const sl=e.target.closest('[data-slot]'); if(sl){ const k=sl.dataset.slot; FSLOT=FSLOT===k?null:k; FSLOTnew=!!FSLOT; renderFilters(); if(FSLOT==='ing'){ const ti=$('#tokin'); if(ti) ti.focus({preventScroll:true}); } return; }
   if(e.target.closest('[data-tdone]')){ const k=FSLOT; FSLOT=null; renderFilters(); const b=document.querySelector(`[data-slot="${k}"]`); if(b) b.focus({preventScroll:true}); return; }
   const fc=e.target.closest('[data-f]'); if(fc){ const k=fc.dataset.f,v=fc.dataset.v; S[k]=S[k].includes(v)?S[k].filter(x=>x!==v):[...S[k],v]; changed(); return; }
