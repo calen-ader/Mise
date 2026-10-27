@@ -237,6 +237,9 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .vb .rec b{font-size:26px}.vb .rec b.wd{font-size:19px;line-height:1.37}
 .vb p{margin:18px 0 0;font:400 15.5px/1.45 var(--ft);max-width:60ch}
 .vb p .k{margin-bottom:6px}
+.vp{margin:24px 0 0;width:min(100%,300px)}.vp.wide{width:min(100%,520px)}
+.vp img{display:block;width:100%;height:auto}
+.vp figcaption{margin-top:8px;font:400 12.5px/1.3 var(--ft);color:var(--ink2)}
 .vac{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin-top:20px}
 .vac .fr{color:var(--ink2)}.vac .fr[data-play]{color:var(--ink)}
 .vac iframe{order:-1;flex:1 0 100%;aspect-ratio:16/9;border:0;background:#000;display:block}
@@ -516,7 +519,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', sources:'Sources', vars:'Variations', varOf:'Variation', play:'Play video', watch:'Open on YouTube',
+   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', sources:'Sources', vars:'Variations', varOf:'Variation', photoBy:'Photo:', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', notes:'Notes', prep:'Prep', terms:'Terms', quiz:'Quiz', qFrom:n=>`From your list · ${n} drinks`, qAmt:x=>`How much ${x}?`, qIng:'Which one goes in?', qGlass:'Which glass?', qMeth:'Which method?', qName:'Which drink is this?', qNext:'Next', qRight:'Right', qWrong:'Not quite', qMissed:'To review', qOpen:'Full recipe', inIBA:'In IBA drinks', balance:'Balance', tips:'Tips', seeN:n=>`See ${n} drinks`, prepL:'Prep', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
@@ -536,7 +539,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', sources:'Fuentes', vars:'Variaciones', varOf:'Variación', play:'Ver video', watch:'Abrir en YouTube',
+   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', sources:'Fuentes', vars:'Variaciones', varOf:'Variación', photoBy:'Foto:', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', notes:'Apuntes', prep:'Insumos', terms:'Términos', quiz:'Práctica', qFrom:n=>`De tu lista · ${n} tragos`, qAmt:x=>`¿Qué medida de ${x}?`, qIng:'¿Cuál lleva?', qGlass:'¿Qué cristalería?', qMeth:'¿Qué método?', qName:'¿Qué trago es?', qNext:'Siguiente', qRight:'Bien', qWrong:'Casi', qMissed:'Para repasar', qOpen:'Receta completa', inIBA:'En tragos IBA', balance:'Balance', tips:'Claves', seeN:n=>`Ver ${n} tragos`, prepL:'Preparación', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
@@ -986,7 +989,7 @@ function varsHTML(d){
   const row = x => { const on=hit===x, ls=x.lines.map(l=>{ const [a,b]=qtyParts(ln(l)); const nm=l.ids&&l.ids.length&&lang!=='es'?l.ids.map(ingName).join(` ${tt.or} `):(lang==='es'?l.ing_es:l.ing_en);
       return `<div><b${a?'':' class="wd"'}>${esc(a||capW(b))}${a?`<small>${esc(b)}</small>`:''}</b><span>${esc(nm)}</span></div>`; }).join('');
     return `<li${on?' class="on"':''}><button type="button" class="vh" aria-expanded="${on}"><span class="va" aria-hidden="true">${art(x)}</span><b>${esc(x.name)}</b><span>${esc(lang==='es'?x.change_es:x.change_en)}</span>${ICON.next}</button>
-      <div class="vb"${on?'':' hidden'}><div class="rec">${ls}</div><p>${esc(lang==='es'?x.method_es:x.method_en)}</p>${x.garnish_en?`<p><span class="k">${tt.garnish}</span>${esc(lang==='es'?x.garnish_es:x.garnish_en)}</p>`:''}<div class="vac">${x.video?`<button type="button" class="fr" data-play="${esc(x.video)}" data-t="${esc(x.name)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(x.video)}" target="_blank" rel="noopener">${tt.watch}${ICON.out}</a>`:''}<a class="fr" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.src)}${ICON.out}</a></div></div></li>`; };
+      <div class="vb"${on?'':' hidden'}><div class="rec">${ls}</div><p>${esc(lang==='es'?x.method_es:x.method_en)}</p>${x.garnish_en?`<p><span class="k">${tt.garnish}</span>${esc(lang==='es'?x.garnish_es:x.garnish_en)}</p>`:''}${x.photo?`<figure class="vp${x.photo.w>x.photo.h?' wide':''}"><img src="img/var-${x.id}.webp" width="${x.photo.w}" height="${x.photo.h}" alt="${esc(x.name)}" loading="lazy" decoding="async"><figcaption>${tt.photoBy} Difford's Guide</figcaption></figure>`:''}<div class="vac">${x.video?`<button type="button" class="fr" data-play="${esc(x.video)}" data-t="${esc(x.name)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(x.video)}" target="_blank" rel="noopener">${tt.watch}${ICON.out}</a>`:''}<a class="fr" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.src)}${ICON.out}</a></div></div></li>`; };
   return `<section class="bk bV"><span class="k">${tt.vars} · ${d.vars.length}</span><ul class="vl">${d.vars.map(row).join('')}</ul></section>`;
 }
 function detail(d){
