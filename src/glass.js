@@ -86,8 +86,8 @@ function inset(S){const[xl,xr,ry]=S.r,cx=(xl+xr)/2,sx=(xr-xl-12)/(xr-xl),h=S.bot
  return S.o.replace(/(-?\d+\.?\d*) (-?\d+\.?\d*)/g,(m,a,b)=>`${(cx+(a-cx)*sx).toFixed(1)} ${(ry+4+(b-ry)*sy).toFixed(1)}`).replace(/([MLCQ])(-?\d+\.?\d*) /g,(m,c,a)=>m)}
 Object.values(P).forEach(S=>{if(!S.i&&!S.op&&S.bot)S.i=inset(S)});
 const SHAPE={cocktail:'coupe',slim:'slim',goblet:'goblet',cobbler:'goblet',martini:'martini',flute:'flute',wine:'wine',rocks:'rocks',dof:'dof','small-tumbler':'low',highball:'highball','tall-tumbler':'highball',collins:'collins',hurricane:'hurricane',irish:'irish',copper:'copper',tiki:'tiki',julep:'julep',clay:'clay'};
-const shapeOf=d=>(OVR[d.id]&&OVR[d.id].s)||SHAPE[d.glass]||'coupe';
-const liqOf=d=>(OVR[d.id]&&OVR[d.id].liq)||LIQ[d.id]||d.color||'#e9a54a';
+const shapeOf=d=>((d.ovr||OVR[d.id])&&(d.ovr||OVR[d.id]).s)||SHAPE[d.glass]||'coupe';
+const liqOf=d=>((d.ovr||OVR[d.id])&&(d.ovr||OVR[d.id]).liq)||LIQ[d.id]||d.color||'#e9a54a';
 const hx=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));
 const dist=(a,b)=>{a=hx(a);b=hx(b);const r=(a[0]+b[0])/2;return Math.sqrt((2+r/256)*(a[0]-b[0])**2+4*(a[1]-b[1])**2+(2+(255-r)/256)*(a[2]-b[2])**2)};
 const hash=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
@@ -109,6 +109,7 @@ function wheel(x,y,r,k,a){const[c1,c2,c3]=CIT[k];let seg='';for(let i=0;i<8;i++)
 function halfWheel(x,y,r,k,a){const[c1,c2,c3]=CIT[k];return `<g transform="${rot(a||0,x,y)}"><path d="M${x-r} ${y}a${r} ${r} 0 0 1 ${2*r} 0z" fill="${c1}"/><path d="M${x-r*.86} ${y}a${r*.86} ${r*.86} 0 0 1 ${r*1.72} 0z" fill="${c3}"/><path d="M${x-r*.78} ${y}a${r*.78} ${r*.78} 0 0 1 ${r*1.56} 0z" fill="${c2}"/><path d="M${x} ${y}l${-r*.55} ${-r*.5}M${x} ${y}v${-r*.75}M${x} ${y}l${r*.55} ${-r*.5}" stroke="${c3}" stroke-width="${(r/9).toFixed(1)}"/></g>`}
 function cherry(x,y,stem){return `${stem===false?'':`<path d="M${x+2} ${y-8}q4-22 22-30" fill="none" stroke="${INK.ink}" stroke-width="2.6"/>`}<circle cx="${x}" cy="${y}" r="10" fill="${CHERRY}"/><circle cx="${x-3}" cy="${y-3}" r="2.6" fill="#fff" opacity=".45"/>`}
 function pick(x1,y1,x2,y2){return `<path d="M${x1} ${y1}L${x2} ${y2}" stroke="${INK.ink}" stroke-width="3" stroke-linecap="round"/>`}
+function onion(x,y){return `<circle cx="${x}" cy="${y}" r="10" fill="#e4d9c2"/><path d="M${x-10} ${y}a10 10 0 0 0 20 0a10 6 0 0 1 -20 0z" fill="#c4b493"/><circle cx="${x-3.5}" cy="${y-4}" r="2.6" fill="#fbf7ee"/>`}
 function olive(x,y){return `<ellipse cx="${x}" cy="${y}" rx="12" ry="9" transform="${rot(-58,x,y)}" fill="#6f8f2a"/><circle cx="${x-4}" cy="${y+7}" r="3.6" fill="${INK.co}"/>`}
 function berries(pts,c){return pts.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="9.5" fill="${c}"/><circle cx="${x-3}" cy="${y-3}" r="2.4" fill="#fff" opacity=".4"/>`).join('')}
 // one pointed leaf, base at x,y, pointing at angle a (0 = up)
@@ -138,7 +139,7 @@ function grapes(x,y){return [[0,0],[12,4],[5,12]].map(([a,b])=>`<circle cx="${x+
 function tokens(g){const T=[];
  if(/half salt/.test(g))T.push('salt-half');else if(/salt rim/.test(g))T.push('salt');
  if(/sugar rim|dipped in sugar/.test(g))T.push('sugar');
- if(/celery/.test(g))T.push('celery');if(/olive/.test(g))T.push('olive');
+ if(/celery/.test(g))T.push('celery');if(/onion/.test(g))T.push('onion');if(/olive/.test(g))T.push('olive');
  if(/raspberr|blackberr|berries/.test(g))T.push(/black/.test(g)?'berries-black':'berries');
  if(/three cherries/.test(g))T.push('cherries3');
  if(/pineapple/.test(g))T.push('pine');
@@ -154,8 +155,8 @@ function tokens(g){const T=[];
  if(/passion/.test(g))T.push('passion');
  return T}
 const TOKC={'wheel-orange':CIT.orange[0],'wheel-lime':CIT.lime[0],'wheel-lemon':CIT.lemon[0],'peel-orange':CIT.orange[0],'peel-lemon':CIT.lemon[0],'peel-lime':CIT.lime[0],'crusta':CIT.orange[0],
- cherry:CHERRY,cherries3:CHERRY,'cherry-pick':[CHERRY,PINE],mint:LEAF[0],leaves:LEAF[0],pine:[PINE,LEAF[0]],'pine-wedge':PINE,spiral:CIT.lemon[0],fronds:LEAF[0],berries:'#d8335e',chili:'#d8231f',olive:'#6f8f2a',celery:'#8cc63f','wheel-in':CIT.orange[0]};
-function garOf(d){const O=OVR[d.id]||{};const g=(O.g!==undefined?O.g:((d.garnish&&d.garnish.en)||'')).toLowerCase();return O.gar||tokens(g)}
+ cherry:CHERRY,cherries3:CHERRY,'cherry-pick':[CHERRY,PINE],mint:LEAF[0],leaves:LEAF[0],pine:[PINE,LEAF[0]],'pine-wedge':PINE,spiral:CIT.lemon[0],fronds:LEAF[0],berries:'#d8335e',chili:'#d8231f',olive:'#6f8f2a',onion:'#efe9d8',celery:'#8cc63f','wheel-in':CIT.orange[0]};
+function garOf(d){const O=(d.ovr||OVR[d.id])||{};const g=(O.g!==undefined?O.g:((d.garnish&&d.garnish.en)||'')).toLowerCase();return O.gar||tokens(g)}
 
 // tile colour: far from the liquid, the vessel and every garnish colour
 const lum=c=>{const v=hx(c).map(x=>{x/=255;return x<=.03928?x/12.92:((x+.055)/1.055)**2.4});return .2126*v[0]+.7152*v[1]+.0722*v[2]};
@@ -173,7 +174,7 @@ function pickBG(d){const S=P[shapeOf(d)],liq=liqOf(d),h=hash(d.id),gc=garOf(d).f
 window.glassRim=d=>P[shapeOf(d)].r;window.glassShape=shapeOf;window.glassBG=pickBG;window.glassLiq=liqOf;
 
 window.glassSVG=function(d,opt){opt=opt||{};
- const O=OVR[d.id]||{},k=shapeOf(d),S=P[k],id='gv'+(++uid);
+ const O=(d.ovr||OVR[d.id])||{},k=shapeOf(d),S=P[k],id='gv'+(++uid);
  const liq=liqOf(d),L=Object.assign({},LAYER[d.id]||{},O.bottom?{bottom:O.bottom}:{});
  const ings=(d.lines||[]).flatMap(l=>l.ids||[]),has=x=>ings.includes(x);
  const bg=opt.bg||pickBG(d);
@@ -235,6 +236,7 @@ window.glassSVG=function(d,opt){opt=opt||{};
  if(is('crusta')){const c=collar(xl,xr,ry,'orange');back+=c.back;front+=c.front}
  if(is('celery'))front+=celery(xr-30,ry+40);
  if(is('olive'))front+=pick(xr+6,ry-44,cx,S.f+30)+olive(cx+18,S.f+4);
+ if(is('onion'))front+=pick(xr+6,ry-44,cx,S.f+30)+onion(cx+22,S.f-6)+onion(cx+8,S.f+12);
  if(is('berries')||is('berries-black'))front+=pick(xl+10,ry-24,xr+8,ry-6)+berries([[xl+40,ry-18],[cx,ry-13],[xr-36,ry-8]],is('berries-black')?'#2b1630':'#d8335e');
  if(is('fronds'))back+=fronds(cx+6,ry+14,1);
  if(is('mint'))front+=mint(cx-4,ry-4,w<70?.8:1);

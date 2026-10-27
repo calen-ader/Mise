@@ -12,6 +12,7 @@ t = t.replace('__GLASS__', (root / 'src/glass.js').read_text())
 t = t.replace('__COURSE__', (root / 'data/course.json').read_text())
 t = t.replace('__GLASSWARE__', (root / 'data/glassware.json').read_text())
 t = t.replace('__SWAPS__', (root / 'data/swaps.json').read_text())
+t = t.replace('__VARS__', (root / 'data/variations.json').read_text())
 t = t.replace('__FRAMES__', (root / 'data/frames.json').read_text())
 head, body = t.split('</style>', 1)
 html = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'

@@ -1,0 +1,2390 @@
+[
+ {
+  "parent": "kir",
+  "id": "kir-royale",
+  "name": "Kir Royale",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1109/kir-royale",
+  "change_en": "Champagne instead of still white wine.",
+  "change_es": "Champagne en lugar de vino blanco tranquilo.",
+  "lines": [
+   {
+    "ing_en": "Crème de Cassis",
+    "ing_es": "Crème de cassis",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "creme-de-cassis"
+    ]
+   },
+   {
+    "ing_en": "Brut Champagne or Sparkling Wine (chilled)",
+    "ing_es": "Champagne o espumante brut (frío)",
+    "q": "120",
+    "u": "ml",
+    "ids": [
+     "champagne",
+     "sparkling"
+    ]
+   }
+  ],
+  "method_en": "Pour cassis into a chilled flute. Top with sparkling wine.",
+  "method_es": "Vierte el cassis en una copa flauta fría. Completa con el espumante.",
+  "garnish_en": "A seasonal berry (e.g. blackcurrant).",
+  "garnish_es": "Una baya de estación (ej. grosella negra).",
+  "art": {
+   "glass": "flute",
+   "ice": "up",
+   "ovr": {
+    "liq": "#b8304e",
+    "s": "cflute",
+    "gar": [
+     "berries-black"
+    ]
+   }
+  },
+  "video": "n-pfgbGPMa4"
+ },
+ {
+  "parent": "black-russian",
+  "id": "white-russian",
+  "name": "White Russian",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2093/white-russian-cocktail",
+  "change_en": "Cream floated on top.",
+  "change_es": "Crema flotando encima.",
+  "lines": [
+   {
+    "ing_en": "Vodka",
+    "ing_es": "Vodka",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "vodka"
+    ]
+   },
+   {
+    "ing_en": "Coffee Liqueur",
+    "ing_es": "Licor de café",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "coffee-liqueur"
+    ]
+   },
+   {
+    "ing_en": "Whipping Cream",
+    "ing_es": "Crema para batir",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "cream"
+    ]
+   }
+  ],
+  "method_en": "Stir vodka and coffee liqueur with ice and strain into an ice-filled old fashioned glass. Lightly whip the cream and float it on top.",
+  "method_es": "Revuelve el vodka y el licor de café con hielo y cuela en un vaso old fashioned con hielo. Bate apenas la crema y hazla flotar encima.",
+  "garnish_en": "Freshly grated nutmeg.",
+  "garnish_es": "Nuez moscada recién rallada.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#c9a98a",
+    "gar": []
+   }
+  },
+  "video": "qnVOUfsbr64"
+ },
+ {
+  "parent": "john-collins",
+  "id": "tom-collins",
+  "name": "Tom Collins",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1972/tom-collins",
+  "change_en": "Old Tom gin instead of London dry, with rich syrup.",
+  "change_es": "Old Tom gin en lugar de London dry, con almíbar rico.",
+  "lines": [
+   {
+    "ing_en": "Old Tom Gin",
+    "ing_es": "Old Tom gin",
+    "q": "52.5",
+    "u": "ml",
+    "ids": [
+     "old-tom-gin"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Soda Water",
+    "ing_es": "Soda",
+    "q": "52.5",
+    "u": "ml",
+    "ids": [
+     "soda"
+    ]
+   }
+  ],
+  "method_en": "Shake gin, lemon and syrup with ice. Strain into an ice-filled collins glass. Top with soda and stir briefly.",
+  "method_es": "Bate el gin, el limón y el almíbar con hielo. Cuela en un vaso collins con hielo. Completa con soda y revuelve brevemente.",
+  "garnish_en": "Orange wheel and maraschino cherry.",
+  "garnish_es": "Rodaja de naranja y cereza marrasquino.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#f1ead0"
+   }
+  },
+  "video": "1lctXcwvL_s"
+ },
+ {
+  "parent": "negroni",
+  "id": "negroni-sbagliato",
+  "name": "Negroni Sbagliato",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2515/negroni-sbagliato",
+  "change_en": "Prosecco instead of gin.",
+  "change_es": "Prosecco en lugar de gin.",
+  "lines": [
+   {
+    "ing_en": "Sweet Red Vermouth",
+    "ing_es": "Vermut rojo dulce",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "sweet-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Italian Red Bitter (e.g. Campari)",
+    "ing_es": "Bitter rojo italiano (ej. Campari)",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "campari"
+    ]
+   },
+   {
+    "ing_en": "Extra Dry Prosecco",
+    "ing_es": "Prosecco extra dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "prosecco"
+    ]
+   }
+  ],
+  "method_en": "Pour all ingredients into an ice-filled old fashioned glass. Stir briefly.",
+  "method_es": "Vierte todos los ingredientes en un vaso old fashioned con hielo. Revuelve brevemente.",
+  "garnish_en": "Orange wheel.",
+  "garnish_es": "Rodaja de naranja.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#b0281c"
+   }
+  },
+  "video": "zutRYKwwUxA"
+ },
+ {
+  "parent": "negroni",
+  "id": "white-negroni",
+  "name": "White Negroni",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3420/white-negroni",
+  "change_en": "Gentian liqueur and Lillet replace Campari and red vermouth.",
+  "change_es": "Licor de genciana y Lillet reemplazan al Campari y al vermut rojo.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Gentian liqueur (e.g. Suze)",
+    "ing_es": "Licor de genciana (ej. Suze)",
+    "q": "30",
+    "u": "ml",
+    "ids": []
+   },
+   {
+    "ing_en": "Lillet Blanc",
+    "ing_es": "Lillet Blanc",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "lillet"
+    ]
+   },
+   {
+    "ing_en": "Saline Solution (20%)",
+    "ing_es": "Solución salina (20%)",
+    "q": "3",
+    "u": "drops",
+    "ids": [
+     "salt"
+    ],
+    "opt": true
+   }
+  ],
+  "method_en": "Pour all ingredients into an ice-filled old fashioned glass and stir.",
+  "method_es": "Vierte todos los ingredientes en un vaso old fashioned con hielo y revuelve.",
+  "garnish_en": "Pink grapefruit zest, expressed.",
+  "garnish_es": "Piel de pomelo rosado, exprimida.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#ecdf9a",
+    "gar": [
+     "peel-orange"
+    ]
+   }
+  },
+  "video": "IzPxeVVWMBs"
+ },
+ {
+  "parent": "negroni",
+  "id": "mezcal-negroni",
+  "name": "Mezcal Negroni",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3382/mezcal-negroni",
+  "change_en": "Mezcal instead of gin.",
+  "change_es": "Mezcal en lugar de gin.",
+  "lines": [
+   {
+    "ing_en": "Mezcal",
+    "ing_es": "Mezcal",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "mezcal"
+    ]
+   },
+   {
+    "ing_en": "Italian Red Bitter (e.g. Campari)",
+    "ing_es": "Bitter rojo italiano (ej. Campari)",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "campari"
+    ]
+   },
+   {
+    "ing_en": "Sweet Red Vermouth",
+    "ing_es": "Vermut rojo dulce",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "sweet-vermouth"
+    ]
+   }
+  ],
+  "method_en": "Pour all ingredients into an ice-filled old fashioned glass and stir.",
+  "method_es": "Vierte todos los ingredientes en un vaso old fashioned con hielo y revuelve.",
+  "garnish_en": "Orange zest, expressed, and/or a green olive.",
+  "garnish_es": "Piel de naranja exprimida y/o una aceituna verde.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#7e1a14"
+   }
+  },
+  "video": "SV-ABtsiIbI"
+ },
+ {
+  "parent": "dry-martini",
+  "id": "dirty-martini",
+  "name": "Dirty Martini",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/650/dirty-martini",
+  "change_en": "Olive brine added.",
+  "change_es": "Se agrega salmuera de aceitunas.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Dry Vermouth",
+    "ing_es": "Vermut seco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "dry-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Green olive brine (chilled)",
+    "ing_es": "Salmuera de aceitunas verdes (fría)",
+    "q": "15",
+    "u": "ml",
+    "ids": []
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into a chilled martini glass.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en una copa martini fría.",
+  "garnish_en": "Skewered green olives.",
+  "garnish_es": "Aceitunas verdes en un palillo.",
+  "art": {
+   "glass": "martini",
+   "ice": "up",
+   "ovr": {
+    "liq": "#d9d6a8",
+    "gar": [
+     "olive"
+    ]
+   }
+  },
+  "video": "hD5HkwJuS_Q"
+ },
+ {
+  "parent": "dry-martini",
+  "id": "gibson",
+  "name": "Gibson",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/830/gibson-dry-martini",
+  "change_en": "Pickled onion garnish instead of olive or twist.",
+  "change_es": "Cebollita encurtida en lugar de aceituna o piel.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "62.5",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Dry Vermouth",
+    "ing_es": "Vermut seco",
+    "q": "12.5",
+    "u": "ml",
+    "ids": [
+     "dry-vermouth"
+    ]
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Fine strain into a chilled coupe.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela fino en una copa coupe fría.",
+  "garnish_en": "Two skewered pickled cocktail onions.",
+  "garnish_es": "Dos cebollitas encurtidas en un palillo.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#ece9d6",
+    "gar": [
+     "onion"
+    ]
+   }
+  },
+  "video": "ZSICVFdf_M4"
+ },
+ {
+  "parent": "dry-martini",
+  "id": "fifty-fifty-martini",
+  "name": "Fifty-Fifty Martini",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2162/dry-martini-11-ratio-fifty-fifty",
+  "change_en": "Equal parts gin and dry vermouth.",
+  "change_es": "Partes iguales de gin y vermut seco.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Dry Vermouth",
+    "ing_es": "Vermut seco",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "dry-vermouth"
+    ]
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Fine strain into a chilled coupe.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela fino en una copa coupe fría.",
+  "garnish_en": "Skewered green olive.",
+  "garnish_es": "Aceituna verde en un palillo.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#e6e0c4",
+    "gar": [
+     "olive"
+    ]
+   }
+  },
+  "video": "UN-8-B-IEHA"
+ },
+ {
+  "parent": "dry-martini",
+  "id": "vodka-martini",
+  "name": "Vodka Martini (Kangaroo)",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2461/kangaroo-dry-martini",
+  "change_en": "Vodka instead of gin.",
+  "change_es": "Vodka en lugar de gin.",
+  "lines": [
+   {
+    "ing_en": "Vodka",
+    "ing_es": "Vodka",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "vodka"
+    ]
+   },
+   {
+    "ing_en": "Dry Vermouth",
+    "ing_es": "Vermut seco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "dry-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Orange Bitters",
+    "ing_es": "Amargo de naranja",
+    "q": "1",
+    "u": "dash",
+    "ids": [
+     "orange-bitters"
+    ],
+    "opt": true
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Fine strain into a chilled martini glass.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela fino en una copa martini fría.",
+  "garnish_en": "Lemon zest, expressed.",
+  "garnish_es": "Piel de limón, exprimida.",
+  "art": {
+   "glass": "martini",
+   "ice": "up",
+   "ovr": {
+    "liq": "#eeeedd"
+   }
+  },
+  "video": "rWjLTeEq9NU"
+ },
+ {
+  "parent": "manhattan",
+  "id": "rob-roy",
+  "name": "Rob Roy",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1681/rob-roy-cocktail",
+  "change_en": "Blended Scotch instead of rye.",
+  "change_es": "Whisky escocés blend en lugar de centeno.",
+  "lines": [
+   {
+    "ing_en": "Blended Scotch Whisky",
+    "ing_es": "Whisky escocés blend",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "scotch"
+    ]
+   },
+   {
+    "ing_en": "Sweet Red Vermouth",
+    "ing_es": "Vermut rojo dulce",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "sweet-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Aromatic bitters (Abbott's style)",
+    "ing_es": "Amargo aromático (estilo Abbott's)",
+    "q": "8",
+    "u": "drops",
+    "ids": []
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into a chilled coupe. Express orange zest over the drink and discard.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en una copa coupe fría. Exprime la piel de naranja sobre el trago y descártala.",
+  "garnish_en": "Maraschino cherry.",
+  "garnish_es": "Cereza marrasquino.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#8a2c14",
+    "s": "scoupe",
+    "gar": [
+     "cherry"
+    ]
+   }
+  },
+  "video": "dILA0ZEVllc"
+ },
+ {
+  "parent": "manhattan",
+  "id": "perfect-manhattan",
+  "name": "Perfect Manhattan",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1246/manhattan-perfect",
+  "change_en": "Vermouth split between sweet and dry; bourbon base.",
+  "change_es": "Vermut dividido entre dulce y seco; base de bourbon.",
+  "lines": [
+   {
+    "ing_en": "Bourbon Whiskey",
+    "ing_es": "Bourbon",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "bourbon"
+    ]
+   },
+   {
+    "ing_en": "Sweet Red Vermouth",
+    "ing_es": "Vermut rojo dulce",
+    "q": "12.5",
+    "u": "ml",
+    "ids": [
+     "sweet-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Dry Vermouth",
+    "ing_es": "Vermut seco",
+    "q": "12.5",
+    "u": "ml",
+    "ids": [
+     "dry-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Angostura Bitters",
+    "ing_es": "Amargo de Angostura",
+    "q": "2",
+    "u": "dash",
+    "ids": [
+     "angostura"
+    ]
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into a chilled coupe. Express orange zest over the drink and discard.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en una copa coupe fría. Exprime la piel de naranja sobre el trago y descártala.",
+  "garnish_en": "Maraschino cherry.",
+  "garnish_es": "Cereza marrasquino.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#9a4a1e",
+    "s": "scoupe",
+    "gar": [
+     "cherry"
+    ]
+   }
+  },
+  "video": "wwQzSmtiYo0"
+ },
+ {
+  "parent": "manhattan",
+  "id": "black-manhattan",
+  "name": "Black Manhattan",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/4345/black-manhattan",
+  "change_en": "Amaro (Averna) instead of sweet vermouth.",
+  "change_es": "Amaro (Averna) en lugar de vermut dulce.",
+  "lines": [
+   {
+    "ing_en": "Rye Whiskey (100 proof)",
+    "ing_es": "Whiskey de centeno (50%)",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "rye"
+    ]
+   },
+   {
+    "ing_en": "Amaro (e.g. Averna)",
+    "ing_es": "Amaro (ej. Averna)",
+    "q": "30",
+    "u": "ml",
+    "ids": []
+   },
+   {
+    "ing_en": "Angostura Bitters",
+    "ing_es": "Amargo de Angostura",
+    "q": "1",
+    "u": "dash",
+    "ids": [
+     "angostura"
+    ]
+   },
+   {
+    "ing_en": "Orange Bitters",
+    "ing_es": "Amargo de naranja",
+    "q": "1",
+    "u": "dash",
+    "ids": [
+     "orange-bitters"
+    ]
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Fine strain into a chilled coupe.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela fino en una copa coupe fría.",
+  "garnish_en": "Maraschino cherry.",
+  "garnish_es": "Cereza marrasquino.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#3e1a10",
+    "s": "scoupe",
+    "gar": [
+     "cherry"
+    ]
+   }
+  },
+  "video": "BQ-o2fOl5nw"
+ },
+ {
+  "parent": "boulevardier",
+  "id": "old-pal",
+  "name": "Old Pal",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1430/old-pal",
+  "change_en": "Rye, with dry and bianco vermouth instead of sweet.",
+  "change_es": "Centeno, con vermut seco y bianco en lugar de dulce.",
+  "lines": [
+   {
+    "ing_en": "Rye Whiskey (100 proof)",
+    "ing_es": "Whiskey de centeno (50%)",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "rye"
+    ]
+   },
+   {
+    "ing_en": "Italian Red Bitter (e.g. Campari)",
+    "ing_es": "Bitter rojo italiano (ej. Campari)",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "campari"
+    ]
+   },
+   {
+    "ing_en": "Dry Vermouth",
+    "ing_es": "Vermut seco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "dry-vermouth"
+    ]
+   },
+   {
+    "ing_en": "Bianco vermouth",
+    "ing_es": "Vermut bianco",
+    "q": "15",
+    "u": "ml",
+    "ids": []
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into an old fashioned glass over a large ice cube.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en un vaso old fashioned sobre un cubo grande de hielo.",
+  "garnish_en": "Orange wheel.",
+  "garnish_es": "Rodaja de naranja.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#a8401e"
+   }
+  },
+  "video": "bm1lNYCOkzA"
+ },
+ {
+  "parent": "bee-s-knees",
+  "id": "gold-rush",
+  "name": "Gold Rush",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3629/gold-rush",
+  "change_en": "Bourbon instead of gin, no orange juice.",
+  "change_es": "Bourbon en lugar de gin, sin jugo de naranja.",
+  "lines": [
+   {
+    "ing_en": "Bourbon Whiskey",
+    "ing_es": "Bourbon",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "bourbon"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Honey Syrup (3:1)",
+    "ing_es": "Almíbar de miel (3:1)",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "honey"
+    ]
+   },
+   {
+    "ing_en": "Grapefruit zest",
+    "ing_es": "Piel de pomelo",
+    "q": "1",
+    "u": "piece",
+    "ids": [],
+    "opt": true
+   },
+   {
+    "ing_en": "Saline Solution (20%)",
+    "ing_es": "Solución salina (20%)",
+    "q": "3",
+    "u": "drops",
+    "ids": [
+     "salt"
+    ],
+    "opt": true
+   }
+  ],
+  "method_en": "Shake all ingredients with ice, including the grapefruit zest. Fine strain into an ice-filled old fashioned glass. Express lemon zest over the drink and discard.",
+  "method_es": "Bate todos los ingredientes con hielo, incluida la piel de pomelo. Cuela fino en un vaso old fashioned con hielo. Exprime una piel de limón sobre el trago y descártala.",
+  "garnish_en": "Lemon wedge.",
+  "garnish_es": "Gajo de limón.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#e9b54a",
+    "gar": [
+     "wheel-lemon"
+    ]
+   }
+  },
+  "video": "wm3j0jK2bcw"
+ },
+ {
+  "parent": "bloody-mary",
+  "id": "bloody-maria",
+  "name": "Bloody Maria",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/248/bloody-maria",
+  "change_en": "Reposado tequila instead of vodka, with a splash of tawny port.",
+  "change_es": "Tequila reposado en lugar de vodka, con un toque de oporto tawny.",
+  "lines": [
+   {
+    "ing_en": "Reposado Tequila 100% Agave",
+    "ing_es": "Tequila reposado 100% agave",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "tequila-reposado"
+    ]
+   },
+   {
+    "ing_en": "Tomato Juice",
+    "ing_es": "Jugo de tomate",
+    "q": "120",
+    "u": "ml",
+    "ids": [
+     "tomato"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Tabasco",
+    "ing_es": "Tabasco",
+    "q": "8",
+    "u": "drops",
+    "ids": [
+     "tabasco"
+    ]
+   },
+   {
+    "ing_en": "Worcestershire Sauce",
+    "ing_es": "Salsa inglesa",
+    "q": "4",
+    "u": "dash",
+    "ids": [
+     "worcestershire"
+    ]
+   },
+   {
+    "ing_en": "Horseradish sauce",
+    "ing_es": "Salsa de rábano picante",
+    "q": "0.5",
+    "u": "bar spoon",
+    "ids": []
+   },
+   {
+    "ing_en": "Tawny Port",
+    "ing_es": "Oporto tawny",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "port"
+    ]
+   },
+   {
+    "ing_en": "Celery Salt",
+    "ing_es": "Sal de apio",
+    "q": "2",
+    "u": "pinch",
+    "ids": [
+     "celery-salt"
+    ]
+   },
+   {
+    "ing_en": "Black Pepper",
+    "ing_es": "Pimienta negra",
+    "q": "2",
+    "u": "grind",
+    "ids": [
+     "pepper"
+    ]
+   }
+  ],
+  "method_en": "Rim a collins glass with salt and cracked pepper. Roll all ingredients with ice (pour back and forth, do not shake) and strain into the ice-filled glass.",
+  "method_es": "Escarcha un vaso collins con sal y pimienta. Rueda todos los ingredientes con hielo (pásalos de un vaso a otro, sin batir) y cuela en el vaso con hielo.",
+  "garnish_en": "Lime wedge, coriander sprigs and a celery stalk.",
+  "garnish_es": "Gajo de lima, ramitas de cilantro y un tallo de apio.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#b8321c",
+    "s": "taper",
+    "gar": [
+     "salt",
+     "wheel-lime",
+     "celery"
+    ]
+   }
+  },
+  "video": "JzjZqplVCMo"
+ },
+ {
+  "parent": "bloody-mary",
+  "id": "red-snapper",
+  "name": "Red Snapper",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1665/red-snapper",
+  "change_en": "Gin instead of vodka.",
+  "change_es": "Gin en lugar de vodka.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Tomato Juice",
+    "ing_es": "Jugo de tomate",
+    "q": "120",
+    "u": "ml",
+    "ids": [
+     "tomato"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "7.5",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Worcestershire Sauce",
+    "ing_es": "Salsa inglesa",
+    "q": "4",
+    "u": "dash",
+    "ids": [
+     "worcestershire"
+    ]
+   },
+   {
+    "ing_en": "Tabasco",
+    "ing_es": "Tabasco",
+    "q": "7",
+    "u": "drops",
+    "ids": [
+     "tabasco"
+    ]
+   },
+   {
+    "ing_en": "Black Pepper",
+    "ing_es": "Pimienta negra",
+    "q": "2",
+    "u": "grind",
+    "ids": [
+     "pepper"
+    ]
+   },
+   {
+    "ing_en": "Celery Salt",
+    "ing_es": "Sal de apio",
+    "q": "2",
+    "u": "pinch",
+    "ids": [
+     "celery-salt"
+    ]
+   }
+  ],
+  "method_en": "Rim a collins glass with salt and cracked pepper. Roll all ingredients with ice and strain into the ice-filled glass.",
+  "method_es": "Escarcha un vaso collins con sal y pimienta. Rueda todos los ingredientes con hielo y cuela en el vaso con hielo.",
+  "garnish_en": "Salt and pepper rim.",
+  "garnish_es": "Borde de sal y pimienta.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#b8321c",
+    "s": "taper",
+    "gar": [
+     "salt"
+    ]
+   }
+  },
+  "video": "iifSw3fBHyc"
+ },
+ {
+  "parent": "bloody-mary",
+  "id": "bloody-caesar",
+  "name": "Bloody Caesar",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/557/bloody-caesar",
+  "change_en": "Clamato instead of tomato juice.",
+  "change_es": "Clamato en lugar de jugo de tomate.",
+  "lines": [
+   {
+    "ing_en": "Vodka",
+    "ing_es": "Vodka",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "vodka"
+    ]
+   },
+   {
+    "ing_en": "Clamato juice",
+    "ing_es": "Jugo Clamato",
+    "q": "120",
+    "u": "ml",
+    "ids": []
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Tabasco",
+    "ing_es": "Tabasco",
+    "q": "7",
+    "u": "drops",
+    "ids": [
+     "tabasco"
+    ]
+   },
+   {
+    "ing_en": "Worcestershire Sauce",
+    "ing_es": "Salsa inglesa",
+    "q": "3",
+    "u": "dash",
+    "ids": [
+     "worcestershire"
+    ]
+   },
+   {
+    "ing_en": "Celery Salt",
+    "ing_es": "Sal de apio",
+    "q": "2",
+    "u": "pinch",
+    "ids": [
+     "celery-salt"
+    ]
+   },
+   {
+    "ing_en": "Black Pepper",
+    "ing_es": "Pimienta negra",
+    "q": "2",
+    "u": "grind",
+    "ids": [
+     "pepper"
+    ]
+   }
+  ],
+  "method_en": "Roll all ingredients with ice and strain into a chilled collins glass.",
+  "method_es": "Rueda todos los ingredientes con hielo y cuela en un vaso collins frío.",
+  "garnish_en": "Pickled bean.",
+  "garnish_es": "Chaucha encurtida.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#c2462a",
+    "s": "taper",
+    "gar": [
+     "salt"
+    ]
+   }
+  },
+  "video": "QaKExUdyoUQ"
+ },
+ {
+  "parent": "south-side",
+  "id": "eastside",
+  "name": "Eastside",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3628/eastside-gimlet",
+  "change_en": "Lime instead of lemon, with muddled cucumber and a splash of soda.",
+  "change_es": "Lima en lugar de limón, con pepino machacado y un toque de soda.",
+  "lines": [
+   {
+    "ing_en": "Fresh cucumber",
+    "ing_es": "Pepino fresco",
+    "q": "2",
+    "u": "piece",
+    "ids": []
+   },
+   {
+    "ing_en": "Fresh Mint Leaves",
+    "ing_es": "Hojas de menta fresca",
+    "q": "8",
+    "u": "piece",
+    "ids": [
+     "mint"
+    ]
+   },
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lime Juice",
+    "ing_es": "Jugo de lima fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "lime"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Soda Water",
+    "ing_es": "Soda",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "soda"
+    ]
+   }
+  ],
+  "method_en": "Muddle the cucumber in a shaker, then add the mint and press lightly. Add gin, lime and syrup and shake with ice. Fine strain into a chilled coupe and top with soda.",
+  "method_es": "Machaca el pepino en la coctelera y agrega la menta presionando apenas. Suma el gin, la lima y el almíbar y bate con hielo. Cuela fino en una copa coupe fría y completa con soda.",
+  "garnish_en": "Mint leaf on the rim and a floating cucumber slice.",
+  "garnish_es": "Hoja de menta en el borde y una rodaja de pepino flotando.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#d8e6a6",
+    "gar": [
+     "leaves"
+    ]
+   }
+  },
+  "video": "tXwej4qUGpA"
+ },
+ {
+  "parent": "mimosa",
+  "id": "bucks-fizz",
+  "name": "Buck's Fizz",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/331/bucks-fizz",
+  "change_en": "Two parts sparkling wine to one of orange juice, no ice.",
+  "change_es": "Dos partes de espumante por una de jugo de naranja, sin hielo.",
+  "lines": [
+   {
+    "ing_en": "Brut Champagne or Sparkling Wine (chilled)",
+    "ing_es": "Champagne o espumante brut (frío)",
+    "q": "100",
+    "u": "ml",
+    "ids": [
+     "champagne",
+     "sparkling"
+    ]
+   },
+   {
+    "ing_en": "Fresh Orange Juice (chilled)",
+    "ing_es": "Jugo de naranja fresco (frío)",
+    "q": "50",
+    "u": "ml",
+    "ids": [
+     "orange-juice"
+    ]
+   }
+  ],
+  "method_en": "Pour half the sparkling wine into a chilled flute, add the orange juice, then top with the rest of the wine.",
+  "method_es": "Vierte la mitad del espumante en una copa flauta fría, agrega el jugo de naranja y completa con el resto del espumante.",
+  "garnish_en": "Flamed orange zest, expressed and discarded.",
+  "garnish_es": "Piel de naranja flameada, exprimida y descartada.",
+  "art": {
+   "glass": "flute",
+   "ice": "up",
+   "ovr": {
+    "liq": "#f4b04a",
+    "s": "cflute",
+    "gar": []
+   }
+  },
+  "video": "6EzR-Pg3w7U"
+ },
+ {
+  "parent": "bellini",
+  "id": "rossini",
+  "name": "Rossini",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1697/rossini",
+  "change_en": "Strawberries and strawberry liqueur instead of white peach.",
+  "change_es": "Frutillas y licor de frutilla en lugar de durazno blanco.",
+  "lines": [
+   {
+    "ing_en": "Fresh strawberries (hulled)",
+    "ing_es": "Frutillas frescas (sin cabito)",
+    "q": "4",
+    "u": "piece",
+    "ids": []
+   },
+   {
+    "ing_en": "Wild strawberry liqueur (Fraise des Bois)",
+    "ing_es": "Licor de frutilla silvestre (Fraise des Bois)",
+    "q": "30",
+    "u": "ml",
+    "ids": []
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "5",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Extra Dry Prosecco",
+    "ing_es": "Prosecco extra dry",
+    "q": "105",
+    "u": "ml",
+    "ids": [
+     "prosecco"
+    ]
+   }
+  ],
+  "method_en": "Muddle the strawberries in a shaker. Add liqueur and lemon and shake with ice. Fine strain into a chilled flute and top with prosecco.",
+  "method_es": "Machaca las frutillas en la coctelera. Agrega el licor y el limón y bate con hielo. Cuela fino en una copa flauta fría y completa con prosecco.",
+  "garnish_en": "Heart-shaped strawberry slice on the rim.",
+  "garnish_es": "Rodaja de frutilla en forma de corazón en el borde.",
+  "art": {
+   "glass": "flute",
+   "ice": "up",
+   "ovr": {
+    "liq": "#e2566a",
+    "s": "cflute",
+    "gar": [
+     "berries"
+    ]
+   }
+  },
+  "video": "xjY2U3mbdds"
+ },
+ {
+  "parent": "americano",
+  "id": "milano-torino",
+  "name": "Milano-Torino (Mi-To)",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3495/milano-torino-mi-to",
+  "change_en": "No soda: just bitter and vermouth.",
+  "change_es": "Sin soda: solo bitter y vermut.",
+  "lines": [
+   {
+    "ing_en": "Italian Red Bitter (e.g. Campari)",
+    "ing_es": "Bitter rojo italiano (ej. Campari)",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "campari"
+    ]
+   },
+   {
+    "ing_en": "Sweet Red Vermouth",
+    "ing_es": "Vermut rojo dulce",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "sweet-vermouth"
+    ]
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into an old fashioned glass over a large ice cube.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en un vaso old fashioned sobre un cubo grande de hielo.",
+  "garnish_en": "Orange slice or wedge.",
+  "garnish_es": "Rodaja o gajo de naranja.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#a8261c"
+   }
+  },
+  "video": "Eg5TAedHSjw"
+ },
+ {
+  "parent": "gin-fizz",
+  "id": "silver-fizz",
+  "name": "Silver Gin Fizz",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1823/silver-gin-fizz",
+  "change_en": "Egg white added for a foam head.",
+  "change_es": "Se agrega clara de huevo para una espuma alta.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon or Lime Juice",
+    "ing_es": "Jugo de limón o lima fresco",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "20",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Egg White",
+    "ing_es": "Clara de huevo",
+    "q": "20",
+    "u": "ml",
+    "ids": [
+     "egg-white"
+    ]
+   },
+   {
+    "ing_en": "Soda Water",
+    "ing_es": "Soda",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "soda"
+    ]
+   }
+  ],
+  "method_en": "Shake everything but the soda with ice, strain back into the shaker and dry shake. Fine strain into a chilled fizz glass and rest it in the freezer for a minute. Pour the soda slowly from a height to lift the foam.",
+  "method_es": "Bate todo menos la soda con hielo, cuela de nuevo en la coctelera y bate en seco. Cuela fino en un vaso fizz frío y déjalo un minuto en el freezer. Vierte la soda despacio desde altura para levantar la espuma.",
+  "garnish_en": "Quarter lemon wheel on the rim.",
+  "garnish_es": "Cuarto de rodaja de limón en el borde.",
+  "art": {
+   "glass": "tall-tumbler",
+   "ice": "none",
+   "ovr": {
+    "liq": "#f1efe2",
+    "gar": [
+     "wheel-lemon"
+    ]
+   }
+  },
+  "video": "SIdwxHdTd7U"
+ },
+ {
+  "parent": "gin-fizz",
+  "id": "golden-fizz",
+  "name": "Golden Fizz",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/876/golden-fizz",
+  "change_en": "Egg yolk added.",
+  "change_es": "Se agrega yema de huevo.",
+  "lines": [
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Egg Yolk",
+    "ing_es": "Yema de huevo",
+    "q": "1",
+    "u": "piece",
+    "ids": [
+     "egg-yolk"
+    ]
+   },
+   {
+    "ing_en": "Soda Water",
+    "ing_es": "Soda",
+    "q": "",
+    "u": "top up",
+    "ids": [
+     "soda"
+    ]
+   }
+  ],
+  "method_en": "Shake the first four ingredients with ice and fine strain into a chilled fizz glass. Top with soda.",
+  "method_es": "Bate los primeros cuatro ingredientes con hielo y cuela fino en un vaso fizz frío. Completa con soda.",
+  "garnish_en": "Lemon slice and mint sprig.",
+  "garnish_es": "Rodaja de limón y ramita de menta.",
+  "art": {
+   "glass": "tall-tumbler",
+   "ice": "none",
+   "ovr": {
+    "liq": "#efd38a"
+   }
+  },
+  "video": "6VUNgT0bg-Y"
+ },
+ {
+  "parent": "old-fashioned",
+  "id": "oaxaca-old-fashioned",
+  "name": "Oaxaca Old Fashioned",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3003/oaxaca-old-fashioned",
+  "change_en": "Reposado tequila and mezcal, sweetened with agave.",
+  "change_es": "Tequila reposado y mezcal, endulzado con agave.",
+  "lines": [
+   {
+    "ing_en": "Reposado Tequila 100% Agave",
+    "ing_es": "Tequila reposado 100% agave",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "tequila-reposado"
+    ]
+   },
+   {
+    "ing_en": "Mezcal",
+    "ing_es": "Mezcal",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "mezcal"
+    ]
+   },
+   {
+    "ing_en": "Agave Syrup",
+    "ing_es": "Jarabe de agave",
+    "q": "7.5",
+    "u": "ml",
+    "ids": [
+     "agave-syrup"
+    ]
+   },
+   {
+    "ing_en": "Cocoa bitters (Angostura)",
+    "ing_es": "Amargo de cacao (Angostura)",
+    "q": "4",
+    "u": "drops",
+    "ids": []
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into an old fashioned glass over a large ice cube.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en un vaso old fashioned sobre un cubo grande de hielo.",
+  "garnish_en": "Flamed citrus zest (the page lists both orange and lemon), expressed.",
+  "garnish_es": "Piel cítrica flameada (la fuente nombra naranja y limón), exprimida.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#c88a3a",
+    "gar": [
+     "peel-orange"
+    ]
+   }
+  },
+  "video": "XbAQYQr5pv4"
+ },
+ {
+  "parent": "old-fashioned",
+  "id": "rum-old-fashioned",
+  "name": "Rum Old Fashioned",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2845/rum-old-fashioned",
+  "change_en": "Aged and overproof rum with falernum.",
+  "change_es": "Ron añejo y overproof con falernum.",
+  "lines": [
+   {
+    "ing_en": "Caribbean Aged Rum (6-10 years)",
+    "ing_es": "Ron añejo del Caribe (6-10 años)",
+    "q": "50",
+    "u": "ml",
+    "ids": [
+     "aged-rum"
+    ]
+   },
+   {
+    "ing_en": "Jamaican Overproof White Rum",
+    "ing_es": "Ron blanco overproof jamaicano",
+    "q": "10",
+    "u": "ml",
+    "ids": [
+     "overproof-rum"
+    ]
+   },
+   {
+    "ing_en": "Falernum",
+    "ing_es": "Falernum",
+    "q": "7.5",
+    "u": "ml",
+    "ids": [
+     "falernum"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "2.5",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Angostura Bitters",
+    "ing_es": "Amargo de Angostura",
+    "q": "1",
+    "u": "dash",
+    "ids": [
+     "angostura"
+    ]
+   }
+  ],
+  "method_en": "Stir all ingredients with ice. Strain into an old fashioned glass over a large ice cube.",
+  "method_es": "Revuelve todos los ingredientes con hielo. Cuela en un vaso old fashioned sobre un cubo grande de hielo.",
+  "garnish_en": "Orange or lime zest, expressed.",
+  "garnish_es": "Piel de naranja o lima, exprimida.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#a85a22"
+   }
+  },
+  "video": "RZ5t_85ZbVA"
+ },
+ {
+  "parent": "sazerac",
+  "id": "rye-sazerac",
+  "name": "Sazerac (rye)",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3390/sazerac-new-orleans-style",
+  "change_en": "Straight rye instead of cognac, syrup instead of a cube.",
+  "change_es": "Centeno en lugar de cognac, almíbar en lugar de terrón.",
+  "lines": [
+   {
+    "ing_en": "Rye Whiskey (100 proof)",
+    "ing_es": "Whiskey de centeno (50%)",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "rye"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "7.5",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Peychaud's Bitters",
+    "ing_es": "Amargo Peychaud's",
+    "q": "3",
+    "u": "dash",
+    "ids": [
+     "peychauds"
+    ]
+   },
+   {
+    "ing_en": "Absinthe (to rinse)",
+    "ing_es": "Absenta (para enjuagar)",
+    "q": "4",
+    "u": "dash",
+    "ids": [
+     "absinthe"
+    ]
+   }
+  ],
+  "method_en": "Fill a rocks glass with ice and set aside. Stir rye, syrup and bitters with ice in another glass. Discard the ice, rinse the glass with absinthe and strain the drink in.",
+  "method_es": "Llena un vaso rocks con hielo y resérvalo. Revuelve el centeno, el almíbar y el amargo con hielo en otro vaso. Tira el hielo, enjuaga el vaso con absenta y cuela el trago.",
+  "garnish_en": "Lemon zest, expressed.",
+  "garnish_es": "Piel de limón, exprimida.",
+  "art": {
+   "glass": "rocks",
+   "ice": "up",
+   "ovr": {
+    "liq": "#b8582a",
+    "gar": [
+     "peel-lemon"
+    ]
+   }
+  },
+  "video": "M3Ac4PyiuSw"
+ },
+ {
+  "parent": "last-word",
+  "id": "final-ward",
+  "name": "Final Ward",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2406/final-ward",
+  "change_en": "Rye instead of gin, lemon instead of lime.",
+  "change_es": "Centeno en lugar de gin, limón en lugar de lima.",
+  "lines": [
+   {
+    "ing_en": "Rye Whiskey (100 proof)",
+    "ing_es": "Whiskey de centeno (50%)",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "rye"
+    ]
+   },
+   {
+    "ing_en": "Green Chartreuse",
+    "ing_es": "Chartreuse verde",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "green-chartreuse"
+    ]
+   },
+   {
+    "ing_en": "Maraschino Luxardo",
+    "ing_es": "Marrasquino Luxardo",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "maraschino"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   }
+  ],
+  "method_en": "Shake all ingredients with ice. Fine strain into a chilled coupe. Express lemon zest over the drink and discard.",
+  "method_es": "Bate todos los ingredientes con hielo. Cuela fino en una copa coupe fría. Exprime una piel de limón sobre el trago y descártala.",
+  "garnish_en": "Skewered maraschino cherries.",
+  "garnish_es": "Cerezas marrasquino en un palillo.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "up",
+   "ovr": {
+    "liq": "#c8c47a",
+    "gar": [
+     "cherry"
+    ]
+   }
+  },
+  "video": "f2F_dfQWVD8"
+ },
+ {
+  "parent": "pina-colada",
+  "id": "painkiller",
+  "name": "Painkiller",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1454/painkiller",
+  "change_en": "Navy rum with orange juice, shaken and served over ice.",
+  "change_es": "Ron navy con jugo de naranja, batido y servido con hielo.",
+  "lines": [
+   {
+    "ing_en": "Navy Rum (about 55%)",
+    "ing_es": "Ron navy (aprox. 55%)",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "dark-rum"
+    ]
+   },
+   {
+    "ing_en": "Pineapple Juice",
+    "ing_es": "Jugo de ananá",
+    "q": "90",
+    "u": "ml",
+    "ids": [
+     "pineapple"
+    ]
+   },
+   {
+    "ing_en": "Fresh Orange Juice",
+    "ing_es": "Jugo de naranja fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "orange-juice"
+    ]
+   },
+   {
+    "ing_en": "Cream of Coconut",
+    "ing_es": "Crema de coco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "coconut-cream"
+    ]
+   }
+  ],
+  "method_en": "Shake all ingredients with ice. Strain into an ice-filled tiki mug or collins glass.",
+  "method_es": "Bate todos los ingredientes con hielo. Cuela en un mug tiki o vaso collins con hielo.",
+  "garnish_en": "Grated nutmeg and a pineapple wedge.",
+  "garnish_es": "Nuez moscada rallada y un gajo de ananá.",
+  "art": {
+   "glass": "tiki",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#f0d29a",
+    "gar": [
+     "pine"
+    ]
+   }
+  },
+  "video": "pUJKLC3zAOk"
+ },
+ {
+  "parent": "caipirinha",
+  "id": "caipiroska",
+  "name": "Caipiroska",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/356/caipirovska",
+  "change_en": "Vodka instead of cachaça.",
+  "change_es": "Vodka en lugar de cachaça.",
+  "lines": [
+   {
+    "ing_en": "Fresh Lime (chopped wedges)",
+    "ing_es": "Lima fresca (en gajos)",
+    "q": "0.75",
+    "u": "piece",
+    "ids": [
+     "lime-fruit"
+    ]
+   },
+   {
+    "ing_en": "Vodka",
+    "ing_es": "Vodka",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "vodka"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   }
+  ],
+  "method_en": "Muddle the lime in a shaker. Add vodka and syrup, shake with crushed ice and pour everything, unstrained, into an old fashioned glass.",
+  "method_es": "Machaca la lima en la coctelera. Agrega el vodka y el almíbar, bate con hielo picado y vierte todo, sin colar, en un vaso old fashioned.",
+  "garnish_en": "Serve with straws.",
+  "garnish_es": "Servir con sorbetes.",
+  "art": {
+   "glass": "dof",
+   "ice": "crushed",
+   "ovr": {
+    "liq": "#eef0d8",
+    "gar": [
+     "wheel-lime"
+    ]
+   }
+  },
+  "video": "IKjQ-SqCjXs"
+ },
+ {
+  "parent": "sea-breeze",
+  "id": "bay-breeze",
+  "name": "Bay Breeze",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/183/bay-breeze",
+  "change_en": "Pineapple juice instead of grapefruit.",
+  "change_es": "Jugo de ananá en lugar de pomelo.",
+  "lines": [
+   {
+    "ing_en": "Vodka",
+    "ing_es": "Vodka",
+    "q": "50",
+    "u": "ml",
+    "ids": [
+     "vodka"
+    ]
+   },
+   {
+    "ing_en": "Cranberry Juice",
+    "ing_es": "Jugo de arándano rojo",
+    "q": "80",
+    "u": "ml",
+    "ids": [
+     "cranberry"
+    ]
+   },
+   {
+    "ing_en": "Pineapple Juice",
+    "ing_es": "Jugo de ananá",
+    "q": "35",
+    "u": "ml",
+    "ids": [
+     "pineapple"
+    ]
+   }
+  ],
+  "method_en": "Shake all ingredients with ice. Strain into an ice-filled collins glass.",
+  "method_es": "Bate todos los ingredientes con hielo. Cuela en un vaso collins con hielo.",
+  "garnish_en": "Pineapple wedge on the rim.",
+  "garnish_es": "Gajo de ananá en el borde.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#e87a7a",
+    "gar": [
+     "pine"
+    ]
+   }
+  },
+  "video": "NiUbXbIpi4w"
+ },
+ {
+  "parent": "daiquiri",
+  "id": "frozen-daiquiri",
+  "name": "Frozen Daiquiri",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/2366/daiquiri-frozen",
+  "change_en": "Blended with crushed ice, with a touch of maraschino.",
+  "change_es": "Licuado con hielo picado, con un toque de marrasquino.",
+  "lines": [
+   {
+    "ing_en": "Light Gold Rum (1-3 years)",
+    "ing_es": "Ron dorado ligero (1-3 años)",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gold-rum"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lime Juice",
+    "ing_es": "Jugo de lima fresco",
+    "q": "25",
+    "u": "ml",
+    "ids": [
+     "lime"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "20",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Maraschino Luxardo",
+    "ing_es": "Marrasquino Luxardo",
+    "q": "2.5",
+    "u": "ml",
+    "ids": [
+     "maraschino"
+    ]
+   },
+   {
+    "ing_en": "Xanthan gum",
+    "ing_es": "Goma xántica",
+    "q": "0.25",
+    "u": "bar spoon",
+    "ids": [],
+    "opt": true
+   }
+  ],
+  "method_en": "Blend the rum, lime, syrup and maraschino without ice on slow, adding the xanthan gum gradually. Add crushed ice (about two-thirds of a 200 g scoop) and blend again. Pour into a chilled coupe.",
+  "method_es": "Licúa el ron, la lima, el almíbar y el marrasquino sin hielo a velocidad baja, sumando la goma xántica de a poco. Agrega hielo picado (unos dos tercios de una medida de 200 g) y vuelve a licuar. Sirve en una copa coupe fría.",
+  "garnish_en": "Lime wedge with a maraschino cherry; serve with a straw.",
+  "garnish_es": "Gajo de lima con cereza marrasquino; servir con sorbete.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "blended",
+   "ovr": {
+    "liq": "#e8ead0",
+    "s": "ctulip",
+    "gar": [
+     "wheel-lime",
+     "cherry"
+    ]
+   }
+  },
+  "video": "FKH59zHrF1s"
+ },
+ {
+  "parent": "margarita",
+  "id": "frozen-margarita",
+  "name": "Frozen Margarita",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/1256/margarita-frozen",
+  "change_en": "Blended with crushed ice, with sugar syrup.",
+  "change_es": "Licuada con hielo picado, con almíbar.",
+  "lines": [
+   {
+    "ing_en": "Blanco Tequila",
+    "ing_es": "Tequila blanco",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "tequila"
+    ]
+   },
+   {
+    "ing_en": "Cointreau (Triple Sec)",
+    "ing_es": "Cointreau (triple sec)",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "cointreau"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lime Juice",
+    "ing_es": "Jugo de lima fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "lime"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Xanthan gum",
+    "ing_es": "Goma xántica",
+    "q": "0.25",
+    "u": "bar spoon",
+    "ids": [],
+    "opt": true
+   }
+  ],
+  "method_en": "Blend tequila, triple sec, lime and syrup without ice on slow, adding the xanthan gum gradually. Add a 200 g scoop of crushed ice and blend again. Pour into a chilled coupe.",
+  "method_es": "Licúa el tequila, el triple sec, la lima y el almíbar sin hielo a velocidad baja, sumando la goma xántica de a poco. Agrega una medida de 200 g de hielo picado y vuelve a licuar. Sirve en una copa coupe fría.",
+  "garnish_en": "Lime wheel on the rim.",
+  "garnish_es": "Rodaja de lima en el borde.",
+  "art": {
+   "glass": "cocktail",
+   "ice": "blended",
+   "ovr": {
+    "liq": "#e5e8c8",
+    "s": "dcoupe",
+    "gar": [
+     "wheel-lime"
+    ]
+   }
+  },
+  "video": "G7vFGPOEeew"
+ },
+ {
+  "parent": "tommy-s-margarita",
+  "id": "picante",
+  "name": "Picante de la Casa",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/4723/picante-de-la-casa-spicy-margarita",
+  "change_en": "Muddled chili and coriander, reposado tequila.",
+  "change_es": "Ají y cilantro machacados, tequila reposado.",
+  "lines": [
+   {
+    "ing_en": "Red Chili (jalapeño or fresno), deseeded",
+    "ing_es": "Ají rojo (jalapeño o fresno), sin semillas",
+    "q": "1",
+    "u": "piece",
+    "ids": [
+     "chili"
+    ]
+   },
+   {
+    "ing_en": "Coriander sprigs",
+    "ing_es": "Ramitas de cilantro",
+    "q": "3",
+    "u": "piece",
+    "ids": []
+   },
+   {
+    "ing_en": "Reposado Tequila 100% Agave",
+    "ing_es": "Tequila reposado 100% agave",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "tequila-reposado"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lime Juice",
+    "ing_es": "Jugo de lima fresco",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "lime"
+    ]
+   },
+   {
+    "ing_en": "Agave Syrup",
+    "ing_es": "Jarabe de agave",
+    "q": "20",
+    "u": "ml",
+    "ids": [
+     "agave-syrup"
+    ]
+   }
+  ],
+  "method_en": "Muddle chili and coriander in a shaker. Add the rest and shake with ice. Fine strain into an ice-filled old fashioned glass.",
+  "method_es": "Machaca el ají y el cilantro en la coctelera. Agrega el resto y bate con hielo. Cuela fino en un vaso old fashioned con hielo.",
+  "garnish_en": "Chili slices.",
+  "garnish_es": "Rodajas de ají.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#e6e2b0",
+    "gar": [
+     "chili"
+    ]
+   }
+  },
+  "video": "W4oGy626h34"
+ },
+ {
+  "parent": "whiskey-sour",
+  "id": "amaretto-sour",
+  "name": "Amaretto Sour (Morgenthaler)",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/3263/amaretto-sour-by-jeffrey-morgenthaler",
+  "change_en": "Amaretto leads; bourbon becomes the modifier.",
+  "change_es": "Manda el amaretto; el bourbon pasa a modificador.",
+  "lines": [
+   {
+    "ing_en": "Amaretto",
+    "ing_es": "Amaretto",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "amaretto"
+    ]
+   },
+   {
+    "ing_en": "Bourbon Whiskey (cask strength)",
+    "ing_es": "Bourbon (cask strength)",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "bourbon"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "22.5",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Demerara Syrup (2:1)",
+    "ing_es": "Almíbar de demerara (2:1)",
+    "q": "5",
+    "u": "ml",
+    "ids": [
+     "demerara-syrup"
+    ]
+   },
+   {
+    "ing_en": "Egg White",
+    "ing_es": "Clara de huevo",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "egg-white"
+    ]
+   }
+  ],
+  "method_en": "Shake all ingredients with ice, strain back into the shaker and dry shake. Fine strain into an ice-filled old fashioned glass. Express lemon zest over the drink and discard.",
+  "method_es": "Bate todos los ingredientes con hielo, cuela de nuevo en la coctelera y bate en seco. Cuela fino en un vaso old fashioned con hielo. Exprime una piel de limón sobre el trago y descártala.",
+  "garnish_en": "Skewered maraschino cherries.",
+  "garnish_es": "Cerezas marrasquino en un palillo.",
+  "art": {
+   "glass": "rocks",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#e9b860",
+    "gar": [
+     "cherry"
+    ]
+   }
+  },
+  "video": "_IWzuyL8n4Y"
+ },
+ {
+  "parent": "french-75",
+  "id": "french-95",
+  "name": "French 95",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/4238/french-95-a-french-75-with-bourbon",
+  "change_en": "Bourbon instead of gin, served long over ice.",
+  "change_es": "Bourbon en lugar de gin, servido largo con hielo.",
+  "lines": [
+   {
+    "ing_en": "Fresh Lemon Juice",
+    "ing_es": "Jugo de limón fresco",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "lemon"
+    ]
+   },
+   {
+    "ing_en": "Powdered Sugar",
+    "ing_es": "Azúcar impalpable",
+    "q": "3",
+    "u": "bar spoon",
+    "ids": [
+     "sugar"
+    ]
+   },
+   {
+    "ing_en": "Bourbon Whiskey",
+    "ing_es": "Bourbon",
+    "q": "45",
+    "u": "ml",
+    "ids": [
+     "bourbon"
+    ]
+   },
+   {
+    "ing_en": "Brut Champagne or Sparkling Wine",
+    "ing_es": "Champagne o espumante brut",
+    "q": "75",
+    "u": "ml",
+    "ids": [
+     "champagne",
+     "sparkling"
+    ]
+   }
+  ],
+  "method_en": "Stir sugar and lemon in a shaker until dissolved. Add bourbon and shake with ice. Strain into an ice-filled collins glass, top with champagne and stir lightly.",
+  "method_es": "Revuelve el azúcar con el limón en la coctelera hasta disolver. Agrega el bourbon y bate con hielo. Cuela en un vaso collins con hielo, completa con champagne y revuelve suave.",
+  "garnish_en": "Lemon zest.",
+  "garnish_es": "Piel de limón.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#ecd28a",
+    "gar": [
+     "peel-lemon"
+    ]
+   }
+  },
+  "video": "aJdp8-lhAp0"
+ },
+ {
+  "parent": "moscow-mule",
+  "id": "gin-gin-mule",
+  "name": "Gin Gin Mule",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/843/gin-gin-mule",
+  "change_en": "Gin and mint, with ginger liqueur.",
+  "change_es": "Gin y menta, con licor de jengibre.",
+  "lines": [
+   {
+    "ing_en": "Fresh Mint Leaves",
+    "ing_es": "Hojas de menta fresca",
+    "q": "12",
+    "u": "piece",
+    "ids": [
+     "mint"
+    ]
+   },
+   {
+    "ing_en": "London Dry Gin",
+    "ing_es": "Gin London Dry",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "gin"
+    ]
+   },
+   {
+    "ing_en": "Fresh Lime Juice",
+    "ing_es": "Jugo de lima fresco",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "lime"
+    ]
+   },
+   {
+    "ing_en": "Ginger liqueur",
+    "ing_es": "Licor de jengibre",
+    "q": "10",
+    "u": "ml",
+    "ids": []
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "5",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Ginger Beer",
+    "ing_es": "Ginger beer",
+    "q": "75",
+    "u": "ml",
+    "ids": [
+     "ginger-beer"
+    ]
+   }
+  ],
+  "method_en": "Shake everything but the ginger beer with ice. Fine strain into a chilled collins glass, top with ginger beer and fill with ice.",
+  "method_es": "Bate todo menos la ginger beer con hielo. Cuela fino en un vaso collins frío, completa con ginger beer y llena con hielo.",
+  "garnish_en": "Lime wedge and mint sprigs.",
+  "garnish_es": "Gajo de lima y ramitas de menta.",
+  "art": {
+   "glass": "collins",
+   "ice": "cubes",
+   "ovr": {
+    "liq": "#e6e8c4"
+   }
+  },
+  "video": "CtzaTXYoRn4"
+ },
+ {
+  "parent": "mint-julep",
+  "id": "georgia-mint-julep",
+  "name": "Georgia Mint Julep",
+  "src": "Difford's Guide",
+  "url": "https://www.diffordsguide.com/cocktails/recipe/829/georgia-mint-julep",
+  "change_en": "Peach liqueur added, lengthened with soda.",
+  "change_es": "Se agrega licor de durazno, alargado con soda.",
+  "lines": [
+   {
+    "ing_en": "Fresh Mint Leaves",
+    "ing_es": "Hojas de menta fresca",
+    "q": "12",
+    "u": "piece",
+    "ids": [
+     "mint"
+    ]
+   },
+   {
+    "ing_en": "Bourbon Whiskey",
+    "ing_es": "Bourbon",
+    "q": "60",
+    "u": "ml",
+    "ids": [
+     "bourbon"
+    ]
+   },
+   {
+    "ing_en": "Peach Schnapps",
+    "ing_es": "Licor de durazno",
+    "q": "30",
+    "u": "ml",
+    "ids": [
+     "peach-schnapps"
+    ]
+   },
+   {
+    "ing_en": "Rich Sugar Syrup (2:1)",
+    "ing_es": "Almíbar rico (2:1)",
+    "q": "5",
+    "u": "ml",
+    "ids": [
+     "simple"
+    ]
+   },
+   {
+    "ing_en": "Angostura Bitters",
+    "ing_es": "Amargo de Angostura",
+    "q": "2",
+    "u": "dash",
+    "ids": [
+     "angostura"
+    ]
+   },
+   {
+    "ing_en": "Soda Water",
+    "ing_es": "Soda",
+    "q": "15",
+    "u": "ml",
+    "ids": [
+     "soda"
+    ]
+   }
+  ],
+  "method_en": "Put the first five ingredients in a chilled collins glass. Two-thirds fill with crushed ice and churn. Fill with more crushed ice, top with soda and stir briefly.",
+  "method_es": "Coloca los primeros cinco ingredientes en un vaso collins frío. Llena dos tercios con hielo picado y mezcla girando la cuchara. Completa con más hielo picado, agrega la soda y revuelve brevemente.",
+  "garnish_en": "Mint sprig bouquet.",
+  "garnish_es": "Ramillete de menta.",
+  "art": {
+   "glass": "collins",
+   "ice": "crushed",
+   "ovr": {
+    "liq": "#d89a4a",
+    "gar": [
+     "mint"
+    ]
+   }
+  },
+  "video": "YItmmHev0ec"
+ }
+]

@@ -221,6 +221,26 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .steps li{display:grid;grid-template-columns:28px minmax(0,1fr);font:400 16.5px/1.4 var(--ft);counter-increment:s}
 .steps li::before{content:counter(s);font:800 19px/1.2 var(--fd)}
 .mnote{margin:26px 0 0;padding-left:28px;font:400 15px/1.45 var(--ft);max-width:60ch}.mnote b{display:block;font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.bV{padding-top:6px;padding-bottom:40px}
+.vl{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.vh{display:grid;grid-template-columns:76px minmax(0,1fr) auto;grid-template-rows:auto 1fr;column-gap:16px;align-items:start;width:100%;padding:8px 0;text-align:left;color:inherit}
+.vh .va{grid-row:1/3;display:block;width:76px;aspect-ratio:200/240}
+.vh .va svg{display:block;width:100%;height:100%}
+.vh b{grid-column:2;align-self:end;font:800 26px/1 var(--fd);letter-spacing:-.025em}
+.vh>span:not(.va){grid-column:2;margin-top:6px;font:400 15px/1.35 var(--ft);color:var(--ink2)}
+.vh svg.ar{grid-column:3;grid-row:1/3;align-self:center;width:28px;height:21px;transform:rotate(90deg)}
+.vl li.on .vh svg.ar{transform:rotate(-90deg)}
+@media(hover:hover){.vh:hover>svg.ar{transform:rotate(90deg) translateX(3px)}.vl li.on .vh:hover>svg.ar{transform:rotate(-90deg) translateX(3px)}}
+.vb{padding:10px 0 22px 92px}
+@media(max-width:599px){.vb{padding-left:0}}
+.vb .rec{margin-top:6px}
+.vb .rec b{font-size:26px}.vb .rec b.wd{font-size:19px;line-height:1.37}
+.vb p{margin:18px 0 0;font:400 15.5px/1.45 var(--ft);max-width:60ch}
+.vb p .k{margin-bottom:6px}
+.vac{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin-top:20px}
+.vac .fr{color:var(--ink2)}.vac .fr[data-play]{color:var(--ink)}
+.vac iframe{order:-1;flex:1 0 100%;aspect-ratio:16/9;border:0;background:#000;display:block}
+@media(min-width:900px){.vh b{font-size:32px}.vb .rec b{font-size:32px}}
 .bD{background:var(--ink);color:var(--pa);padding-top:34px;padding-bottom:40px}
 .bD .k{color:inherit;opacity:.6}
 .bD p{margin:0;font:italic 400 20px/1.4 var(--fs);max-width:30ch}
@@ -468,6 +488,8 @@ const FRAMES = __FRAMES__;
 const COURSE = __COURSE__;
 const GLASSWARE = __GLASSWARE__;
 const SWAPS = __SWAPS__;
+// riffs on the classics, each tied to its IBA parent (Difford's Guide)
+const VARS = __VARS__;
 const {ing:ING, comp:COMP, glass:GLASS, unit:UNIT} = DATA;
 const store = { get(k,d){ try{ const v=localStorage.getItem('mise.'+k); return v===null?d:JSON.parse(v);}catch(e){return d;} }, set(k,v){ try{localStorage.setItem('mise.'+k,JSON.stringify(v));}catch(e){} } };
 let lang = store.get('lang','en');
@@ -494,7 +516,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', sources:'Sources', play:'Play video', watch:'Open on YouTube',
+   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', sources:'Sources', vars:'Variations', varOf:'Variation', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', notes:'Notes', prep:'Prep', terms:'Terms', quiz:'Quiz', qFrom:n=>`From your list · ${n} drinks`, qAmt:x=>`How much ${x}?`, qIng:'Which one goes in?', qGlass:'Which glass?', qMeth:'Which method?', qName:'Which drink is this?', qNext:'Next', qRight:'Right', qWrong:'Not quite', qMissed:'To review', qOpen:'Full recipe', inIBA:'In IBA drinks', balance:'Balance', tips:'Tips', seeN:n=>`See ${n} drinks`, prepL:'Prep', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
@@ -514,7 +536,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', sources:'Fuentes', play:'Ver video', watch:'Abrir en YouTube',
+   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', sources:'Fuentes', vars:'Variaciones', varOf:'Variación', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', notes:'Apuntes', prep:'Insumos', terms:'Términos', quiz:'Práctica', qFrom:n=>`De tu lista · ${n} tragos`, qAmt:x=>`¿Qué medida de ${x}?`, qIng:'¿Cuál lleva?', qGlass:'¿Qué cristalería?', qMeth:'¿Qué método?', qName:'¿Qué trago es?', qNext:'Siguiente', qRight:'Bien', qWrong:'Casi', qMissed:'Para repasar', qOpen:'Receta completa', inIBA:'En tragos IBA', balance:'Balance', tips:'Claves', seeN:n=>`Ver ${n} tragos`, prepL:'Preparación', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
@@ -593,7 +615,8 @@ const DR = DATA.drinks.map(dr=>{
     : (f.has('creamy') || f.has('coffee') || (f.has('sweet') && !f.has('sour'))) ? 'digestivo'
     : (f.has('sparkling') && dr.abv<15) ? 'refrescante'
     : (f.has('spirit') || f.has('herbal')) ? 'aperitivo' : null;
-  dr.search = (dr.name+' '+dr.lines.flatMap(l=>l.ids.map(i=>ING[i]?ING[i].en+' '+ING[i].es:i)).join(' ')).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  dr.vars = VARS.filter(x=>x.parent===dr.id);
+  dr.search = (dr.name+' '+dr.vars.map(x=>x.name).join(' ')+' '+dr.lines.flatMap(l=>l.ids.map(i=>ING[i]?ING[i].en+' '+ING[i].es:i)).join(' ')).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
   return dr;
 });
 const byId = Object.fromEntries(DR.map(d=>[d.id,d]));
@@ -707,7 +730,7 @@ function topY(d){ if (d.id in TOPY) return TOPY[d.id];
 function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
   return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
     return `--t${n}:${t.toFixed(1)}px`; }).join(';')+`;--vc:${((top+233)/480).toFixed(3)}`; }
-const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)}${ICON.next}</button></div></li>`; };
+const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d)+(varHit(d)?` · ${t().varOf}: ${varHit(d).name}`:''))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)}${ICON.next}</button></div></li>`; };
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
@@ -953,6 +976,19 @@ function qtyParts(l){
   if (!l.q) return ['', uName(l.u)];
   return [String(l.q), uName(l.u)];
 }
+// the variations, folded: name and what changes; open for the recipe
+const varHit = d => { if(!Q) return null; const ws=norm(Q).split(/\s+/).filter(Boolean); return d.vars.find(x=>ws.every(w=>norm(x.name).includes(w)))||null; };
+function varsHTML(d){
+  if (!d.vars.length) return '';
+  const tt=t(), hit=varHit(d), ln=l=>({q:l.q,u:l.u,ids:l.ids||[]});
+  // drawn from its own recipe, on its own tile, like the list
+  const art = x => glassSVG({id:x.id, glass:x.art.glass, ice:x.art.ice, ovr:x.art.ovr, lines:x.lines.map(ln), garnish:{en:x.garnish_en}});
+  const row = x => { const on=hit===x, ls=x.lines.map(l=>{ const [a,b]=qtyParts(ln(l)); const nm=l.ids&&l.ids.length&&lang!=='es'?l.ids.map(ingName).join(` ${tt.or} `):(lang==='es'?l.ing_es:l.ing_en);
+      return `<div><b${a?'':' class="wd"'}>${esc(a||capW(b))}${a?`<small>${esc(b)}</small>`:''}</b><span>${esc(nm)}</span></div>`; }).join('');
+    return `<li${on?' class="on"':''}><button type="button" class="vh" aria-expanded="${on}"><span class="va" aria-hidden="true">${art(x)}</span><b>${esc(x.name)}</b><span>${esc(lang==='es'?x.change_es:x.change_en)}</span>${ICON.next}</button>
+      <div class="vb"${on?'':' hidden'}><div class="rec">${ls}</div><p>${esc(lang==='es'?x.method_es:x.method_en)}</p>${x.garnish_en?`<p><span class="k">${tt.garnish}</span>${esc(lang==='es'?x.garnish_es:x.garnish_en)}</p>`:''}<div class="vac">${x.video?`<button type="button" class="fr" data-play="${esc(x.video)}" data-t="${esc(x.name)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(x.video)}" target="_blank" rel="noopener">${tt.watch}${ICON.out}</a>`:''}<a class="fr" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.src)}${ICON.out}</a></div></div></li>`; };
+  return `<section class="bk bV"><span class="k">${tt.vars} · ${d.vars.length}</span><ul class="vl">${d.vars.map(row).join('')}</ul></section>`;
+}
 function detail(d){
   const tt=t(); const n = ticket[d.id]||0, bg=bgOf(d);
   const note = l => { const x = lang==='es'?l.n_es:l.n_en; return [x, l.opt?tt.opt:''].filter(Boolean).join(' · '); };
@@ -985,6 +1021,7 @@ function detail(d){
       <section class="bk bB"><div class="spx"><div class="gw"><span class="k">${tt.glass}</span>${glassBlock(d)}</div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
         ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
       <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${mnote?`<p class="mnote"><b>${tt.note}</b>${esc(mnote)}</p>`:''}</section>
+      ${varsHTML(d)}
       <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}${srcHTML(d)}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
       <section class="bk bE">${containsHTML(d)}</section>
     </div></div>`;
@@ -1156,6 +1193,7 @@ function close(pop=false){ if(openId===null) return; const id=openId; openId=nul
 function all(){ renderChrome(); renderList(); renderTab(); if(!$('#nb').hidden){ if(NB==='quiz') QZ.cur=null; renderNotes(); } if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
 
 document.addEventListener('click', e=>{
+  const vh=e.target.closest('.vh'); if(vh){ const o=vh.getAttribute('aria-expanded')!=='true'; vh.setAttribute('aria-expanded',o); vh.nextElementSibling.hidden=!o; vh.parentElement.classList.toggle('on',o); return; }
   const sl=e.target.closest('[data-slot]'); if(sl){ const k=sl.dataset.slot; FSLOT=FSLOT===k?null:k; FSLOTnew=!!FSLOT; renderFilters(); if(FSLOT==='ing'){ const ti=$('#tokin'); if(ti) ti.focus({preventScroll:true}); } return; }
   if(e.target.closest('[data-tdone]')){ const k=FSLOT; FSLOT=null; renderFilters(); const b=document.querySelector(`[data-slot="${k}"]`); if(b) b.focus({preventScroll:true}); return; }
   const fc=e.target.closest('[data-f]'); if(fc){ const k=fc.dataset.f,v=fc.dataset.v; S[k]=S[k].includes(v)?S[k].filter(x=>x!==v):[...S[k],v]; changed(); return; }
@@ -1186,8 +1224,8 @@ document.addEventListener('click', e=>{
   if(e.target.closest('#fclear')){ S=blank(); sort='az'; store.set('sort',sort); changed(); return; }
   const pl=e.target.closest('[data-play]'); if(pl){ const f=document.createElement('iframe');
     f.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(pl.dataset.play)}?autoplay=1&playsinline=1&rel=0`;
-    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; f.title=byId[openId]?byId[openId].name:'Video';
-    const ac=pl.closest('.ac'); pl.remove(); ac.appendChild(f); return; }
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; f.title=pl.dataset.t||(byId[openId]?byId[openId].name:'Video');
+    const ac=pl.closest('.ac,.vac'); pl.remove(); ac.appendChild(f); return; }
   if(e.target.closest('#sheet .plate .art')){ glassSlosh(); return; }
   const vw=e.target.closest('[data-view]'); if(vw){ view=vw.dataset.view; store.set('view',view); const pl=$('#sheet .plate'); pl.classList.toggle('photo',view==='photo'); document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view)); return; }
   const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); if(!$('#cmd').hidden){ renderTicket(false); unitsStale=!!openId; return; } if(openId){ const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; } return; }
@@ -1210,7 +1248,7 @@ document.addEventListener('click', e=>{
 $('#q').addEventListener('input', e=>{ Q=e.target.value; $('#qx').hidden=!Q; renderList(); });
 $('#qx').addEventListener('click', e=>{ e.preventDefault(); Q=''; $('#q').value=''; $('#qx').hidden=true; renderList(); $('#q').focus(); });
 document.addEventListener('input', e=>{ if(e.target.id==='tokin') suggest(); });
-document.addEventListener('securitypolicyviolation', e=>{ if(!/frame/.test(e.violatedDirective)) return; const f=document.querySelector('.bA iframe'); if(f) f.remove(); });
+document.addEventListener('securitypolicyviolation', e=>{ if(!/frame/.test(e.violatedDirective)) return; document.querySelectorAll('.bA iframe,.vac iframe').forEach(f=>f.remove()); });
 document.addEventListener('change', e=>{ if(e.target.id==='mybar'){ S.mybar=e.target.checked; changed(); } });
 document.addEventListener('keydown', e=>{ if(e.target.id==='tokin' && e.key==='Enter'){ const f=$('#sugg button'); if(f){ e.preventDefault(); f.click(); } } });
 document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#fs').hidden){ if(FSLOT){ FSLOT=null; renderFilters(); } else closeFilters(); } else if(!$('#nb').hidden) closeNotes(); else if(!$('#cmd').hidden) closeTicket(); else if(openId) heroClose(); });
