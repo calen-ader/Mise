@@ -1,0 +1,1270 @@
+{
+ "src": {
+  "en": "Curso Bartender Práctico · Guillermo Ubilla",
+  "es": "Curso Bartender Práctico · Guillermo Ubilla"
+ },
+ "prep": [
+  {
+   "g": "syrup",
+   "id": "bar-syrup",
+   "en": "Bar syrup",
+   "es": "Bar syrup",
+   "ratio": "1:1",
+   "time": {
+    "en": "10 min",
+    "es": "10 min"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part water",
+      "es": "parte agua"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar",
+      "es": "parte azúcar"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Mix water and sugar",
+     "Warm gently until the sugar dissolves, no hard boil",
+     "Cool and bottle"
+    ],
+    "es": [
+     "Mezclar agua y azúcar",
+     "Calentar suave hasta disolver, sin hervor fuerte",
+     "Enfriar y embotellar"
+    ]
+   },
+   "out": {
+    "en": "Neutral base for cocktails.",
+    "es": "Base neutra para cócteles."
+   },
+   "tips": {
+    "en": [
+     "Longer life: go 2:1, see Rich syrup",
+     "5–10% vodka helps it keep"
+    ],
+    "es": [
+     "Más vida útil: 2:1, ver Rich syrup",
+     "5–10% de vodka ayuda a conservar"
+    ]
+   }
+  },
+  {
+   "g": "syrup",
+   "id": "rich-syrup",
+   "en": "Rich syrup",
+   "es": "Rich syrup",
+   "ratio": "2:1",
+   "time": {
+    "en": "10 min",
+    "es": "10 min"
+   },
+   "parts": [
+    [
+     "2",
+     {
+      "en": "parts sugar",
+      "es": "partes azúcar"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part water",
+      "es": "parte agua"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Mix sugar and water",
+     "Warm gently until the sugar dissolves, no hard boil",
+     "Cool and bottle"
+    ],
+    "es": [
+     "Mezclar azúcar y agua",
+     "Calentar suave hasta disolver, sin hervor fuerte",
+     "Enfriar y embotellar"
+    ]
+   },
+   "out": {
+    "en": "Sweeter and longer lasting than 1:1.",
+    "es": "Más dulce y de más vida útil que el 1:1."
+   },
+   "uses": [
+    "jungle-bird"
+   ],
+   "usesNote": {
+    "en": "With demerara sugar",
+    "es": "Con azúcar demerara"
+   }
+  },
+  {
+   "g": "syrup",
+   "id": "mint-syrup",
+   "en": "Mint syrup",
+   "es": "Syrup de menta",
+   "ratio": "1:1",
+   "time": {
+    "en": "15 min – 48 h",
+    "es": "15 min – 48 h"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part water",
+      "es": "parte agua"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar",
+      "es": "parte azúcar"
+     }
+    ],
+    [
+     "+",
+     {
+      "en": "a generous handful of fresh mint",
+      "es": "menta fresca, cantidad generosa"
+     }
+    ]
+   ],
+   "methods": [
+    {
+     "n": {
+      "en": "Hot infusion",
+      "es": "Infusión en caliente"
+     },
+     "t": "15–30 min",
+     "steps": {
+      "en": [
+       "Bring water and sugar to a gentle boil",
+       "Add the mint",
+       "Turn off the heat",
+       "Cover and infuse 15–30 min",
+       "Strain and cool"
+      ],
+      "es": [
+       "Llevar agua y azúcar a hervor suave",
+       "Agregar la menta",
+       "Apagar el fuego",
+       "Tapar e infusionar 15–30 min",
+       "Filtrar y enfriar"
+      ]
+     }
+    },
+    {
+     "n": {
+      "en": "Cold maceration",
+      "es": "Maceración en frío"
+     },
+     "t": "24–48 h",
+     "steps": {
+      "en": [
+       "Make a 1:1 syrup",
+       "Add fresh mint",
+       "Macerate 24–48 h in the fridge",
+       "Strain"
+      ],
+      "es": [
+       "Preparar syrup 1:1",
+       "Agregar menta fresca",
+       "Macerar 24–48 h en frío",
+       "Filtrar"
+      ]
+     },
+     "out": {
+      "en": "Fresher, greener, less cooked.",
+      "es": "Más fresco, herbal y menos cocido."
+     }
+    }
+   ],
+   "tips": {
+    "en": [
+     "Never boil hard: it kills the mint",
+     "Always cover while infusing, or the oils escape"
+    ],
+    "es": [
+     "Evitar hervor fuerte: degrada la menta",
+     "Siempre tapar al infusionar: evita perder aceites"
+    ]
+   }
+  },
+  {
+   "g": "syrup",
+   "id": "cinnamon-syrup",
+   "en": "Cinnamon syrup",
+   "es": "Syrup de canela",
+   "ratio": "1:1",
+   "time": {
+    "en": "20 min – 48 h",
+    "es": "20 min – 48 h"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part water",
+      "es": "parte agua"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar",
+      "es": "parte azúcar"
+     }
+    ],
+    [
+     "+",
+     {
+      "en": "cinnamon sticks",
+      "es": "canela en rama"
+     }
+    ]
+   ],
+   "methods": [
+    {
+     "n": {
+      "en": "Hot infusion",
+      "es": "Infusión en caliente"
+     },
+     "t": "20–40 min",
+     "steps": {
+      "en": [
+       "Bring water and sugar to a boil",
+       "Add the cinnamon",
+       "Turn off the heat",
+       "Cover and infuse 20–40 min",
+       "Strain"
+      ],
+      "es": [
+       "Llevar agua y azúcar a hervor",
+       "Agregar la canela",
+       "Apagar el fuego",
+       "Tapar e infusionar 20–40 min",
+       "Filtrar"
+      ]
+     }
+    },
+    {
+     "n": {
+      "en": "Maceration",
+      "es": "Maceración"
+     },
+     "t": "24–48 h",
+     "steps": {
+      "en": [
+       "Make the base syrup",
+       "Add cinnamon sticks",
+       "Leave 24–48 h",
+       "Strain"
+      ],
+      "es": [
+       "Preparar el syrup base",
+       "Agregar canela en rama",
+       "Dejar 24–48 h",
+       "Filtrar"
+      ]
+     },
+     "out": {
+      "en": "Deeper and spicier.",
+      "es": "Más profundo y especiado."
+     }
+    }
+   ]
+  },
+  {
+   "g": "cordial",
+   "id": "citrus-cordial",
+   "en": "Citrus cordial",
+   "es": "Cordial cítrico",
+   "ratio": "1:1",
+   "time": {
+    "en": "20 min",
+    "es": "20 min"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part fresh juice (lime, lemon, grapefruit)",
+      "es": "parte jugo fresco (lima, limón, pomelo)"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar",
+      "es": "parte azúcar"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Mix the juice with the sugar",
+     "Warm gently, ideally 60–70 °C, to keep it fresh",
+     "Dissolve the sugar completely",
+     "Strain",
+     "Bottle"
+    ],
+    "es": [
+     "Mezclar el jugo con el azúcar",
+     "Calor suave, ideal 60–70 °C, para conservar frescura",
+     "Disolver completamente el azúcar",
+     "Filtrar",
+     "Embotellar"
+    ]
+   },
+   "out": {
+    "en": "Fresh and bright. Citrus brings its own acid, so add none.",
+    "es": "Fresco y brillante. El cítrico ya trae su acidez: no hace falta agregar ácido."
+   }
+  },
+  {
+   "g": "cordial",
+   "id": "fruit-cordial",
+   "en": "Fruit cordial",
+   "es": "Cordial de fruta",
+   "ratio": "1:1",
+   "time": {
+    "en": "40 min",
+    "es": "40 min"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part fruit (strawberry, blueberry…)",
+      "es": "parte fruta (frutilla, arándano…)"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar",
+      "es": "parte azúcar"
+     }
+    ],
+    [
+     "+",
+     {
+      "en": "acid solution: 1 L water + 10–20 g acid",
+      "es": "solución ácida: 1 L agua + 10–20 g ácido"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Make the acid solution",
+     "Mix it with the fruit",
+     "Add the sugar",
+     "Bring to a gentle boil",
+     "Cook until colour, flavour and aroma come out",
+     "Strain through a fine sieve or cloth",
+     "Bottle"
+    ],
+    "es": [
+     "Preparar la solución ácida",
+     "Mezclar con la fruta",
+     "Agregar el azúcar",
+     "Llevar a hervor suave",
+     "Cocinar hasta extraer sabor, color y aroma",
+     "Filtrar con colador fino o tela",
+     "Embotellar"
+    ]
+   },
+   "acids": {
+    "en": [
+     [
+      "Citric",
+      "bright"
+     ],
+     [
+      "Malic",
+      "green fruit"
+     ],
+     [
+      "Tartaric",
+      "dry, structured"
+     ]
+    ],
+    "es": [
+     [
+      "Cítrico",
+      "brillante"
+     ],
+     [
+      "Málico",
+      "fruta verde"
+     ],
+     [
+      "Tartárico",
+      "seco y estructurado"
+     ]
+    ]
+   },
+   "fix": {
+    "en": [
+     [
+      "Too sweet",
+      "more acid"
+     ],
+     [
+      "Too sour",
+      "more sugar"
+     ]
+    ],
+    "es": [
+     [
+      "Muy dulce",
+      "falta ácido"
+     ],
+     [
+      "Muy ácido",
+      "falta azúcar"
+     ]
+    ]
+   },
+   "tips": {
+    "en": [
+     "Don't over-boil: fresh aromas die",
+     "Sugar preserves, but not forever: keep it cold",
+     "Mix acids for complexity"
+    ],
+    "es": [
+     "No sobre hervir: mata aromas frescos",
+     "El azúcar conserva pero no es infinito: refrigerar",
+     "Combinar ácidos da complejidad"
+    ]
+   },
+   "uses": [
+    "clover-club",
+    "tequila-sunrise",
+    "singapore-sling",
+    "don-s-special-daiquiri",
+    "ve-n-to"
+   ],
+   "usesNote": {
+    "en": "Same family: raspberry syrup, grenadine, passion fruit syrup, chamomile cordial",
+    "es": "Misma familia: syrup de frambuesa, granadina, syrup de maracuyá, cordial de manzanilla"
+   }
+  },
+  {
+   "g": "shrub",
+   "id": "shrub",
+   "en": "Shrub",
+   "es": "Shrub",
+   "ratio": "1:1:1",
+   "time": {
+    "en": "5–10 days",
+    "es": "5–10 días"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part fruit or flavouring",
+      "es": "parte fruta o saborizante"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar",
+      "es": "parte azúcar"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part vinegar",
+      "es": "parte vinagre"
+     }
+    ]
+   ],
+   "vinegars": {
+    "en": [
+     [
+      "Apple",
+      "softer, fruity"
+     ],
+     [
+      "Wine",
+      "drier, structured"
+     ],
+     [
+      "Rice",
+      "lighter"
+     ]
+    ],
+    "es": [
+     [
+      "Manzana",
+      "más suave y frutal"
+     ],
+     [
+      "Vino",
+      "más seco y estructurado"
+     ],
+     [
+      "Arroz",
+      "más ligero"
+     ]
+    ]
+   },
+   "methods": [
+    {
+     "n": {
+      "en": "Cold",
+      "es": "En frío"
+     },
+     "t": "5–10 days",
+     "steps": {
+      "en": [
+       "Mix fruit and sugar",
+       "Rest 24–48 h: a syrup forms",
+       "Add the vinegar",
+       "Macerate 4–8 days in the fridge",
+       "Strain",
+       "Bottle"
+      ],
+      "es": [
+       "Mezclar fruta + azúcar",
+       "Reposar 24–48 h: se forma un jarabe por ósmosis",
+       "Agregar el vinagre",
+       "Macerar 4 a 8 días en frío",
+       "Filtrar",
+       "Embotellar"
+      ]
+     },
+     "out": {
+      "en": "Fresher, brighter, more aromatic.",
+      "es": "Más fresco, brillante y aromático."
+     }
+    },
+    {
+     "n": {
+      "en": "Hot",
+      "es": "En caliente"
+     },
+     "t": "1–3 days",
+     "steps": {
+      "en": [
+       "Heat fruit and sugar until the juices run",
+       "Cool",
+       "Add the vinegar",
+       "Rest 1–3 days",
+       "Strain"
+      ],
+      "es": [
+       "Calentar fruta + azúcar hasta extraer jugos",
+       "Enfriar",
+       "Agregar vinagre",
+       "Reposar 1–3 días",
+       "Filtrar"
+      ]
+     },
+     "out": {
+      "en": "More integrated, less fresh.",
+      "es": "Más integrado pero menos fresco."
+     }
+    }
+   ],
+   "fix": {
+    "en": [
+     [
+      "Too sour",
+      "more sugar"
+     ],
+     [
+      "Too sweet",
+      "more vinegar"
+     ],
+     [
+      "Flat",
+      "more fruit or a longer rest"
+     ]
+    ],
+    "es": [
+     [
+      "Muy ácido",
+      "más azúcar"
+     ],
+     [
+      "Muy dulce",
+      "más vinagre"
+     ],
+     [
+      "Poco sabor",
+      "más fruta o más maceración"
+     ]
+    ]
+   },
+   "tips": {
+    "en": [
+     "Blend vinegars for complexity",
+     "Add herbs or spice: rosemary, pepper, ginger",
+     "Extra rest in the bottle helps it come together",
+     "Keeps long thanks to the acid; cold is better"
+    ],
+    "es": [
+     "Mezclar vinagres da complejidad",
+     "Sumar especias o hierbas: romero, pimienta, jengibre",
+     "Reposo extra en botella mejora la integración",
+     "Vida útil alta por el ácido; mejor refrigerado"
+    ]
+   },
+   "out": {
+    "en": "A hybrid of cordial, acid and aromatic modifier.",
+    "es": "Un híbrido entre cordial, acidificante y modificador aromático."
+   }
+  },
+  {
+   "g": "shrub",
+   "id": "mandarin-shrub",
+   "en": "Mandarin shrub",
+   "es": "Shrub de mandarina",
+   "ratio": "1:1:1",
+   "time": {
+    "en": "6 days",
+    "es": "6 días"
+   },
+   "parts": [
+    [
+     "500 g",
+     {
+      "en": "mandarin, segments or juice",
+      "es": "mandarina, en gajos o jugo"
+     }
+    ],
+    [
+     "500 g",
+     {
+      "en": "sugar",
+      "es": "azúcar"
+     }
+    ],
+    [
+     "500 ml",
+     {
+      "en": "apple vinegar",
+      "es": "vinagre de manzana"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Mandarin and sugar, 24 h",
+     "Add the vinegar",
+     "Macerate 5 days",
+     "Strain"
+    ],
+    "es": [
+     "Mandarina + azúcar, 24 h",
+     "Agregar vinagre",
+     "Macerar 5 días",
+     "Filtrar"
+    ]
+   }
+  },
+  {
+   "g": "oleo",
+   "id": "oleo-citrus",
+   "en": "Citrus oleo saccharum",
+   "es": "Óleo saccharum cítrico",
+   "ratio": "peel + sugar",
+   "time": {
+    "en": "2–24 h",
+    "es": "2–24 h"
+   },
+   "parts": [
+    [
+     "+",
+     {
+      "en": "citrus peels",
+      "es": "cáscaras cítricas"
+     }
+    ],
+    [
+     "+",
+     {
+      "en": "sugar, no water",
+      "es": "azúcar, sin agua"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Toss peels with sugar",
+     "Rest 2–24 h",
+     "Strain"
+    ],
+    "es": [
+     "Cáscaras + azúcar",
+     "Reposo 2–24 h",
+     "Filtrar"
+    ]
+   },
+   "out": {
+    "en": "The sugar pulls the essential oils out of the peel. Intense, bright, oily.",
+    "es": "El azúcar extrae los aceites esenciales de la piel. Intenso, brillante, oleoso."
+   },
+   "tips": {
+    "en": [
+     "Always cover: stops oxidation",
+     "Strain well: texture matters",
+     "Keep cold",
+     "You can add acid afterwards"
+    ],
+    "es": [
+     "Tapar siempre: evita oxidación",
+     "Filtrar bien: la textura importa",
+     "Refrigerar",
+     "Se puede acidificar después"
+    ]
+   }
+  },
+  {
+   "g": "oleo",
+   "id": "oleo-pineapple",
+   "en": "Pineapple oleo",
+   "es": "Óleo de ananá",
+   "ratio": "1:1",
+   "time": {
+    "en": "24 h",
+    "es": "24 h"
+   },
+   "parts": [
+    [
+     "1",
+     {
+      "en": "part pineapple peel",
+      "es": "parte cáscara de ananá"
+     }
+    ],
+    [
+     "1",
+     {
+      "en": "part sugar, same weight",
+      "es": "parte azúcar, peso similar"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Mix",
+     "Rest 24 h",
+     "Strain"
+    ],
+    "es": [
+     "Mezclar",
+     "Reposar 24 h",
+     "Filtrar"
+    ]
+   },
+   "out": {
+    "en": "Tropical, deep, slightly oxidative. Great in highballs, modern sours and tiki.",
+    "es": "Tropical, profundo, ligeramente oxidativo. Ideal en highballs, sours modernos y tropicales."
+   }
+  },
+  {
+   "g": "oleo",
+   "id": "oleo-banana",
+   "en": "Banana oleo",
+   "es": "Óleo de banana",
+   "ratio": "fruit + sugar",
+   "time": {
+    "en": "24–48 h",
+    "es": "24–48 h"
+   },
+   "parts": [
+    [
+     "+",
+     {
+      "en": "ripe banana",
+      "es": "banana madura"
+     }
+    ],
+    [
+     "+",
+     {
+      "en": "sugar",
+      "es": "azúcar"
+     }
+    ]
+   ],
+   "steps": {
+    "en": [
+     "Cut",
+     "Mix with the sugar",
+     "Macerate 24–48 h",
+     "Strain"
+    ],
+    "es": [
+     "Cortar",
+     "Mezclar con el azúcar",
+     "Macerar 24–48 h",
+     "Filtrar"
+    ]
+   },
+   "out": {
+    "en": "Sweet, dense, caramel notes.",
+    "es": "Dulce, denso, notas a caramelo."
+   },
+   "fix": {
+    "en": [
+     [
+      "Too runny",
+      "fruit too watery"
+     ],
+     [
+      "Too heavy",
+      "too much sugar"
+     ],
+     [
+      "Little aroma",
+      "underripe fruit or too short"
+     ]
+    ],
+    "es": [
+     [
+      "Muy líquido",
+      "fruta muy acuosa"
+     ],
+     [
+      "Muy pesado",
+      "exceso de azúcar"
+     ],
+     [
+      "Poco aroma",
+      "fruta poco madura o poco tiempo"
+     ]
+    ]
+   }
+  },
+  {
+   "g": "liqueur",
+   "id": "liqueur",
+   "en": "House liqueur",
+   "es": "Licor casero",
+   "ratio": "150–300 g/L",
+   "time": {
+    "en": "days – weeks",
+    "es": "días – semanas"
+   },
+   "parts": [
+    [
+     "40–60%",
+     {
+      "en": "alcohol: neutral or a spirit",
+      "es": "alcohol: neutro o destilado"
+     }
+    ],
+    [
+     "+",
+     {
+      "en": "flavour: fruit, herbs, spice, flowers, coffee, cacao, nuts",
+      "es": "saborizante: frutas, hierbas, especias, flores, café, cacao, frutos secos"
+     }
+    ],
+    [
+     "150–300 g",
+     {
+      "en": "sugar per litre, added after extraction",
+      "es": "azúcar por litro, después de la extracción"
+     }
+    ]
+   ],
+   "list": {
+    "en": [
+     [
+      "Maceration",
+      "Steep in alcohol, strain, sweeten, rest. Cleanest. Orange, coffee, lemon, vanilla."
+     ],
+     [
+      "Hot infusion",
+      "Warm alcohol with the ingredient, cool, strain, sweeten. Faster, less fresh. Spice, ginger, tea."
+     ],
+     [
+      "Compound",
+      "Alcohol plus a syrup, juice or reduction. Simple and controlled."
+     ],
+     [
+      "Cream",
+      "Alcohol with cream or milk, sugar, flavour; blend. Keep cold. Baileys, dulce de leche."
+     ],
+     [
+      "From oleo",
+      "Oleo saccharum plus alcohol. Very aromatic."
+     ],
+     [
+      "Reduction",
+      "Cook fruit or juice down, cool, add alcohol. Denser, less fresh."
+     ],
+     [
+      "Percolation",
+      "Run alcohol through the ingredient. Clean. Coffee, herbs."
+     ]
+    ],
+    "es": [
+     [
+      "Maceración",
+      "Macerar en alcohol, filtrar, endulzar, reposar. El más limpio. Naranja, café, limón, vainilla."
+     ],
+     [
+      "Infusión en caliente",
+      "Calentar alcohol con el ingrediente, enfriar, filtrar, endulzar. Más rápido, menos fresco. Especias, jengibre, té."
+     ],
+     [
+      "Por mezcla",
+      "Alcohol más un syrup, jugo o reducción. Simple y controlado."
+     ],
+     [
+      "Crema",
+      "Alcohol con crema o leche, azúcar y sabor; homogenizar. Refrigerar. Baileys, dulce de leche."
+     ],
+     [
+      "Desde óleo",
+      "Óleo saccharum más alcohol. Muy aromático."
+     ],
+     [
+      "Por reducción",
+      "Cocinar fruta o jugo para concentrar, enfriar, agregar alcohol. Más denso, menos fresco."
+     ],
+     [
+      "Percolación",
+      "Pasar el alcohol a través del ingrediente. Limpio. Café, hierbas."
+     ]
+    ]
+   },
+   "fix": {
+    "en": [
+     [
+      "Hot, boozy",
+      "needs sugar or water"
+     ],
+     [
+      "Cloying",
+      "needs more alcohol"
+     ],
+     [
+      "Flat",
+      "extract longer or concentrate"
+     ],
+     [
+      "Bitter",
+      "over-extracted"
+     ]
+    ],
+    "es": [
+     [
+      "Exceso de alcohol",
+      "falta dulzor o dilución"
+     ],
+     [
+      "Exceso de dulzor",
+      "falta estructura alcohólica"
+     ],
+     [
+      "Poco sabor",
+      "falta extracción o concentración"
+     ],
+     [
+      "Amargor",
+      "sobre extracción"
+     ]
+    ]
+   },
+   "tips": {
+    "en": [
+     "Short steep: fresher. Long: more extraction, maybe bitter",
+     "Finer cut, faster extraction",
+     "Cold: more aromatic. Heat: more extraction, less fresh"
+    ],
+    "es": [
+     "Tiempo corto: más fresco. Largo: más extracción, posible amargor",
+     "Mayor corte, mayor extracción",
+     "Temperatura baja: más aromático. Alta: más extracción, menos frescura"
+    ]
+   }
+  }
+ ],
+ "groups": {
+  "syrup": {
+   "en": "Syrups",
+   "es": "Syrups"
+  },
+  "cordial": {
+   "en": "Cordials",
+   "es": "Cordiales"
+  },
+  "shrub": {
+   "en": "Shrubs",
+   "es": "Shrubs"
+  },
+  "oleo": {
+   "en": "Oleo saccharum",
+   "es": "Óleo saccharum"
+  },
+  "liqueur": {
+   "en": "Liqueurs",
+   "es": "Licores"
+  }
+ },
+ "terms": [
+  {
+   "g": {
+    "en": "On the floor",
+    "es": "En el servicio"
+   },
+   "items": [
+    {
+     "t": "86",
+     "en": "We're out of it. “86 Marichal chardonnay.”",
+     "es": "No hay más de eso. «86 chardonnay de Marichal»."
+    },
+    {
+     "t": "85",
+     "en": "Only one left.",
+     "es": "Solo queda uno."
+    },
+    {
+     "t": "Voy atrás",
+     "en": "Behind you. Say it whenever you move out of someone's sight.",
+     "es": "Aviso de que nos movemos fuera del campo de visión de alguien. Indispensable con el bar lleno."
+    },
+    {
+     "t": "Voy caliente",
+     "en": "Hot coming through: a boiling pot, anything that burns.",
+     "es": "Nos movemos con algo caliente, una olla hirviendo. Es seguridad."
+    },
+    {
+     "t": "Voy pesado",
+     "en": "Heavy or bulky coming through, like a crate of bottles.",
+     "es": "Nos movemos con algo pesado o grande, como un cajón de bebidas."
+    },
+    {
+     "t": {
+      "en": "First and second course",
+      "es": "Primer y segundo tiempo"
+     },
+     "en": "Starters and mains. How the floor paces the kitchen and the bar. “A tiempo” means fire it together: a coffee that goes with dessert is sent a tiempo to both.",
+     "es": "Entradas y principales. Así la sala coordina con cocina y barra. Un café que va con el postre se comanda «a tiempo» con cocina y con barra."
+    },
+    {
+     "t": "Marche",
+     "en": "Fire it, now. The server sees the table finishing starters and sends the wine to the bar and the mains to the kitchen.",
+     "es": "Que salga ya. El mozo ve que la mesa termina el primer tiempo y marcha el vino a la barra y los principales a cocina."
+    },
+    {
+     "t": "Champañera",
+     "en": "The big ice bucket for wine.",
+     "es": "Hielera grande donde va el vino."
+    },
+    {
+     "t": "Descorche",
+     "en": "Wine opener.",
+     "es": "Abridor de vino."
+    }
+   ]
+  },
+  {
+   "g": {
+    "en": "Behind the bar",
+    "es": "En la barra"
+   },
+   "items": [
+    {
+     "t": "Mise en place",
+     "en": "Setting up the station before service: tools, stock, garnish. Order keeps you calm, calm reassures the guest, and you run the service instead of it running you.",
+     "es": "Preparar el espacio antes del servicio: herramientas, insumos, garnishes. El orden mantiene la calma, la calma tranquiliza al cliente, y guiamos el servicio en vez de que nos arrastre."
+    },
+    {
+     "t": {
+      "en": "Non-negotiables",
+      "es": "Pasos no negociables"
+     },
+     "en": "Pick and chill the glass. Station in order before you start. Open the bottle with the jigger hand and close it with the same hand, no caps lying around. Always tip the melt water out of the glass before pouring.",
+     "es": "Elegir y enfriar la cristalería. Barra ordenada antes de empezar. Abrir la botella con la mano del jigger y cerrarla con la misma: no quedan tapas sueltas. Siempre tirar el agua del hielo antes de servir."
+    },
+    {
+     "t": "Garnish",
+     "en": "The decoration.",
+     "es": "La decoración."
+    },
+    {
+     "t": "Peel",
+     "en": "Strip of orange zest for garnish: the orange only, as little white pith as possible.",
+     "es": "Cáscara de naranja para decorar: solo la parte naranja, lo menos posible de lo blanco."
+    },
+    {
+     "t": {
+      "en": "Cocktail",
+      "es": "Cóctel"
+     },
+     "en": "A mix of two or more ingredients, alcoholic or not, built to be balanced.",
+     "es": "Una mezcla de dos o más ingredientes, alcohólicos o no, buscando una bebida equilibrada."
+    }
+   ]
+  },
+  {
+   "g": {
+    "en": "Methods",
+    "es": "Métodos"
+   },
+   "items": [
+    {
+     "t": "Directo",
+     "f": [
+      "tech",
+      "build"
+     ],
+     "en": "Built in the serving glass. Fast, little dilution, keeps the bubbles, and lets you layer by density, like the grenadine in a Tequila Sunrise. Spritz, gin tonic, fernet con coca.",
+     "es": "Directo en la cristalería del cóctel. Ágil, poca dilución, cuida el gas y permite jugar con densidades, como la granadina del Tequila Sunrise. Spritz, gin tonic, fernet con coca."
+    },
+    {
+     "t": "Refrescado",
+     "f": [
+      "tech",
+      "stir"
+     ],
+     "en": "Stirred with a bar spoon in a mixing glass full of ice. Full control of dilution, no air, texture unchanged. Only for liquids of similar density. Negroni, Manhattan, Boulevardier.",
+     "es": "Se enfría con cuchara de bar en vaso de refrescado con buen hielo. Control total de la dilución, sin aire, sin cambiar textura. Solo para líquidos de densidad similar. Negroni, Manhattan, Boulevardier."
+    },
+    {
+     "t": "Shakeado",
+     "f": [
+      "tech",
+      "shake"
+     ],
+     "en": "Shaken hard with plenty of ice. More dilution, some air, and the best way to bind egg white, pulpy juice, syrups and house prep.",
+     "es": "Batido en coctelera con suficiente hielo. Más dilución y aire, y la mejor integración de texturas: clara, jugos con pulpa, almíbares, insumos caseros."
+    }
+   ]
+  },
+  {
+   "g": {
+    "en": "Purpose",
+    "es": "Finalidad"
+   },
+   "items": [
+    {
+     "t": "Aperitivo",
+     "f": [
+      "purpose",
+      "aperitivo"
+     ],
+     "en": "Small, usually dry and strong. Opens the appetite.",
+     "es": "De poco volumen, sabor generalmente seco y alta graduación. Abre el apetito."
+    },
+    {
+     "t": "Refrescante",
+     "f": [
+      "purpose",
+      "refrescante"
+     ],
+     "en": "Long and lighter, in tall glasses. Most fizzy and tropical drinks.",
+     "es": "Largos y de menor graduación, en cristalería larga. La mayoría con gasificados y los tropicales."
+    },
+    {
+     "t": "Digestivo",
+     "f": [
+      "purpose",
+      "digestivo"
+     ],
+     "en": "Small, strong and sweet, often creamy. After dinner, sometimes instead of dessert.",
+     "es": "De poco volumen, alta graduación y muy dulces, a base de licores cremosos. Para después de comer, a veces como postre."
+    }
+   ]
+  },
+  {
+   "g": {
+    "en": "Glassware",
+    "es": "Cristalería"
+   },
+   "items": [
+    {
+     "t": "Collins",
+     "f": [
+      "ggroup",
+      "tall"
+     ],
+     "en": "Tall and narrow: less surface, so the bubbles last. Room for lots of ice, slow and even dilution. Gin Fizz.",
+     "es": "Alto y angosto: menos superficie expuesta, el gas dura más. Entra mucho hielo y la dilución es controlada. Gin Fizz."
+    },
+    {
+     "t": "Rocks",
+     "f": [
+      "ggroup",
+      "low"
+     ],
+     "en": "Low, wide and heavy. The whole aroma and the garnish up front, and room for one big rock that melts slowly. Negroni.",
+     "es": "Bajo, de boca ancha y pesado. Todo el aroma y el garnish al frente, y lugar para una roca grande que diluye lento. Negroni."
+    },
+    {
+     "t": {
+      "en": "Cocktail, coupe, martini",
+      "es": "Copa cóctel, coupe, martini"
+     },
+     "f": [
+      "ggroup",
+      "stem"
+     ],
+     "en": "For drinks served up, no ice. The stem keeps your hand's heat off the drink; the wide mouth gives the aroma first. Daiquiri, Cosmopolitan, White Lady.",
+     "es": "Para tragos sin hielo. El tallo evita pasarle temperatura; la boca ancha da el golpe aromático. Daiquiri, Cosmo, White Lady."
+    },
+    {
+     "t": "Hurricane",
+     "en": "Big and curved: room for ice, fruit and garnish, and the curve pushes sweet, fruity aromas up. Piña Colada.",
+     "es": "Gran capacidad y forma curva: hielo, fruta y decoración, y concentra los aromas dulces arriba. Piña Colada."
+    }
+   ]
+  },
+  {
+   "g": {
+    "en": "Aperitifs",
+    "es": "Aperitivos"
+   },
+   "items": [
+    {
+     "t": {
+      "en": "Gentian bitters",
+      "es": "Amargos de genciana"
+     },
+     "en": "Bittersweet liqueurs built on gentian root. Aperol is sweeter, softer, more citrus, 11%. Campari is drier, more bitter, 22%.",
+     "es": "Licores dulce/amargos con raíz de genciana. Aperol: más dulce, suave y cítrico, 11%. Campari: más seco, amargo e intenso, 22%."
+    },
+    {
+     "t": "Amaro",
+     "en": "Herbal macerations in the fernet style. Fernet, Amargo Obrero, Cynar, Jägermeister.",
+     "es": "Macerados de hierbas del estilo del fernet. Fernet, Amargo Obrero, Cynar, Jägermeister."
+    },
+    {
+     "t": "Vermouth",
+     "en": "Fortified wine: at least 75% wine plus an alcohol macerated with herbs. Must contain wormwood to be called vermouth.",
+     "es": "Vino fortificado: al menos 75% vino más alcohol macerado con hierbas. Debe contener ajenjo para llamarse vermouth."
+    },
+    {
+     "t": {
+      "en": "Sherry",
+      "es": "Jerez"
+     },
+     "en": "Similar, but more intense, with a long time in barrel.",
+     "es": "Similar al vermouth, más intenso, con un paso importante por barrica."
+    }
+   ]
+  }
+ ]
+}

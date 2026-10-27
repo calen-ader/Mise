@@ -23,7 +23,7 @@ img,svg{display:block}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;flex:none}
 /* tall condensed caps: every label and action */
-.cc,.chip,.fbtn,.seg button,.txt,.strict button,.tok button,.close,.fsec h3,.facts dt,.prose h3,.contains h3,.units button,.tl .mt,.cap-l,.txtbtn,.tab,.s-sec h3{font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1}
+.cc,.chip,.fbtn,.seg button,.txt,.strict button,.tok button,.close,.fsec h3,.facts dt,.prose h3,.contains h3,.units button,.tl .mt,.cap-l,.txtbtn,.tab,.s-sec h3,.nb-g>h3,.pb h4{font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1}
 .nm{display:block;font-family:var(--fd);font-weight:800;line-height:1;letter-spacing:-.02em;text-wrap:balance}
 .txt{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;white-space:nowrap}
 .txt span{border-bottom:2px solid currentColor;padding-bottom:2px}
@@ -267,6 +267,49 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .s-foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
 .s-foot .tot{font:700 12.5px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase}
 
+
+/* course notes: prep + terms from the course PDFs */
+.nb{position:fixed;inset:0;z-index:40;background:var(--pa);color:var(--ink);overflow-y:auto;overscroll-behavior:contain;outline:0}
+.nb-in{max-width:900px;margin:0 auto;padding:0 var(--gut) 96px}
+.nb-bar{position:sticky;top:0;z-index:2;background:var(--pa);display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:env(safe-area-inset-top);height:calc(58px + env(safe-area-inset-top));border-bottom:2px solid var(--ink)}
+.nb-bar .units{display:flex;gap:20px}
+.nb-hd{padding:34px 0 4px}
+.nb-hd h2{font:800 clamp(54px,15vw,150px)/.88 var(--fd);letter-spacing:-.045em;margin:0;overflow-wrap:anywhere}
+.nb-hd .src{display:block;margin-top:16px;font:600 12px/1.3 var(--ft);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.nb-g{margin-top:44px}
+.nb-g>h3{margin:0;padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.pr{border-bottom:1px solid var(--rule)}
+.pr summary{list-style:none;display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:baseline;column-gap:10px;row-gap:6px;padding:18px 0 16px;cursor:pointer}
+.pr summary::-webkit-details-marker{display:none}
+.pr .no{font:800 12px/1 var(--fd);color:var(--ink3);font-variant-numeric:tabular-nums}
+.pr .nm{font-size:clamp(27px,6.6vw,46px);letter-spacing:-.03em;text-align:left}
+.pr .ra{font:800 clamp(20px,4.6vw,30px)/1 var(--fd);letter-spacing:-.02em;text-align:right;white-space:nowrap}
+.pr .tm{grid-column:2/4;font:600 12px/1 var(--ft);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.pr[open] .ra{color:var(--co)}
+.pb{padding:2px 0 30px 40px}
+.parts{display:grid;gap:10px;margin:4px 0 24px}
+.parts div{display:grid;grid-template-columns:minmax(44px,auto) minmax(0,1fr);gap:14px;align-items:baseline}
+.parts b{font:800 26px/1 var(--fd);letter-spacing:-.02em;white-space:nowrap}
+.parts span{font-size:16px}
+.pb h4{margin:24px 0 12px}
+.pb h4 small{font-weight:600;color:var(--ink2);letter-spacing:.06em;margin-left:8px}
+.pb .out{font-size:16.5px;line-height:1.45;margin:16px 0 0;max-width:34em}
+.kv{width:100%;max-width:620px;border-collapse:collapse;margin-top:2px}
+.kv td{padding:8px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:15.5px}
+.kv td:first-child{font-weight:700;width:42%;padding-right:12px}
+.tips{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tips li{display:grid;grid-template-columns:16px 1fr;font-size:15.5px;color:var(--ink2)}
+.tips li::before{content:"";width:6px;height:6px;background:var(--ink);margin-top:.55em}
+.uses{display:flex;flex-wrap:wrap;column-gap:22px}
+.uses+.out{margin-top:4px;font-size:14px;color:var(--ink2)}
+.tm-i{display:grid;grid-template-columns:minmax(0,1fr);padding:18px 0;border-bottom:1px solid var(--rule)}
+.tm-i dt{font:800 clamp(28px,7vw,40px)/1 var(--fd);letter-spacing:-.03em}
+.tm-i dd{margin:10px 0 0;font-size:16.5px;line-height:1.45;max-width:36em}
+.tm-i .txt{margin-top:2px}
+.s-sec td .pl{margin-left:10px;font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;border-bottom:2px solid currentColor;padding-bottom:1px}
+@media(min-width:760px){.tm-i{grid-template-columns:280px minmax(0,1fr);column-gap:28px}.tm-i dd{margin:4px 0 0}.pb{padding-left:40px}}
+@media(max-width:420px){.pb{padding-left:0}}
+
 /* filters */
 .fs{position:fixed;inset:0;z-index:45;background:var(--ink);display:flex;justify-content:flex-end}
 .fpanel{outline:0;width:100%;max-width:560px;height:100%;display:flex;flex-direction:column;background:var(--pa);animation:slide .5s var(--ease)}
@@ -342,6 +385,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
       <span class="sr" id="qlbl"></span><input id="q" type="search" autocomplete="off" aria-labelledby="qlbl">
       <span class="count" id="count"></span>
       <button class="x" id="qx" type="button" hidden><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="sr">Clear</span></button></label>
+    <button class="fbtn" type="button" id="nopen" aria-haspopup="dialog"></button>
     <button class="fbtn" type="button" id="fopen" aria-haspopup="dialog"></button>
     <div class="seg" role="group" aria-label="Language"><button type="button" data-l="en">EN</button><button type="button" data-l="es">ES</button></div>
   </div>
@@ -353,6 +397,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" tabindex="-1"></div>
 <div class="cmd" id="cmd" hidden role="dialog" aria-modal="true" tabindex="-1"></div>
 <div class="fs" id="fs" hidden></div>
+<div class="nb" id="nb" hidden role="dialog" aria-modal="true" tabindex="-1"></div>
 
 <script>
 __GLASS__
@@ -361,6 +406,7 @@ __GLASS__
 const DATA = __DATA__;
 const COLORS = __COLORS__;
 const FRAMES = __FRAMES__;
+const COURSE = __COURSE__;
 const {ing:ING, comp:COMP, glass:GLASS, unit:UNIT} = DATA;
 const store = { get(k,d){ try{ const v=localStorage.getItem('mise.'+k); return v===null?d:JSON.parse(v);}catch(e){return d;} }, set(k,v){ try{localStorage.setItem('mise.'+k,JSON.stringify(v));}catch(e){} } };
 let lang = store.get('lang','en');
@@ -388,7 +434,7 @@ const T = {
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
    glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
-   add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
+   add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', notes:'Notes', prep:'Prep', terms:'Terms', inIBA:'In IBA drinks', balance:'Balance', tips:'Tips', seeN:n=>`See ${n} drinks`, prepL:'Prep', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
  es:{
@@ -408,7 +454,7 @@ const T = {
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
    glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
-   add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
+   add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', notes:'Apuntes', prep:'Preparaciones', terms:'Términos', inIBA:'En tragos IBA', balance:'Balance', tips:'Claves', seeN:n=>`Ver ${n} tragos`, prepL:'Preparación', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
 };
@@ -532,6 +578,7 @@ function renderChrome(){
   const tt=t();
   $('#mark').textContent = 'MISE'; $('#mark').setAttribute('aria-label','Mise');
   $('#q').placeholder = innerWidth<600 ? tt.search : tt.searchN(DR.length); $('#qlbl').textContent = tt.searchN(DR.length);
+  $('#nopen').textContent = tt.notes;
   const n = activeCount();
   $('#fopen').innerHTML = `<svg class="i" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="lb">${tt.filters}</span>${n?`<span class="n">(${n})</span>`:''}`;
   $('#fopen').setAttribute('aria-label', n ? `${tt.filters}: ${n}` : tt.filters);
@@ -886,7 +933,7 @@ function renderTicket(print){
   const now = new Date(); const hhmm = String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
   const rows = ids.map(id=>{ const d=byId[id]; return `<div class="s-row"><span class="mini" style="background:${bgOf(d)}">${artSVG(d)}</span><div><button class="nm" type="button" data-id="${id}">${esc(d.name)}</button><small>${esc(glassName(d))} · ${esc(tt.ices[d.ice]||'')}</small></div>
     <div class="step"><button type="button" data-step="${id}" data-dv="-1" aria-label="${tt.less}: ${esc(d.name)}">${ICON.minus}</button><output class="num">${ticket[id]}</output><button type="button" data-step="${id}" data-dv="1" aria-label="${tt.more}: ${esc(d.name)}">${ICON.plus}</button></div></div>`; }).join('');
-  const mlRows = Object.entries(m.ml).sort((a,b)=>b[1]-a[1]).map(([id,v])=>`<tr><td class="q num">${fmtN(v)} ml</td><td>${esc(ingName(id))}</td></tr>`).join('');
+  const mlRows = Object.entries(m.ml).sort((a,b)=>b[1]-a[1]).map(([id,v])=>`<tr><td class="q num">${fmtN(v)} ml</td><td>${esc(ingName(id))}${PREPOF[id]?`<button type="button" class="pl" data-nbp="${PREPOF[id]}">${tt.prepL}</button>`:''}</td></tr>`).join('');
   const uRows = Object.entries(m.units).map(([k,v])=>{ const [id,u]=k.split('|'); const ux=uName(u)+(lang==='en'&&v>1&&['bar spoon','dash'].includes(u)?'s':'');
     return `<tr><td class="q num">${['top up','fill up'].includes(u)?ux:fmtN(v)+(ux?' '+ux:'')}</td><td>${esc(ingName(id))}</td></tr>`; }).join('');
   const gRows = Object.entries(m.glass).sort((a,b)=>b[1]-a[1]).map(([g,n])=>`<tr><td>${esc(g)}</td><td class="r num">×${n}</td></tr>`).join('');
@@ -907,6 +954,54 @@ function closeTicket(pop=false){ if($('#cmd').hidden) return; $('#cmd').hidden=t
   if(!pop && history.state && history.state.c) history.back(); renderTab(); }
 function setCovers(id, n){ if(n<=0) delete ticket[id]; else ticket[id]=Math.min(n,99); store.set('ticket',ticket); renderTab(); markCard(id); }
 
+
+/* ---- course notes ---- */
+let NB='prep';
+const CL = x => x && typeof x==='object' && !Array.isArray(x) ? (x[lang]||x.en) : x;
+const PREPOF = {'demerara-syrup':'rich-syrup','raspberry-syrup':'fruit-cordial','grenadine':'fruit-cordial','passion-syrup':'fruit-cordial','chamomile-cordial':'fruit-cordial'};
+const kvHTML = rows => `<table class="kv">${rows.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join('')}</table>`;
+const stepsHTML = xs => `<ol class="steps">${xs.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`;
+function prepHTML(p, i){
+  const tt=t(); let b=`<div class="parts">${p.parts.map(([q,l])=>`<div><b>${esc(q)}</b><span>${esc(CL(l))}</span></div>`).join('')}</div>`;
+  if (p.vinegars) b+=`<h4>${lang==='es'?'Vinagre':'Vinegar'}</h4>`+kvHTML(CL(p.vinegars));
+  if (p.acids) b+=`<h4>${lang==='es'?'Ácidos':'Acids'}</h4>`+kvHTML(CL(p.acids));
+  if (p.methods) p.methods.forEach(m=>{ b+=`<h4>${esc(CL(m.n))}<small>${esc(m.t)}</small></h4>`+stepsHTML(CL(m.steps))+(m.out?`<p class="out">${esc(CL(m.out))}</p>`:''); });
+  else if (p.steps) b+=`<h4>${tt.method}</h4>`+stepsHTML(CL(p.steps));
+  if (p.list) b+=`<h4>${lang==='es'?'Métodos':'Methods'}</h4>`+kvHTML(CL(p.list));
+  if (p.out) b+=`<p class="out">${esc(CL(p.out))}</p>`;
+  if (p.fix) b+=`<h4>${tt.balance}</h4>`+kvHTML(CL(p.fix));
+  if (p.tips) b+=`<h4>${tt.tips}</h4><ul class="tips">${CL(p.tips).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+  if (p.uses) b+=`<h4>${tt.inIBA}</h4><div class="uses">${p.uses.map(id=>`<button type="button" class="txt" data-nbid="${id}"><span>${esc(byId[id].name)}</span></button>`).join('')}</div>${p.usesNote?`<p class="out">${esc(CL(p.usesNote))}</p>`:''}`;
+  return `<details class="pr" id="pr-${p.id}"><summary><span class="no">${String(i+1).padStart(2,'0')}</span><span class="nm">${esc(CL(p))}</span><span class="ra">${esc(p.ratio)}</span><span class="tm">${esc(CL(p.time))}</span></summary><div class="pb">${b}</div></details>`;
+}
+function renderNotes(){
+  const tt=t(); let body='', i=0;
+  if (NB==='prep'){
+    Object.keys(COURSE.groups).forEach(g=>{ const ps=COURSE.prep.filter(p=>p.g===g);
+      body+=`<section class="nb-g"><h3>${esc(CL(COURSE.groups[g]))}</h3>${ps.map(p=>prepHTML(p,i++)).join('')}</section>`; });
+  } else {
+    COURSE.terms.forEach(G=>{ body+=`<section class="nb-g"><h3>${esc(CL(G.g))}</h3><dl class="tm-l">${G.items.map(x=>{
+      const n = x.f ? DR.filter(d=>FACETS.find(f=>f[0]===x.f[0])[2](d).includes(x.f[1])).length : 0;
+      return `<div class="tm-i"><dt>${esc(CL(x.t))}</dt><dd>${esc(x[lang]||x.en)}${n?`<br><button type="button" class="txt" data-nbf="${x.f.join(':')}"><span>${tt.seeN(n)}</span> →</button>`:''}</dd></div>`; }).join('')}</dl></section>`; });
+  }
+  $('#nb').innerHTML = `<div class="nb-in"><div class="nb-bar"><button class="close" type="button" id="nbcls">${ICON.back}<span>${tt.back}</span></button>
+    <div class="units" role="group" aria-label="${esc(tt.notes)}"><button type="button" data-nbtab="prep" aria-pressed="${NB==='prep'}">${tt.prep}</button><button type="button" data-nbtab="terms" aria-pressed="${NB==='terms'}">${tt.terms}</button></div></div>
+    <header class="nb-hd"><h2>${NB==='prep'?tt.prep:tt.terms}</h2><span class="src">${esc(CL(COURSE.src))}</span></header>${body}</div>`;
+  $('#nb').setAttribute('aria-label', tt.notes);
+}
+function openNotes(tab, prep, push=true){
+  if (tab) NB=tab; renderNotes(); $('#nb').hidden=false; document.body.style.overflow='hidden';
+  if (push) history.pushState({n:1},'','#'+(lang==='es'?'apuntes':'notes'));
+  const el = prep && document.getElementById('pr-'+prep);
+  if (el){ el.open=true; requestAnimationFrame(()=>el.scrollIntoView({block:'start'})); const nb=$('#nb'); requestAnimationFrame(()=>{ nb.scrollTop-=70; }); }
+  else $('#nb').scrollTop=0;
+  $('#nb').focus({preventScroll:true});
+}
+function closeNotes(pop=false){ if($('#nb').hidden) return; $('#nb').hidden=true; if($('#sheet').hidden&&$('#cmd').hidden) document.body.style.overflow='';
+  if(!pop && history.state && history.state.n) history.back(); }
+// leave the notes without a history step, so Back from what opens next returns to the list
+function leaveNotes(){ $('#nb').hidden=true; document.body.style.overflow=''; if(history.state && history.state.n) history.replaceState(null,'',location.pathname+location.search); }
+
 /* ---- navigation ---- */
 let openId = null;
 function open(id, push=true){
@@ -922,7 +1017,7 @@ function open(id, push=true){
 function close(pop=false){ if(openId===null) return; const id=openId; openId=null; cancelAnimationFrame(GM.raf); GM.G=null; GM.id=null; $('#sheet').hidden=true; document.body.style.overflow='';
   if(!pop && history.state && history.state.d) history.back();
   const b=document.querySelector(`.open[data-id="${id}"]`); if(b) b.focus({preventScroll:true}); }
-function all(){ renderChrome(); renderList(); renderTab(); if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
+function all(){ renderChrome(); renderList(); renderTab(); if(!$('#nb').hidden) renderNotes(); if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
 
 document.addEventListener('click', e=>{
   const sl=e.target.closest('[data-slot]'); if(sl){ const k=sl.dataset.slot; FSLOT=FSLOT===k?null:k; FSLOTnew=!!FSLOT; renderFilters(); if(FSLOT==='ing'){ const ti=$('#tokin'); if(ti) ti.focus({preventScroll:true}); } return; }
@@ -938,6 +1033,12 @@ document.addEventListener('click', e=>{
   const rm=e.target.closest('[data-rm]'); if(rm){ const [k,v]=rm.dataset.rm.split(':');
     if(k==='leave') S.leave=S.leave.filter(x=>x!==v); else if(k==='vegan') S.vegan=false; else if(k==='mybar') S.mybar=false; else if(k==='tok') S.toks.splice(+v,1); else S[k]=S[k].filter(x=>x!==v);
     changed(); return; }
+  if(e.target.closest('#nopen')){ openNotes(); return; }
+  if(e.target.closest('#nbcls')){ closeNotes(); return; }
+  const nt=e.target.closest('[data-nbtab]'); if(nt){ NB=nt.dataset.nbtab; renderNotes(); $('#nb').scrollTop=0; const b=document.querySelector(`[data-nbtab="${NB}"]`); if(b) b.focus({preventScroll:true}); return; }
+  const ni=e.target.closest('[data-nbid]'); if(ni){ leaveNotes(); open(ni.dataset.nbid); return; }
+  const nf=e.target.closest('[data-nbf]'); if(nf){ const [k,v]=nf.dataset.nbf.split(':'); leaveNotes(); S[k]=[v]; changed(); scrollTo(0,0); return; }
+  const np=e.target.closest('[data-nbp]'); if(np){ closeTicket(true); if(history.state&&history.state.c) history.replaceState(null,'',location.pathname+location.search); openNotes('prep', np.dataset.nbp); return; }
   if(e.target.closest('#fopen')){ openFilters(); return; }
   if(e.target.closest('#fclose') || e.target.closest('#fshow') || e.target===$('#fs')){ closeFilters(); return; }
   if(e.target.closest('#fclear')){ S=blank(); sort='az'; store.set('sort',sort); changed(); return; }
@@ -970,11 +1071,11 @@ document.addEventListener('input', e=>{ if(e.target.id==='tokin') suggest(); });
 document.addEventListener('securitypolicyviolation', e=>{ if(!/frame/.test(e.violatedDirective)) return; const f=document.querySelector('.bA iframe'); if(f) f.remove(); });
 document.addEventListener('change', e=>{ if(e.target.id==='mybar'){ S.mybar=e.target.checked; changed(); } });
 document.addEventListener('keydown', e=>{ if(e.target.id==='tokin' && e.key==='Enter'){ const f=$('#sugg button'); if(f){ e.preventDefault(); f.click(); } } });
-document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#fs').hidden){ if(FSLOT){ FSLOT=null; renderFilters(); } else closeFilters(); } else if(!$('#cmd').hidden) closeTicket(); else if(openId) heroClose(); });
-addEventListener('popstate', ()=>{ if(!$('#fs').hidden) closeFilters(true); else if(!$('#cmd').hidden) closeTicket(true); else if(openId) heroClose(true); });
+document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#fs').hidden){ if(FSLOT){ FSLOT=null; renderFilters(); } else closeFilters(); } else if(!$('#nb').hidden) closeNotes(); else if(!$('#cmd').hidden) closeTicket(); else if(openId) heroClose(); });
+addEventListener('popstate', ()=>{ if(!$('#fs').hidden) closeFilters(true); else if(!$('#nb').hidden) closeNotes(true); else if(!$('#cmd').hidden) closeTicket(true); else if(openId) heroClose(true); });
 if ('ResizeObserver' in window) new ResizeObserver(()=>document.documentElement.style.setProperty('--navh', $('#top').offsetHeight+'px')).observe($('#top'));
 let wasNarrow = innerWidth<600; addEventListener('resize', ()=>{ if((innerWidth<600)!==wasNarrow){ wasNarrow=!wasNarrow; renderChrome(); } });
 all();
 if (!intro()) enter();
-const h=location.hash.slice(1); if (h in byId) open(h,false); else if ((h==='ticket'||h==='comanda') && Object.keys(ticket).length) openTicket(false);
+const h=location.hash.slice(1); if (h in byId) open(h,false); else if (h==='notes'||h==='apuntes') openNotes(null,null,false); else if ((h==='ticket'||h==='comanda') && Object.keys(ticket).length) openTicket(false);
 </script>
