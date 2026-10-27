@@ -270,7 +270,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 
 /* filters */
 .fs{position:fixed;inset:0;z-index:45;background:rgba(20,20,20,.35);display:flex;justify-content:flex-end}
-.fpanel{width:100%;max-width:560px;height:100%;display:flex;flex-direction:column;background:var(--pa);animation:slide .5s var(--ease)}
+.fpanel{outline:0;width:100%;max-width:560px;height:100%;display:flex;flex-direction:column;background:var(--pa);animation:slide .5s var(--ease)}
 @keyframes rise{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes slide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
 .fhead{display:flex;align-items:center;justify-content:space-between;padding:calc(6px + env(safe-area-inset-top)) var(--gut) 4px;border-bottom:2px solid var(--ink)}
@@ -664,7 +664,7 @@ function renderFilters(){
   const tt=t(), n=results().length;
   const body=fs.querySelector('.fbody'); const st = body ? body.scrollTop : 0;
   const tin = fs.querySelector('#tokin'); const val = tin ? tin.value : ''; const foc = tin && document.activeElement===tin;
-  fs.innerHTML = `<div class="fpanel" role="dialog" aria-modal="true" aria-label="${esc(tt.filters)}">
+  fs.innerHTML = `<div class="fpanel" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
     <div class="fhead"><h2>${tt.filters}</h2><div class="acts">${activeCount()?`<button type="button" class="txtbtn" id="fclear">${tt.clearAll}</button>`:''}<button type="button" class="iconbtn" id="fclose" aria-label="${esc(tt.back)}">${ICON.close}</button></div></div>
     <div class="fbody">${filterBody()}</div>
     <div class="ffoot"><button type="button" class="blk" id="fshow"><span>${tt.show(n)}</span>→</button></div></div>`;
@@ -679,7 +679,7 @@ function suggest(){
   Object.entries(ING).forEach(([id,i])=>{ if(norm(i.en).includes(q)||norm(i.es).includes(q)) items.push({type:'ing',id,label:L(i),k:tt.kIng}); });
   box.innerHTML = items.filter(x=>!used.has(x.type+x.id)).slice(0,8).map(x=>`<button type="button" data-addtok="${x.type}:${x.id}">${esc(x.label)}<small>${esc(x.k)}</small></button>`).join('');
 }
-function openFilters(push=true){ $('#fs').hidden=false; document.body.style.overflow='hidden'; renderFilters(); if(push) history.pushState({f:1},''); $('#fclose').focus({preventScroll:true}); }
+function openFilters(push=true){ $('#fs').hidden=false; document.body.style.overflow='hidden'; renderFilters(); if(push) history.pushState({f:1},''); $('#fs .fpanel').focus({preventScroll:true}); }
 function closeFilters(pop=false){ if($('#fs').hidden) return; $('#fs').hidden=true; if($('#sheet').hidden && $('#cmd').hidden) document.body.style.overflow='';
   if(!pop && history.state && history.state.f) history.back(); const b=$('#fopen'); if(b) b.focus({preventScroll:true}); }
 function changed(){ saveS(); renderChrome(); vt(renderList); renderFilters(); }
