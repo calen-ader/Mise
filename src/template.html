@@ -631,6 +631,49 @@ function heroClose(pop=false){
                  : sh.animate([{opacity:1,transform:'none'},{opacity:0,transform:'translateY(24px)'}],{duration:260,easing:'ease-in'});
   anim.finished.then(()=>{ heroClose.busy=false; close(pop); });
 }
+// drawing motion on the open drink: pour + garnish drop once per drink, then fizz/ice/steam; tap the glass to slosh
+const GM={raf:0,id:null,G:null};
+function glassMotion(){
+  cancelAnimationFrame(GM.raf); GM.G=null;
+  const svg=document.querySelector('#sheet .plate .art svg'); if(!svg||openId===null) return;
+  const fresh=GM.id!==openId; GM.id=openId;
+  if(reduced()) return;
+  const NS='http://www.w3.org/2000/svg', root=svg.querySelector(':scope>g'), wrap=document.createElementNS(NS,'g');
+  root.parentNode.insertBefore(wrap,root); wrap.appendChild(root);
+  const lq=svg.querySelector('g.lq'), gn=svg.querySelector('g.gn'), tp=svg.querySelector('g.tp'), cp=svg.querySelector('clipPath path');
+  const G={svg,wrap,lq,gn,tp,t0:fresh?performance.now()+260:0,pour:fresh?0:1,drop:fresh?0:1,slosh:0,sv:0,kick:0,ice:[],bub:[]};
+  if(cp){ const bb=cp.getBBox(); G.x0=bb.x; G.x1=bb.x+bb.width; G.y1=bb.y+bb.height; G.cx=G.x0+bb.width/2; }
+  if(lq&&cp){ G.top=+lq.querySelector('rect').getAttribute('y');
+    const rs=[...lq.querySelectorAll(':scope>rect')]; G.layer=rs.find((x,i)=>i>0&&+x.getAttribute('y')>G.top+20&&+x.getAttribute('height')>100)||null; if(G.layer) G.layerY=+G.layer.getAttribute('y'); }
+  else G.pour=G.drop=1;
+  svg.querySelectorAll('g.ic>rect').forEach((r,i)=>{ const g=document.createElementNS(NS,'g'); r.parentNode.insertBefore(g,r); g.appendChild(r); G.ice.push({g,p:i*1.7}); });
+  const fz=svg.querySelector('g.fz');
+  if(fz&&cp){ const src=[...fz.querySelectorAll('circle')];
+    for(let i=0;i<16;i++){ const c=src[i%src.length].cloneNode(); fz.appendChild(c); G.bub.push({c,x:G.cx+(((i*37)%100)/100-.5)*(G.x1-G.x0)*.55,r:1.6+(i%3)*.9,sp:.5+((i*13)%10)/14,ph:(i*.137)%1}); }
+    src.forEach(c=>c.remove()); }
+  G.steam=[...svg.querySelectorAll('g.gn path[fill="none"][stroke-linecap="round"]')];
+  if(G.pour<1){ if(gn) gn.style.opacity=0; if(tp) tp.style.opacity=0; G.slosh=5; G.sv=-4; }
+  GM.G=G; GM.raf=requestAnimationFrame(glassFrame);
+}
+function glassSlosh(){ const G=GM.G; if(!G||G.pour<1) return; G.sv+=(Math.random()<.5?-1:1)*(28+Math.random()*10); G.kick=1; }
+function glassFrame(now){
+  const G=GM.G; if(!G||!G.svg.isConnected) return;
+  GM.raf=requestAnimationFrame(glassFrame);
+  if(document.querySelector('#sheet .plate.photo')) return;
+  const ease=t=>1-Math.pow(1-t,3), back=t=>1+2.7*Math.pow(t-1,3)+1.7*Math.pow(t-1,2), dt=1/60, t=now/1000;
+  if(G.pour<1) G.pour=Math.max(0,Math.min(1,(now-G.t0)/950));
+  if(G.pour>=1&&G.drop<1) G.drop=Math.max(0,Math.min(1,(now-G.t0-900)/460));
+  G.sv+=(-60*G.slosh-4.2*G.sv)*dt; G.slosh+=G.sv*dt; G.kick*=.88;
+  G.wrap.setAttribute('transform',`translate(${Math.sin(now/38)*G.kick*3} 0)`);
+  if(G.lq&&G.top!==undefined){ const pe=ease(G.pour), dy=(1-pe)*((G.y1-G.top)+6);
+    G.lq.setAttribute('transform',`translate(0 ${dy}) rotate(${G.slosh+(G.pour<1?Math.sin(now/90)*(1-pe)*5:0)} ${G.cx} ${G.top})`);
+    if(G.layer){ const lp=G.t0?Math.max(0,Math.min(1,(now-G.t0-500)/1100)):1; G.layer.setAttribute('y',G.top+(G.layerY-G.top)*ease(lp)); } }
+  if(G.tp) G.tp.style.opacity=G.pour>=1?1:0;
+  if(G.gn){ G.gn.style.opacity=G.drop>0?1:0; G.gn.setAttribute('transform',`translate(0 ${(1-back(G.drop))*-70})`); }
+  G.bub.forEach(b=>{ const life=(t*b.sp*.42+b.ph)%1; b.c.setAttribute('cx',b.x+Math.sin(t*3+b.ph*9)*2.2); b.c.setAttribute('cy',G.y1-6-life*(G.y1-G.top-4)); b.c.setAttribute('r',b.r*(.6+life*.6)); b.c.setAttribute('opacity',life>.94?0:1); });
+  G.ice.forEach(i=>i.g.setAttribute('transform',`translate(${Math.sin(t*.9+i.p)*1.6} ${Math.sin(t*1.3+i.p)*3})`));
+  G.steam.forEach((p,j)=>{ const ph=(t*.5+j*.5)%1; p.setAttribute('transform',`translate(${Math.sin(t*2+j)*2} ${-ph*12})`); p.style.opacity=Math.sin(ph*Math.PI); });
+}
 // quick add: a drop of the drink's colour arcs into the ticket
 function fly(from, d){
   const tab=$('#tab'); if(!from || !tab || tab.hidden || !document.body.animate || reduced()){ renderTab(true); return; }
@@ -874,8 +917,9 @@ function open(id, push=true){
   s.hidden=false; s.scrollTop=0; document.body.style.overflow='hidden'; s.setAttribute('aria-label', d.name); fitHead();
   if (push) history.pushState({d:id}, '', '#'+id);
   s.focus({preventScroll:true});
+  glassMotion();
 }
-function close(pop=false){ if(openId===null) return; const id=openId; openId=null; $('#sheet').hidden=true; document.body.style.overflow='';
+function close(pop=false){ if(openId===null) return; const id=openId; openId=null; cancelAnimationFrame(GM.raf); GM.G=null; GM.id=null; $('#sheet').hidden=true; document.body.style.overflow='';
   if(!pop && history.state && history.state.d) history.back();
   const b=document.querySelector(`.open[data-id="${id}"]`); if(b) b.focus({preventScroll:true}); }
 function all(){ renderChrome(); renderList(); renderTab(); if(openId) open(openId,false); if(!$('#cmd').hidden) renderTicket(false); }
@@ -901,6 +945,7 @@ document.addEventListener('click', e=>{
     f.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(pl.dataset.play)}?autoplay=1&playsinline=1&rel=0`;
     f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen=true; f.title=byId[openId]?byId[openId].name:'Video';
     const ac=pl.closest('.ac'); pl.remove(); ac.appendChild(f); return; }
+  if(e.target.closest('#sheet .plate .art')){ glassSlosh(); return; }
   const vw=e.target.closest('[data-view]'); if(vw){ view=vw.dataset.view; store.set('view',view); const pl=$('#sheet .plate'); pl.classList.toggle('photo',view==='photo'); document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view)); return; }
   const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; return; }
   const tkd=e.target.closest('[data-tkd]'); if(tkd){ const box=tkd.closest('.tk'), id=box.dataset.tk, dv=+tkd.dataset.tkd, home=box.closest('#sheet')?'#sheet':'#main';
