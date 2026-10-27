@@ -5,7 +5,7 @@ const INK={pa:'#f3eee4',ul:'#1d2bd6',co:'#ee4a36',su:'#f7c21b',ink:'#141414',fo:
 const TILES=['ul','co','su','ink','fo','bl'];
 // hand-set liquid inks (flat, not photo-sampled)
 const LIQ={'alexander':'#d9b98f','americano':'#d7322a','angel-face':'#e39a3b','aviation':'#b7a6f0','bee-s-knees':'#f2c14e','bellini':'#f6b27a','between-the-sheets':'#e9a54a','black-russian':'#3b1d12','bloody-mary':'#c9341f','boulevardier':'#a8301e','bramble':'#7a1e4a','brandy-crusta':'#e08a2c','caipirinha':'#e6efc7','canchanchara':'#ecdba0','cardinale':'#d24a2a','casino':'#f1e6c0','champagne-cocktail':'#f2c14e','chartreuse-swizzle':'#c8d84a','clover-club':'#e8456b','corpse-reviver-2':'#f3e2a6','cosmopolitan':'#f07a9a','cuba-libre':'#3b1d12','daiquiri':'#eef0cf','dark-n-stormy':'#b0703a','don-s-special-daiquiri':'#f2c14e','dry-martini':'#eef1e2','espresso-martini':'#2a1712','fernandito':'#2e1a12','french-75':'#f5e7b0','french-connection':'#b5651e','french-martini':'#d94a6a','garibaldi':'#f39a2c','gin-basil-smash':'#9fd36a','gin-fizz':'#f3efdf','grand-margarita':'#f1df98','grasshopper':'#9ed8a4','hanky-panky':'#8a2f1a','hemingway-special':'#f6d6c4','horse-s-neck':'#e9b456','iba-tiki':'#e48a30','illegal':'#efe9cf','irish-coffee':'#3b1d12','john-collins':'#f3efdf','jungle-bird':'#c2361f','kir':'#b0284f','last-word':'#c8d84a','lemon-drop-martini':'#f5ec9a','long-island-iced-tea':'#8a4a1e','mai-tai':'#e39a3b','manhattan':'#8f2a14','margarita':'#eef0c4','martinez':'#a7451f','mary-pickford':'#f07a6a','mimosa':'#f7a83a','mint-julep':'#e3b25a','missionary-s-downfall':'#b9dc6a','mojito':'#d8ecb6','monkey-gland':'#f08a5a','moscow-mule':'#e9dfa8','naked-and-famous':'#f39a2c','negroni':'#d7322a','new-york-sour':'#e9b456','old-cuban':'#d79a4a','old-fashioned':'#d47a26','paloma':'#f4c6b8','paper-plane':'#f08a24','paradise':'#f39a2c','penicillin':'#e9b456','pina-colada':'#f3ead2','pisco-punch':'#f1df98','pisco-sour':'#f3ead2','planters-punch':'#d0541f','porn-star-martini':'#f5c84c','porto-flip':'#8e3a3a','rabo-de-galo':'#8a3a1c','ramos-fizz':'#f6f1e2','remember-the-maine':'#8a2a18','russian-spring-punch':'#b0284f','rusty-nail':'#d98b2b','sazerac':'#c6602a','sea-breeze':'#e0485a','sex-on-the-beach':'#f0743a','sherry-cobbler':'#d9a44a','sidecar':'#e9a54a','singapore-sling':'#ef6a6a','south-side':'#cfe6a8','spicy-fifty':'#f2d6a0','spritz':'#f06a1f','stinger':'#d9b07a','suffering-bastard':'#d48a3a','tequila-sunrise':'#f5a623','three-dots-and-a-dash':'#e48a30','tipperary':'#b04a24','tommy-s-margarita':'#eef0c4','trinidad-sour':'#a9342a','tuxedo':'#f1ecd8','ve-n-to':'#f3ead2','vesper':'#f3e6b0','vieux-carr':'#9a3a1a','whiskey-sour':'#edc77a','white-lady':'#f3efdf','zombie':'#e48a30'};
-const LAYER={'tequila-sunrise':{bottom:'#d7322a'},'dark-n-stormy':{top:'#4a2416'},'new-york-sour':{top:'#6e1230'},'irish-coffee':{top:'#f3ead2',th:22},'bramble':{bottom:'#4a0f2c'}};
+const LAYER={'tequila-sunrise':{bottom:'#d7322a'},'dark-n-stormy':{top:'#3a1c10',th:44},'new-york-sour':{top:'#8a1838',th:58},'irish-coffee':{top:'#f3ead2',th:22},'bramble':{bottom:'#4a0f2c'}};
 const FIZZ=['soda','sparkling','champagne','prosecco','cola','ginger-beer','ginger-ale','grapefruit-soda'];
 // glass shapes on a 200x240 canvas, ground at y=232
 const P={
@@ -25,9 +25,35 @@ const P={
  copper:{o:'M48 70L140 70L136 226Q136 232 128 232L60 232Q52 232 52 226Z',r:[48,140,70],op:'#c8743e',h:'M140 100Q178 100 176 140Q174 176 138 176L138 162Q160 160 161 140Q162 114 140 114Z'},
  tiki:{o:'M56 44L144 44L148 226Q148 232 140 232L60 232Q52 232 52 226Z',r:[56,144,44],op:'#8a5a3a',face:1},
  julep:{o:'M50 90L150 90L142 200L118 206L122 222Q124 232 112 232L88 232Q76 232 78 222L82 206L58 200Z',r:[50,150,90],op:'#cfcac0',frost:1},
+ tulip:{o:'M46 50C50 104 70 138 96 148L104 148C130 138 150 104 154 50Z',i:'M53 56C57 102 74 132 98 141L102 141C126 132 143 102 147 56Z',f:66,r:[46,154,50],st:[148,72],ft:38,cut:1},
+ gmug:{o:'M58 70L150 70L146 224Q146 232 138 232L70 232Q62 232 62 224Z',i:'M64 76L144 76L141 214L67 214Z',f:92,r:[58,150,70],h:'M60 100Q24 100 26 140Q28 178 62 178L62 164Q40 162 40 140Q40 114 60 114Z'},
  clay:{o:'M44 96L156 96Q166 150 148 200Q140 232 100 232Q60 232 52 200Q34 150 44 96Z',r:[44,156,96],op:'#c56a3c'}
 };
 const SHAPE={cocktail:'coupe',slim:'slim',goblet:'goblet',cobbler:'goblet',martini:'martini',flute:'flute',wine:'wine',rocks:'rocks',dof:'dof','small-tumbler':'low',highball:'highball','tall-tumbler':'highball',collins:'collins',hurricane:'hurricane',irish:'irish',copper:'copper',tiki:'tiki',julep:'julep',clay:'clay'};
+// what the IBA photo shows, where it differs from the spec: shape, liquid, ice, garnish
+const OVR={
+ 'alexander':{s:'tulip',liq:'#e8dcc6'},'americano':{liq:'#9e2a1c'},'angel-face':{s:'tulip',liq:'#b8742c'},'aviation':{s:'tulip',liq:'#dcd6e4',g:''},
+ 'bee-s-knees':{s:'tulip',liq:'#ebe2a6'},'bellini':{liq:'#f2b27e',foam:'#f6efe4'},'between-the-sheets':{s:'tulip',liq:'#d99a3a'},
+ 'bloody-mary':{s:'highball',ice:'cubes',liq:'#b8321c'},'boulevardier':{liq:'#5e1a12'},'bramble':{liq:'#ece4d2',bottom:'#5a1030'},'brandy-crusta':{s:'tulip',liq:'#d08a3a'},
+ 'caipirinha':{s:'rocks',ice:'crushed',liq:'#e3e6b0',g:'lime wedge'},'canchanchara':{s:'rocks',ice:'cracked',liq:'#ece7c8',g:'lime wheel'},'cardinale':{s:'tulip',liq:'#b0442a'},
+ 'champagne-cocktail':{s:'coupe',liq:'#e0a85a'},'chartreuse-swizzle':{liq:'#dfe08a'},'clover-club':{liq:'#b0243e'},'corpse-reviver-2':{liq:'#ead9a8'},'cosmopolitan':{liq:'#e8b4a0'},
+ 'daiquiri':{s:'tulip',liq:'#e8ead0'},'don-s-special-daiquiri':{s:'highball',liq:'#ecd59a'},'espresso-martini':{s:'martini'},'french-martini':{s:'tulip',liq:'#d9b8a8'},
+ 'garibaldi':{liq:'#f08a4a'},'gin-basil-smash':{s:'tulip',liq:'#d8e3a0'},'gin-fizz':{liq:'#ecebe2'},'grand-margarita':{liq:'#e8e3c0'},'grasshopper':{s:'tulip',liq:'#cfe3c8'},
+ 'hanky-panky':{s:'tulip',liq:'#6e1a14'},'hemingway-special':{liq:'#f0c8bc'},'horse-s-neck':{liq:'#d99a40'},'iba-tiki':{s:'dof',liq:'#e8a640',g:'mint, lime wheel, pineapple'},
+ 'illegal':{s:'rocks',ice:'cubes',liq:'#e6e2cc'},'kir':{s:'flute',liq:'#c98466'},'last-word':{s:'tulip',liq:'#dfe2b0'},'lemon-drop-martini':{s:'martini'},
+ 'mai-tai':{s:'highball'},'martinez':{s:'martini',liq:'#5a1a10'},'mary-pickford':{s:'tulip',liq:'#b84a3a'},'mimosa':{liq:'#f6b24a'},
+ 'mint-julep':{s:'gmug',liq:'#d9b25a'},'monkey-gland':{s:'tulip',liq:'#e0763a'},'moscow-mule':{s:'gmug',liq:'#e6e2cc'},'naked-and-famous':{s:'tulip',liq:'#e8873a'},
+ 'negroni':{liq:'#8e1c14'},'old-cuban':{liq:'#c88a4a'},'old-fashioned':{liq:'#b8642a'},'paloma':{liq:'#e3d6d6'},'paper-plane':{liq:'#d8622a'},'paradise':{s:'tulip',liq:'#e8a03a'},
+ 'pina-colada':{s:'highball'},'pisco-punch':{s:'coupe',liq:'#e3d4a8'},'pisco-sour':{s:'tulip'},'planters-punch':{ice:'crushed',liq:'#e08a2a'},
+ 'porn-star-martini':{liq:'#f2c49a'},'porto-flip':{s:'tulip',liq:'#9a6a6a'},'remember-the-maine':{s:'tulip',liq:'#6a1a12'},'russian-spring-punch':{s:'goblet',liq:'#c0705a'},
+ 'rusty-nail':{liq:'#c8a050'},'sazerac':{s:'tulip',ice:'up',liq:'#c0602a'},'sea-breeze':{s:'rocks',liq:'#c8302a'},'sex-on-the-beach':{liq:'#f0a050'},'sherry-cobbler':{s:'gmug',liq:'#d9a44a'},
+ 'sidecar':{s:'tulip',liq:'#d9903a'},'singapore-sling':{s:'goblet',liq:'#e0602a'},'south-side':{s:'tulip',liq:'#d8e6b8'},'spicy-fifty':{s:'tulip',liq:'#e6e2c0'},
+ 'stinger':{s:'tulip',liq:'#d8b47a',g:'mint leaf'},'suffering-bastard':{liq:'#d0782a'},'three-dots-and-a-dash':{s:'tulip',ice:'up',liq:'#e8873a',g:'pineapple'},'tipperary':{s:'tulip',liq:'#8a2a1a'},
+ 'trinidad-sour':{s:'tulip',liq:'#7a1a22'},'tuxedo':{s:'tulip',liq:'#ece6cc'},'vesper':{s:'martini',liq:'#ece6c4'},'vieux-carr':{s:'tulip',liq:'#6a1a12'},'whiskey-sour':{s:'tulip',liq:'#e8d49a'},
+ 'white-lady':{s:'tulip',liq:'#e6e8e4'},'zombie':{ice:'crushed',liq:'#e8603a'}
+};
+const shapeOf=d=>(OVR[d.id]&&OVR[d.id].s)||SHAPE[d.glass]||'coupe';
+const liqOf=d=>(OVR[d.id]&&OVR[d.id].liq)||LIQ[d.id]||d.color||'#e9a54a';
 const hx=c=>[1,3,5].map(i=>parseInt(c.slice(i,i+2),16));
 const dist=(a,b)=>{a=hx(a);b=hx(b);const r=(a[0]+b[0])/2;return Math.sqrt((2+r/256)*(a[0]-b[0])**2+4*(a[1]-b[1])**2+(2+(255-r)/256)*(a[2]-b[2])**2)};
 const hash=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h};
@@ -51,19 +77,19 @@ function straw(x,y,c){return `<rect x="${x}" y="${y-70}" width="7" height="150" 
 function ginger(x,y){return `<rect x="${x-7}" y="${y-7}" width="14" height="14" fill="#f3d27a" transform="rotate(12 ${x} ${y})"/>`}
 function grapes(x,y){return [[0,0],[12,4],[5,12]].map(([a,b])=>`<circle cx="${x+a}" cy="${y+b}" r="7" fill="#c9df8a"/>`).join('')}
 
-function pickBG(d){const S=P[SHAPE[d.glass]||'coupe'],liq=LIQ[d.id]||d.color||'#e9a54a',h=hash(d.id);for(let j=0;j<TILES.length;j++){const c=INK[TILES[(h+j)%TILES.length]];if(dist(c,liq)>200&&(!S.op||dist(c,S.op)>150))return c}return INK.ink}
-window.glassRim=d=>(P[SHAPE[d.glass]||"coupe"]).r;window.glassBG=pickBG;window.glassLiq=d=>LIQ[d.id]||d.color||'#e9a54a';
+function pickBG(d){const S=P[shapeOf(d)],liq=liqOf(d),h=hash(d.id);for(let j=0;j<TILES.length;j++){const c=INK[TILES[(h+j)%TILES.length]];if(dist(c,liq)>200&&(!S.op||dist(c,S.op)>150))return c}return INK.ink}
+window.glassRim=d=>P[shapeOf(d)].r;window.glassBG=pickBG;window.glassLiq=liqOf;
 window.glassSVG=function(d,opt){opt=opt||{};
- const k=SHAPE[d.glass]||'coupe',S=P[k],id='g'+(++uid);
- let liq=LIQ[d.id]||d.color||'#e9a54a';const L=opt.bands?{}:(LAYER[d.id]||{});
+ const O=OVR[d.id]||{},k=shapeOf(d),S=P[k],id='g'+(++uid);
+ let liq=liqOf(d);const L=opt.bands?{}:Object.assign({},LAYER[d.id]||{},O.bottom?{bottom:O.bottom}:{});
  if((opt.mode)==='riso')liq=riso(liq);
  const ings=(d.lines||[]).flatMap(l=>l.ids||[]);
  const has=x=>ings.includes(x);
  const mode=opt.mode||'flat';
  const bg=mode==='flat'?(opt.bg||pickBG(d)):(opt.bg||INK.pa);
  const G=mode==='flat'?mix(INK.pa,bg,.2):'__G__',[xl,xr,ry]=S.r,cx=(xl+xr)/2,w=xr-xl;
- const g=((d.garnish&&d.garnish.en)||'').toLowerCase(),ice=d.ice;
- const foam=has('egg-white')||has('egg-yolk')?'#f1e6cf':has('espresso')?'#c9a77a':null;
+ const g=(O.g!==undefined?O.g:((d.garnish&&d.garnish.en)||'')).toLowerCase(),ice=O.ice||d.ice;
+ const foam=O.foam||(has('egg-white')||has('egg-yolk')?'#f1e6cf':has('espresso')?'#c9a77a':null);
  const fizz=FIZZ.some(has);
  let back='',body='',front='',top='';
  // stem + foot
@@ -90,6 +116,7 @@ window.glassSVG=function(d,opt){opt=opt||{};
   if(ice==='cubes'||ice==='cracked'){const s=Math.min(46,w*.34);inner+=`<g fill="${G}" opacity=".3"><rect x="${cx-s-4}" y="${top0-8}" width="${s}" height="${s}" transform="rotate(-12 ${cx-s/2-4} ${top0-8+s/2})"/><rect x="${cx+2}" y="${top0+s*.4}" width="${s*.92}" height="${s*.92}" transform="rotate(14 ${cx+2+s*.46} ${top0+s*.86})"/><rect x="${cx-s*.7}" y="${top0+s*1.25}" width="${s*.85}" height="${s*.85}" transform="rotate(6 ${cx-s*.28} ${top0+s*1.67})"/></g>`}
   if(ice==='crushed'){let s='',h=5;for(let i=0;i<26;i++){h=(h*7919+31)%1009;s+=`<rect x="${xl+(h%100)/100*w}" y="${top0+(h%140)}" width="${8+h%7}" height="${7+h%5}" transform="rotate(${h%60-30} ${xl+(h%100)/100*w} ${top0+(h%140)})"/>`}inner+=`<g fill="${G}" opacity=".4">${s}</g>`}
   if(fizz){let s='',h=3;for(let i=0;i<9;i++){h=(h*7919+7)%1013;s+=`<circle cx="${cx-w*.3+(h%100)/100*w*.6}" cy="${top0+20+(h%120)}" r="${2+h%3}"/>`}inner+=`<g fill="${G}" opacity=".55">${s}</g>`}
+  if(S.cut)inner+=`<g fill="${G}" opacity=".22"><path d="M70 150L84 96L92 150Z"/><path d="M108 150L116 96L130 150Z"/></g>`;
   body+=`<g clip-path="url(#${id})">${inner}<rect x="${xl+10}" y="${ry}" width="7" height="240" fill="${bg}" opacity=".28"/></g>`;
   if(ice==='crushed'||ice==='blended')top+=`<path d="M${xl+6} ${ry+6}Q${cx-30} ${ry-26} ${cx} ${ry-28}Q${cx+30} ${ry-26} ${xr-6} ${ry+6}Z" fill="${ice==='blended'?liq:'#fff'}" opacity="${ice==='blended'?1:.9}"/>`;
   if(has('nutmeg')||/nutmeg/.test(g))top+=specks(xl+16,xr-16,top0+4,'#7a4a2a',14);
