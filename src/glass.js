@@ -113,11 +113,11 @@ window.glassSVG=function(d,opt){opt=opt||{};
   if(L.bottom)inner+=`<rect x="0" y="${top0+(232-top0)*.6}" width="200" height="240" fill="${L.bottom}"/>`;
   if(L.top)inner+=`<rect x="0" y="${top0}" width="200" height="${L.th||12}" fill="${L.top}"/>`;
   if(foam)inner+=`<rect x="0" y="${top0}" width="200" height="13" fill="${foam}"/>`;
-  if(ice==='cubes'||ice==='cracked'){const s=Math.min(46,w*.34);inner+=`<g fill="${G}" opacity=".3"><rect x="${cx-s-4}" y="${top0-8}" width="${s}" height="${s}" transform="rotate(-12 ${cx-s/2-4} ${top0-8+s/2})"/><rect x="${cx+2}" y="${top0+s*.4}" width="${s*.92}" height="${s*.92}" transform="rotate(14 ${cx+2+s*.46} ${top0+s*.86})"/><rect x="${cx-s*.7}" y="${top0+s*1.25}" width="${s*.85}" height="${s*.85}" transform="rotate(6 ${cx-s*.28} ${top0+s*1.67})"/></g>`}
-  if(ice==='crushed'){let s='',h=5;for(let i=0;i<26;i++){h=(h*7919+31)%1009;s+=`<rect x="${xl+(h%100)/100*w}" y="${top0+(h%140)}" width="${8+h%7}" height="${7+h%5}" transform="rotate(${h%60-30} ${xl+(h%100)/100*w} ${top0+(h%140)})"/>`}inner+=`<g fill="${G}" opacity=".4">${s}</g>`}
-  if(fizz){let s='',h=3;for(let i=0;i<9;i++){h=(h*7919+7)%1013;s+=`<circle cx="${cx-w*.3+(h%100)/100*w*.6}" cy="${top0+20+(h%120)}" r="${2+h%3}"/>`}inner+=`<g fill="${G}" opacity=".55">${s}</g>`}
+  if(ice==='cubes'||ice==='cracked'){const s=Math.min(46,w*.34);inner+=`<g class="ic" fill="${G}" opacity=".3"><rect x="${cx-s-4}" y="${top0-8}" width="${s}" height="${s}" transform="rotate(-12 ${cx-s/2-4} ${top0-8+s/2})"/><rect x="${cx+2}" y="${top0+s*.4}" width="${s*.92}" height="${s*.92}" transform="rotate(14 ${cx+2+s*.46} ${top0+s*.86})"/><rect x="${cx-s*.7}" y="${top0+s*1.25}" width="${s*.85}" height="${s*.85}" transform="rotate(6 ${cx-s*.28} ${top0+s*1.67})"/></g>`}
+  if(ice==='crushed'){let s='',h=5;for(let i=0;i<26;i++){h=(h*7919+31)%1009;s+=`<rect x="${xl+(h%100)/100*w}" y="${top0+(h%140)}" width="${8+h%7}" height="${7+h%5}" transform="rotate(${h%60-30} ${xl+(h%100)/100*w} ${top0+(h%140)})"/>`}inner+=`<g class="ic" fill="${G}" opacity=".4">${s}</g>`}
+  if(fizz){let s='',h=3;for(let i=0;i<9;i++){h=(h*7919+7)%1013;s+=`<circle cx="${cx-w*.3+(h%100)/100*w*.6}" cy="${top0+20+(h%120)}" r="${2+h%3}"/>`}inner+=`<g class="fz" fill="${G}" opacity=".55">${s}</g>`}
   if(S.cut)inner+=`<g fill="${G}" opacity=".22"><path d="M70 150L84 96L92 150Z"/><path d="M108 150L116 96L130 150Z"/></g>`;
-  body+=`<g clip-path="url(#${id})">${inner}<rect x="${xl+10}" y="${ry}" width="7" height="240" fill="${bg}" opacity=".28"/></g>`;
+  body+=`<g clip-path="url(#${id})"><g class="lq">${inner}</g><rect x="${xl+10}" y="${ry}" width="7" height="240" fill="${bg}" opacity=".28"/></g>`;
   if(ice==='crushed'||ice==='blended')top+=`<path d="M${xl+6} ${ry+6}Q${cx-30} ${ry-26} ${cx} ${ry-28}Q${cx+30} ${ry-26} ${xr-6} ${ry+6}Z" fill="${ice==='blended'?liq:'#fff'}" opacity="${ice==='blended'?1:.9}"/>`;
   if(has('nutmeg')||/nutmeg/.test(g))top+=specks(xl+16,xr-16,top0+4,'#7a4a2a',14);
   if(/amargo|bitters on top/.test(g))top+=[cx-14,cx,cx+14].map(x=>`<circle cx="${x}" cy="${top0+6}" r="3" fill="#8e1d2c"/>`).join('');
@@ -156,7 +156,7 @@ window.glassSVG=function(d,opt){opt=opt||{};
   if(mode==='engrave')defs='<defs><pattern id="eng" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#f6f2ea"/><path d="M0 0V4" stroke="#141414" stroke-width=".9"/></pattern></defs>';
  }
  if(mode==='riso'){body=body.replace(/<g clip-path/,'<g style="mix-blend-mode:multiply" clip-path');front=`<g style="mix-blend-mode:multiply" transform="translate(2.5 -1.5)">${front}</g>`}
- return `<svg viewBox="0 0 200 240" class="gl" aria-hidden="true">${defs}${tile}<g transform="translate(${opt.full?0:16} ${opt.full?0:38}) scale(${opt.full?1:.84})">${back}${body}${top}${front}</g></svg>`;
+ return `<svg viewBox="0 0 200 240" class="gl" aria-hidden="true">${defs}${tile}<g transform="translate(${opt.full?0:16} ${opt.full?0:38}) scale(${opt.full?1:.84})">${back}${body}<g class="tp">${top}</g><g class="gn">${front}</g></g></svg>`;
 };
 const RISO=['#ff48b0','#ff6c2f','#ffe800','#00a95c','#1d2bd6','#765ba7','#c8ac38','#f15060'];
 function riso(c){let best=RISO[0],bd=1e9;RISO.forEach(r=>{const x=dist(r,c);if(x<bd){bd=x;best=r}});return best}
