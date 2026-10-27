@@ -3,15 +3,16 @@
 <meta name="theme-color" content="#141414">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Big+Shoulders+Display:wght@700;800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Funnel+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
 <style>
-/* Mise, editorial: paper, four flat inks, a magazine serif and tall condensed caps.
-   Every drink is drawn from its recipe (glass.js); the photo is one tap away. */
+/* Mise, editorial: paper, flat inks, one heavy grotesque for names and numbers, one sans for everything else,
+   and a serif kept for the drink's history alone. Every drink is drawn from its recipe (glass.js); the photo is one tap away. */
 :root{--pa:#f3eee4;--ink:#141414;--ink2:#5e5a52;--ink3:#9a958b;--rule:rgba(20,20,20,.14);--co:#ee4a36;--ul:#1d2bd6;--su:#f7c21b;
+  --fd:"Bricolage Grotesque",sans-serif;--ft:"Funnel Sans",system-ui,sans-serif;--fs:"Newsreader",serif;
   --gut:clamp(16px,2.4vw,36px);--navh:116px;--ease:cubic-bezier(.16,1,.3,1);color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:var(--pa);color:var(--ink);font:400 15px/1.5 "Inter Tight",system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100dvh}
+body{margin:0;background:var(--pa);color:var(--ink);font:400 15px/1.5 var(--ft);-webkit-font-smoothing:antialiased;min-height:100dvh}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent;border:0;background:none;padding:0}
 img,svg{display:block}
@@ -22,11 +23,11 @@ img,svg{display:block}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;flex:none}
 /* tall condensed caps: every label and action */
-.cc,.chip,.fbtn,.seg button,.txt,.strict button,.tok button,.close,.fsec h3,.facts dt,.prose h3,.contains h3,.units button,.tl .mt,.cap-l,.txtbtn,.tab,.s-sec h3{font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:14px;letter-spacing:.07em;text-transform:uppercase;line-height:1}
-.nm{display:block;font-family:"Bodoni Moda",serif;font-optical-sizing:auto;font-weight:500;line-height:1;letter-spacing:-.015em;text-wrap:balance}
+.cc,.chip,.fbtn,.seg button,.txt,.strict button,.tok button,.close,.fsec h3,.facts dt,.prose h3,.contains h3,.units button,.tl .mt,.cap-l,.txtbtn,.tab,.s-sec h3{font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1}
+.nm{display:block;font-family:var(--fd);font-weight:800;line-height:1;letter-spacing:-.02em;text-wrap:balance}
 .txt{display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;white-space:nowrap}
 .txt span{border-bottom:2px solid currentColor;padding-bottom:2px}
-.blk{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;background:var(--co);color:var(--pa);font-family:"Big Shoulders Display";font-weight:800;font-size:16px;letter-spacing:.08em;text-transform:uppercase;transition:background .25s}
+.blk{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;background:var(--co);color:var(--pa);font-family:var(--ft);font-weight:700;font-size:13.8px;letter-spacing:.1em;text-transform:uppercase;transition:background .25s}
 .blk.on{background:var(--ink)}
 .chip,.seg button,.strict button,.units button{position:relative;color:var(--ink2);min-height:40px;padding:0 1px;transition:color .2s}
 .chip[aria-pressed=true],.seg button[aria-pressed=true],.strict button[aria-pressed=true],.units button[aria-pressed=true]{color:var(--ink)}
@@ -44,10 +45,10 @@ svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .flying .mark{opacity:0}
 .search{flex:1 1 auto;min-width:0;display:flex;align-items:center;gap:10px;height:100%}
 .search svg.i{display:none}
-.search input{flex:1;min-width:0;border:0;background:none;outline:0;font:italic 400 clamp(19px,1.6vw,23px)/1 "Bodoni Moda",serif;height:44px;-webkit-appearance:none;appearance:none;padding:0}
+.search input{flex:1;min-width:0;border:0;background:none;outline:0;font:400 clamp(17px,1.4vw,20px)/1 var(--ft);height:44px;-webkit-appearance:none;appearance:none;padding:0}
 .search input::placeholder{color:var(--ink3)}
 .search input::-webkit-search-cancel-button,.search input::-webkit-search-decoration{-webkit-appearance:none;display:none}
-.search .count{font-family:"Big Shoulders Display";font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.search .count{font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
 .search .x{width:36px;height:36px;display:grid;place-items:center;color:var(--ink2)}
 .fbtn{flex:none;display:inline-flex;align-items:center;gap:5px;min-height:44px}
 .fbtn svg.i{display:none}
@@ -76,46 +77,57 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .idx .hd{display:none}
 .tl{position:relative;background:var(--ink);color:var(--pa);border-bottom:1px solid rgba(243,238,228,.12);transition:background .35s var(--ease),color .35s var(--ease)}
 .tl .open{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;column-gap:6px;width:100%;min-height:92px;padding:12px 112px 12px var(--gut);text-align:left;position:relative;overflow:hidden}
-.tl .no{font:400 12px/1 "Archivo Black",sans-serif;opacity:.55;font-variant-numeric:tabular-nums;align-self:start;margin-top:.7em}
-.tl .nm{font:400 clamp(26px,7.4vw,56px)/.98 "Archivo Black",sans-serif;letter-spacing:-.05em;padding-bottom:.06em}
+.tl .no{font:800 12px/1 var(--fd);opacity:.55;font-variant-numeric:tabular-nums;align-self:start;margin-top:.7em}
+.tl .nm{font:800 clamp(26px,7.4vw,56px)/.98 var(--fd);letter-spacing:-.03em;padding-bottom:.06em}
 .tl .c,.tl .xp{display:none}
-.tl .ab{font:400 13px/1 "Archivo Black",sans-serif;opacity:.7;align-self:start;margin-top:6px}
+.tl .ab{font:800 13px/1 var(--fd);opacity:.7;align-self:start;margin-top:6px}
 .tl .art{position:absolute;top:var(--t1);width:110px;height:132px;right:-4px;transition:transform .5s var(--ease)}
 .tl .art svg{width:100%;height:100%}
 .tl:active{background:var(--bg);color:var(--fg)}
-.qa{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;color:inherit;font:800 22px/1 "Big Shoulders Display";z-index:3}
+.qa{position:absolute;right:0;top:0;width:44px;height:44px;display:grid;place-items:center;color:inherit;font:700 18.5px/1 var(--ft);z-index:3}
 .qa.on{background:var(--pa);color:var(--ink);font-size:16px;width:34px;height:34px;margin:5px}
 @media(min-width:960px){
-  .idx .hd{display:grid;grid-template-columns:64px minmax(0,1fr) 150px 110px;align-items:center;height:38px;column-gap:6px;padding:0 280px 0 var(--gut);border-bottom:1px solid rgba(243,238,228,.3);color:#8d8a84;font:800 12px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase}
+  .idx .hd{display:grid;grid-template-columns:64px minmax(0,1fr) 150px 110px;align-items:center;height:38px;column-gap:6px;padding:0 280px 0 var(--gut);border-bottom:1px solid rgba(243,238,228,.3);color:#8d8a84;font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase}
   .tl .open{grid-template-columns:64px minmax(0,1fr) 150px 110px;align-items:start;min-height:112px;padding:24px 280px 22px var(--gut)}
   .tl .no{font-size:14px;margin-top:.9em}
   .tl .nm{font-size:calc(clamp(40px,3.9vw,58px)*var(--s,1));white-space:nowrap}
-  .tl .c{display:block;font:800 15px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase;margin-top:1.3em}
+  .tl .c{display:block;font:700 12.5px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;margin-top:1.3em}
   .tl .ab{font-size:24px;letter-spacing:-.03em;opacity:1;margin-top:.7em}
   .tl .art{top:var(--t2);width:170px;height:204px;right:30px}
-  /* hover: the row floods with the drink's ink, opens to its recipe and stands the glass up */
+  /* hover: the row floods with the drink's ink and opens to its tags, its history and the ticket; the glass grows in place, still cropped by the row */
   .tl .xp{display:grid;grid-column:2/-1;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease) .1s}
   .tl .xp>div{overflow:hidden;min-height:0}
-  .tl .xq{display:flex;flex-wrap:wrap;gap:0 34px;padding-top:22px;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .45s var(--ease)}
-  .tl .xq span{display:block;padding-bottom:4px}
-  .tl .xq b{display:block;font:400 46px/.9 "Archivo Black",sans-serif;letter-spacing:-.05em}
-  .tl .xq b.wd{font-size:26px;line-height:1.66}
-  .tl .xq small{display:block;font:600 13px/1.25 "Inter Tight";margin-top:6px;max-width:13em;opacity:.85}
-  .tl .xo{display:flex;align-items:center;gap:22px;margin-top:20px;font:800 15px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase}
-  .tl .xo i{font-style:normal;border-bottom:2px solid currentColor;padding-bottom:3px}
-  .tl .xo em{font:italic 400 17px/1.2 "Bodoni Moda",serif;text-transform:none;letter-spacing:0;opacity:.85}
+  .tl .xc{display:block;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .45s var(--ease)}
+  .tl .tg{display:block;padding-top:16px;font:700 12px/1.4 var(--ft);letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+  .tl .st{display:block;max-width:34ch;margin-top:12px;font:italic 400 22px/1.36 var(--fs)}
+  .tl .gap{display:block;height:80px}
   .tl:hover .xp,.tl:has(:focus-visible) .xp{grid-template-rows:1fr}
-  .tl:hover .xq,.tl:has(:focus-visible) .xq{opacity:1;transform:none;transition-delay:.15s}
+  .tl:hover .xc,.tl:has(:focus-visible) .xc{opacity:1;transform:none;transition-delay:.15s}
   .tl:hover,.tl:has(:focus-visible){background:var(--bg);color:var(--fg)}
-  .qa{right:290px;top:auto;bottom:20px;width:auto;height:40px;padding:0 14px;font-size:15px;letter-spacing:.07em;background:var(--ink);color:var(--pa);opacity:0;pointer-events:none;transition:opacity .25s}
-  .qa::before{content:attr(data-l)}
-  .qa:not(.on) .pl{display:none}
-  .tl:hover .qa,.tl:has(:focus-visible) .qa,.qa.on{opacity:1;pointer-events:auto}
-  .qa.on{margin:0;width:auto;height:40px;background:var(--pa);color:var(--ink);gap:4px;display:flex;align-items:center}
+  .tl .art{transition:top .5s var(--ease),width .5s var(--ease),height .5s var(--ease),right .5s var(--ease)}
+  .tl:hover .art,.tl:has(:focus-visible) .art{top:var(--t3);width:333px;height:400px;right:40px}
+  .qa{display:none}
+  .tl .ac{position:absolute;left:calc(var(--gut) + 70px);bottom:22px;z-index:3;display:flex;align-items:center;gap:26px;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+  .tl:hover .ac,.tl:has(:focus-visible) .ac{opacity:1;visibility:visible;transition-delay:.2s,0s}
 }
+@media(max-width:959px){.tl .ac{display:none}}
+/* the ticket control, the same everywhere: pick how many, then add; once on the ticket it goes quiet and − / + edit the ticket */
+.tk{--h:52px;--s:var(--pa);--st:var(--ink);--b:var(--co);--bt:var(--pa);display:inline-flex;height:var(--h);white-space:nowrap;font:700 13.5px/1 var(--ft);letter-spacing:.08em;text-transform:uppercase;user-select:none;-webkit-user-select:none}
+.tk .sp{display:flex;align-items:center;background:var(--s);color:var(--st)}
+.tk .sp button{width:44px;height:100%;font:800 20px/1 var(--fd)}
+.tk output{min-width:22px;text-align:center;font:800 19px/1 var(--fd);letter-spacing:0}
+.tk .go{display:flex;align-items:center;gap:9px;padding:0 20px;background:var(--b);color:var(--bt);text-transform:inherit;letter-spacing:inherit}
+.tk .go::before{content:"+";font:800 18px/1 var(--fd)}
+.tk.on .go{background:var(--s);color:var(--st);padding-left:4px}
+.tk.on .go::before{content:"";width:10px;height:10px;background:var(--co)}
+.tk.on .sp{padding-right:6px}
+.tk.coral{--b:var(--ink)}
+.tk.paper{--s:var(--ink);--st:var(--pa)}
+@media(max-width:599px){.tk{--h:48px}.tk .sp button{width:40px}.tk .go{padding:0 16px}}
+.fr{display:inline-flex;align-items:center;min-height:44px;font:700 13.5px/1 var(--ft);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;color:inherit}
 .grain{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:.2;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .empty{padding:60px var(--gut)}.empty .blk{background:var(--pa);color:var(--ink)}
-.empty p{font-family:"Bodoni Moda",serif;font-size:clamp(44px,9vw,96px);margin:0 0 18px;line-height:.92;letter-spacing:-.03em}
+.empty p{font-family:var(--fd);font-weight:800;font-size:clamp(44px,9vw,96px);margin:0 0 18px;line-height:.92;letter-spacing:-.03em}
 .fly{position:fixed;left:-7px;top:-7px;width:14px;height:14px;z-index:60;pointer-events:none}
 .pop{animation:pop .45s var(--ease)}
 @keyframes pop{40%{transform:scale(1.2)}}
@@ -137,7 +149,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 ::view-transition-group(*){animation-duration:.55s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.25s}
 
-/* drink page: one poster per drink, the recipe on a visible four-column grid */
+/* drink page: one poster per drink, the recipe beside it in blocks of colour */
 .sheet{position:fixed;inset:0;z-index:40;overflow-y:auto;overscroll-behavior:contain;background:var(--pa)}
 .dwrap{position:relative;--fg:var(--pa)}
 .dwrap.lt{--fg:var(--ink)}
@@ -154,52 +166,65 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .close{min-height:44px;display:inline-flex;align-items:center;gap:6px;color:inherit}
 .close svg.i{width:13px;height:13px}
 .view{display:flex;gap:14px}
-.view button{min-height:44px;opacity:.55;font-family:"Big Shoulders Display";font-weight:800;font-size:14px;letter-spacing:.07em;text-transform:uppercase}
+.view button{min-height:44px;opacity:.55;font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
 .view button[aria-pressed=true]{opacity:1}
 .head{position:absolute;z-index:2;left:var(--gut);right:var(--gut);bottom:18px}
-.head h2{font:400 min(clamp(54px,16vw,150px),calc((100vw - 2*var(--gut))/(var(--n)*.68)),calc(2*(100vw - 2*var(--gut))/(var(--m)*.68)))/.84 "Archivo Black",sans-serif;letter-spacing:-.06em;margin:0 0 0 -.03em;text-wrap:balance}
-.head .orig{display:block;font:600 13px/1.2 "Inter Tight";margin-top:12px}
-.sg .tb{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 var(--gut);border-bottom:2px solid var(--ink);background:var(--pa)}
-.sg .tb .nav{display:flex;gap:16px}
-.sg .tb .nav button{min-height:44px;font-family:"Big Shoulders Display";font-weight:800;font-size:14px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+.head h2{font:800 min(clamp(54px,16vw,150px),calc((100vw - 2*var(--gut))/(var(--n)*.56)),calc(2*(100vw - 2*var(--gut))/(var(--m)*.56)))/.86 var(--fd);letter-spacing:-.02em;margin:0 0 0 -.03em;text-wrap:balance}
+.head .orig{display:block;font:600 13px/1.2 var(--ft);margin-top:12px}
+.sg .tb{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 var(--gut);background:var(--pa)}
+.sg .tb .nav{display:flex;gap:16px;min-width:0}
+.sg .tb .nav button{min-height:44px;font-family:var(--ft);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:40vw}
 .sg .tb .nav button:first-child{color:var(--ink3)}
 .units{display:flex;gap:14px}
-.g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
-.g .c{padding:12px 8px 14px 10px;border-bottom:1px solid var(--ink);min-width:0;overflow:hidden}
-.g .w2{grid-column:span 2}.g .w3{grid-column:span 3}.g .w4{grid-column:span 4}
-.g .q{display:block;font:400 clamp(28px,7.4vw,58px)/.9 "Archivo Black",sans-serif;letter-spacing:-.05em;white-space:nowrap}
-.g .q.wd{font-size:clamp(20px,4.6vw,30px);line-height:1.6}
-.g .u{display:block;font:600 11.5px/1.2 "Inter Tight";color:var(--ink2);margin-top:6px;min-height:14px}
-.g .i{display:block;font:600 13.5px/1.2 "Inter Tight";margin-top:2px;overflow-wrap:break-word}
-.g .i em{display:block;font-style:normal;font-weight:500;font-size:12px;color:var(--ink2);margin-top:3px}
-.g .opt{color:var(--ink2)}
-.g .k{display:block;font:800 11.5px/1 "Big Shoulders Display";letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);margin-bottom:7px}
-.g .v{display:block;font:500 19px/1.1 "Bodoni Moda",serif}
-.g p{margin:0;font:400 17px/1.45 "Bodoni Moda",serif;max-width:46ch}
-.g p.story{font-style:italic;font-size:16px;color:#3f3c36}
-.g .act{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:0;padding:18px var(--gut) 120px}
-.contains{padding:0;margin:0}
-.contains h3,.prose h3{color:var(--ink2);margin:0 0 10px}
-.contains ul{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.contains li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px}
-.contains li small{color:var(--ink2);font-size:13px;text-align:right}
-.contains .none{color:var(--ink2);font-size:14px;margin:0}
-.prose{padding:34px var(--px) 120px}
-.prose p{margin:0 0 28px;max-width:60ch;font-size:16px;line-height:1.6}
-.prose .story{font:italic 400 20px/1.4 "Bodoni Moda";max-width:30em}
-.video .txt{color:inherit}.video{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.video iframe{width:100%;aspect-ratio:16/9;border:0;background:#000;display:block}
+/* the recipe side: blocks of colour, no rules. Recipe on paper, specs on the liquid's colour, method, history on black, allergens */
+.bk{padding:0 var(--gut)}
+.bk .k{display:block;font:700 11.5px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:12px}
+.bA{padding-top:6px;padding-bottom:36px}
+.bA .k{margin-bottom:6px}
+.rec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;margin-top:14px}
+.rec b{display:block;font:800 34px/.95 var(--fd);letter-spacing:-.03em;white-space:nowrap}
+.rec b small{font:700 11.5px/1 var(--ft);letter-spacing:.08em;text-transform:uppercase;margin-left:6px}
+.rec b.wd{font-size:24px;line-height:1.37}
+.rec span{display:block;font:500 14.5px/1.25 var(--ft);margin-top:6px;overflow-wrap:break-word}
+.rec span em{display:block;font-style:normal;font-size:12.5px;color:var(--ink2);margin-top:2px}
+.rec .opt{color:var(--ink2)}
+.bA .ac{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:30px}
+.bA .ac iframe{flex:1 0 100%;aspect-ratio:16/9;border:0;background:#000;display:block}
+.bA .ac a.fr{color:var(--ink2)}
+.bB{background:var(--liq);color:var(--lf);padding-top:30px;padding-bottom:32px}
+.bB .k{color:inherit;opacity:.7}
+.spx{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.spx b{display:block;font:800 22px/1.05 var(--fd);letter-spacing:-.025em}
+.bB p{margin:24px 0 0;font:500 17px/1.35 var(--ft)}
+.bC{padding-top:34px;padding-bottom:36px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:28px minmax(0,1fr);font:400 16.5px/1.4 var(--ft);counter-increment:s}
+.steps li::before{content:counter(s);font:800 19px/1.2 var(--fd)}
+.bD{background:var(--ink);color:var(--pa);padding-top:34px;padding-bottom:40px}
+.bD .k{color:inherit;opacity:.6}
+.bD p{margin:0;font:italic 400 20px/1.4 var(--fs);max-width:30ch}
+.bD .no{display:block;margin-top:22px;font:700 12px/1.4 var(--ft);letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.bE{background:#e6dfd1;padding-top:30px;padding-bottom:120px}
+.ctn{display:grid;gap:10px}
+.ctn div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:baseline}
+.ctn b{font:800 16px/1.2 var(--fd);letter-spacing:-.01em}
+.ctn span{font-size:14px;color:var(--ink2)}
+.ctn p{margin:0;font-size:14px;color:var(--ink2)}
 @media(min-width:960px){
   .dwrap{display:grid;grid-template-columns:47% 53%;align-items:start}
   .plate{position:sticky;top:0;height:100dvh}
   .plate .art{left:0;right:0;top:70px;bottom:auto;height:56%;justify-content:center}
   .head{bottom:28px}
-  .head h2{font-size:min(clamp(86px,9.6vw,150px),calc((47vw - 2*var(--gut))/(var(--n)*.68)),calc(2*(47vw - 2*var(--gut))/(var(--m)*.68)))}
-  .sg{min-height:100dvh;display:flex;flex-direction:column}
-  .sg .tb{padding:6px 24px}
-  .g{flex:1;align-content:start}
-  .g .c{padding:16px 18px 18px 14px}
-  .g .act{padding:20px 18px 28px 14px}
+  .head h2{font-size:min(clamp(86px,9.6vw,150px),calc((47vw - 2*var(--gut))/(var(--n)*.56)),calc(2*(47vw - 2*var(--gut))/(var(--m)*.56)))}
+  .sg{min-height:100dvh}
+  .sg .tb{height:58px;padding:0 44px 0 40px}
+  .bk{padding-left:40px;padding-right:44px}
+  .rec{gap:22px 28px}.rec b{font-size:46px}.rec b.wd{font-size:30px;line-height:1.45}.rec span{font-size:16px}
+  .spx{gap:22px}.spx b{font-size:30px}.bB p{font-size:18px}
+  .steps li{grid-template-columns:34px minmax(0,1fr);font-size:18px}.steps li::before{font-size:20px}
+  .bD p{font-size:24px;max-width:28ch}
+  .ctn div{grid-template-columns:110px minmax(0,1fr)}.ctn b{font-size:17px}
+  .bE{padding-bottom:48px}
 }
 
 /* the ticket */
@@ -207,7 +232,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
   -webkit-mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y;
   mask:radial-gradient(circle at 0 6px,transparent 3px,#000 3.5px) 0 0/51% 12px repeat-y,radial-gradient(circle at 100% 6px,transparent 3px,#000 3.5px) 100% 0/51% 12px repeat-y}
 .tab svg{display:none}
-.tab .n{font:500 24px/1 "Bodoni Moda",serif;color:var(--su);letter-spacing:0}
+.tab .n{font:800 22px/1 var(--fd);color:var(--su);letter-spacing:0}
 .tab.bump{animation:bump .5s var(--ease)}
 @keyframes bump{0%{transform:translate(-50%,0)}30%{transform:translate(-50%,-6px)}100%{transform:translate(-50%,0)}}
 .cmd{position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;background:var(--ul);padding:calc(64px + env(safe-area-inset-top)) 14px 40px}
@@ -218,24 +243,24 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .slip.print{animation:print .9s var(--ease) both}
 @keyframes print{from{clip-path:inset(0 0 100% 0);transform:translateY(-24px)}to{clip-path:inset(0 0 0 0);transform:none}}
 .s-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:2px solid var(--ink)}
-.s-head h2{font:500 42px/1 "Bodoni Moda",serif;letter-spacing:-.02em;margin:0}
-.s-head span{font:800 15px/1 "Big Shoulders Display";letter-spacing:.06em}
+.s-head h2{font:800 38px/1 var(--fd);letter-spacing:-.03em;margin:0}
+.s-head span{font:700 12.5px/1 var(--ft);letter-spacing:.1em}
 .s-row{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
 .s-row .mini{width:44px;aspect-ratio:5/6;overflow:hidden}
 .s-row .mini svg{width:100%;height:100%}
 .s-row .nm{font-size:21px;line-height:1.05;text-align:left}
 .s-row small{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px}
-.step{display:flex;align-items:center}
+.step{display:flex;align-items:center;background:var(--ink);color:var(--pa);height:40px;padding:0 2px}
 .step button{width:36px;height:40px;display:grid;place-items:center}
-.step output{min-width:22px;text-align:center;font:800 20px/1 "Big Shoulders Display"}
+.step output{min-width:22px;text-align:center;font:800 18px/1 var(--fd)}
 .s-sec{margin-top:24px}
 .s-sec h3{margin:0;padding-bottom:6px;border-bottom:2px solid var(--ink)}
 .s-sec table{width:100%;border-collapse:collapse}
 .s-sec td{padding:7px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:15px}
-.s-sec td.q{width:7.2em;padding-right:10px;font:800 17px/1 "Big Shoulders Display";letter-spacing:.02em}
+.s-sec td.q{width:7.2em;padding-right:10px;font:800 16px/1 var(--fd);letter-spacing:-.01em}
 .s-sec td.r{text-align:right;color:var(--ink2);font-size:13px;width:3em}
 .s-foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
-.s-foot .tot{font:800 15px/1 "Big Shoulders Display";letter-spacing:.06em;text-transform:uppercase}
+.s-foot .tot{font:700 12.5px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase}
 
 /* filters */
 .fs{position:fixed;inset:0;z-index:45;background:rgba(20,20,20,.35);display:flex;justify-content:flex-end}
@@ -243,7 +268,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 @keyframes rise{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes slide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
 .fhead{display:flex;align-items:center;justify-content:space-between;padding:calc(6px + env(safe-area-inset-top)) var(--gut) 4px;border-bottom:2px solid var(--ink)}
-.fhead h2{font:500 42px/1 "Bodoni Moda",serif;margin:8px 0;letter-spacing:-.025em}
+.fhead h2{font:800 38px/1 var(--fd);margin:8px 0;letter-spacing:-.03em}
 .fhead .acts{display:flex;align-items:center;gap:14px}
 .txtbtn{min-height:44px;color:var(--ink2)}
 .iconbtn{width:44px;height:44px;display:grid;place-items:center}
@@ -253,11 +278,11 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .fsec .chips{flex-wrap:wrap;overflow:visible;margin:0;padding:0;height:auto;border:0;gap:0 20px}
 .strict{display:flex;gap:20px;margin-top:4px}
 .shelp{font-size:13px;color:var(--ink2);margin:4px 0 0;min-height:1.45em}
-.tokin{width:100%;height:48px;border:0;border-bottom:2px solid var(--ink);background:none;outline:0;font:italic 400 22px "Bodoni Moda",serif;padding:0}
+.tokin{width:100%;height:48px;border:0;border-bottom:2px solid var(--ink);background:none;outline:0;font:400 20px var(--ft);padding:0}
 .tokin::placeholder{color:var(--ink3)}
 .sugg{display:flex;flex-direction:column}
 .sugg button{display:flex;justify-content:space-between;align-items:baseline;gap:10px;min-height:44px;border-bottom:1px solid var(--rule);text-align:left;font-size:15px}
-.sugg button small{color:var(--ink3);font:800 12px/1 "Big Shoulders Display";letter-spacing:.06em;text-transform:uppercase}
+.sugg button small{color:var(--ink3);font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase}
 .toks{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:10px}
 .tok{display:inline-flex;align-items:center;gap:8px}
 .tok button{min-height:40px;display:inline-flex;align-items:center;gap:5px}
@@ -569,7 +594,7 @@ const T = {
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
    glass:'Glass', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
-   add:'Add to ticket', added:'On the ticket', ticket:'Ticket', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
+   add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
  es:{
@@ -589,7 +614,7 @@ const T = {
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
    glass:'Copa', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
-   add:'Sumar a la comanda', added:'En la comanda', ticket:'Comanda', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
+   add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
 };
@@ -745,6 +770,12 @@ const lightBg = c => ['#f7c21b','#f2b7ae'].includes(c);
 const artSVG = d => ART[d.id] || (ART[d.id]=glassSVG(d,{bg:bgOf(d)}));
 const qaHTML = d => { const n=ticket[d.id]||0;
   return `<button type="button" class="qa${n?' on':''}" data-l="${esc(n?t().ticket+' ×':'+ '+t().ticket)}" data-add="${d.id}" data-quick="1" aria-label="${esc(t().add)}: ${esc(d.name)}${n?` (${n})`:''}">${n?`<span class="num">${n}</span>`:'<span class="pl">+</span>'}</button>`; };
+// the ticket control: before adding, − / + choose how many; once on the ticket they edit it directly
+const PEND={};
+const tkHTML = (id, surf='') => { const tt=t(), n=ticket[id]||0, v=n||PEND[id]||1;
+  return `<div class="tk${surf?' '+surf:''}${n?' on':''}" data-tk="${id}" data-s="${surf}"><span class="sp"><button type="button" data-tkd="-1" aria-label="${esc(tt.less)}">−</button><output class="num">${v}</output><button type="button" data-tkd="1" aria-label="${esc(tt.more)}">+</button></span><button type="button" class="go" data-tkgo="${id}">${esc(n?tt.added:tt.add)}</button></div>`; };
+const tagLine = d => [...(d.flav||[]).map(f=>t().flav[f]), t().cats[d.cat]].filter(Boolean).join(' · ');
+const lum = c => { const n=parseInt(c.slice(1),16); return ((n>>16)*299+(n>>8&255)*587+(n&255)*114)/1000; };
 const capW = s => { const w=String(s).split(' ')[0]; return w.charAt(0).toUpperCase()+w.slice(1); };
 const LART={}; const listArt = d => LART[d.id] || (LART[d.id]=glassSVG(d,{bg:bgOf(d),noTile:true}));
 const ingLine = d => d.lines.filter(l=>!l.opt).map(l=>{ const [a,b]=qtyParts(l); return `${a||capW(b)} ${ingName(l.ids[0])}`; }).join(' · ');
@@ -757,9 +788,9 @@ function topY(d){ if (d.id in TOPY) return TOPY[d.id];
   return TOPY[d.id]=y; }
 // one scale for every glass, cropped by the row; low glasses are lifted so their rim sits where a coupe's does, never so far the garnish is cut
 function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
-  return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
+  return [[92,.55,-16,1],[112,.85,-26,2],[300,1.665,34,3]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
     return `--t${n}:${t.toFixed(1)}px`; }).join(';'); }
-const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xq">${d.lines.filter(l=>!l.opt).map(l=>`<span>${qBig(l)}</span>`).join('')}</span><span class="xo"><i>${esc(t().recipe)} →</i><em>${esc(techStr(d))} · ${esc(glassName(d))}</em></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}</li>`; };
+const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)} →</button></div></li>`; };
 function renderList(){
   const tt=t(); const list = results();
   const filtered = Q || activeCount();
@@ -770,6 +801,7 @@ function renderList(){
 }
 function markCard(id, pop){
   document.querySelectorAll(`.qa[data-add="${id}"]`).forEach(b=>{ b.outerHTML=qaHTML(byId[id]); });
+  document.querySelectorAll(`.tk[data-tk="${id}"]`).forEach(b=>{ b.outerHTML=tkHTML(id, b.dataset.s); });
   if (pop){ const b=document.querySelector(`.qa[data-add="${id}"]`); if(b) b.classList.add('pop'); }
 }
 /* ---- motion ---- */
@@ -898,8 +930,10 @@ function qtyParts(l){
 function detail(d){
   const tt=t(); const n = ticket[d.id]||0, bg=bgOf(d);
   const note = l => { const x = lang==='es'?l.n_es:l.n_en; return [x, l.opt?tt.opt:''].filter(Boolean).join(' · '); };
-  const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div class="c ln${l.opt?' opt':''}"><span class="q${a?'':' wd'}">${esc(a||capW(b))}</span><span class="u">${a?esc(b):''}</span><span class="i">${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span></div>`; }).join('');
-  const nf = d.lines.length+3, rem = 4-(nf%4||4) || 4;
+  const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div${l.opt?' class="opt"':''}><b${a?'':' class="wd"'}>${esc(a||capW(b))}${a?`<small>${esc(b)}</small>`:''}</b><span>${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span></div>`; }).join('');
+  const liq = glassLiq(d);
+  // the IBA method, one step per clause
+  const steps = L(d.method).split(/(?<=\.)\s+|,\s+/).map(x=>x.trim().replace(/\.$/,'')).filter(Boolean).map(x=>x.charAt(0).toUpperCase()+x.slice(1));
   const seq = LIST.includes(d) ? LIST : DR.slice().sort(SORTS.az), k = seq.indexOf(d), prv = seq[(k-1+seq.length)%seq.length], nxt = seq[(k+1)%seq.length];
   const cls = lightBg(bg) ? 'lt' : '';
   const nW = Math.max(...d.name.split(/\s+/).map(w=>w.length));
@@ -911,21 +945,17 @@ function detail(d){
       <div class="ph">${imgTag(d,'(min-width:960px) 47vw, 100vw',`style="object-position:${platePos(d)}"`).replace('alt=""',`alt="${esc(d.name)}"`)}</div>
       <div class="head"><h2>${esc(d.name)}</h2><span class="orig">${esc([t().bases[d.base], techStr(d), [d.place,d.year].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</span></div>
     </div>
-    <div class="sg">
+    <div class="sg" style="--liq:${liq};--lf:${lum(liq)>150?'var(--ink)':'var(--pa)'}">
       <div class="tb"><div class="units" role="group" aria-label="${esc(tt.unitsL)}"><button type="button" data-u="ml" aria-pressed="${units==='ml'}">ml</button><button type="button" data-u="oz" aria-pressed="${units==='oz'}">oz</button></div>
         <div class="nav"><button type="button" data-id="${prv.id}" aria-label="${esc(tt.prev)}: ${esc(prv.name)}">← ${esc(prv.name)}</button><button type="button" data-id="${nxt.id}" aria-label="${esc(tt.next)}: ${esc(nxt.name)}">${esc(nxt.name)} →</button></div></div>
-      <div class="g">${lines}
-        <div class="c"><span class="k">${tt.glass}</span><span class="v">${esc(glassName(d))}</span></div>
-        <div class="c"><span class="k">${tt.ice}</span><span class="v">${esc(tt.ices[d.ice]||'')}</span></div>
-        <div class="c"><span class="k">${tt.abv}</span><span class="v">${Math.round(d.abv)}%</span></div>
-        <div class="c w${rem}"><span class="k">${tt.garnish}</span><span class="v">${esc(L(d.garnish)||'—')}</span></div>
-        <div class="c w4"><span class="k">${tt.method}</span><p>${esc(L(d.method))}</p></div>
-        <div class="c w4">${containsHTML(d)}</div>
-        ${L(d.history)?`<div class="c w4"><span class="k">${tt.story}</span><p class="story">${esc(L(d.history))}</p></div>`:''}
-        ${d.video?`<div class="c w4 video" id="vid"><button type="button" class="blk" data-play="${esc(d.video)}" style="background:var(--ink)">▶ ${tt.play}</button>
-          <a class="txt" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener"><span>${tt.watch}</span>↗</a></div>`:''}
-        <div class="c w4 act"><span class="cc" style="color:var(--ink2)">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span><button class="blk add${n?' on':''}" type="button" data-add="${d.id}" aria-pressed="${!!n}">${n?`${tt.added} ×${n}`:`+ ${tt.add}`}</button></div>
-      </div></div></div>`;
+      <section class="bk bA"><span class="k">${esc(tagLine(d))}</span><div class="rec">${lines}</div>
+        <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch} ↗</a>`:''}</div></section>
+      <section class="bk bB"><div class="spx"><div><span class="k">${tt.glass}</span><b>${esc(glassName(d))}</b></div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
+        ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
+      <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></section>
+      <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
+      <section class="bk bE">${containsHTML(d)}</section>
+    </div></div>`;
 }
 
 function platePos(d){ const [x0,y0,x1,y1]=FRAMES[d.id]||[.3,.3,.7,.85]; return `${Math.round((x0+x1)*50)}% ${Math.round(Math.min(.62,(y0+y1)/2)*100)}%`; }
@@ -933,9 +963,10 @@ function containsHTML(d){
   const tt=t();
   const via = c => { const m={}; (d.via[c]||[]).forEach(v=>{ const n=ingName(v.id); m[n]=Math.max(m[n]||0,v.lv); }); return Object.keys(m).join(', '); };
   const al = ALLERGY.concat(['honey']).filter(c=>d.lev[c]).sort((a,b)=>d.lev[b]-d.lev[a]);
-  const rows = al.map(c=>`<li><span>${esc(L(COMP[c]))}</span><small>${esc(via(c))} · ${tt.lvName[3-d.lev[c]]}</small></li>`).join('');
-  const opt = ALLERGY.filter(c=>!d.lev[c] && (d.optLev[c]||0)>=2).map(c=>`<li><span>${esc(L(COMP[c]))}</span><small>${tt.optOnly}</small></li>`).join('');
-  return `<section class="contains"><h3>${tt.contains}</h3>${rows||opt?`<ul>${rows}${opt}</ul>`:`<p class="none">${tt.noAllergens}</p>`}</section>`;
+  const nm = c => esc(L(COMP[c]).replace(/ \(.*\)/,''));
+  const rows = al.map(c=>`<div><b>${nm(c)}</b><span>${esc(via(c))} · ${tt.lvName[3-d.lev[c]]}</span></div>`).join('');
+  const opt = ALLERGY.filter(c=>!d.lev[c] && (d.optLev[c]||0)>=2).map(c=>`<div><b>${nm(c)}</b><span>${tt.optOnly}</span></div>`).join('');
+  return `<span class="k">${tt.contains}</span><div class="ctn">${rows||opt?rows+opt:`<p>${tt.noAllergens}</p>`}</div>`;
 }
 
 /* ---- the ticket (comanda): drinks × covers -> mise en place ---- */
@@ -1018,6 +1049,11 @@ document.addEventListener('click', e=>{
     pl.replaceWith(f); return; }
   const vw=e.target.closest('[data-view]'); if(vw){ view=vw.dataset.view; store.set('view',view); const pl=$('#sheet .plate'); pl.classList.toggle('photo',view==='photo'); document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view)); return; }
   const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; return; }
+  const tkd=e.target.closest('[data-tkd]'); if(tkd){ const box=tkd.closest('.tk'), id=box.dataset.tk, dv=+tkd.dataset.tkd, home=box.closest('#sheet')?'#sheet':'#main';
+    if(ticket[id]) setCovers(id, ticket[id]+dv); else { PEND[id]=Math.max(1,(PEND[id]||1)+dv); markCard(id); }
+    const nb=document.querySelector(`${home} .tk[data-tk="${id}"] [data-tkd="${dv}"]`); if(nb) nb.focus({preventScroll:true}); return; }
+  const tg=e.target.closest('[data-tkgo]'); if(tg){ const id=tg.dataset.tkgo; if(ticket[id]){ openTicket(); return; }
+    const r=tg.getBoundingClientRect(), n=PEND[id]||1; delete PEND[id]; setCovers(id,n); fly({getBoundingClientRect:()=>r}, byId[id]); return; }
   const a=e.target.closest('[data-add]'); if(a){ const id=a.dataset.add; setCovers(id, (ticket[id]||0)+1); if(a.dataset.quick){ markCard(id,true); fly(a, byId[id]); } else { const st=$('#sheet').scrollTop; open(id,false); $('#sheet').scrollTop=st; renderTab(true); } return; }
   const st=e.target.closest('[data-step]'); if(st){ setCovers(st.dataset.step, (ticket[st.dataset.step]||0)+(+st.dataset.dv)); renderTicket(false); return; }
   if(e.target.closest('#tab')){ openTicket(); return; }
@@ -1032,7 +1068,7 @@ document.addEventListener('click', e=>{
 $('#q').addEventListener('input', e=>{ Q=e.target.value; $('#qx').hidden=!Q; renderList(); });
 $('#qx').addEventListener('click', e=>{ e.preventDefault(); Q=''; $('#q').value=''; $('#qx').hidden=true; renderList(); $('#q').focus(); });
 document.addEventListener('input', e=>{ if(e.target.id==='tokin') suggest(); });
-document.addEventListener('securitypolicyviolation', e=>{ if(!/frame/.test(e.violatedDirective)) return; const f=document.querySelector('.video iframe'); if(f) f.remove(); });
+document.addEventListener('securitypolicyviolation', e=>{ if(!/frame/.test(e.violatedDirective)) return; const f=document.querySelector('.bA iframe'); if(f) f.remove(); });
 document.addEventListener('change', e=>{ if(e.target.id==='mybar'){ S.mybar=e.target.checked; changed(); } });
 document.addEventListener('keydown', e=>{ if(e.target.id==='tokin' && e.key==='Enter'){ const f=$('#sugg button'); if(f){ e.preventDefault(); f.click(); } } });
 document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(!$('#fs').hidden) closeFilters(); else if(!$('#cmd').hidden) closeTicket(); else if(openId) heroClose(); });
