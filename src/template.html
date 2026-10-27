@@ -213,6 +213,9 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .bD{background:var(--ink);color:var(--pa);padding-top:34px;padding-bottom:40px}
 .bD .k{color:inherit;opacity:.6}
 .bD p{margin:0;font:italic 400 20px/1.4 var(--fs);max-width:30ch}
+.bD .hs{margin-top:16px;font:400 13px/1.5 var(--ft);opacity:.62}
+.bD .hs a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+.bD .hs a:hover{opacity:.8}
 .bD .no{display:block;margin-top:22px;font:700 12px/1.4 var(--ft);letter-spacing:.1em;text-transform:uppercase;opacity:.8}
 .bE{background:#e6dfd1;padding-top:30px;padding-bottom:120px}
 .ctn{display:grid;gap:10px}
@@ -469,7 +472,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
+   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', sources:'Sources', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', notes:'Notes', prep:'Prep', terms:'Terms', quiz:'Quiz', qFrom:n=>`From your list · ${n} drinks`, qAmt:x=>`How much ${x}?`, qIng:'Which one goes in?', qGlass:'Which glass?', qMeth:'Which method?', qName:'Which drink is this?', qNext:'Next', qRight:'Right', qWrong:'Not quite', qMissed:'To review', qOpen:'Full recipe', inIBA:'In IBA drinks', balance:'Balance', tips:'Tips', seeN:n=>`See ${n} drinks`, prepL:'Prep', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
@@ -489,7 +492,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
+   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', sources:'Fuentes', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', notes:'Apuntes', prep:'Insumos', terms:'Términos', quiz:'Práctica', qFrom:n=>`De tu lista · ${n} tragos`, qAmt:x=>`¿Qué medida de ${x}?`, qIng:'¿Cuál lleva?', qGlass:'¿Qué cristalería?', qMeth:'¿Qué método?', qName:'¿Qué trago es?', qNext:'Siguiente', qRight:'Bien', qWrong:'Casi', qMissed:'Para repasar', qOpen:'Receta completa', inIBA:'En tragos IBA', balance:'Balance', tips:'Claves', seeN:n=>`Ver ${n} tragos`, prepL:'Preparación', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
@@ -604,6 +607,9 @@ const lineLabel = l => l.ids.map(ingName).join(` ${t().or} `);
 const techStr = d => d.tech.map(x=>t().techs[x]).join(' + ');
 const glassName = d => GLASS[d.glass]?L(GLASS[d.glass]):d.glass;
 // the exact glass in the IBA photo, then what the recipe says when it differs, then general alternatives
+// where the story comes from, named by site
+const SRC_NAMES = {'en.wikipedia.org':'Wikipedia','www.diffordsguide.com':"Difford's Guide",'punchdrink.com':'Punch'};
+const srcHTML = d => (d.src&&d.src.length) ? `<div class="hs">${esc(t().sources)}: ${d.src.map(u=>{ const h=new URL(u).hostname; return `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(SRC_NAMES[h]||h.replace(/^www\./,''))}</a>`; }).join(' · ')}</div>` : '';
 function glassBlock(d){ const tt=t(), g=GLASSWARE.shapes[glassShape(d)];
   if (!g) return `<b>${esc(glassName(d))}</b>`;
   const rec=glassName(d), same=g.iba.includes(d.glass), alts=g.alt.map(L).filter(a=>a.toLowerCase()!==rec.toLowerCase()&&a.toLowerCase()!==L(g).toLowerCase());
@@ -943,7 +949,7 @@ function detail(d){
       <section class="bk bB"><div class="spx"><div class="gw"><span class="k">${tt.glass}</span>${glassBlock(d)}</div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
         ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
       <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${mnote?`<p class="mnote"><b>${tt.note}</b>${esc(mnote)}</p>`:''}</section>
-      <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
+      <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}${srcHTML(d)}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
       <section class="bk bE">${containsHTML(d)}</section>
     </div></div>`;
 }
