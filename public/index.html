@@ -253,6 +253,7 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .s-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:12px;border-bottom:2px solid var(--ink)}
 .s-head h2{font:800 38px/1 var(--fd);letter-spacing:-.03em;margin:0}
 .s-head span{font:700 12.5px/1 var(--ft);letter-spacing:.1em}
+.s-r{display:flex;align-items:center;gap:18px}
 .s-row{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
 .s-row .mini{width:44px;aspect-ratio:5/6;overflow:hidden}
 .s-row .mini svg{width:100%;height:100%}
@@ -2604,7 +2605,7 @@ const store = { get(k,d){ try{ const v=localStorage.getItem('mise.'+k); return v
 let lang = store.get('lang','en');
 const blank = () => ({leave:[],level:2,vegan:false,toks:[],mybar:false,base:[],tech:[],ggroup:[],ice:[],flav:[],str:[],cat:[],era:[],purpose:[]});
 let S = Object.assign(blank(), store.get('filters',{})); Object.keys(blank()).forEach(k=>{ if(Array.isArray(blank()[k]) && !Array.isArray(S[k])) S[k]=[]; });
-let Q = ''; let sort = store.get('sort','az'); let units = store.get('units','ml');
+let Q = ''; let sort = store.get('sort','az'); let units = store.get('units','oz');
 const saveS = () => store.set('filters', S);
 let ticket = store.get('ticket',{}); // id -> covers
 
@@ -3131,14 +3132,14 @@ function renderTicket(print){
   const now = new Date(); const hhmm = String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
   const rows = ids.map(id=>{ const d=byId[id]; return `<div class="s-row"><span class="mini" style="background:${bgOf(d)}">${artSVG(d)}</span><div><button class="nm" type="button" data-id="${id}">${esc(d.name)}</button><small>${esc(glassName(d))} · ${esc(tt.ices[d.ice]||'')}</small></div>
     <div class="step"><button type="button" data-step="${id}" data-dv="-1" aria-label="${tt.less}: ${esc(d.name)}">${ICON.minus}</button><output class="num">${ticket[id]}</output><button type="button" data-step="${id}" data-dv="1" aria-label="${tt.more}: ${esc(d.name)}">${ICON.plus}</button></div></div>`; }).join('');
-  const mlRows = Object.entries(m.ml).sort((a,b)=>b[1]-a[1]).map(([id,v])=>`<tr><td class="q num">${fmtN(v)} ml</td><td>${esc(ingName(id))}${PREPOF[id]?`<button type="button" class="pl" data-nbp="${PREPOF[id]}">${tt.prepL}</button>`:''}</td></tr>`).join('');
+  const mlRows = Object.entries(m.ml).sort((a,b)=>b[1]-a[1]).map(([id,v])=>`<tr><td class="q num">${units==='oz'?toOz(v)+' oz':fmtN(v)+' ml'}</td><td>${esc(ingName(id))}${PREPOF[id]?`<button type="button" class="pl" data-nbp="${PREPOF[id]}">${tt.prepL}</button>`:''}</td></tr>`).join('');
   const uRows = Object.entries(m.units).map(([k,v])=>{ const [id,u]=k.split('|'); const ux=uName(u)+(lang==='en'&&v>1&&['bar spoon','dash'].includes(u)?'s':'');
     return `<tr><td class="q num">${['top up','fill up'].includes(u)?ux:fmtN(v)+(ux?' '+ux:'')}</td><td>${esc(ingName(id))}</td></tr>`; }).join('');
   const gRows = Object.entries(m.glass).sort((a,b)=>b[1]-a[1]).map(([g,n])=>`<tr><td>${esc(g)}</td><td class="r num">×${n}</td></tr>`).join('');
   const garRows = m.garn.map(([g,n])=>`<tr><td>${esc(g)}</td><td class="r num">×${n}</td></tr>`).join('');
   $('#cmd').innerHTML = `<button class="close" type="button" id="ccls" aria-label="${tt.back}">${ICON.close}</button>
     <div class="slip${print?' print':''}">
-      <div class="s-head"><h2>${tt.ticket}</h2><span class="num">${hhmm}</span></div>
+      <div class="s-head"><h2>${tt.ticket}</h2><div class="s-r"><div class="units" role="group" aria-label="${esc(tt.unitsL)}"><button type="button" data-u="ml" aria-pressed="${units==='ml'}">ml</button><button type="button" data-u="oz" aria-pressed="${units==='oz'}">oz</button></div><span class="num">${hhmm}</span></div></div>
       ${rows}
       <section class="s-sec"><h3>${tt.mise}</h3><table>${mlRows}${uRows}</table></section>
       <section class="s-sec"><h3>${tt.glassware}</h3><table>${gRows}</table></section>
@@ -3148,7 +3149,9 @@ function renderTicket(print){
 }
 function openTicket(push=true){ $('#cmd').hidden=false; document.body.style.overflow='hidden'; renderTicket(true); renderTab();
   $('#cmd').setAttribute('aria-label', t().ticket); if(push) history.pushState({c:1},'','#'+(lang==='es'?'comanda':'ticket')); $('#cmd').focus({preventScroll:true}); }
-function closeTicket(pop=false){ if($('#cmd').hidden) return; $('#cmd').hidden=true; if($('#sheet').hidden) document.body.style.overflow='';
+// units switched on the ticket: the drink page under it catches up when the ticket closes
+let unitsStale=false;
+function closeTicket(pop=false){ if($('#cmd').hidden) return; $('#cmd').hidden=true; if(unitsStale&&openId){ unitsStale=false; const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; } if($('#sheet').hidden) document.body.style.overflow='';
   if(!pop && history.state && history.state.c) history.back(); renderTab(); }
 function setCovers(id, n){ if(n<=0) delete ticket[id]; else ticket[id]=Math.min(n,99); store.set('ticket',ticket); renderTab(); markCard(id); }
 
@@ -3290,7 +3293,7 @@ document.addEventListener('click', e=>{
     const ac=pl.closest('.ac'); pl.remove(); ac.appendChild(f); return; }
   if(e.target.closest('#sheet .plate .art')){ glassSlosh(); return; }
   const vw=e.target.closest('[data-view]'); if(vw){ view=vw.dataset.view; store.set('view',view); const pl=$('#sheet .plate'); pl.classList.toggle('photo',view==='photo'); document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.view===view)); return; }
-  const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; return; }
+  const un=e.target.closest('[data-u]'); if(un){ units=un.dataset.u; store.set('units',units); if(!$('#cmd').hidden){ renderTicket(false); unitsStale=!!openId; return; } if(openId){ const st=$('#sheet').scrollTop; open(openId,false); $('#sheet').scrollTop=st; } return; }
   const tkd=e.target.closest('[data-tkd]'); if(tkd){ const box=tkd.closest('.tk'), id=box.dataset.tk, dv=+tkd.dataset.tkd, home=box.closest('#sheet')?'#sheet':'#main';
     if(ticket[id]) setCovers(id, ticket[id]+dv); else { PEND[id]=Math.max(1,(PEND[id]||1)+dv); markCard(id); }
     const nb=document.querySelector(`${home} .tk[data-tk="${id}"] [data-tkd="${dv}"]`); if(nb) nb.focus({preventScroll:true}); return; }
