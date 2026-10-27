@@ -104,8 +104,9 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
   .tl:hover .xp,.tl:has(:focus-visible) .xp{grid-template-rows:1fr}
   .tl:hover .xc,.tl:has(:focus-visible) .xc{opacity:1;transform:none;transition-delay:.15s}
   .tl:hover,.tl:has(:focus-visible){background:var(--bg);color:var(--fg)}
-  .tl .art{transform-origin:50% 22%}
-  .tl:hover .art,.tl:has(:focus-visible) .art{transform:scale(1.36)}
+  /* on hover the glass grows and settles in the middle of the opened row */
+  .tl .art{transform-origin:50% calc(var(--vc,.5)*100%);transition:transform .5s var(--ease),top .45s var(--ease) .1s}
+  .tl:hover .art,.tl:has(:focus-visible) .art{top:50%;transform:translateY(calc(var(--vc,.5)*-100%)) scale(1.36)}
   .qa{display:none}
   .tl .ac{position:absolute;left:calc(var(--gut) + 70px);bottom:22px;z-index:3;display:flex;align-items:center;gap:26px;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
   .tl:hover .ac,.tl:has(:focus-visible) .ac{opacity:1;visibility:visible;transition-delay:.2s,0s}
@@ -655,7 +656,7 @@ function topY(d){ if (d.id in TOPY) return TOPY[d.id];
 // one scale for every glass, cropped by the row; low glasses are lifted so their rim sits where a coupe's does, never so far the garnish is cut
 function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
   return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
-    return `--t${n}:${t.toFixed(1)}px`; }).join(';'); }
+    return `--t${n}:${t.toFixed(1)}px`; }).join(';')+`;--vc:${((top+233)/480).toFixed(3)}`; }
 const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)} →</button></div></li>`; };
 function renderList(){
   const tt=t(); const list = results();
