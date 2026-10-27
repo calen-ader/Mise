@@ -187,6 +187,11 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .rec b.wd{font-size:24px;line-height:1.37}
 .rec span{display:block;font:500 14.5px/1.25 var(--ft);margin-top:6px;overflow-wrap:break-word}
 .rec span em{display:block;font-style:normal;font-size:12.5px;color:var(--ink2);margin-top:2px}
+.swb{margin-top:8px;padding:0;border:0;background:none;color:inherit;font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.swb[aria-expanded="true"]{text-decoration:none;color:var(--co)}
+.swl{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px;font:400 13.5px/1.3 var(--ft)}
+.swl small{display:block;margin-top:2px;font:700 10.5px/1 var(--ft);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.swl .sws{font-size:11.5px;color:var(--ink2)}
 .rec .opt{color:var(--ink2)}
 .bA .ac{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-top:30px}
 .bA .ac iframe{flex:1 0 100%;aspect-ratio:16/9;border:0;background:#000;display:block}
@@ -437,10 +442,11 @@ const COLORS = __COLORS__;
 const FRAMES = __FRAMES__;
 const COURSE = __COURSE__;
 const GLASSWARE = __GLASSWARE__;
+const SWAPS = __SWAPS__;
 const {ing:ING, comp:COMP, glass:GLASS, unit:UNIT} = DATA;
 const store = { get(k,d){ try{ const v=localStorage.getItem('mise.'+k); return v===null?d:JSON.parse(v);}catch(e){return d;} }, set(k,v){ try{localStorage.setItem('mise.'+k,JSON.stringify(v));}catch(e){} } };
 let lang = store.get('lang','en');
-const blank = () => ({leave:[],level:2,vegan:false,toks:[],mybar:false,base:[],tech:[],ggroup:[],ice:[],flav:[],str:[],cat:[],era:[],purpose:[]});
+const blank = () => ({leave:[],level:2,vegan:false,swapok:false,toks:[],mybar:false,base:[],tech:[],ggroup:[],ice:[],flav:[],str:[],cat:[],era:[],purpose:[]});
 let S = Object.assign(blank(), store.get('filters',{})); Object.keys(blank()).forEach(k=>{ if(Array.isArray(blank()[k]) && !Array.isArray(S[k])) S[k]=[]; });
 let Q = ''; let sort = store.get('sort','az'); let units = store.get('units','oz');
 const saveS = () => store.set('filters', S);
@@ -450,7 +456,7 @@ const T = {
  en:{
    filters:'Filters', clearAll:'Clear', show:n=>n===1?'Show 1 drink':`Show ${n} drinks`, sortL:'Sort',
    sorts:{az:'A–Z',light:'Lightest',strong:'Strongest',old:'Oldest',new:'Newest',few:'Fewest ingredients'},
-   without:'Without', vegan:'Vegan', strictL:'Strictness', lv:['Declared','+ Common','+ Possible'],
+   without:'Without', vegan:'Vegan', swapOk:'Allow swaps', swapSent:'(swaps allowed)', strictL:'Strictness', lv:['Declared','+ Common','+ Possible'],
    lvHelp:['What the bottle declares.','Plus what that kind of bottle usually holds.','Plus secret recipes. For real allergies; check the label.'],
    ingr:'Ingredients', ingrPh:'Orange, gin, egg…', con:'With', mybar:'Only what I can make with these', mybarS:'Only my bar', remove:'Remove', switchMode:'Switch with / without',
    kSpirit:'spirit', kComp:'anything with it', kIng:'bottle', base:'Base', taste:'Taste', purpose:'Purpose', list:'IBA list', era:'Era', unitsL:'Units',
@@ -463,14 +469,14 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Rum',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Wine',liqueur:'Liqueur'},
    techs:{swizzle:'Swizzled',shake:'Shaken',stir:'Stirred',build:'Built',blend:'Blended',muddle:'Muddled'},
    ices:{up:'Up',cubes:'Cubes',crushed:'Crushed',cracked:'Cracked',blended:'Blended',none:'No ice',hot:'Hot'},
-   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
+   glass:'Glass', glassIba:'IBA recipe', glassAlt:'Also works', swap:'Swap', swClose:'Close', swShift:'Changes it', ice:'Ice', tech:'Method', abv:'Strength', method:'Build', note:'Note', garnish:'Garnish', story:'Story', play:'Play video', watch:'Open on YouTube',
    add:'Add to ticket', added:'On ticket', fullRecipe:'Full recipe', ticket:'Ticket', notes:'Notes', prep:'Prep', terms:'Terms', quiz:'Quiz', qFrom:n=>`From your list · ${n} drinks`, qAmt:x=>`How much ${x}?`, qIng:'Which one goes in?', qGlass:'Which glass?', qMeth:'Which method?', qName:'Which drink is this?', qNext:'Next', qRight:'Right', qWrong:'Not quite', qMissed:'To review', qOpen:'Full recipe', inIBA:'In IBA drinks', balance:'Balance', tips:'Tips', seeN:n=>`See ${n} drinks`, prepL:'Prep', introK:'IBA official list', introB:'Every drink, in order', mise:'Mise en place', glassware:'Glassware', garnishes:'Garnish',
    searchN:n=>`Search ${n} drinks`, search:'Search', colNo:'No.', year:'Year', colDrink:'Drink', recipe:'Recipe', drawing:'Drawing', photo:'Photo', review:'Review', cards:'Cards', layoutL:'Layout', replay:'Replay intro', prev:'Previous', next:'Next', view:'Recipe', skip:'Pass',
    drinksN:n=>n===1?'1 drink':`${n} drinks`, clearT:'Clear ticket', less:'One less', more:'One more', opt:'optional', or:'or', back:'Back', open:'Open ticket'},
  es:{
    filters:'Filtros', clearAll:'Limpiar', show:n=>n===1?'Ver 1 trago':`Ver ${n} tragos`, sortL:'Orden',
    sorts:{az:'A–Z',light:'Más suaves',strong:'Más fuertes',old:'Más antiguos',new:'Más nuevos',few:'Menos ingredientes'},
-   without:'Sin', vegan:'Vegano', strictL:'Exigencia', lv:['Declarado','+ Habitual','+ Posible'],
+   without:'Sin', vegan:'Vegano', swapOk:'Con sustitutos', swapSent:'(con sustitutos)', strictL:'Exigencia', lv:['Declarado','+ Habitual','+ Posible'],
    lvHelp:['Lo que declara la botella.','Más lo que ese tipo de botella suele llevar.','Más recetas secretas. Para alergias reales; revisa la etiqueta.'],
    ingr:'Ingredientes', ingrPh:'Naranja, gin, huevo…', con:'Con', mybar:'Solo lo que puedo hacer con esto', mybarS:'Solo mi barra', remove:'Quitar', switchMode:'Cambiar con / sin',
    kSpirit:'destilado', kComp:'todo lo que lo lleve', kIng:'botella', base:'Base', taste:'Sabor', purpose:'Finalidad', list:'Lista IBA', era:'Época', unitsL:'Unidades',
@@ -483,7 +489,7 @@ const T = {
    bases:{gin:'Gin',vodka:'Vodka',rum:'Ron',agave:'Agave',whisky:'Whisky',brandy:'Brandy',wine:'Vino',liqueur:'Licor'},
    techs:{swizzle:'Swizzle',shake:'Shakeado',stir:'Refrescado',build:'Directo',blend:'Licuado',muddle:'Machacado'},
    ices:{up:'Up',cubes:'Cubos',crushed:'Picado',cracked:'Partido',blended:'Licuado',none:'Sin hielo',hot:'Caliente'},
-   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
+   glass:'Copa', glassIba:'Receta IBA', glassAlt:'También sirve', swap:'Sustituir', swClose:'Similar', swShift:'Cambia el trago', ice:'Hielo', tech:'Técnica', abv:'Graduación', method:'Preparación', note:'Nota', garnish:'Garnish', story:'Historia', play:'Ver video', watch:'Abrir en YouTube',
    add:'Sumar a la comanda', added:'En la comanda', fullRecipe:'Receta completa', ticket:'Comanda', notes:'Apuntes', prep:'Insumos', terms:'Términos', quiz:'Práctica', qFrom:n=>`De tu lista · ${n} tragos`, qAmt:x=>`¿Qué medida de ${x}?`, qIng:'¿Cuál lleva?', qGlass:'¿Qué cristalería?', qMeth:'¿Qué método?', qName:'¿Qué trago es?', qNext:'Siguiente', qRight:'Bien', qWrong:'Casi', qMissed:'Para repasar', qOpen:'Receta completa', inIBA:'En tragos IBA', balance:'Balance', tips:'Claves', seeN:n=>`Ver ${n} tragos`, prepL:'Preparación', introK:'Lista oficial IBA', introB:'Todos los tragos, en orden', mise:'Mise en place', glassware:'Cristalería', garnishes:'Garnish',
    searchN:n=>`Buscar en ${n} tragos`, search:'Buscar', colNo:'N.º', year:'Año', colDrink:'Trago', recipe:'Receta', drawing:'Dibujo', photo:'Foto', review:'Revisar', cards:'Tarjetas', layoutL:'Diseño', replay:'Repetir intro', prev:'Anterior', next:'Siguiente', view:'Receta', skip:'Pasar',
    drinksN:n=>n===1?'1 trago':`${n} tragos`, clearT:'Vaciar comanda', less:'Uno menos', more:'Uno más', opt:'opcional', or:'o', back:'Volver', open:'Abrir comanda'}
@@ -511,6 +517,7 @@ const ID2SP = {}; Object.entries(SPIRIT).forEach(([g,ids])=>ids.forEach(i=>ID2SP
 const BASES = ['gin','vodka','rum','agave','whisky','brandy','wine','liqueur'];
 const ALLERGY = Object.keys(COMP).filter(k=>COMP[k].quick);
 const VEGAN = ['egg','milk','honey','fish'];
+const swapFor = (ids,c) => ids.some(id=>(SWAPS.ing[id]||[]).some(x=>(x.for||[]).includes(c)));
 const PANTRY = new Set(['water','sugar','sugar-cube','simple','soda','salt','pepper']);
 const FACETS = [ // key, values, drink -> values
  ['base', BASES, d=>[d.base]],
@@ -540,7 +547,10 @@ const DR = DATA.drinks.map(dr=>{
   dr.lines.forEach(l=>Object.entries(l.c).forEach(([c,lv])=>{
     if (l.opt){ dr.optLev[c]=Math.max(dr.optLev[c]||0,lv); return; }
     dr.lev[c]=Math.max(dr.lev[c]||0,lv); (dr.via[c]=dr.via[c]||[]).push({id:l.ids[0],lv}); }));
-  if (dr.lines.some(l=>!l.opt && l.ids.some(i=>!ING[i]))) dr.lev.__unknown=1;
+  // the same levels when bar swaps are allowed: a line drops an allergen it has a swap for (aquafaba for egg, and so on)
+  dr.levSw={};
+  dr.lines.forEach(l=>{ if(l.opt) return; Object.entries(l.c).forEach(([c,lv])=>{ if(swapFor(l.ids,c)) return; dr.levSw[c]=Math.max(dr.levSw[c]||0,lv); }); });
+  if (dr.lines.some(l=>!l.opt && l.ids.some(i=>!ING[i]))) dr.lev.__unknown=dr.levSw.__unknown=1;
   dr.idset = new Set(dr.lines.filter(l=>!l.opt).flatMap(l=>l.ids));
   let best=null,bestSp=null;
   dr.lines.forEach(l=>{ if(l.opt) return; const g=ING[l.ids[0]]; if(!g||!g.abv) return; const a=l.vol*g.abv;
@@ -565,7 +575,7 @@ DR.slice().sort((a,b)=>a.name.localeCompare(b.name)).forEach((d,i)=>d.no=i+1);
 Object.keys(ticket).forEach(k=>{ if(!byId[k]) delete ticket[k]; });
 const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().trim();
 // level 1 declared only, 2 + common, 3 + possible (and unknown bottles)
-const blocked = (d, comps) => comps.some(c => (d.lev[c]||0) >= 4-S.level || (S.level===3 && d.lev.__unknown));
+const blocked = (d, comps) => { const lev=S.swapok?d.levSw:d.lev; return comps.some(c => (lev[c]||0) >= 4-S.level || (S.level===3 && lev.__unknown)); };
 function pass(d, skip){
   if (Q){ const ws=norm(Q).split(/\s+/).filter(Boolean); if(!ws.every(w=>d.search.includes(w))) return false; }
   const ex = S.leave.concat(S.vegan?VEGAN:[]);
@@ -583,7 +593,7 @@ function pass(d, skip){
   return true;
 }
 const facetCount = (k, v, get) => DR.filter(d=>pass(d,k) && get(d).includes(v)).length;
-const activeCount = () => S.leave.length + (S.vegan?1:0) + S.toks.length + (S.mybar?1:0) + FACETS.reduce((n,[k])=>n+S[k].length,0);
+const activeCount = () => S.leave.length + (S.vegan?1:0) + (S.swapok?1:0) + S.toks.length + (S.mybar?1:0) + FACETS.reduce((n,[k])=>n+S[k].length,0);
 const SORTS = {az:(a,b)=>a.name.localeCompare(b.name), light:(a,b)=>a.abv-b.abv, strong:(a,b)=>b.abv-a.abv, old:(a,b)=>a.year-b.year, new:(a,b)=>b.year-a.year, few:(a,b)=>a.nIng-b.nIng||a.name.localeCompare(b.name)};
 const results = () => DR.filter(d=>pass(d)).sort(SORTS[sort]||SORTS.az);
 const uName = u => UNIT[u] ? UNIT[u][lang==='es'?1:0] : u;
@@ -621,6 +631,7 @@ function renderChrome(){
   const tags = [];
   S.leave.forEach(c=>tags.push([`leave:${c}`, `${tt.sin} ${L(COMP[c]).replace(/ \(.*\)/,'').toLowerCase()}`]));
   if (S.vegan) tags.push(['vegan:1', tt.vegan]);
+  if (S.swapok) tags.push(['swapok:1', tt.swapOk]);
   S.toks.forEach((tk,i)=>tags.push([`tok:${i}`, `${tk.mode==='exc'?tt.sin:tt.con} ${tokLabel(tk).toLowerCase()}`]));
   if (S.mybar) tags.push(['mybar:1', tt.mybarS]);
   FACETS.slice(1).forEach(([k])=>S[k].forEach(v=>tags.push([`${k}:${v}`, facetLabel(k,v)])));
@@ -848,14 +859,14 @@ function slotText(k){
   const W=SENT[lang], lc=s=>String(s).toLowerCase(), join=(a,w)=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' '+w+' '+a[a.length-1];
   const phr=(f,v)=>(W.v[f]&&W.v[f][v]) || (f==='cat'?facetLabel(f,v):lc(facetLabel(f,v)));
   if (k==='sort') return {on:sort!=='az', s:W.v.sort[sort]||W.ph.sort};
-  if (k==='leave'){ const a=S.leave.map(c=>lc(L(COMP[c]).replace(/ \(.*\)/,''))); if(S.vegan) a.push(W.animal); return {on:a.length>0, s:a.length?join(a,W.and):W.ph.leave}; }
+  if (k==='leave'){ const a=S.leave.map(c=>lc(L(COMP[c]).replace(/ \(.*\)/,''))); if(S.vegan) a.push(W.animal); return {on:a.length>0, s:a.length?join(a,W.and)+(S.swapok?' '+t().swapSent:''):W.ph.leave}; }
   if (k==='ing'){ const a=S.toks.map(tk=>(tk.mode==='exc'?W.no+' ':'')+lc(tokLabel(tk))); let s=a.length?join(a,W.and):W.ph.ing; if(a.length&&S.mybar) s+=' '+W.only; return {on:a.length>0, s}; }
   const a=S[k].map(v=>phr(k,v)); return {on:a.length>0, s:a.length?join(a,W.or):W.ph[k]};
 }
 const slotBtn = k => { const x=slotText(k); return `<button type="button" class="sl${x.on?' on':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(x.s)}</button>`; };
 function trayBody(k){
   const tt=t();
-  if (k==='leave') return `<div class="vs">${ALLERGY.map(c=>`<button type="button" class="v" data-leave="${c}" aria-pressed="${S.leave.includes(c)}">${esc(L(COMP[c]).replace(/ \(.*\)/,''))}</button>`).join('')}<button type="button" class="v" data-vegan="1" aria-pressed="${S.vegan}">${tt.vegan}</button></div>
+  if (k==='leave') return `<div class="vs">${ALLERGY.map(c=>`<button type="button" class="v" data-leave="${c}" aria-pressed="${S.leave.includes(c)}">${esc(L(COMP[c]).replace(/ \(.*\)/,''))}</button>`).join('')}<button type="button" class="v" data-vegan="1" aria-pressed="${S.vegan}">${tt.vegan}</button></div><div class="vs" style="margin-top:14px"><button type="button" class="v" data-swapok="1" aria-pressed="${S.swapok}">${tt.swapOk}</button></div>
     <div class="strict" role="group" aria-label="${esc(tt.strictL)}">${tt.lv.map((x,i)=>`<button type="button" data-level="${i+1}" aria-pressed="${S.level===i+1}">${x}</button>`).join('')}</div><p class="shelp">${tt.lvHelp[S.level-1]}</p>`;
   if (k==='ing'){ const toks=S.toks.map((tk,i)=>`<span class="tok ${tk.mode}"><button type="button" class="mode" data-tokmode="${i}" aria-label="${esc(tt.switchMode)}">${tk.mode==='inc'?tt.con:tt.sin}</button><button type="button" data-tokdel="${i}" aria-label="${esc(tt.remove)}: ${esc(tokLabel(tk))}">${esc(tokLabel(tk))}${ICON.close}</button></span>`).join('');
     return `<input class="tokin" id="tokin" type="text" autocomplete="off" placeholder="${esc(tt.ingrPh)}" aria-label="${esc(tt.ingrPh)}"><div class="sugg" id="sugg"></div>${toks?`<div class="toks">${toks}</div>`:''}<label class="sw-l">${tt.mybar}<input type="checkbox" id="mybar" ${S.mybar?'checked':''}></label>`; }
@@ -903,7 +914,12 @@ function qtyParts(l){
 function detail(d){
   const tt=t(); const n = ticket[d.id]||0, bg=bgOf(d);
   const note = l => { const x = lang==='es'?l.n_es:l.n_en; return [x, l.opt?tt.opt:''].filter(Boolean).join(' · '); };
-  const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div${l.opt?' class="opt"':''}><b${a?'':' class="wd"'}>${esc(a||capW(b))}${a?`<small>${esc(b)}</small>`:''}</b><span>${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span></div>`; }).join('');
+  // bar swaps for niche bottles and allergies, folded under the line they replace
+  const swaps = l => { const others=l.ids.map(id=>ingName(id).toLowerCase().split(' (')[0]); return l.ids.flatMap(id=>SWAPS.ing[id]||[]).filter(x=>!others.some(o=>L(x).toLowerCase().startsWith(o))); };
+  const avoid = S.swapok ? S.leave.concat(S.vegan?VEGAN:[]) : [];
+  const swapHTML = l => { const sw=swaps(l); if(!sw.length) return ''; const on=avoid.some(c=>(l.c[c]||0)&&swapFor(l.ids,c));
+    return `<button type="button" class="swb" aria-expanded="${on}">${tt.swap}</button><ul class="swl"${on?'':' hidden'}>${sw.map(x=>`<li>${esc(L(x))}<small>${esc(x.fit==='close'?tt.swClose:tt.swShift)}</small></li>`).join('')}<li class="sws">${esc(L(SWAPS.src))}</li></ul>`; };
+  const lines = d.lines.map(l=>{ const [a,b]=qtyParts(l); return `<div${l.opt?' class="opt"':''}><b${a?'':' class="wd"'}>${esc(a||capW(b))}${a?`<small>${esc(b)}</small>`:''}</b><span>${esc(lineLabel(l))}${note(l)?`<em>${esc(note(l))}</em>`:''}</span>${swapHTML(l)}</div>`; }).join('');
   const liq = glassLiq(d);
   // the IBA method, one step per clause
   const [meth, ...nts] = L(d.method).split(/\s*\b(?:NOTE|NOTA)\s*:\s*\*?/i), mnote = nts.join(' ').trim();
@@ -1103,13 +1119,14 @@ document.addEventListener('click', e=>{
   const fc=e.target.closest('[data-f]'); if(fc){ const k=fc.dataset.f,v=fc.dataset.v; S[k]=S[k].includes(v)?S[k].filter(x=>x!==v):[...S[k],v]; changed(); return; }
   const lv=e.target.closest('[data-leave]'); if(lv){ const c=lv.dataset.leave; S.leave=S.leave.includes(c)?S.leave.filter(x=>x!==c):[...S.leave,c]; changed(); return; }
   if(e.target.closest('[data-vegan]')){ S.vegan=!S.vegan; changed(); return; }
+  if(e.target.closest('[data-swapok]')){ S.swapok=!S.swapok; changed(); return; }
   const lvl=e.target.closest('[data-level]'); if(lvl){ S.level=+lvl.dataset.level; changed(); return; }
   const at=e.target.closest('[data-addtok]'); if(at){ const [type,id]=at.dataset.addtok.split(':'); S.toks.push({type,id,mode:'inc'}); $('#tokin').value=''; changed(); $('#tokin').focus(); return; }
   const tm=e.target.closest('[data-tokmode]'); if(tm){ const tk=S.toks[+tm.dataset.tokmode]; tk.mode=tk.mode==='inc'?'exc':'inc'; changed(); return; }
   const td=e.target.closest('[data-tokdel]'); if(td){ S.toks.splice(+td.dataset.tokdel,1); changed(); return; }
   const so=e.target.closest('[data-sort]'); if(so){ sort=so.dataset.sort; store.set('sort',sort); changed(); return; }
   const rm=e.target.closest('[data-rm]'); if(rm){ const [k,v]=rm.dataset.rm.split(':');
-    if(k==='leave') S.leave=S.leave.filter(x=>x!==v); else if(k==='vegan') S.vegan=false; else if(k==='mybar') S.mybar=false; else if(k==='tok') S.toks.splice(+v,1); else S[k]=S[k].filter(x=>x!==v);
+    if(k==='leave') S.leave=S.leave.filter(x=>x!==v); else if(k==='vegan') S.vegan=false; else if(k==='swapok') S.swapok=false; else if(k==='mybar') S.mybar=false; else if(k==='tok') S.toks.splice(+v,1); else S[k]=S[k].filter(x=>x!==v);
     changed(); return; }
   if(e.target.closest('#nopen')){ openNotes(); return; }
   if(e.target.closest('#nbcls')){ closeNotes(); return; }
@@ -1120,6 +1137,7 @@ document.addEventListener('click', e=>{
   if(e.target.closest('#qnext')){ makeQ(); renderNotes(); const f=document.querySelector('.qo'); const nb=$('#nb'); nb.scrollTop=0; if(f) f.focus({preventScroll:true}); return; }
   const ni=e.target.closest('[data-nbid]'); if(ni){ leaveNotes(); open(ni.dataset.nbid); return; }
   const nf=e.target.closest('[data-nbf]'); if(nf){ const [k,v]=nf.dataset.nbf.split(':'); leaveNotes(); S[k]=[v]; changed(); scrollTo(0,0); return; }
+  const sb=e.target.closest('.swb'); if(sb){ const ul=sb.nextElementSibling, on=ul.hidden; ul.hidden=!on; sb.setAttribute('aria-expanded',on); return; }
   const np=e.target.closest('[data-nbp]'); if(np){ closeTicket(true); if(history.state&&history.state.c) history.replaceState(null,'',location.pathname+location.search); openNotes('prep', np.dataset.nbp); return; }
   if(e.target.closest('#fopen')){ openFilters(); return; }
   if(e.target.closest('#fclose') || e.target.closest('#fshow') || e.target===$('#fs')){ closeFilters(); return; }
