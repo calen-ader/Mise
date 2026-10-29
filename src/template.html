@@ -1,6 +1,17 @@
 <title>Mise</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#141414">
+<meta name="description" content="The 102 IBA cocktails: recipes, glass and ice, history and videos. In English and Spanish.">
+<meta property="og:title" content="Mise">
+<meta property="og:description" content="The 102 IBA cocktails: recipes, glass and ice, history and videos. In English and Spanish.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mise-cocktails.vercel.app/">
+<meta property="og:image" content="https://mise-cocktails.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Funnel+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
@@ -665,7 +676,6 @@ function glassBlock(d){ const tt=t(), g=GLASSWARE.shapes[glassShape(d)];
   const note=GLASSWARE.notes[d.id]?L(GLASSWARE.notes[d.id]):'';
   return `<b>${esc(L(g))}</b><small class="ga">${same?'':`${esc(tt.glassIba)}: ${esc(rec)}. `}${alts.length?`${esc(tt.glassAlt)}: ${esc(alts.join(', '))}.`:''}${note?` ${esc(note)}`:''}</small>`; }
 const metaLine = d => [t().bases[d.base], techStr(d), Math.round(d.abv)+'%'].join(' · ');
-const photo = d => `photos/${d.id}.webp`;
 
 /* ---- photos: the IBA originals at three sizes, never enlarged ---- */
 const SRC = d => ({src:`img/${d.id}-720.webp`, set:`img/${d.id}-360.webp 360w, img/${d.id}-720.webp 720w, img/${d.id}-1077.webp 1077w`});
