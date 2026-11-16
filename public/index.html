@@ -3,7 +3,7 @@
 <meta name="theme-color" content="#141414">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Funnel+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Funnel+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,400&display=swap" rel="stylesheet">
 <style>
 /* Mise, editorial: paper, flat inks, one heavy grotesque for names and numbers, one sans for everything else,
    and a serif kept for the drink's history alone. Every drink is drawn from its recipe (glass.js); the photo is one tap away. */
@@ -456,6 +456,172 @@ main{padding:var(--navh) 0 140px;background:var(--ink);color:var(--pa);min-heigh
 .tray .v:disabled{opacity:.3;cursor:default}
 .tray .strict{margin-top:16px}
 @media(min-width:960px){.tray .v{font-size:40px}.tray{padding-top:18px;padding-bottom:28px}}
+
+
+/* ===== 2026-11-16 feedback round =====
+   type: names lighter and wider (Bricolage at 600, a smaller optical size, almost no negative tracking) so the Bodoni mark carries the brand;
+   list: more room per row, the others dim while one is in focus;
+   drink page: one recipe column, fewer competing blocks, more air;
+   filters: the sentence states its result; trays patch in place;
+   notes: the index again, on black, same masthead, same columns. */
+:root{--wd:600;--wn:650;--opsz:"opsz" 36}
+.nm,.tl .nm,.head h2,.empty p,.sent,.tray .v,.fhead h2,.s-head h2,.pr .nm,.tm-i dt,.vh b,.intro .k b{font-weight:var(--wd);font-variation-settings:var(--opsz);letter-spacing:-.012em}
+.rec b,.spx b,.tl .ab,.tl .no,.tk output,.tk .sp button,.tab .n,.parts b,.pr .ra,.step output,.s-sec td.q,.ctn b,.steps li::before,.qz-top .sc,.qc .spec b,.pr .no{font-weight:var(--wn);font-variation-settings:var(--opsz)}
+.head h2{line-height:.92;letter-spacing:-.018em}
+.mark{font-size:24px;letter-spacing:.34em}
+@media(min-width:960px){.mark{font-size:27px}}
+@media(max-width:599px){.mark{font-size:21px}}
+
+/* list: room to breathe, and focus */
+.tl .open{min-height:116px;padding-top:22px;padding-bottom:22px}
+.tl .nm{font-size:min(clamp(28px,7.6vw,52px),calc((100vw - 190px)/(var(--w,8)*.62)));line-height:1.02}
+.tl .art{width:120px;height:144px}
+.tl{transition:background .35s var(--ease),color .35s var(--ease),opacity .35s var(--ease)}
+@media(min-width:960px){
+  .tl .open{min-height:148px;padding-top:36px;padding-bottom:34px}
+  .tl .nm{font-size:calc(clamp(38px,3.5vw,54px)*var(--s,1))}
+  .tl .no{margin-top:1.05em}
+  .tl .c{margin-top:1.5em}
+  .tl .ab{margin-top:.75em}
+  .tl .art{width:190px;height:228px}
+  .tl .ac{bottom:30px}
+}
+@media(hover:hover){.idx:has(.tl:hover) .tl:not(:hover):not(:has(:focus-visible)){opacity:.28}}
+.idx:has(.tl:focus-visible) .tl:not(:has(:focus-visible)){opacity:.28}
+@media(hover:none){.idx:has(.tl:active) .tl:not(:active){opacity:.4}}
+
+/* drink page: calmer */
+.head .tags{display:block;margin-top:6px;font:700 11px/1.3 var(--ft);letter-spacing:.1em;text-transform:uppercase;opacity:.62}
+.bk>*{max-width:600px}
+.bA{padding-top:28px;padding-bottom:48px}
+.bA .k{margin-bottom:18px}
+.rec.rl{grid-template-columns:minmax(0,1fr);gap:0;margin-top:0}
+.rec.rl>div{display:grid;grid-template-columns:5.2em minmax(0,1fr);column-gap:16px;align-items:baseline;padding:11px 0}
+.rec.rl b{font-size:28px;line-height:1}
+.rec.rl b.wd{font-size:20px;line-height:1.1}
+.rec.rl b small{font-size:10.5px;margin-left:4px}
+.rec.rl span{margin-top:0;font-size:17px;line-height:1.3}
+.rec.rl span em{font-size:13px;margin-top:3px}
+.rec.rl .swb{grid-column:2;justify-self:start;margin-top:6px;font-size:10.5px;color:var(--ink2);text-decoration-thickness:1px}
+.rec.rl .swl{grid-column:2}
+.bA .ac{margin-top:36px;gap:18px 28px}
+.bA .lk a.fr{display:none}
+.bA .ac:has(iframe) .lk a.fr{display:inline-flex}
+.bB{padding-top:44px;padding-bottom:46px}
+.spx{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 24px}
+.spx>div{min-width:0}
+.spx .gw,.spx .gn{grid-column:1/-1}
+.spx .k{margin-bottom:10px}
+.spx b{font-size:24px}
+.spx .gn b{font:500 18px/1.35 var(--ft);letter-spacing:0;white-space:normal}
+.spx .ga{margin-top:10px;font-size:14px;line-height:1.45}
+.bC{padding-top:48px;padding-bottom:48px}
+.bC .k{margin-bottom:18px}
+.steps{gap:16px}
+.bV{padding-top:8px;padding-bottom:52px}
+.bV>.k{margin-bottom:16px}
+.vl{gap:14px}
+.bD{padding-top:48px;padding-bottom:52px}
+.bD .k{margin-bottom:18px}
+.bE{padding-top:40px}
+.bE .k{margin-bottom:16px}
+.ctn{gap:12px}
+@media(min-width:960px){
+  .bk{padding-left:56px;padding-right:56px}
+  .sg .tb{padding:0 56px}
+  .bA{padding-top:40px;padding-bottom:64px}
+  .rec.rl>div{grid-template-columns:5.6em minmax(0,1fr);padding:13px 0}
+  .rec.rl b{font-size:34px}.rec.rl b.wd{font-size:24px}
+  .rec.rl span{font-size:18px}
+  .bB,.bC,.bD{padding-top:60px;padding-bottom:60px}
+  .spx{gap:34px 40px}.spx b{font-size:30px}.spx .gn b{font-size:19px}
+  .bD p{font-size:23px;line-height:1.45}
+}
+
+/* filters: the result is part of the sentence */
+.fres{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:1.1em;max-width:1240px}
+.fres .fn{font:var(--wn) clamp(26px,3vw,40px)/1 var(--fd);font-variation-settings:var(--opsz);color:var(--pa);min-width:1.4em}
+.fres .fu{font:700 12px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:#8d8a84}
+.fres .fpv{flex-basis:100%;margin:8px 0 0;font:400 16px/1.45 var(--ft);color:#8d8a84;max-width:64ch}
+.adds{margin-top:2.4em}
+.adds .ad{transition:color .2s}
+.adds .ad.set{color:var(--pa)}
+.adds .ad.set::before{content:"";display:inline-block;width:7px;height:7px;margin-right:9px;vertical-align:.16em;background:var(--co)}
+.adds .ad.cur{color:var(--co)}
+.tray .th .tha{display:flex;gap:18px}
+.tray .hint{margin:2px 0 12px;font:400 13px/1.3 var(--ft);color:var(--ink2)}
+.tray .v,.tray .v sup{transition:background .2s,color .2s}
+.tray .v:not(:disabled):hover{color:var(--co)}
+.tray .v[aria-pressed=true]:hover{color:var(--pa)}
+.strict .n{margin-left:.35em;font-size:10.5px;vertical-align:.45em;letter-spacing:.02em;color:var(--ink3)}
+
+/* notes: the index again */
+.nb{background:var(--ink);color:var(--pa)}
+.nb-top{position:sticky;top:0;z-index:3;background:var(--ink);padding:env(safe-area-inset-top) var(--gut) 0;border-bottom:1px solid rgba(243,238,228,.16)}
+.nb-top .bar{gap:clamp(12px,2vw,28px)}
+.nb-k{flex:1 1 auto;min-width:0;font:700 12px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase;color:#8d8a84}
+.nb-tabs{display:flex;gap:clamp(14px,2vw,28px)}
+.nb-tabs .fbtn{position:relative;color:#8d8a84}
+.nb-tabs .fbtn[aria-pressed=true]{color:var(--pa)}
+.nb-tabs .fbtn[aria-pressed=true]::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:3px;background:var(--co)}
+.nb-x{color:var(--pa)}
+@media(hover:hover){.nb-tabs .fbtn:hover{color:var(--pa)}}
+.nb-top .chips{border-top-color:rgba(243,238,228,.14)}
+.nb-top .chip{color:#8d8a84}
+@media(hover:hover){.nb-top .chip:hover{color:var(--pa)}}
+.nb-src{flex:none;margin-left:auto;padding-left:24px;font:600 11px/1 var(--ft);letter-spacing:.08em;text-transform:uppercase;color:#5f5c57;white-space:nowrap}
+@media(max-width:599px){.nb-src{display:none}.nb-k{display:none}.nb-top .mark{margin-right:auto}}
+.nb-in{max-width:none;margin:0;padding:0 0 120px}
+.nb-g{margin:0}
+.nb-gh{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;height:44px;padding:0 var(--gut);border-bottom:1px solid rgba(243,238,228,.3);color:#8d8a84;font:700 11px/1 var(--ft);letter-spacing:.1em;text-transform:uppercase}
+.nb-gh span:nth-child(3){display:none}
+.nb-g+.nb-g .nb-gh{margin-top:48px}
+.pr{border-bottom:1px solid rgba(243,238,228,.12);transition:opacity .35s var(--ease),background .35s var(--ease)}
+.pr summary{grid-template-columns:34px minmax(0,1fr) auto;column-gap:6px;row-gap:8px;align-items:start;padding:24px var(--gut) 22px;min-height:116px}
+.pr .no{font-size:12px;opacity:.55;color:inherit;margin-top:.7em}
+.pr .nm{font-size:clamp(28px,7.6vw,52px);line-height:1.02;letter-spacing:-.012em}
+.pr .ra{font-size:clamp(18px,4.2vw,24px);margin-top:.35em}
+.pr .tm{grid-column:2/4;color:#8d8a84}
+.pr .pm{display:none}
+.pr[open]{background:#1d1c1a}
+.pr[open] .ra{color:var(--co)}
+.pb{padding:4px var(--gut) 44px calc(var(--gut) + 40px)!important}
+@media(min-width:960px){.pb{padding:0 280px 56px calc(var(--gut) + 70px)!important}}
+.tray .v sup.x{font-size:15px;vertical-align:.9em;margin-left:4px}
+.pb>*{max-width:640px}
+.pb h4{margin:30px 0 12px;color:#8d8a84}
+.pb h4 small{color:#5f5c57}
+.parts b{font-size:24px}
+.parts span,.pb .out{color:var(--pa)}
+.kv td{border-bottom-color:rgba(243,238,228,.12)}
+.tips li{color:#b9b5ad}.tips li::before{background:var(--pa)}
+.uses .txt{color:var(--pa)}
+.uses+.out{color:#8d8a84}
+.nb .steps li{font-size:16.5px}
+.tm-l{margin:0}
+.tm-i{grid-template-columns:34px minmax(0,1fr);column-gap:6px;padding:26px var(--gut) 28px;border-bottom:1px solid rgba(243,238,228,.12);transition:opacity .35s var(--ease)}
+.tm-i .no{font:var(--wn) 12px/1 var(--fd);opacity:.55;margin-top:.7em;font-variant-numeric:tabular-nums}
+.tm-i dt{font-size:clamp(28px,7.6vw,52px);line-height:1.02}
+.tm-i dd{grid-column:2;margin:12px 0 0;font:400 17px/1.5 var(--ft);color:#d6d1c6;max-width:58ch}
+.tm-i dd .fr{display:flex;width:max-content;margin-top:10px;color:var(--pa)}
+@media(min-width:760px){.tm-i{grid-template-columns:34px minmax(0,1fr)}.tm-i dd{margin:12px 0 0}.pb{padding-left:calc(var(--gut) + 40px)}}
+@media(min-width:960px){
+  .nb-gh{grid-template-columns:64px minmax(0,1fr) 150px 110px;column-gap:6px;padding:0 280px 0 var(--gut);height:38px}
+  .nb-gh span:first-child{grid-column:1/3}
+  .nb-gh span:nth-child(3){display:block}
+  .pr summary{grid-template-columns:64px minmax(0,1fr) 150px 110px;padding:36px 280px 34px var(--gut);min-height:148px}
+  .pr .no{font-size:14px;margin-top:1.05em}
+  .pr .nm{font-size:clamp(38px,3.5vw,54px)}
+  .pr .ra{font-size:24px;margin-top:.7em;text-align:left}
+  .pr .tm{grid-column:auto;margin-top:1.5em;font-size:12.5px;line-height:1.2}
+  .pb{padding:0 280px 56px calc(var(--gut) + 70px)}
+  .tm-i{grid-template-columns:64px minmax(0,1fr) minmax(0,1.1fr);column-gap:6px;padding:36px 280px 34px var(--gut)}
+  .tm-i .no{font-size:14px;margin-top:1.05em}
+  .tm-i dt{font-size:clamp(34px,3vw,46px)}
+  .tm-i dd{grid-column:3;margin:.55em 0 0 24px;font-size:18px}
+}
+@media(hover:hover){.nb-g:has(.pr:hover) .pr:not(:hover):not([open]),.tm-l:has(.tm-i:hover) .tm-i:not(:hover){opacity:.28}}
+.nb .s-sec td .pl,.nb .txt{color:var(--pa)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style></head><body>
@@ -5520,7 +5686,7 @@ function topY(d){ if (d.id in TOPY) return TOPY[d.id];
   return TOPY[d.id]=y; }
 // one scale for every glass, cropped by the row; low glasses are lifted so their rim sits where a coupe's does, never so far the garnish is cut
 function cropVars(d){ const ry=glassRim(d)[2], rimS=38+.84*ry, top=Math.min(rimS,topY(d));
-  return [[92,.55,-16,1],[112,.85,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
+  return [[116,.6,-16,1],[148,.95,-26,2]].map(([R,k,t0,n])=>{ let t=t0+Math.min(0,.45*R-(rimS*k+t0)); t=Math.max(t,4-top*k); t=Math.min(t,t0);
     return `--t${n}:${t.toFixed(1)}px`; }).join(';')+`;--vc:${((top+233)/480).toFixed(3)}`; }
 const tileHTML = (d,i) => { const bg=bgOf(d); return `<li class="tl" data-k="${d.id}" style="${cropVars(d)};--i:${i};--s:${Math.max(.66,Math.min(1,13/d.name.length)).toFixed(2)};--w:${Math.max(...d.name.split(/\s+/).map(w=>w.length))};--bg:${bg};--fg:${lightBg(bg)?'var(--ink)':'var(--pa)'}"><button class="open" type="button" data-id="${d.id}"><span class="no">${String(d.no).padStart(2,'0')}</span><span class="nm">${esc(d.name)}</span><span class="c">${esc(t().bases[d.base])}</span><span class="ab">${Math.round(d.abv)}%</span><span class="xp"><div><span class="xc"><span class="tg">${esc(tagLine(d)+(varHit(d)?` · ${t().varOf}: ${varHit(d).name}`:''))}</span>${L(d.history)?`<span class="st">${esc(L(d.history))}</span>`:''}<span class="gap"></span></span></div></span><span class="art">${listArt(d)}</span></button>${qaHTML(d)}<div class="ac">${tkHTML(d.id, bg==='#ee4a36'?'coral':'')}<button type="button" class="fr" data-id="${d.id}" tabindex="-1">${esc(t().fullRecipe)}${ICON.next}</button></div></li>`; };
 function renderList(){
@@ -5710,43 +5876,86 @@ function slotText(k){
   const a=S[k].map(v=>phr(k,v)); return {on:a.length>0, s:a.length?join(a,W.or):W.ph[k]};
 }
 const slotBtn = k => { const x=slotText(k); if(!x.on && k!=='sort') x.s=SENT[lang].bl[k]; return `<button type="button" class="sl${x.on?' on':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(x.s)}</button>`; };
+// every number in a tray is the size of the list you'd get by tapping that word
+function wouldBe(fn){ const keep=JSON.stringify(S); fn(); const n=DR.filter(d=>pass(d)).length; S=JSON.parse(keep); return n; }
+const tog = (a,v) => a.includes(v)?a.filter(x=>x!==v):[...a,v];
+const vBtn = (attrs, on, label, n) => `<button type="button" class="v" ${attrs} aria-pressed="${on}" ${!n&&!on?'disabled':''}>${esc(label)}${on?'<sup class="x" aria-hidden="true">×</sup>':`<sup>${n}</sup>`}</button>`;
+function toksHTML(){ const tt=t(); return S.toks.map((tk,i)=>`<span class="tok ${tk.mode}"><button type="button" class="mode" data-tokmode="${i}" aria-label="${esc(tt.switchMode)}">${tk.mode==='inc'?tt.con:tt.sin}</button><button type="button" data-tokdel="${i}" aria-label="${esc(tt.remove)}: ${esc(tokLabel(tk))}">${esc(tokLabel(tk))}${ICON.close}</button></span>`).join(''); }
 function trayBody(k){
   const tt=t();
-  if (k==='leave') return `<div class="vs">${ALLERGY.map(c=>`<button type="button" class="v" data-leave="${c}" aria-pressed="${S.leave.includes(c)}">${esc(L(COMP[c]).replace(/ \(.*\)/,''))}</button>`).join('')}<button type="button" class="v" data-vegan="1" aria-pressed="${S.vegan}">${tt.vegan}</button></div><div class="vs" style="margin-top:14px"><button type="button" class="v" data-swapok="1" aria-pressed="${S.swapok}">${tt.swapOk}</button></div>
-    <div class="strict" role="group" aria-label="${esc(tt.strictL)}">${tt.lv.map((x,i)=>`<button type="button" data-level="${i+1}" aria-pressed="${S.level===i+1}">${x}</button>`).join('')}</div><p class="shelp">${tt.lvHelp[S.level-1]}</p>`;
-  if (k==='ing'){ const toks=S.toks.map((tk,i)=>`<span class="tok ${tk.mode}"><button type="button" class="mode" data-tokmode="${i}" aria-label="${esc(tt.switchMode)}">${tk.mode==='inc'?tt.con:tt.sin}</button><button type="button" data-tokdel="${i}" aria-label="${esc(tt.remove)}: ${esc(tokLabel(tk))}">${esc(tokLabel(tk))}${ICON.close}</button></span>`).join('');
-    return `<input class="tokin" id="tokin" type="text" autocomplete="off" placeholder="${esc(tt.ingrPh)}" aria-label="${esc(tt.ingrPh)}"><div class="sugg" id="sugg"></div>${toks?`<div class="toks">${toks}</div>`:''}<label class="sw-l">${tt.mybar}<input type="checkbox" id="mybar" ${S.mybar?'checked':''}></label>`; }
+  if (k==='leave') return `<div class="vs">${ALLERGY.map(c=>vBtn(`data-leave="${c}"`, S.leave.includes(c), L(COMP[c]).replace(/ \(.*\)/,''), wouldBe(()=>{S.leave=tog(S.leave,c);}))).join('')}${vBtn('data-vegan="1"', S.vegan, tt.vegan, wouldBe(()=>{S.vegan=!S.vegan;}))}</div><div class="vs" style="margin-top:14px">${vBtn('data-swapok="1"', S.swapok, tt.swapOk, wouldBe(()=>{S.swapok=!S.swapok;}))}</div>
+    <div class="strict" role="group" aria-label="${esc(tt.strictL)}">${tt.lv.map((x,i)=>`<button type="button" data-level="${i+1}" aria-pressed="${S.level===i+1}">${x}<span class="n">${wouldBe(()=>{S.level=i+1;})}</span></button>`).join('')}</div><p class="shelp">${tt.lvHelp[S.level-1]}</p>`;
+  if (k==='ing') return `<input class="tokin" id="tokin" type="text" autocomplete="off" placeholder="${esc(tt.ingrPh)}" aria-label="${esc(tt.ingrPh)}"><div class="sugg" id="sugg"></div><div class="toks" id="toks">${toksHTML()}</div><label class="sw-l">${tt.mybar}<input type="checkbox" id="mybar" ${S.mybar?'checked':''}></label>`;
   if (k==='sort') return `<div class="vs">${Object.keys(SORTS).map(s=>`<button type="button" class="v" data-sort="${s}" aria-pressed="${sort===s}">${tt.sorts[s]}</button>`).join('')}</div>`;
   const F=FACETS.find(f=>f[0]===k);
-  return `<div class="vs">${F[1].map(v=>{ const on=S[k].includes(v), n=facetCount(k,v,F[2]); return `<button type="button" class="v" data-f="${k}" data-v="${v}" aria-pressed="${on}" ${!n&&!on?'disabled':''}>${esc(facetLabel(k,v))}<sup>${n}</sup></button>`; }).join('')}</div>`;
+  return `<div class="vs">${F[1].map(v=>vBtn(`data-f="${k}" data-v="${v}"`, S[k].includes(v), facetLabel(k,v), wouldBe(()=>{S[k]=tog(S[k],v);}))).join('')}</div>`;
 }
+const slotSet = k => k==='sort' ? sort!=='az' : slotText(k).on;
+function clearSlot(k){ if(k==='leave'){ S.leave=[]; S.vegan=false; S.swapok=false; } else if(k==='ing'){ S.toks=[]; S.mybar=false; } else if(k==='sort'){ sort='az'; store.set('sort',sort); } else S[k]=[]; }
 // the sentence says only what is set; everything else waits below as words to add
 const GROW = ['flav','base','ing','tech','str','ice','ggroup','leave','era','cat','purpose'];
-function sentHTML(W,x){
+function sentText(W,x){
   const on=k=>slotText(k).on||FSLOT===k, g=W.g; let s='';
   if (!GROW.some(on) && !(sort!=='az'||FSLOT==='sort')) s=W.all;
   else { s=g.start+(on('flav')?' '+x.flav:'')+' '+g.drinks;
     GROW.slice(1).forEach(k=>{ if(!on(k)) return; const pre=k==='ing'&&on('base')?g.ingA:k==='ggroup'&&on('ice')?g.ggA:g[k]; s+=pre+x[k]; });
     s+='.'; if(sort!=='az'||FSLOT==='sort') s+=g.sort+x.sort+'.'; }
-  const left=GROW.concat('sort').filter(k=>!(k==='sort'?sort!=='az':slotText(k).on));
-  return `<p class="sent">${s}</p><div class="adds"><span class="fk2">${W.add}</span>${left.map(k=>`<button type="button" class="ad${FSLOT===k?' cur':''}" data-slot="${k}">${esc(SLOTT(k))}</button>`).join('')}</div>`;
+  return s;
 }
+const FX = { en:{hint:'Numbers: drinks you’ll see after tapping', hintS:'', clearS:'Clear', more:n=>`+ ${n} more`, unit:n=>n===1?'drink':'drinks', match:'match'},
+              es:{hint:'Números: tragos que verás al tocar', hintS:'', clearS:'Quitar', more:n=>`+ ${n} más`, unit:n=>n===1?'trago':'tragos', match:'coinciden'} };
+let FCOUNT = null;
+function tweenCount(el, to){
+  const from = FCOUNT===null ? to : FCOUNT; FCOUNT = to;
+  if (from===to || reduced()){ el.textContent = to; return; }
+  const t0 = performance.now(), dur = 280;
+  cancelAnimationFrame(el._raf);
+  (function step(now){ const k=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-k,3); el.textContent=Math.round(from+(to-from)*e); if(k<1) el._raf=requestAnimationFrame(step); })(t0);
+}
+function filterShell(){
+  const fs=$('#fs'), tt=t(), W=SENT[lang];
+  fs.dataset.lang = lang;
+  fs.innerHTML = `<div class="fpanel snt" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
+    <div class="fhead"><span class="fk">${W.lead}</span><div class="acts"><button type="button" class="txtbtn" id="fclear" hidden>${tt.clearAll}</button><button type="button" class="txtbtn" id="fclose">${W.close}</button></div></div>
+    <div class="fbody"><p class="sent"></p><div class="fres" aria-live="polite"><b class="fn num"></b><span class="fu"></span><p class="fpv"></p></div><div class="adds" role="group"></div></div>
+    <div class="ffoot"><button type="button" class="blk" id="fshow"><span></span>${ICON.next}</button></div></div>`;
+  FCOUNT = null;
+}
+function setHTML(el, html){ if (el && el._h!==html){ el.innerHTML=html; el._h=html; } }
 function renderFilters(){
   const fs=$('#fs'); if (fs.hidden) return;
-  const tt=t(), W=SENT[lang], n=results().length, x={};
+  if (!fs.querySelector('.fpanel') || fs.dataset.lang!==lang) filterShell();
+  const tt=t(), W=SENT[lang], X=FX[lang], list=results(), n=list.length, x={};
   ['flav','base','ing','tech','str','ice','ggroup','leave','era','cat','purpose','sort'].forEach(k=>x[k]=slotBtn(k));
-  const body=fs.querySelector('.fbody'), st=body?body.scrollTop:0, tr=fs.querySelector('.tray'), tst=tr?tr.scrollTop:0;
-  const tin=fs.querySelector('#tokin'), val=tin?tin.value:'', foc=tin && document.activeElement===tin;
-  fs.innerHTML = `<div class="fpanel snt" role="dialog" aria-modal="true" tabindex="-1" aria-label="${esc(tt.filters)}">
-    <div class="fhead"><span class="fk">${W.lead}</span><div class="acts">${activeCount()||sort!=='az'?`<button type="button" class="txtbtn" id="fclear">${tt.clearAll}</button>`:''}<button type="button" class="txtbtn" id="fclose">${W.close}</button></div></div>
-    <div class="fbody">${sentHTML(W,x)}</div>
-    <div class="ffoot"><button type="button" class="blk" id="fshow"><span>${tt.show(n)}</span>${ICON.next}</button></div>
-    ${FSLOT?`<div class="tray${FSLOTnew?' in':''}" role="group" aria-label="${esc(SLOTT(FSLOT))}"><div class="th"><h3>${esc(SLOTT(FSLOT))}</h3><button type="button" class="txtbtn" data-tdone>${W.done}</button></div>${trayBody(FSLOT)}</div>`:''}</div>`;
+  const fb=fs.querySelector('.fbody');
+  setHTML(fb.querySelector('.sent'), sentText(W,x));
+  // what the sentence does: how many drinks, and the first few of them
+  tweenCount(fb.querySelector('.fn'), n);
+  fb.querySelector('.fu').textContent = `${X.unit(n)} ${X.match}`;
+  const names = list.slice(0,5).map(d=>d.name);
+  fb.querySelector('.fpv').textContent = n ? names.join(', ')+(n>5?' '+X.more(n-5):'') : tt.none;
+  // the words to add keep their places; the ones already in the sentence stay, marked
+  setHTML(fb.querySelector('.adds'), `<span class="fk2">${W.add}</span>`+GROW.concat('sort').map(k=>`<button type="button" class="ad${slotSet(k)?' set':''}${FSLOT===k?' cur':''}" data-slot="${k}" aria-expanded="${FSLOT===k}">${esc(SLOTT(k))}</button>`).join(''));
+  fs.querySelector('#fclear').hidden = !(activeCount()||sort!=='az');
+  fs.querySelector('#fshow span').textContent = tt.show(n);
+  // the tray: opened once per word, then only its values change
+  const pan=fs.querySelector('.fpanel'); let tr=pan.querySelector('.tray');
+  if (!FSLOT){ if (tr) tr.remove(); fb.style.paddingBottom=''; return; }
+  const head = `<h3>${esc(SLOTT(FSLOT))}</h3><div class="tha">${slotSet(FSLOT)?`<button type="button" class="txtbtn" data-tclear="${FSLOT}">${X.clearS}</button>`:''}<button type="button" class="txtbtn" data-tdone>${W.done}</button></div>`;
+  const hint = FSLOT==='sort'||FSLOT==='ing' ? '' : `<p class="hint">${X.hint}</p>`;
+  if (!tr || tr.dataset.k!==FSLOT){
+    if (tr) tr.remove();
+    tr=document.createElement('div'); tr.className='tray'+(FSLOTnew?' in':''); tr.dataset.k=FSLOT; tr.setAttribute('role','group'); tr.setAttribute('aria-label',SLOTT(FSLOT));
+    tr.innerHTML=`<div class="th"></div>${hint}<div class="tb2"></div>`; pan.appendChild(tr);
+    setHTML(tr.querySelector('.th'), head); setHTML(tr.querySelector('.tb2'), trayBody(FSLOT));
+  } else {
+    setHTML(tr.querySelector('.th'), head);
+    if (FSLOT==='ing'){ setHTML(tr.querySelector('#toks'), toksHTML()); const mb=tr.querySelector('#mybar'); if(mb) mb.checked=S.mybar; if($('#tokin')) suggest(); }
+    else { const st=tr.scrollTop; setHTML(tr.querySelector('.tb2'), trayBody(FSLOT)); tr.scrollTop=st; }
+  }
   FSLOTnew=false;
-  const fb=fs.querySelector('.fbody'), ntr=fs.querySelector('.tray'); fb.scrollTop=st;
-  if (ntr){ ntr.scrollTop=tst; fb.style.paddingBottom=ntr.offsetHeight+'px'; const cu=fb.querySelector('.sl.cur');
-    if (cu){ const over=cu.getBoundingClientRect().bottom-(fs.getBoundingClientRect().bottom-ntr.offsetHeight)+24; if(over>0) fb.scrollTop+=over; } }
-  if (foc){ const ni=$('#tokin'); ni.value=val; ni.focus(); suggest(); }
+  fb.style.paddingBottom=tr.offsetHeight+'px'; const cu=fb.querySelector('.sl.cur');
+  if (cu){ const over=cu.getBoundingClientRect().bottom-(fs.getBoundingClientRect().bottom-tr.offsetHeight)+24; if(over>0) fb.scrollTop+=over; }
 }
 function suggest(){
   const box=$('#sugg'), q=norm($('#tokin').value); if(!q){ box.innerHTML=''; return; }
@@ -5756,10 +5965,11 @@ function suggest(){
   Object.entries(ING).forEach(([id,i])=>{ if(norm(i.en).includes(q)||norm(i.es).includes(q)) items.push({type:'ing',id,label:L(i),k:tt.kIng}); });
   box.innerHTML = items.filter(x=>!used.has(x.type+x.id)).slice(0,8).map(x=>`<button type="button" data-addtok="${x.type}:${x.id}">${esc(x.label)}<small>${esc(x.k)}</small></button>`).join('');
 }
-function openFilters(push=true){ FSLOT=null; $('#fs').hidden=false; document.body.style.overflow='hidden'; renderFilters(); if(push) history.pushState({f:1},''); $('#fs .fpanel').focus({preventScroll:true}); }
-function closeFilters(pop=false){ if($('#fs').hidden) return; $('#fs').hidden=true; if($('#sheet').hidden && $('#cmd').hidden) document.body.style.overflow='';
+function openFilters(push=true){ FSLOT=null; $('#fs').innerHTML=''; $('#fs').hidden=false; document.body.style.overflow='hidden'; renderFilters(); if(push) history.pushState({f:1},''); $('#fs .fpanel').focus({preventScroll:true}); }
+function closeFilters(pop=false){ if($('#fs').hidden) return; $('#fs').hidden=true; if(LSTALE){ LSTALE=false; renderList(); enter(); } if($('#sheet').hidden && $('#cmd').hidden) document.body.style.overflow='';
   if(!pop && history.state && history.state.f) history.back(); const b=$('#fopen'); if(b) b.focus({preventScroll:true}); }
-function changed(){ saveS(); renderChrome(); vt(renderList); renderFilters(); }
+let LSTALE=false;
+function changed(){ saveS(); renderChrome(); if(!$('#fs').hidden){ LSTALE=true; const c=$('#count'); if(c) c.textContent=t().of(results().length, DR.length); } else vt(renderList); renderFilters(); }
 
 /* ---- drink page: the drawing (or the photo), then the recipe as numbers ---- */
 let view = store.get('view','art');
@@ -5803,15 +6013,14 @@ function detail(d){
         <div class="view" role="group"><button type="button" data-view="art" aria-pressed="${view!=='photo'}">${tt.drawing}</button><button type="button" data-view="photo" aria-pressed="${view==='photo'}">${tt.photo}</button></div></div>
       <div class="art">${glassSVG(d,{bg,noTile:true})}</div>
       <div class="ph">${imgTag(d,'(min-width:960px) 47vw, 100vw',`style="object-position:${platePos(d)}"`).replace('alt=""',`alt="${esc(d.name)}"`)}</div>
-      <div class="head"><h2>${esc(d.name)}</h2><span class="orig">${esc([t().bases[d.base], techStr(d), [d.place,d.year].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</span></div>
+      <div class="head"><h2>${esc(d.name)}</h2><span class="orig">${esc([t().bases[d.base], techStr(d), [d.place,d.year].filter(Boolean).join(' ')].filter(Boolean).join(' · '))}</span><span class="tags">${esc(tagLine(d))}</span></div>
     </div>
     <div class="sg" style="--liq:${liq};--lf:${lum(liq)>150?'var(--ink)':'var(--pa)'}">
       <div class="tb"><div class="units" role="group" aria-label="${esc(tt.unitsL)}"><button type="button" data-u="ml" aria-pressed="${units==='ml'}">ml</button><button type="button" data-u="oz" aria-pressed="${units==='oz'}">oz</button></div>
         <div class="nav"><button type="button" data-id="${prv.id}" aria-label="${esc(tt.prev)}: ${esc(prv.name)}">${ICON.back}<span>${esc(prv.name)}</span></button><button type="button" data-id="${nxt.id}" aria-label="${esc(tt.next)}: ${esc(nxt.name)}"><span>${esc(nxt.name)}</span>${ICON.next}</button></div></div>
-      <section class="bk bA"><span class="k">${esc(tagLine(d))}</span><div class="rec">${lines}</div>
+      <section class="bk bA"><span class="k">${tt.recipe}</span><div class="rec rl">${lines}</div>
         <div class="ac">${tkHTML(d.id,'paper')}${d.video?`<span class="lk"><button type="button" class="fr" data-play="${esc(d.video)}">${tt.play}</button><a class="fr" href="https://www.youtube.com/watch?v=${esc(d.video)}" target="_blank" rel="noopener">${tt.watch}${ICON.out}</a></span>`:''}</div></section>
-      <section class="bk bB"><div class="spx"><div class="gw"><span class="k">${tt.glass}</span>${glassBlock(d)}</div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div></div>
-        ${L(d.garnish)?`<p><span class="k" style="margin-bottom:8px">${tt.garnish}</span>${esc(L(d.garnish))}</p>`:''}</section>
+      <section class="bk bB"><div class="spx"><div class="gw"><span class="k">${tt.glass}</span>${glassBlock(d)}</div><div><span class="k">${tt.ice}</span><b>${esc(tt.ices[d.ice]||'')}</b></div><div><span class="k">${tt.abv}</span><b>${Math.round(d.abv)}%</b></div>${L(d.garnish)?`<div class="gn"><span class="k">${tt.garnish}</span><b>${esc(L(d.garnish))}</b></div>`:''}</div></section>
       <section class="bk bC"><span class="k">${tt.method}</span><ol class="steps">${steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${mnote?`<p class="mnote"><b>${tt.note}</b>${esc(mnote)}</p>`:''}</section>
       ${varsHTML(d)}
       <section class="bk bD"><span class="k">${esc([d.place,d.year].filter(Boolean).join(', ')||tt.story)}</span>${L(d.history)?`<p>${esc(L(d.history))}</p>`:''}${srcHTML(d)}<span class="no">No. ${String(d.no).padStart(2,'0')} / ${DR.length}</span></section>
@@ -5897,7 +6106,7 @@ function prepHTML(p, i){
   if (p.fix) b+=`<h4>${tt.balance}</h4>`+kvHTML(CL(p.fix));
   if (p.tips) b+=`<h4>${tt.tips}</h4><ul class="tips">${CL(p.tips).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
   if (p.uses) b+=`<h4>${tt.inIBA}</h4><div class="uses">${p.uses.map(id=>`<button type="button" class="txt" data-nbid="${id}"><span>${esc(byId[id].name)}</span></button>`).join('')}</div>${p.usesNote?`<p class="out">${esc(CL(p.usesNote))}</p>`:''}`;
-  return `<details class="pr" id="pr-${p.id}"><summary><span class="no">${String(i+1).padStart(2,'0')}</span><span class="nm">${esc(CL(p))}</span><span class="ra">${esc(p.ratio)}</span><span class="tm">${esc(CL(p.time))}</span></summary><div class="pb">${b}</div></details>`;
+  return `<details class="pr" id="pr-${p.id}"><summary><span class="no">${String(i+1).padStart(2,'0')}</span><span class="nm">${esc(CL(p))}</span><span class="ra">${esc(p.ratio)}</span><span class="tm">${esc(CL(p.time))}</span><svg class="ar pm" viewBox="0 0 30 22" aria-hidden="true"><path d="M0 11h26.5M18 2.5l8.5 8.5-8.5 8.5"/></svg></summary><div class="pb">${b}</div></details>`;
 }
 
 /* ---- quiz: built from the drinks in the current list (tab hidden for now, at Fede's request) ---- */
@@ -5938,27 +6147,33 @@ function quizHTML(){
     <div class="qo-l" role="group" aria-label="${esc(q.ask)}">${opts}</div>
     ${done?`<div class="qz-ac"><button type="button" class="blk" id="qnext">${tt.qNext}${ICON.next}</button><button type="button" class="txt" data-nbid="${d.id}"><span>${tt.qOpen}</span></button></div>`:''}${miss}</div>`;
 }
+// the notes are the index again: same masthead, same rows, same columns, just course material instead of drinks
+const NBH = { en:{ratio:'Ratio',time:'Time',term:'Term',src:'Course notes'}, es:{ratio:'Proporción',time:'Tiempo',term:'Término',src:'Apuntes del curso'} };
 function renderNotes(){
-  const tt=t(); let body='', i=0;
+  const tt=t(), H=NBH[lang]; let body='', chips='', i=0;
   if (NB==='prep'){
     Object.keys(COURSE.groups).forEach(g=>{ const ps=COURSE.prep.filter(p=>p.g===g);
-      body+=`<section class="nb-g"><h3>${esc(CL(COURSE.groups[g]))}</h3>${ps.map(p=>prepHTML(p,i++)).join('')}</section>`; });
-  } else if (NB==='quiz'){ body=quizHTML();
+      chips+=`<button class="chip" type="button" data-nbjump="g-${g}">${esc(CL(COURSE.groups[g]))}</button>`;
+      body+=`<section class="nb-g" id="g-${g}"><div class="nb-gh"><span>${esc(CL(COURSE.groups[g]))}</span><span>${H.ratio}</span><span>${H.time}</span></div>${ps.map(p=>prepHTML(p,i++)).join('')}</section>`; });
+  } else if (NB==='quiz'){ body=`<div class="nb-q">${quizHTML()}</div>`;
   } else {
-    COURSE.terms.forEach(G=>{ body+=`<section class="nb-g"><h3>${esc(CL(G.g))}</h3><dl class="tm-l">${G.items.map(x=>{
+    COURSE.terms.forEach((G,gi)=>{ chips+=`<button class="chip" type="button" data-nbjump="t-${gi}">${esc(CL(G.g))}</button>`;
+      body+=`<section class="nb-g" id="t-${gi}"><div class="nb-gh"><span>${esc(CL(G.g))}</span></div><dl class="tm-l">${G.items.map(x=>{
       const n = x.f ? DR.filter(d=>FACETS.find(f=>f[0]===x.f[0])[2](d).includes(x.f[1])).length : 0;
-      return `<div class="tm-i"><dt>${esc(CL(x.t))}</dt><dd>${esc(x[lang]||x.en)}${n?`<br><button type="button" class="txt" data-nbf="${x.f.join(':')}"><span>${tt.seeN(n)}</span>${ICON.next}</button>`:''}</dd></div>`; }).join('')}</dl></section>`; });
+      return `<div class="tm-i"><span class="no">${String(++i).padStart(2,'0')}</span><dt class="nm">${esc(CL(x.t))}</dt><dd>${esc(x[lang]||x.en)}${n?`<button type="button" class="fr" data-nbf="${x.f.join(':')}">${tt.seeN(n)}${ICON.next}</button>`:''}</dd></div>`; }).join('')}</dl></section>`; });
   }
-  $('#nb').innerHTML = `<div class="nb-in"><div class="nb-bar"><button class="close" type="button" id="nbcls">${ICON.back}<span>${tt.back}</span></button>
-    <div class="units" role="group" aria-label="${esc(tt.notes)}"><button type="button" data-nbtab="prep" aria-pressed="${NB==='prep'}">${tt.prep}</button><button type="button" data-nbtab="terms" aria-pressed="${NB==='terms'}">${tt.terms}</button></div></div>
-    <header class="nb-hd"><h2>${tt[NB]}</h2>${NB==='quiz'?'':`<span class="src">${esc(CL(COURSE.src))}</span>`}</header>${body}</div>`;
+  $('#nb').innerHTML = `<header class="nb-top"><div class="bar"><span class="mark" aria-hidden="true">MISE</span><span class="nb-k">${esc(tt.notes)}</span>
+      <div class="nb-tabs" role="group" aria-label="${esc(tt.notes)}"><button type="button" class="fbtn" data-nbtab="prep" aria-pressed="${NB==='prep'}">${tt.prep}</button><button type="button" class="fbtn" data-nbtab="terms" aria-pressed="${NB==='terms'}">${tt.terms}</button></div>
+      <button class="fbtn nb-x" type="button" id="nbcls">${esc(SENT[lang].close)}</button></div>
+    <div class="chips">${chips}<span class="nb-src">${esc(CL(COURSE.src))}</span></div></header>
+    <div class="nb-in">${body}</div>`;
   $('#nb').setAttribute('aria-label', tt.notes);
 }
 function openNotes(tab, prep, push=true){
   if (tab) NB=tab; renderNotes(); $('#nb').hidden=false; document.body.style.overflow='hidden';
   if (push) history.pushState({n:1},'','#'+(lang==='es'?'apuntes':'notes'));
   const el = prep && document.getElementById('pr-'+prep);
-  if (el){ el.open=true; requestAnimationFrame(()=>el.scrollIntoView({block:'start'})); const nb=$('#nb'); requestAnimationFrame(()=>{ nb.scrollTop-=70; }); }
+  if (el){ el.open=true; requestAnimationFrame(()=>el.scrollIntoView({block:'start'})); const nb=$('#nb'); requestAnimationFrame(()=>{ nb.scrollTop-=($('.nb-top')?$('.nb-top').offsetHeight:70)+8; }); }
   else $('#nb').scrollTop=0;
   $('#nb').focus({preventScroll:true});
 }
@@ -5987,6 +6202,7 @@ function all(){ renderChrome(); renderList(); renderTab(); if(!$('#nb').hidden){
 document.addEventListener('click', e=>{
   const vh=e.target.closest('.vh'); if(vh){ const o=vh.getAttribute('aria-expanded')!=='true'; vh.setAttribute('aria-expanded',o); vh.nextElementSibling.hidden=!o; vh.parentElement.classList.toggle('on',o); return; }
   const sl=e.target.closest('[data-slot]'); if(sl){ const k=sl.dataset.slot; FSLOT=FSLOT===k?null:k; FSLOTnew=!!FSLOT; renderFilters(); if(FSLOT==='ing'){ const ti=$('#tokin'); if(ti) ti.focus({preventScroll:true}); } return; }
+  const tc=e.target.closest('[data-tclear]'); if(tc){ clearSlot(tc.dataset.tclear); changed(); return; }
   if(e.target.closest('[data-tdone]')){ const k=FSLOT; FSLOT=null; renderFilters(); const b=document.querySelector(`[data-slot="${k}"]`); if(b) b.focus({preventScroll:true}); return; }
   const fc=e.target.closest('[data-f]'); if(fc){ const k=fc.dataset.f,v=fc.dataset.v; S[k]=S[k].includes(v)?S[k].filter(x=>x!==v):[...S[k],v]; changed(); return; }
   const lv=e.target.closest('[data-leave]'); if(lv){ const c=lv.dataset.leave; S.leave=S.leave.includes(c)?S.leave.filter(x=>x!==c):[...S.leave,c]; changed(); return; }
@@ -6002,6 +6218,7 @@ document.addEventListener('click', e=>{
     changed(); return; }
   if(e.target.closest('#nopen')){ openNotes(); return; }
   if(e.target.closest('#nbcls')){ closeNotes(); return; }
+  const nj=e.target.closest('[data-nbjump]'); if(nj){ const g=document.getElementById(nj.dataset.nbjump), nb=$('#nb'); if(g) nb.scrollTo({top:g.offsetTop-$('.nb-top').offsetHeight, behavior:reduced()?'auto':'smooth'}); return; }
   const nt=e.target.closest('[data-nbtab]'); if(nt){ NB=nt.dataset.nbtab; renderNotes(); $('#nb').scrollTop=0; const b=document.querySelector(`[data-nbtab="${NB}"]`); if(b) b.focus({preventScroll:true}); return; }
   const qo=e.target.closest('[data-qo]'); if(qo){ if(QZ.pick!==null) return; QZ.pick=+qo.dataset.qo; QZ.n++; const q=QZ.cur;
     if(q.opts[QZ.pick]===q.right) QZ.ok++; else if(!QZ.miss.includes(q.d)) QZ.miss.push(q.d);
