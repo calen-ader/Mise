@@ -1003,6 +1003,7 @@ function intro(force){
   if (reduced()) return false;
   if (!force){ try{ if(sessionStorage.getItem('mise.intro')) return false; sessionStorage.setItem('mise.intro','1'); }catch(e){} }
   const top=$('#top').getBoundingClientRect().height, W=innerWidth, H=innerHeight-top, tt=t(), CO='#ee4a36';
+  if (W<1 || H<1) return false; // loaded in a zero-size window (background tab, hidden pane): skip the pour
   const el=document.createElement('div'); el.className='intro'; el.style.top=top+'px'; el.setAttribute('aria-hidden','true');
   const lbl=`<span class="k">${tt.introK}<b>${tt.introB}</b></span><span class="n num">000</span>`;
   el.innerHTML=`<svg width="0" height="0" style="position:absolute"><defs><clipPath id="introlq" clipPathUnits="userSpaceOnUse"><path d="M0 0Z"/></clipPath></defs></svg><div class="lay">${lbl}</div><div class="lay wet"><svg class="bg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><rect width="${W}" height="${H}" fill="${CO}"/><g fill="#f3eee4"></g></svg>${lbl}</div>`;
